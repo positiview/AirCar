@@ -1,8 +1,7 @@
+/*
 package com.example.aircar.config;
 
-import com.busanit.handler.CustomFormLoginSuccessHandler;
-import com.busanit.handler.CustomSocialLoginSuccessHandler;
-import com.busanit.service.MemberService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,13 +46,17 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/")
         ;
 
-        /* csrf 전송 끄기 */
+        */
+/* csrf 전송 끄기 *//*
+
 //        http.csrf().disable();
-        /*
+        */
+/*
         permitAll() - 모든 사용자가 인증(로그인)없이 해당 경로에 접근할 수 있도록 설정
         anyRequest().authenticated() - mvcMatchers에서 설정해준 경로를 제외한
                                       나머지 경로들은 모두 인증을 요구하도록 설정
-         */
+         *//*
+
         http.authorizeRequests()
             .mvcMatchers("/css/**", "/js/**",
                     "/img/**", "/vendor/**").permitAll()
@@ -89,3 +92,4 @@ public class SecurityConfig {
 
 
 
+*/
