@@ -1,2 +1,4 @@
-package com.example.aircar.service;public class MemberService {
+package com.example.aircar.service;
+
+public class MemberService {
 }

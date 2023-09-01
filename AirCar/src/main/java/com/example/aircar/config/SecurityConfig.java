@@ -1,4 +1,4 @@
-package com.busanit.config;
+package com.example.aircar.config;
 
 import com.busanit.handler.CustomFormLoginSuccessHandler;
 import com.busanit.handler.CustomSocialLoginSuccessHandler;

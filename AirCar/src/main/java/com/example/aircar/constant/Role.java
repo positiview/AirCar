@@ -1,4 +1,4 @@
-package com.busanit.constant;
+package com.example.aircar.constant;
 
 public enum Role {
     USER, ADMIN

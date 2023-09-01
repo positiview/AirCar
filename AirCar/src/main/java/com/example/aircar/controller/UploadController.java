@@ -1,2 +1,4 @@
-package com.example.aircar.controller;public class UploadController {
+package com.example.aircar.controller;
+
+public class UploadController {
 }

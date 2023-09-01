@@ -1,2 +1,4 @@
-package com.example.aircar.entity;public class Upload {
+package com.example.aircar.entity;
+
+public class Upload {
 }
