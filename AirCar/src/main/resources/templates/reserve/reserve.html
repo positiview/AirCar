@@ -1,16 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-    <header class="header">
-        <div class="nav-wrap">
-            <div class="nav-inner">
+<link rel="stylesheet" href="calendar.css">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="component.css">
+<link rel="stylesheet" href="content.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="reset.css">
+<!-- 달력 스크립트 -->
+<link rel="stylesheet" href="./air-datepicker/dist/css/datepicker.min.css">
+<script src="./jquery-3.1.1.min.js"></script>
+<script src="./air-datepicker/dist/js/datepicker.min.js"></script>
+<script src="./air-datepicker/dist/js/i18n/datepicker.ko.js"></script>
 
+<style>
+    input::placeholder{
+        color: black;
+    }
+</style>
+<body>
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+        <div id="root" style="height: 100%">
+            <div class="pc_wrap" style="">
+                <div class="wrap sub_wrap">
+                    <header class="header">
+                        <div class="util_wrap">
+                            <div class="gate_tab">
+                                <ul>
+                                    <li class="on"><a href="/">제주예약</a></li>
+                                    <li><a href="https://www.skcarrental.com/rent/main_2022.do"
+                                            rel="noreferrer">내륙예약</a></li>
+                                </ul>
+                            </div>
+                            <ul>
+                                <li><a href="https://www.skdirect.co.kr" target="_blank" rel="noreferrer">SK렌터카 다이렉트</a>
+                                </li>
+                                <li><a href="https://smartcare.skcarrental.com" target="_blank"
+                                        rel="noreferrer">스마트케어</a></li>
+                            </ul>
+                        </div>
+                        <div class="nav_wrap">
+                            <div class="inner">
+                                <h1><a class="brand"><img src="sk_logo.png" width="107px" height="56px" alt="" style="left: 0;"></a></h1>
+                                <nav>
+                                    <ul>
+                                        <li><a>예약</a></li>
+                                        <li><a>예약확인</a></li>
+                                        <li><a>이용안내</a></li>
+                                        <li><a>고객센터</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="side_menu">
+                                    <ul class="member">
+                                        <li><a>로그인</a></li>
+                                        <li><a>회원가입</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="container">
+                        <div class="inner">
+                            <div class="contents">
+                                <div class="banner_hot">
+                                    <div class="test">
+                                        <ul class="banner_slider">
+                                            <li><a href="#"><img src="banner_hot_01.png"
+                                                        alt="제주 럭셔리 차박 빈손으로 떠나자"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="dill_box_type">
+                                    <div class="dill_box_wrap">
+                                        <div class="top_cont">
+                                            <div class="main_ctext"><img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_kia.svg"
+                                                    alt="기아자동차" class="car_logo"><span class="car_enter">기아자동차</span><em
+                                                    class="c_prd_name">모닝</em></div>
+                                            <div class="img_area"><img
+                                                    src="morning.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <ul class="dill_list_box">
+                                            <li class="list_item" data-value="2300000000225_0"><a class="dill_list">
+                                                    <div class="car_name">
+                                                        <div class="tag_box"><em class="gray">제휴사차량</em></div>
+                                                        <p class="main_name">[제휴사차량] 모닝 1.0 가솔린</p><span
+                                                            class="sb_text">2021년식 · 5인승</span>
+                                                    </div>
+                                                    <div class="price_wrap">
+                                                        <div class="price_info">
+                                                            <div class="rate_box">회원할인</div>
+                                                            <div class="price_num"><span
+                                                                    class="price_regular">403,500원</span><span
+                                                                    class="price_sale">102,570원</span><em
+                                                                    class="rate">75%</em></div>
+                                                        </div>
+                                                        <div class="btn_group"><button class="btn type01"
+                                                            style="background: url(btn_bg.jpg) no-repeat center / cover;
+                                                            background-position: 10% center;
+                                                            color: #fff;
+                                                            border: 0;">예약</button>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="dill_box_type">
+                                    <div class="dill_box_wrap">
+                                        <div class="top_cont">
+                                            <div class="main_ctext"><img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_genesis.svg"
+                                                    alt="제네시스" class="car_logo"><span class="car_enter">제네시스</span><em
+                                                    class="c_prd_name">G90 </em></div>
+                                            <div class="img_area"><img
+                                                    src="g90.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <ul class="dill_list_box">
+                                            <li class="list_item end" data-value="HD35010001MR_93"><a
+                                                    class="dill_list soldout">
+                                                    <div class="car_name">
+                                                        <p class="main_name">G90 3.5 가솔린 AWD</p><span
+                                                            class="sb_text">2022년식 · 5인승 · 상시4륜구동</span>
+                                                    </div>
+                                                    <div class="price_wrap">
+                                                        <div class="price_info">
+                                                            <div class="rate_box">회원할인</div>
+                                                            <div class="price_num"><span
+                                                                    class="price_regular">1,438,200원</span><span
+                                                                    class="price_sale">365,610원</span><em
+                                                                    class="rate">75%</em></div>
+                                                        </div>
+                                                        <div class="btn_group"><button class="btn type01">예약마감</button>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="dill_box_type">
+                                    <div class="dill_box_wrap">
+                                        <div class="top_cont">
+                                            <div class="main_ctext"><img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_porsche.svg"
+                                                    alt="포르쉐" class="car_logo"><span class="car_enter">포르쉐</span><em
+                                                    class="c_prd_name">타이칸</em></div>
+                                            <div class="img_area"><img
+                                                    src="tikan.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <ul class="dill_list_box">
+                                            <li class="list_item" data-value="PR01010001MC_94"><a class="dill_list">
+                                                    <div class="car_name">
+                                                        <div class="tag_box"><em class="blu"
+                                                                style="margin-right: 3px;">프리미엄전기차</em><em
+                                                                class="green">충전료 무료</em></div>
+                                                        <p class="main_name">타이칸</p><span class="sb_text">22~23년식 · 5인승
+                                                            · 만 26세이상</span>
+                                                    </div>
+                                                    <div class="price_wrap">
+                                                        <div class="price_info">
+                                                            <div class="rate_box">회원할인</div>
+                                                            <div class="price_num"><span
+                                                                    class="price_regular">1,661,300원</span><span
+                                                                    class="price_sale">596,760원</span><em
+                                                                    class="rate">64%</em></div>
+                                                        </div>
+                                                        <div class="btn_group"><button class="btn type01">예약</button>
+                                                        </div>
+                                                    </div>
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar">
+                                <div id="sideScroll" class="inner">
+                                    <div class="res_form">
+                                        <h2 class="title">선택한 여정</h2>
+                                        <div class="cont"><a class="ico_place" style="background: url(ico_place.png) no-repeat center / 20px;">제주지점</a></div>
+                                        <div class="cont"><a class="ico_place" > <input id="datepicker1" type="text" placeholder="시작일" style="border: none;" ></a></div>
+                                        <div class="cont"><a class="ico_place" > <input id="datepicker2" type="text" placeholder="반납일" style="border: none;" ></a></div>
+                                        <div class="btn_group"><button class="btn type02">재검색</button></div>
+                                    </div><button class="btn btn_filter">필터적용</button>
+                                </div>
+                            </div>
+                            <div class="float_wrap">
+                                <div class="inner">
+                                    <div class="chat_cont">
+                                        <div class="chat_btn"><a> 상담하기</a></div>
+                                        <ul class="chat_list">
+                                            <li class="chat"><a>채팅상담</a></li>
+                                            <li class="inquiry"><a>1:1문의 작성</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;">
+                            <div class=""
+                                style="left: 0px; right: 0px; display: flex; position: absolute; transition: all 230ms cubic-bezier(0.21, 1.02, 0.73, 1) 0s; transform: translateY(0px); bottom: 0px; justify-content: center;">
+                                <div class="go2072408551"
+                                    style="opacity: 0; border-radius: 18px; background: rgba(33, 37, 41, 0.8); color: rgb(255, 255, 255); padding: 4px 6px; font-size: 13px;">
+                                    <div role="status" aria-live="polite" class="go3958317564">로그아웃 완료! 곧 다시 만나요</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_wrap">
+                        <footer class="footer">
+                            <div class="footer_l"><img src="/pc_assets/img/common/sk_logo_gray.png" alt="" class="logo">
+                                <div class="footer_cont">
+                                    <ul class="footer_terms">
+                                        <li><a>회사소개</a></li>
+                                        <li><a>이용약관</a></li>
+                                        <li><a>개인정보 처리방침</a></li>
+                                        <li><a>이메일무단수집거부 </a></li>
+                                    </ul>
+                                    <ul class="footer_info">
+                                        <li>고객센터 <a href="tel:1599-9111">1599-9111</a></li>
+                                        <li><span>SK렌터카(주)</span><span>서울특별시 구로구 서부샛길 822(구로동)</span></li>
+                                        <li><span>대표이사 황일문</span><span>사업자번호 113-81-32864</span></li>
+                                        <li>통신판매업신고 구로구청 제2006-03389</li>
+                                    </ul>
+                                    <p class="copyright">Copyright ⓒ SK렌터카. All Rights Reserved</p>
+                                </div>
+                            </div>
+                            <div class="footer_r">
+                                <ul class="sns">
+                                    <li class="instar"><a><span class="blind">인스타그램</span></a></li>
+                                    <li class="youtube"><a><span class="blind">유튜브</span></a></li>
+                                    <li class="blog"><a><span class="blind">블로그</span></a></li>
+                                    <li class="facebook"><a><span class="blind">페이스북</span></a></li>
+                                    <li class="tstory"><a><span class="blind">티스토리</span></a></li>
+                                </ul>
+                                <div class="select_wrap"><select class="family_site">
+                                        <option value="">FamilySite</option>
+                                        <option value="https://company.skcarrental.com">SK렌터카</option>
+                                        <option value="https://www.sknetworks.co.kr">SK Networks</option>
+                                        <option value="http://www.skcarrentalservice.co.kr">SK렌터카서비스</option>
+                                    </select></div>
+                                <ul class="mark">
+                                    <li><img src="/pc_assets/img/common/logo_ismsp.png" alt="ISMSP"></li>
+                                    <li><span>인증범위 : 차량렌탈 서비스, 스마트링크서비스</span><span>유효기간 : 2022-12-07 ~
+                                            2025-12-06</span></li>
+                                    <li><img src="/pc_assets/img/common/logo_ncsi.png" alt="NCSI"></li>
+                                </ul>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+        <!-- <script src="/skrentalApp/bundle.29105ee17c.js"></script> -->
+        
+    <script>
+        $(document).ready(function() {
+            datePickerSet($("#datepicker1"), $("#datepicker2"), true);
+
+            function datePickerSet(sDate, eDate, flag) {
+                // ...
+
+                if (!isValidStr(sDate)) {
+                    sDate.datepicker({
+                        language: 'ko',
+                        autoClose: true,
+                        onSelect: function(formattedDate, date, inst) {
+                            var selectedDateText = "시작일 :  " + formattedDate;
+                            sDate.val(selectedDateText);
+                        }
+                    });
+                }
+
+                if (!isValidStr(eDate)) {
+                    eDate.datepicker({
+                        language: 'ko',
+                        autoClose: true,
+                        onSelect: function(formattedDate, date, inst) {
+                            var selectedDateText = "종료일 :  " + formattedDate;
+                            eDate.val(selectedDateText);
+                        }
+                    });
+                }
+
+                // ...
+            }
+
+            function isValidStr(str) {
+                return str === null || str === undefined || str === "";
+            }
+        });
+    </script>
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    </body>
 </body>
+
+
 </html>
