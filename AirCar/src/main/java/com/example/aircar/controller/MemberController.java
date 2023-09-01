@@ -1,2 +1,4 @@
-package com.example.aircar.controller;public class MemberController {
+package com.example.aircar.controller;
+
+public class MemberController {
 }

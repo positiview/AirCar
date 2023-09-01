@@ -1,2 +1,4 @@
-package com.example.aircar.repository;public interface ReviewRepository {
+package com.example.aircar.repository;
+
+public interface ReviewRepository {
 }

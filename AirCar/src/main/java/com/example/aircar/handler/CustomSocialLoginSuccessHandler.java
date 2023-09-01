@@ -1,4 +1,4 @@
-package com.busanit.handler;
+package com.example.aircar.handler;
 
 import com.busanit.domain.MemberSecurityDTO;
 import lombok.AllArgsConstructor;
