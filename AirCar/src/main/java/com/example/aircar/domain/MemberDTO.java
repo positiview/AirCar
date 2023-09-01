@@ -1,2 +1,4 @@
-package com.example.aircar.domain;public class MemberDTO {
+package com.example.aircar.domain;
+
+public class MemberDTO {
 }

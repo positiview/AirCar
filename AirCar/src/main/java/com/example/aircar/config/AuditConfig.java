@@ -1,4 +1,4 @@
-package com.busanit.config;
+package com.example.aircar.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

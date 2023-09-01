@@ -1,2 +1,4 @@
-package com.example.aircar.entity;public class Reserve {
+package com.example.aircar.entity;
+
+public class Reserve {
 }
