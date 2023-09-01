@@ -1,2 +1,4 @@
-package com.example.aircar.entity;public class Car {
+package com.example.aircar.entity;
+
+public class Car {
 }

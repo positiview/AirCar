@@ -1,4 +1,4 @@
-package com.busanit.entity;
+package com.example.aircar.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
