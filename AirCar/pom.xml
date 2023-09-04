@@ -87,10 +87,9 @@
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
-<<<<<<< HEAD
+
 			<version>3.0.4.RELEASE</version>
-=======
->>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
+
 		</dependency>
 
 		<dependency>
