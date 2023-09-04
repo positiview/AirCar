@@ -232,10 +232,10 @@
 /* 제주컨텐츠 */
 .pc_wrap .jejucont_wrap {
   position: relative;
-  margin-top: 80px;
+  margin-top: 280px;
 }
 .pc_wrap .jejucont_wrap .slick-slider .slick-slide {
-  margin-right: 15px;
+  margin-right: 5px;
 }
 .pc_wrap .jejucont_wrap .slick-slider .slick-slide:last-child {
   margin-right: 0;
@@ -285,34 +285,34 @@
 }
 .pc_wrap .jejucont_wrap .prev,
 .pc_wrap .jejucont_wrap .next {
-  margin-top: 10px;
+  margin-top: 25px;
 }
 /* 이벤트 컨텐츠 */
 .pc_wrap .main_wrap .eventcont_wrap {
   margin-top: 60px;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 {
   display: flex;
   overflow: hidden;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li {
   width: 150px;
   flex-shrink: 0;
   margin-right: 20px;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li:last-child {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li:last-child {
   margin-right: 0;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li a {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li a {
   display: block;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li a .img_wrap {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .img_wrap {
   position: relative;
   height: 150px;
   overflow: hidden;
   border-radius: 12px;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li a .img_wrap img {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .img_wrap img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -320,14 +320,14 @@
   width: 100%;
   height: 100%;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li a .cont_wrap {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .cont_wrap {
   margin-top: 15px;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li a .cont_wrap .label {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .cont_wrap .label {
   font-size: 12px;
   margin-bottom: 5px;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel li a .cont_wrap .txt {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .cont_wrap .txt {
   line-height: 22px;
   font-weight: 700;
   font-size: 14px;
@@ -345,10 +345,10 @@
 }
 
 /* 12.23 khj 개발기 추가 css */
-.pc_wrap .main_wrap .eventcont_wrap .carousel .slick-slide {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 .slick-slide {
   margin-right: 20px;
 }
-.pc_wrap .main_wrap .eventcont_wrap .carousel .slick-slide li {
+.pc_wrap .main_wrap .eventcont_wrap .carousel2 .slick-slide li {
   margin-right: 0;
 }
 
