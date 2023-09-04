@@ -442,6 +442,12 @@
         .sidebar .btn_option_wrap{
             display: flex;
             flex-wrap: wrap;
+            vertical-align: baseline;
+            letter-spacing: -0.528px;
+            margin-bottom: 27px;
+            overflow-x: visible;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .center button{
@@ -451,6 +457,7 @@
             z-index: 100;
             transform: translateY(-50%);
         }
+
     </style>
 </head>
 <body style="overflow: visible;">
@@ -838,7 +845,7 @@
                                 </div>
                                 <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
                                 <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
-                                    <div class="carousel">
+                                    <div class="option_list">
                                         <ul class="btn_option_wrap small">
                                             <li class="on"><a>전체</a></li>
                                             <li class=""><a>전기차</a></li>
@@ -849,6 +856,7 @@
                                             <li class=""><a>SUV</a></li>
                                             <li class=""><a>승합</a></li>
                                             <li class=""><a>수입</a></li>
+                                            <li class=""><input type="checkbox" id="chk01" name="check_option" class="option"></li>
                                         </ul>
                                     </div>
                                 </div>
