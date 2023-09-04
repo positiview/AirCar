@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@Log4j2
-@RequestMapping("/aircar")
 public class MainController {
 
-    @GetMapping("homepage")
+    @GetMapping("/")
     public String homepage(){
         return "main/homepage";
+    }
+
+    @GetMapping("/index")
+    public String slickPractice(){
+        return "index";
     }
 }
