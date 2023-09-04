@@ -72,10 +72,17 @@
   top: 150px;
 }
 .pc_wrap .ico_select {
+<<<<<<< HEAD
   background: url(../img/common/ico_chevronB_16x16.png) no-repeat center;
 }
 .pc_wrap .ico_reset {
   background: url(../img/common/ico_reset_22x22.png) no-repeat center;
+=======
+  background: url(ico_chevronB_16x16.png) no-repeat center;
+}
+.pc_wrap .ico_reset {
+  background: url(ico_reset_22x22.png) no-repeat center;
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
 }
 
 /* 예약리스트 */
@@ -232,10 +239,17 @@
 /* 제주컨텐츠 */
 .pc_wrap .jejucont_wrap {
   position: relative;
+<<<<<<< HEAD
   margin-top: 280px;
 }
 .pc_wrap .jejucont_wrap .slick-slider .slick-slide {
   margin-right: 5px;
+=======
+  margin-top: 80px;
+}
+.pc_wrap .jejucont_wrap .slick-slider .slick-slide {
+  margin-right: 15px;
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
 }
 .pc_wrap .jejucont_wrap .slick-slider .slick-slide:last-child {
   margin-right: 0;
@@ -285,21 +299,34 @@
 }
 .pc_wrap .jejucont_wrap .prev,
 .pc_wrap .jejucont_wrap .next {
+<<<<<<< HEAD
   margin-top: 25px;
+=======
+  margin-top: 10px;
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
 }
 /* 이벤트 컨텐츠 */
 .pc_wrap .main_wrap .eventcont_wrap {
   margin-top: 60px;
 }
+<<<<<<< HEAD
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 {
   display: flex;
   overflow: hidden;
 }
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 li {
+=======
+.pc_wrap .main_wrap .eventcont_wrap .carousel {
+  display: flex;
+  overflow: hidden;
+}
+.pc_wrap .main_wrap .eventcont_wrap .carousel li {
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   width: 150px;
   flex-shrink: 0;
   margin-right: 20px;
 }
+<<<<<<< HEAD
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 li:last-child {
   margin-right: 0;
 }
@@ -307,12 +334,25 @@
   display: block;
 }
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .img_wrap {
+=======
+.pc_wrap .main_wrap .eventcont_wrap .carousel li:last-child {
+  margin-right: 0;
+}
+.pc_wrap .main_wrap .eventcont_wrap .carousel li a {
+  display: block;
+}
+.pc_wrap .main_wrap .eventcont_wrap .carousel li a .img_wrap {
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   position: relative;
   height: 150px;
   overflow: hidden;
   border-radius: 12px;
 }
+<<<<<<< HEAD
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .img_wrap img {
+=======
+.pc_wrap .main_wrap .eventcont_wrap .carousel li a .img_wrap img {
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   position: absolute;
   top: 50%;
   left: 50%;
@@ -320,6 +360,7 @@
   width: 100%;
   height: 100%;
 }
+<<<<<<< HEAD
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .cont_wrap {
   margin-top: 15px;
 }
@@ -328,6 +369,16 @@
   margin-bottom: 5px;
 }
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 li a .cont_wrap .txt {
+=======
+.pc_wrap .main_wrap .eventcont_wrap .carousel li a .cont_wrap {
+  margin-top: 15px;
+}
+.pc_wrap .main_wrap .eventcont_wrap .carousel li a .cont_wrap .label {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.pc_wrap .main_wrap .eventcont_wrap .carousel li a .cont_wrap .txt {
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   line-height: 22px;
   font-weight: 700;
   font-size: 14px;
@@ -345,10 +396,17 @@
 }
 
 /* 12.23 khj 개발기 추가 css */
+<<<<<<< HEAD
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 .slick-slide {
   margin-right: 20px;
 }
 .pc_wrap .main_wrap .eventcont_wrap .carousel2 .slick-slide li {
+=======
+.pc_wrap .main_wrap .eventcont_wrap .carousel .slick-slide {
+  margin-right: 20px;
+}
+.pc_wrap .main_wrap .eventcont_wrap .carousel .slick-slide li {
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   margin-right: 0;
 }
 
@@ -473,7 +531,11 @@
   top: 0;
   width: 100%;
   content: '';
+<<<<<<< HEAD
   background: url(../img/etc/@banner_bg.jpg) no-repeat center;
+=======
+  background: url(@banner_bg.jpg) no-repeat center;
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   background-size: cover;
   height: 100%;
 }
@@ -551,7 +613,11 @@
   display: inline-block;
   width: 12px;
   height: 12px;
+<<<<<<< HEAD
   background: url(../img/common/ico_chevronR_16x16.png) no-repeat center;
+=======
+  background: url(ico_chevronR_16x16.png) no-repeat center;
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   background-size: 100%;
   vertical-align: middle;
   margin-left: 3px;
@@ -679,7 +745,11 @@
   content: '';
   width: 16px;
   height: 16px;
+<<<<<<< HEAD
   background: url(../img/common/ico_chevronR_16x16.png) no-repeat;
+=======
+  background: url(ico_chevronR_16x16.png) no-repeat;
+>>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
 }
 .pc_wrap .view_link_box > a dl dt {
   font-size: 14px;
