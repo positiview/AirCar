@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="headerFragment">
+
+    <div id="root" style="height: 100%">
+        <div class="pc_wrap" style="">
+            <div class="wrap sub_wrap">
+                <header class="header">
+                    <div class="util_wrap">
+                        <div class="gate_tab">
+                            <ul>
+                                <li class="on"><a href="/">제주예약</a></li>
+                                <li><a href="https://www.skcarrental.com/rent/main_2022.do"
+                                       rel="noreferrer">내륙예약</a></li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li><a href="https://www.skdirect.co.kr" target="_blank" rel="noreferrer">SK렌터카 다이렉트</a>
+                            </li>
+                            <li><a href="https://smartcare.skcarrental.com" target="_blank"
+                                   rel="noreferrer">스마트케어</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav_wrap">
+                        <div class="inner">
+                            <h1><a class="brand"><img src="/img/logo.png" width="107px" height="56px" alt="" style="left: 0;width: 148px;height: 91px;"></a></h1>
+                            <nav>
+                                <ul>
+                                    <li><a href="reserve">예약</a></li>
+                                    <li><a href="reserve_confirm">예약확인</a></li>
+                                    <li><a>이용안내</a></li>
+                                    <li><a>고객센터</a></li>
+                                </ul>
+                            </nav>
+                            <div class="side_menu">
+                                <ul class="member">
+                                    <li><a>로그인</a></li>
+                                    <li><a>회원가입</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+</th:block>
+</html>

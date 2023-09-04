@@ -1,0 +1,18 @@
+<head>
+    <title>naverMaps</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zjcabhdxor"></script>
+</head>
+<body>
+<div id="map" style="width:100%; height:800px;"></div>
+<script>
+    var map = new naver.maps.Map('map', {
+        center: new naver.maps.LatLng(35.15595081595379, 129.0595294670249 ), // 잠실 롯데월드를 중심으로 하는 지도
+        zoom: 20
+    });
+
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(35.15595081595379, 129.0595294670249),
+        map: map
+    });
+</script>
+</body>
