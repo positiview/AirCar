@@ -490,7 +490,7 @@ html.scroll_hidden body {
   padding: 0 20px;
   margin-bottom: 27px; /* overflow-x: scroll; */
 }
-.pc_wrap .sidebar > .inner .res_form .carousel .btn_option_wrap li > a {
+.pc_wrap .sidebar > .inner .res_form  .btn_option_wrap li > a {
   display: block;
   font-size: 12px;
   line-height: 32px;
@@ -498,7 +498,7 @@ html.scroll_hidden body {
   border: 1px solid #d4d7dc;
   border-radius: 8px;
 }
-.pc_wrap .sidebar > .inner .res_form .carousel .btn_option_wrap li.on > a {
+.pc_wrap .sidebar > .inner .res_form  .btn_option_wrap li.on > a {
   border-color: #50555c;
   color: #2e3033;
 }
@@ -1208,8 +1208,9 @@ html.scroll_hidden body {
   flex-wrap: wrap;
 }
 .pc_wrap .btn_option_wrap li {
-  margin-right: 5px;
-  margin-top: 5px;
+  /*margin-right: 5px;
+  margin-top: 5px;*/
+  margin: 5px;
 }
 .pc_wrap .btn_option_wrap li > a {
   display: flex;
