@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+  <div class="row" style="height: 785px">
+    <div class="col-md-12">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 브랜드</label>
+              <div class="col-md-4">
+                <select class="form-control">
+                  <option>현대</option>
+                  <option>기아</option>
+                  <option>벤츠</option>
+                  <option>BMW</option>
+                  <option>아우디</option>
+                  <option>르노</option>
+                  <option>제네시스</option>
+                  <option>르노</option>
+                  <option>포르쉐</option>
+                  <option>Jeep</option>
+                  <option>테슬라</option>
+                  <option>KG모빌리티</option>
+                  <option>폭스바겐</option>
+                  <option>쉐보레</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 차종</label>
+              <div class="col-md-4">
+                <select class="form-control">
+                  <option>쏘나타</option>
+                  <option>그랜저</option>
+                  <option>스파크</option>
+                  <option>모닝</option>
+                  <option>레이</option>
+                  <option>K3</option>
+                  <option>캐스퍼</option>
+                  <option>아반떼</option>
+                  <option>니로</option>
+                  <option>니로 플러스</option>
+                  <option>제타</option>
+                  <option>EV6</option>
+                  <option>아이오닉</option>
+                  <option>ID.4</option>
+                  <option>K5</option>
+                  <option>아이오닉6</option>
+                  <option>셀토스</option>
+                  <option>A4</option>
+                  <option>베뉴</option>
+                  <option>티볼리</option>
+                  <option>스포티지</option>
+                  <option>Q3</option>
+                  <option>모델3</option>
+                  <option>모델Y</option>
+                  <option>투싼</option>
+                  <option>GV60</option>
+                  <option>토레스</option>
+                  <option>Q4 e-tron</option>
+                  <option>카니발</option>
+                  <option>GV70</option>
+                  <option>쏘렌토</option>
+                  <option>스타리아</option>
+                  <option>K8</option>
+                  <option>G70</option>
+                  <option>iX3</option>
+                  <option>A6</option>
+                  <option>5시리즈</option>
+                  <option>랭글러</option>
+                  <option>타이칸</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 모델명(한글)</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 색상</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 가격(SKU)</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 연식</label>
+              <div class="col-md-10">
+                <input type="number" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 옵션</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 승차인원</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 운전자나이(이상)</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 운전경력(이상)</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+
+
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 차량 하자</label>
+              <div class="col-md-10">
+                <textarea class="form-control">검색어1,검색어2,검색어3,검색어4 (최대80자)</textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">* 사용자분들께</label>
+              <div class="col-md-10">
+                <textarea class="form-control">상품에 대한 요약 설명</textarea>
+              </div>
+            </div>
+
+            <div class="border_top p-t-30  text-center">
+              <button type="button" class="btn btn-default w-md m-b-5">취소</button>
+              <button type="button" class="btn btn-info w-md m-b-5">등록</button>
+              <!--수정버튼
+              <button type="button" class="btn btn-warning w-md m-b-5">수정</button>
+              -->
+            </div>
+
+
+          </form>
+
+        </div><!-- end panel-body -->
+      </div><!-- end panel -->
+    </div>
+  </div>
+
+</body>
+</th:block>
+</html>

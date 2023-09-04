@@ -26,7 +26,8 @@ button {
   font-weight: 400;
 }
 a {
-  outline: none;
+  outline: none ;
+  text-decoration-line: none !important;
 }
 input,
 textarea {
@@ -196,8 +197,8 @@ html.scroll_hidden body {
 .pc_wrap .header .brand {
   position: relative;
   display: inline-block;
-  width: 107px;
-  height: 56px;
+  width: 130px;
+  height: 105px;
   vertical-align: middle;
   background: url(sk_logo.png) no-repeat center;
   background-size: contain;
@@ -326,7 +327,7 @@ html.scroll_hidden body {
 
 /* 사이드바 */
 .pc_wrap #sideScroll {
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 .pc_wrap .sidebar {
   position: absolute;
@@ -429,6 +430,31 @@ html.scroll_hidden body {
   height: 20px;
   background-size: 20px;
   margin-right: 10px;
+  background-image: url("../../img/ico_place.png");
+  margin-left: 14px;
+}
+.pc_wrap .sidebar > .inner .res_form .cont2 > a:before {
+  position: relative;
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: 20px;
+  margin-right: 10px;
+  background-image: url(../../img/ico_date_24x24.png);
+  margin-left: 21px;
+  top: 7px;
+}
+.pc_wrap .sidebar > .inner .res_form .cont3 > a:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: 20px;
+  margin-right: 10px;
+  background-image: url(../../img/ico_date_24x24.png);
+  margin-left: 21px;
+  margin-top: 14px;
 }
 .pc_wrap .sidebar > .inner .res_form .btn_edit {
   font-style: normal;
@@ -439,10 +465,10 @@ html.scroll_hidden body {
   padding: 5px 0;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_place:before {
-  background: url(ico_place_24x24.png) no-repeat center / 20px;
+  background: url("../../img/ico_place.png") no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_date:before {
-  background: url(ico_date_24x24.png) no-repeat center / 20px;
+  background: url("../../img/ico_date_24x24.png") no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_car:before {
   background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;
@@ -1008,6 +1034,7 @@ html.scroll_hidden body {
   background: #dee2e6;
   padding: 52px 0 63px 0;
   color: #50555c;
+  height: 206px;
 }
 .pc_wrap .footer_wrap.off {
   display: none;
@@ -1026,8 +1053,8 @@ html.scroll_hidden body {
   margin-left: -17px;
 }
 .pc_wrap .footer_wrap .footer .logo {
-  width: 104px;
-  height: 50px;
+  width: 125px;
+  height: 95px;
   margin-right: 56px;
 }
 .pc_wrap .footer_wrap .footer .footer_terms {
@@ -2145,7 +2172,7 @@ html.scroll_hidden body {
   color: #50555c;
 }
 .pc_wrap .btn_group .btn.type01 {
-  background: url('btn_bg.jpg') no-repeat center / cover;
+  background: url('../../img/btn_bg.jpg') no-repeat center / cover;
   background-position: 10% center;
   color: #fff;
   border: 0;

@@ -1745,7 +1745,8 @@
 .pc_wrap .dill_box_wrap .dill_list .price_wrap .btn_group .btn {
   min-width: auto;
   height: 48px;
-  line-height: 48px;
+  line-height: 40px;
+  background-image: url("../../img/btn_bg.jpg");
 }
 .pc_wrap .dill_box_wrap .dill_list .price_wrap .btn_group .closing_date {
   font-weight: 700;
@@ -2139,7 +2140,7 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-  background: url(../img/contents/ico_mask.png) no-repeat 0 50%;
+  background: url(../../img/ico_mask.png) no-repeat 0 50%;
   background-size: 100%;
   vertical-align: middle;
 }
@@ -2189,7 +2190,7 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-  background: url(../img/common/ico_info.png) no-repeat 0 50%;
+  background: url(../../img/ico_info.png) no-repeat 0 50%;
   background-size: 100%;
   vertical-align: middle;
 }
@@ -2264,7 +2265,7 @@
 
 .pc_wrap .detail_info.affi_wrap {
   margin-top: 45px;
-  background: #ebebeb url(../img/contents/ico_affi_car.png) no-repeat right 34px bottom 32px;
+  background: #ebebeb url(../../img/detail_1.png) no-repeat right 34px bottom 32px;
   background-size: 182px 78px;
 }
 .pc_wrap .detail_info.affi_wrap .mini {
@@ -2303,15 +2304,15 @@
   margin: -2px 8px 0 0;
 }
 .pc_wrap .rental_area .rental_sel li.place:before {
-  background: url(ico_place_24x24.png) no-repeat 0 50%;
+  background: url(../../img/ico_place.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.date:before {
-  background: url(ico_date_24x24.png) no-repeat 0 50%;
+  background: url(../../img/ico_date_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.brand:before {
-  background: url(../img/common/ico_car_24x24.png) no-repeat 0 50%;
+  background: url(../../img/ico_car_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_price {
