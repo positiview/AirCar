@@ -1,0 +1,35 @@
+/*헤더*/
+.header{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #fff;
+}
+.nav-wrap{
+    border-top: 1px solid #f7f7f9;
+    width: 100%;
+    background: #fff;
+    z-index: 10;
+}
+.nav-inner{
+    display: flex;
+    align-items: center;
+    width: 1190px;
+    height: 80px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.nav-inner h1{
+    flex: 1;
+}
+.logo{
+    position: relative;
+    display: inline-block;
+    width: 107px;
+    height: 56px;
+    vertical-align: middle;
+    background: url(../img/sk_logo.png) no-repeat center;
+    background-size: contain;
+    text-indent: -9999px;
+}
