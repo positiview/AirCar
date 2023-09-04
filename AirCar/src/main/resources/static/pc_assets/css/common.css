@@ -199,7 +199,7 @@ html.scroll_hidden body {
   width: 107px;
   height: 56px;
   vertical-align: middle;
-  background: url(../img/common/sk_logo.png) no-repeat center;
+  background: url(sk_logo.png) no-repeat center;
   background-size: contain;
   text-indent: -9999px;
 }
@@ -207,7 +207,7 @@ html.scroll_hidden body {
   display: flex;
   height: 24px;
   align-items: center;
-  background: url(../img/common/ico_login.png) no-repeat;
+  background: url(ico_login.png) no-repeat;
   background-size: 24px;
   padding-left: 32px;
   margin-left: auto;
@@ -390,7 +390,7 @@ html.scroll_hidden body {
   color: #50555c;
   border: 0.5px solid #50555c;
   border-radius: 20px;
-  background: url(../img/common/ico_outlink.png) center right 4px no-repeat;
+  background: url(ico_outlink.png) center right 4px no-repeat;
   background-size: 16px;
   padding: 6px 22px 6px 10px;
   font-weight: 700;
@@ -439,10 +439,10 @@ html.scroll_hidden body {
   padding: 5px 0;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_place:before {
-  background: url(../img/common/ico_place_24x24.png) no-repeat center / 20px;
+  background: url(ico_place_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_date:before {
-  background: url(../img/common/ico_date_24x24.png) no-repeat center / 20px;
+  background: url(ico_date_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_car:before {
   background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;
@@ -1109,7 +1109,7 @@ html.scroll_hidden body {
   height: 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.youtube a:before {
-  background: url(../img/common/ico_youtube.png) center / 32px;
+  background: url(ico_youtube.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.blog a:before {
   background: url(../img/common/ico_blog.png) center / 32px;
@@ -1118,13 +1118,13 @@ html.scroll_hidden body {
   background: url(../img/common/ico_facebook.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.instar a:before {
-  background: url(../img/common/ico_instar.png) center / 32px;
+  background: url(ico_instar.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.naver a:before {
   background: url(../img/common/ico_naver.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.tstory a:before {
-  background: url(../img/common/ico_tstory.png) center / 32px;
+  background: url(ico_tstory.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns {
   font-size: 11px;
@@ -1154,7 +1154,7 @@ html.scroll_hidden body {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url(../img/common/ico_chevronB_16x16.png) center right / 16px;
+  background: url(ico_chevronB_16x16.png) center right / 16px;
 }
 .pc_wrap .footer_wrap .footer .copyright {
   font-size: 11px;
@@ -2145,7 +2145,7 @@ html.scroll_hidden body {
   color: #50555c;
 }
 .pc_wrap .btn_group .btn.type01 {
-  background: url('../img/common/btn_bg.jpg') no-repeat center / cover;
+  background: url('btn_bg.jpg') no-repeat center / cover;
   background-position: 10% center;
   color: #fff;
   border: 0;
@@ -2542,16 +2542,16 @@ html.scroll_hidden body {
   display: block;
   width: 100%;
   height: 24px;
-  background: url('../img/common/ico_chat.png') center no-repeat;
+  background: url('ico_chat.png') center no-repeat;
   background-size: 24px;
   margin: 0 auto 4px auto;
 }
 .pc_wrap .float_wrap .chat_cont .chat a:before {
-  background: url('../img/common/float_chat.png') center no-repeat;
+  background: url('float_chat.png') center no-repeat;
   background-size: 24px;
 }
 .pc_wrap .float_wrap .chat_cont .inquiry a:before {
-  background: url('../img/common/float_inquiry.png') center no-repeat;
+  background: url('float_inquiry.png') center no-repeat;
   background-size: 24px;
 }
 .pc_wrap .float_wrap .chat_cont .chat_list {
@@ -2591,7 +2591,7 @@ html.scroll_hidden body {
   height: 76px;
   line-height: 76px;
   font-size: 0;
-  background: url(../img/common/ico_top.png) center no-repeat;
+  background: url(ico_top.png) center no-repeat;
 }
 
 /* 태그박스 */
