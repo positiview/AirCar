@@ -422,14 +422,14 @@ html.scroll_hidden body {
 .pc_wrap .sidebar > .inner .res_form .btn {
   border-radius: 0 0 12px 12px;
 }
-.pc_wrap .sidebar > .inner .res_form .cont > a:before {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-size: 20px;
-  margin-right: 10px;
-}
+/*.pc_wrap .sidebar > .inner .res_form .cont > a:before {*/
+/*  content: '';*/
+/*  display: inline-block;*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*  background-size: 20px;*/
+/*  margin-right: 10px;*/
+/*}*/
 .pc_wrap .sidebar > .inner .res_form .btn_edit {
   font-style: normal;
   font-size: 14px;
@@ -438,15 +438,17 @@ html.scroll_hidden body {
   margin-left: auto;
   padding: 5px 0;
 }
-.pc_wrap .sidebar > .inner .res_form .ico_place:before {
-  background: url(../img/common/ico_place_24x24.png) no-repeat center / 20px;
-}
-.pc_wrap .sidebar > .inner .res_form .ico_date:before {
-  background: url(../img/common/ico_date_24x24.png) no-repeat center / 20px;
-}
-.pc_wrap .sidebar > .inner .res_form .ico_car:before {
-  background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;
-}
+
+/*.pc_wrap .sidebar > .inner .res_form .ico_place:before {*/
+/*  background: url(../img/ico_place.png) no-repeat center / 20px;*/
+
+/*}*/
+/*.pc_wrap .sidebar > .inner .res_form .ico_date:before {*/
+/*  background: url(../img/common/ico_date_24x24.png) no-repeat center / 20px;*/
+/*}*/
+/*.pc_wrap .sidebar > .inner .res_form .ico_car:before {*/
+/*  background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;*/
+/*}*/
 .pc_wrap .sidebar > .inner .res_form i {
   display: block;
   width: 20px;
