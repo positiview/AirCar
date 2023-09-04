@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+<body>
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+        <div id="root" style="height: 100%">
+            <div class="pc_wrap" style="">
+                <div class="wrap sub_wrap">
+
+                    <div class="container">
+                        <div class="inner">
+                            <div class="contents">
+                                <div class="title_wrap">
+                                    <h2 class="title_30"> 예약내역 </h2>
+                                    <ul class="step_wrap">
+                                        <li class="on">예약내역</li>
+                                        <li>예약상세</li>
+                                    </ul>
+                                </div>
+                                <div class="sub_cont">
+                                    <p class="title_18"> 내 예약 <span class="total">0건</span></p><span
+                                        class="title_14">출발일이 가까운 예약부터 볼 수 있어요 </span>
+                                </div>
+                                <div class="sub_cont">
+                                    <div class="car_info_box">
+                                        <div class="no_data">
+                                            <dl>
+                                                <dt><strong>검색 결과가 없어요</strong></dt>
+                                                <dd><a>렌터카 예약하기</a></dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub_cont">
+                                    <p class="title_18">지난 예약</p>
+                                    <div class="board_tab mb20">
+                                        <ul class="reviw_box">
+                                            <li class="reviw_list active"><button> <span class="review_txt">전체
+                                                        0</span></button></li>
+                                            <li class="reviw_list"><button> <span class="review_txt">사용완료
+                                                        0</span></button></li>
+                                            <li class="reviw_list"><button> <span class="review_txt">취소
+                                                        0</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="sub_cont">
+                                        <div class="car_info_box car_info_reservation">
+                                            <div class="no_data">
+                                                <dl>
+                                                    <dt><strong>검색 결과가 없어요</strong></dt>
+                                                    <dd><a>렌터카 예약하기</a></dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub_cont">
+                                    <p class="title_18">자주 찾는 질문</p>
+                                    <div class="sub_tit_box"><span class="title_14">예약과 관련해 자주 찾는 질문을 모아봤어요</span><a
+                                            class="link_btn">더보기</a></div>
+                                    <div class="white_box white_box__sm border">
+                                        <div class="form_row">
+                                            <div class="data_management" style="cursor: pointer;">
+                                                <p class="data_txt ellipsis">차량 인수 및 반납 규정을 알고 싶어요</p>
+                                                <div class="btn_modify"><a class="btn arrow">이동 버튼</a></div>
+                                            </div>
+                                            <div class="data_management" style="cursor: pointer;">
+                                                <p class="data_txt ellipsis">일정이 변경되어 예약을 변경하고 싶어요</p>
+                                                <div class="btn_modify"><a class="btn arrow">이동 버튼</a></div>
+                                            </div>
+                                            <div class="data_management" style="cursor: pointer;">
+                                                <p class="data_txt ellipsis">운전자 추가 등록은 어떻게 하나요</p>
+                                                <div class="btn_modify"><a class="btn arrow">이동 버튼</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar">
+                                <div id="sideScroll" class="inner scroll_p">
+                                    <div class="fillter_wrap">
+                                        <h2>도움이 필요하세요?</h2>
+                                        <p class="desc">SK렌터카 고객센터는 언제나 열려있어요</p>
+                                        <div class="btn_group"><a class="btn type02">고객센터로 이동</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float_wrap">
+                                <div class="inner">
+                                    <div class="chat_cont">
+                                        <div class="chat_btn"><a> 상담하기</a></div>
+                                        <ul class="chat_list">
+                                            <li class="chat"><a>채팅상담</a></li>
+                                            <li class="inquiry"><a>1:1문의 작성</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;">
+                            <div class=""
+                                style="left: 0px; right: 0px; display: flex; position: absolute; transition: all 230ms cubic-bezier(0.21, 1.02, 0.73, 1) 0s; transform: translateY(0px); bottom: 0px; justify-content: center;">
+                                <div class="go2072408551"
+                                    style="opacity: 0; border-radius: 18px; background: rgba(33, 37, 41, 0.8); color: rgb(255, 255, 255); padding: 4px 6px; font-size: 13px;">
+                                    <div role="status" aria-live="polite" class="go3958317564">로그아웃 완료! 곧 다시 만나요</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+        <script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+        <div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+                    src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+    </body>
+</body>
+</th:block>
+</html>

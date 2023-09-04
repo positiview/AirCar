@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/main.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/pc_assets/css/content.css?v=2}">
-     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/slick.css}">
-     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/slick-theme.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/content.css?v=2}">
+     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick.css}">
+     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick-theme.css}">
     <link rel="icon" type="favicon" th:href="@{/assets/img/common/favicon.ico}">
     <!-- Meta Pixel Code -->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
@@ -442,6 +442,7 @@
         .sidebar .btn_option_wrap{
             display: flex;
             flex-wrap: wrap;
+
             vertical-align: baseline;
             letter-spacing: -0.528px;
             margin-bottom: 27px;
@@ -457,7 +458,6 @@
             z-index: 100;
             transform: translateY(-50%);
         }
-
     </style>
 </head>
 <body style="overflow: visible;">
@@ -470,7 +470,7 @@
                 <div class="visual_wrap">
                     <div class="video_wrap">
                         <div class="txt_wrap"></div>
-                        <img src="pc_assets/img/contents/main_visual03.png"></div>
+                        <img src="../../../img/main_visual03.png"></div>
                 </div>
 
                 <div class="inner">
@@ -819,20 +819,20 @@
 
                         <div class="affiliate_wrap">
                             <ul>
-                                <li><a><img src="/pc_assets/img/contents/main_b01.jpg">
+                                <li><a><img src="/img/main_b01.jpg">
                                     <p class="txt">신차 장기렌터카<span class="desc">믿을 수 있는 실시간 진짜 견적 서비스</span></p></a></li>
-                                <li><a><img src="/pc_assets/img/contents/main_b02.jpg">
+                                <li><a><img src="/img/main_b02.jpg">
                                     <p class="txt">중고차 장기 렌터카<span class="desc">품질은 신차 급, 가격은 실속있게</span></p></a></li>
-                                <li><a><img src="/pc_assets/img/contents/main_b03.jpg">
+                                <li><a><img src="/img/main_b03.jpg">
                                     <p class="txt">타고페이<span class="desc">국내 유일, 탄 만큼만 내는 렌탈료</span></p></a></li>
-                                <li class="detail_consulting"><img src="/pc_assets/img/contents/main_b04.jpg">
+                                <li class="detail_consulting"><img src="../../../img/main_b04.jpg">
                                     <p class="txt">장기렌트 전문가 상담<span class="desc"><a>개인(사업자) 장기렌트</a><a>법인 장기렌트</a><a>법인 월장기(중고차)</a></span>
                                     </p></li>
-                                <li><a><img src="/pc_assets/img/contents/billycar_logo.png" alt="빌리카" class="img"></a>
+                                <li><a><img src="../../../img/billycar_logo.png" alt="빌리카" class="img"></a>
                                 </li>
-                                <li><a><img src="/pc_assets/img/contents/smartlink_logo.png" alt="스마트링크"
+                                <li><a><img src="../../../img/smartlink_logo.png" alt="스마트링크"
                                             class="img"></a></li>
-                                <li><a><img src="/pc_assets/img/contents/smartcare_logo.png" alt="스마트케어"
+                                <li><a><img src="../../../img/smartcare_logo.png" alt="스마트케어"
                                             class="img"></a></li>
                             </ul>
                         </div>
@@ -847,29 +847,40 @@
                                 <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
                                     <div class="option_list">
                                         <ul class="btn_option_wrap small">
-<<<<<<< HEAD
-                                            <li class="on"><input type="checkbox" id="chkAll" name="check_option" class="option" value="전체"></li>
 
-                                            <li class=""><input type="checkbox" id="chk01" name="check_option" class="option" value="전기차"></li>
-                                            <li class=""><input type="checkbox" id="chk02" name="check_option" class="option" value="수입전기차"></li>
-                                            <li class=""><input type="checkbox" id="chk03" name="check_option" class="option" value="캠핑카 차박"></li>
-                                            <li class=""><input type="checkbox" id="chk04" name="check_option" class="option" value="경형/소형"></li>
-                                            <li class=""><input type="checkbox" id="chk05" name="check_option" class="option" value="중형/대형"></li>
-                                            <li class=""><input type="checkbox" id="chk06" name="check_option" class="option" value="SUV"></li>
-                                            <li class=""><input type="checkbox" id="chk07" name="check_option" class="option" value="승합"></li>
-                                            <li class=""><input type="checkbox" id="chk08" name="check_option" class="option" value="수입"></li>
-=======
-                                            <li class="on"><a>전체</a></li>
-                                            <li class=""><a>전기차</a></li>
-                                            <li class=""><a>수입전기차</a></li>
-                                            <li class=""><a>제주 전기차 차박</a></li>
-                                            <li class=""><a>경형/소형</a></li>
-                                            <li class=""><a>중형/대형</a></li>
-                                            <li class=""><a>SUV</a></li>
-                                            <li class=""><a>승합</a></li>
-                                            <li class=""><a>수입</a></li>
-                                            <li class=""><input type="checkbox" id="chk01" name="check_option" class="option"></li>
->>>>>>> 869caabb5b212d48ed15f070022db13a1b090b88
+                                            <li class="on"><label for="chkAll">전체</label><input type="checkbox" id="chkAll" name="check_option" class="option_all" value="전체"></li>
+
+                                            <li class=""><label class="chk01" for="chk01">전기차</label><input type="checkbox" id="chk01" name="check_option" class="option" value="전기차"></li>
+                                            <li class=""><label class="chk02" for="chk02">수입전기차</label><input type="checkbox" id="chk02" name="check_option" class="option" value="수입전기차"></li>
+                                            <li class=""><label class="chk03" for="chk03">캠핑카 차박</label><input type="checkbox" id="chk03" name="check_option" class="option" value="캠핑카 차박"></li>
+                                            <li class=""><label class="chk04" for="chk04">경형/소형</label><input type="checkbox" id="chk04" name="check_option" class="option" value="경형/소형"></li>
+                                            <li class=""><label class="chk05" for="chk05">중형/대형</label><input type="checkbox" id="chk05" name="check_option" class="option" value="중형/대형"></li>
+                                            <li class=""><label class="chk06" for="chk06">SUV</label><input type="checkbox" id="chk06" name="check_option" class="option" value="SUV"></li>
+                                            <li class=""><label class="chk07" for="chk07">승합</label><input type="checkbox" id="chk07" name="check_option" class="option" value="승합"></li>
+                                            <li class=""><label class="chk08" for="chk08">수입</label><input type="checkbox" id="chk08" name="check_option" class="option" value="수입"></li>
+                                            <script>
+                                                const layout = document.getElementById('layout');
+                                                const checkbox = document.getElementById('checkbox');
+
+                                                checkbox.addEventListener('change', function() {
+                                                    if (checkbox.checked) {
+                                                        layout.style.backgroundColor = 'green';
+                                                    } else {
+                                                        layout.style.backgroundColor = 'lightgray';
+                                                    }
+                                                });
+
+                                                layout.addEventListener('click', function() {
+                                                    checkbox.checked = !checkbox.checked;
+                                                    if (checkbox.checked) {
+                                                        layout.style.backgroundColor = 'green';
+                                                    } else {
+                                                        layout.style.backgroundColor = 'lightgray';
+                                                    }
+                                                });
+                                            </script>
+
+
                                         </ul>
                                     </div>
                                 </div>
@@ -910,8 +921,8 @@
              autoplaySpeed : 10000,         // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
              pauseOnHover : true,        // 슬라이드 이동   시 마우스 호버하면
 
-             prevArrow: '<button class="prev"><img src="/pc_assets/img/common/arrow_fill.svg" alt="이전버튼"></button>', // 이전 화살표 설정
-             nextArrow: '<button class="next"><img src="pc_assets/img/common/arrow_fill.svg" alt="다음버튼"></button', // 다음 화살표 설정
+             prevArrow: '<button class="prev"><img src="../../../img/arrow_fill.svg" alt="이전버튼"></button>', // 이전 화살표 설정
+             nextArrow: '<button class="next"><img src="../../../img/arrow_fill.svg" alt="다음버튼"></button', // 다음 화살표 설정
 
         });
 
@@ -923,9 +934,9 @@
 
                 // prevArrow: $('.prev'),
                 // nextArrow: $('.next'),
-                prevArrow: '<button class="prev"><img src="/pc_assets/img/common/arrow_fill.svg" alt="이전버튼"></button>', // 이전 화살표 설정
-                nextArrow: '<button class="next"><img src="pc_assets/img/common/arrow_fill.svg" alt="다음버튼"></button', // 다음 화살표 설정
-                slidesToShow: 5,
+                prevArrow: '<button class="prev"><img src="../../../img/arrow_fill.svg" alt="이전버튼"></button>', // 이전 화살표 설정
+                nextArrow: '<button class="next"><img src="../../../img/arrow_fill.svg" alt="다음버튼"></button', // 다음 화살표 설정
+                slidesToShow: 6,
                 responsive: [
                     {
                         breakpoint: 768,
@@ -958,9 +969,9 @@
                 pauseOnHover : true,        // 슬라이드 이동   시 마우스 호버하면
                 // prevArrow: $('.prev'),
                 // nextArrow: $('.next'),
-                prevArrow: '<button class="prev"><img src="/pc_assets/img/common/arrow_fill.svg" alt="이전버튼"></button>', // 이전 화살표 설정
-                nextArrow: '<button class="next"><img src="pc_assets/img/common/arrow_fill.svg" alt="다음버튼"></button', // 다음 화살표 설정
-                slidesToShow: 5,
+                prevArrow: '<button class="prev"><img src="../../../img/arrow_fill.svg" alt="이전버튼"></button>', // 이전 화살표 설정
+                nextArrow: '<button class="next"><img src="../../../img/arrow_fill.svg" alt="다음버튼"></button', // 다음 화살표 설정
+                slidesToShow: 3,
                 responsive: [
                     {
                         breakpoint: 768,
