@@ -265,7 +265,7 @@ html.scroll_hidden body {
   background: url(../img/common/ico_res_28x28.png) no-repeat center / contain;
 }
 .pc_wrap .ico_chat {
-  background: url(../img/common/ico_chat_28x28.png) no-repeat center / contain;
+  background: url(../img/common/ico_chat.png) no-repeat center / contain;
 }
 .pc_wrap .ico_menu {
   background: url(../img/common/ico_menu_28x28.png) no-repeat center / contain;
@@ -390,7 +390,7 @@ html.scroll_hidden body {
   color: #50555c;
   border: 0.5px solid #50555c;
   border-radius: 20px;
-  background: url(ico_outlink.png) center right 4px no-repeat;
+  background: url(../img/common/ico_outlink.png) center right 4px no-repeat;
   background-size: 16px;
   padding: 6px 22px 6px 10px;
   font-weight: 700;
@@ -439,10 +439,10 @@ html.scroll_hidden body {
   padding: 5px 0;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_place:before {
-  background: url(ico_place_24x24.png) no-repeat center / 20px;
+  background: url(../img/common/ico_place_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_date:before {
-  background: url(ico_date_24x24.png) no-repeat center / 20px;
+  background: url(../img/common/ico_date_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_car:before {
   background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;
@@ -2145,7 +2145,7 @@ html.scroll_hidden body {
   color: #50555c;
 }
 .pc_wrap .btn_group .btn.type01 {
-  background: url('btn_bg.jpg') no-repeat center / cover;
+  background: url('../img/common/btn_bg.jpg') no-repeat center / cover;
   background-position: 10% center;
   color: #fff;
   border: 0;
@@ -2591,7 +2591,7 @@ html.scroll_hidden body {
   height: 76px;
   line-height: 76px;
   font-size: 0;
-  background: url(ico_top.png) center no-repeat;
+  background: url(../img/common/ico_top.png) center no-repeat;
 }
 
 /* 태그박스 */

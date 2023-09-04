@@ -12,4 +12,9 @@ public class MainController {
     public String homepage(){
         return "main/homepage";
     }
+
+    @GetMapping("/index")
+    public String slickPractice(){
+        return "index";
+    }
 }
