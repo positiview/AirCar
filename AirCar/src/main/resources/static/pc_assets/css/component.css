@@ -1563,7 +1563,7 @@
   height: 15px;
   font-size: 0;
   text-indent: -9999rem;
-  background: url(../../../img/arrow_fill.svg) no-repeat 0 50%;
+  background: url(arrow_fill.svg) no-repeat 0 50%;
   transform: rotateY(180deg);
 }
 .pc_wrap .dill_box_wrap .time_dill_link .dill_page .next {
@@ -1576,7 +1576,7 @@
   height: 15px;
   font-size: 0;
   text-indent: -9999rem;
-  background: url(../../../img/arrow_fill.svg) no-repeat 0 50%;
+  background: url(arrow_fill.svg) no-repeat 0 50%;
 }
 .pc_wrap .dill_box_wrap .time_dill_link .dill_page dl {
   order: 2;
@@ -1745,7 +1745,8 @@
 .pc_wrap .dill_box_wrap .dill_list .price_wrap .btn_group .btn {
   min-width: auto;
   height: 48px;
-  line-height: 48px;
+  line-height: 40px;
+  background-image: url("../../img/btn_bg.jpg");
 }
 .pc_wrap .dill_box_wrap .dill_list .price_wrap .btn_group .closing_date {
   font-weight: 700;
@@ -1841,7 +1842,7 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  background: url(../img/common/ico_reset_22x22.png) no-repeat 0 50%;
+  background: url(ico_reset_22x22.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .fillter_chip .btn_wrap button.arrow_btn:after {
@@ -2303,11 +2304,11 @@
   margin: -2px 8px 0 0;
 }
 .pc_wrap .rental_area .rental_sel li.place:before {
-  background: url(../img/common/ico_place_24x24.png) no-repeat 0 50%;
+  background: url(ico_place_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.date:before {
-  background: url(../img/common/ico_date_24x24.png) no-repeat 0 50%;
+  background: url(ico_date_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.brand:before {
@@ -2729,7 +2730,7 @@
   display: inline-block;
   margin-left: 20px;
   padding-top: 5px;
-  background: url(../img/common/ico_chevronR_16x16.png) no-repeat center / 16px;
+  background: url(ico_chevronR_16x16.png) no-repeat center / 16px;
 }
 .pc_wrap .question_wrap .question_list ul li a p {
   font-weight: 400;
@@ -2798,7 +2799,7 @@
 .pc_wrap .next {
   position: absolute;
   left: 0;
-  top: 50%;
+  top: 0;
   width: 50px;
   height: 50px;
   margin-top: 90px;
@@ -2806,7 +2807,6 @@
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
   border-radius: 200px;
   z-index: 10;
-
 }
 .pc_wrap .prev {
   left: -25px;
@@ -2841,7 +2841,7 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url(../img/common/ico_chat_28x28.png) no-repeat center / 20px;
+  background: url(../img/common/ico_chat.png) no-repeat center / 20px;
 }
 .pc_wrap .btn.consulting::before {
   content: '';
@@ -3794,7 +3794,7 @@
   right: 0;
   width: 16px;
   height: 16px;
-  background: url(../img/common/ico_chevronR_16x16.png) no-repeat center;
+  background: url(ico_chevronR_16x16.png) no-repeat center;
   background-size: 100%;
 }
 
@@ -4102,7 +4102,7 @@
   margin-bottom: -15px;
   width: 32px;
   height: 32px;
-  background: url(../img/common/ico_chevronR_16x16.png) no-repeat center;
+  background: url(ico_chevronR_16x16.png) no-repeat center;
   background-size: 16px;
   margin-right: -9px;
 }
@@ -4385,7 +4385,7 @@
   width: 28px;
   height: 28px;
   margin-right: 6px;
-  background: url(../img/common/ico_chat_28x28.png) no-repeat 0 50%;
+  background: url(../img/common/ico_chat.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .box_info .text {
