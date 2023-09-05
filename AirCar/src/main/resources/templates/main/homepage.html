@@ -779,39 +779,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar" style="top: -440px;">
-                        <div class="inner scroll_p">
-                            <div class="res_form">
-                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
-                                    <button class="inland_btn">내륙 예약하기</button>
-                                </div>
-                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
-                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
-                                    <div class="option_list">
-                                        <ul class="btn_option_wrap small">
-
-                                            <li class="on"><label class="allcheck" for="chkAll">전체</label><input type="checkbox" id="chkAll" name="check_option" class="option_all" value="전체"></li>
-
-                                            <li class=""><label class="chk" for="chk01">전기차</label><input type="checkbox" id="chk01" name="check_option" class="option" value="전기차"></li>
-                                            <li class=""><label class="chk" for="chk02">수입전기차</label><input type="checkbox" id="chk02" name="check_option" class="option" value="수입전기차"></li>
-                                            <li class=""><label class="chk" for="chk03">캠핑카 차박</label><input type="checkbox" id="chk03" name="check_option" class="option" value="캠핑카 차박"></li>
-                                            <li class=""><label class="chk" for="chk04">경형/소형</label><input type="checkbox" id="chk04" name="check_option" class="option" value="경형/소형"></li>
-                                            <li class=""><label class="chk" for="chk05">중형/대형</label><input type="checkbox" id="chk05" name="check_option" class="option" value="중형/대형"></li>
-                                            <li class=""><label class="chk" for="chk06">SUV</label><input type="checkbox" id="chk06" name="check_option" class="option" value="SUV"></li>
-                                            <li class=""><label class="chk" for="chk07">승합</label><input type="checkbox" id="chk07" name="check_option" class="option" value="승합"></li>
-                                            <li class=""><label class="chk" for="chk08">수입</label><input type="checkbox" id="chk08" name="check_option" class="option" value="수입"></li>
-
-
-
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn_group">
-                                    <button class="btn type01">차량 조회하고 예약하기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
                     <div class="float_wrap">
                         <div class="inner">
                             <div class="chat_cont">
