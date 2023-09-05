@@ -458,55 +458,17 @@
             z-index: 100;
             transform: translateY(-50%);
         }
-        label.on {
-            border: 1px solid #50555c; /* 체크된 라벨의 테두리 스타일 */
-        }
-
     </style>
-    <script>
-
-        $(document).ready(function() {
-            $('.chk').click(function() {
-                var $li = $(this).closest('li'); // 클릭된 라벨의 부모 li 요소 선택
-                $li.toggleClass('on'); // li 요소의 클래스를 토글
-                var $checkbox = $li.find('input[type="checkbox"]'); // 해당 li 내의 체크박스 선택
-                $checkbox.prop('checked', !$checkbox.prop('checked')); // 체크박스 상태를 토글
-                $('.allcheck').closest('li').removeClass('on');
-                $('.allcheck').closest('input[type="checkbox"]').prop('checked',false);
-
-            });
-
-
-
-
-            // chkAll 라벨 클릭 시 다른 체크박스 모두 해제
-            $('.allcheck').click(function() {
-                var $li = $(this).closest('li');
-                $li.addClass('on'); // li 요소의 클래스를 토글
-                $('.chk').closest('li').removeClass('on'); // 모든 라벨의 테두리 색상 초기화
-                $('input[type="checkbox"]').prop('checked', false); // 모든 체크박스 해제
-            });
-
-
-            // 모든 클래스가 해제시 전체 클래스 on
-        });
-
-    </script>
 </head>
 <body style="overflow: visible;">
 
 
-<div id="root" style="height: 100%">
-    <div class="pc_wrap">
-        <div class="warp main_wrap">
-            <div class="header">
-                <th:block th:replace="fragments/header::headerFragment"></th:block>
-            </div>
+<th:block th:replace="fragments/header::headerFragment"></th:block>
             <div class="container">
                 <div class="visual_wrap">
                     <div class="video_wrap">
                         <div class="txt_wrap"></div>
-                        <img src="img/main_visual03.png"></div>
+                        <img src="../../../img/main_visual03.png"></div>
                 </div>
 
                 <div class="inner">
@@ -884,37 +846,37 @@
                                     <div class="option_list">
                                         <ul class="btn_option_wrap small">
 
-                                            <li class="on"><label class="allcheck" for="chkAll">전체</label><input type="checkbox" id="chkAll" name="check_option" class="option_all" value="전체"></li>
+                                            <li class="on"><label for="chkAll">전체</label><input type="checkbox" id="chkAll" name="check_option" class="option_all" value="전체"></li>
 
-                                            <li class=""><label class="chk" for="chk01">전기차</label><input type="checkbox" id="chk01" name="check_option" class="option" value="전기차"></li>
-                                            <li class=""><label class="chk" for="chk02">수입전기차</label><input type="checkbox" id="chk02" name="check_option" class="option" value="수입전기차"></li>
-                                            <li class=""><label class="chk" for="chk03">캠핑카 차박</label><input type="checkbox" id="chk03" name="check_option" class="option" value="캠핑카 차박"></li>
-                                            <li class=""><label class="chk" for="chk04">경형/소형</label><input type="checkbox" id="chk04" name="check_option" class="option" value="경형/소형"></li>
-                                            <li class=""><label class="chk" for="chk05">중형/대형</label><input type="checkbox" id="chk05" name="check_option" class="option" value="중형/대형"></li>
-                                            <li class=""><label class="chk" for="chk06">SUV</label><input type="checkbox" id="chk06" name="check_option" class="option" value="SUV"></li>
-                                            <li class=""><label class="chk" for="chk07">승합</label><input type="checkbox" id="chk07" name="check_option" class="option" value="승합"></li>
-                                            <li class=""><label class="chk" for="chk08">수입</label><input type="checkbox" id="chk08" name="check_option" class="option" value="수입"></li>
-                                           <!-- <script>
-                                                const layout = $('.chk01');
-                                                const checkbox = $('check_option');
+                                            <li class=""><label class="chk01" for="chk01">전기차</label><input type="checkbox" id="chk01" name="check_option" class="option" value="전기차"></li>
+                                            <li class=""><label class="chk02" for="chk02">수입전기차</label><input type="checkbox" id="chk02" name="check_option" class="option" value="수입전기차"></li>
+                                            <li class=""><label class="chk03" for="chk03">캠핑카 차박</label><input type="checkbox" id="chk03" name="check_option" class="option" value="캠핑카 차박"></li>
+                                            <li class=""><label class="chk04" for="chk04">경형/소형</label><input type="checkbox" id="chk04" name="check_option" class="option" value="경형/소형"></li>
+                                            <li class=""><label class="chk05" for="chk05">중형/대형</label><input type="checkbox" id="chk05" name="check_option" class="option" value="중형/대형"></li>
+                                            <li class=""><label class="chk06" for="chk06">SUV</label><input type="checkbox" id="chk06" name="check_option" class="option" value="SUV"></li>
+                                            <li class=""><label class="chk07" for="chk07">승합</label><input type="checkbox" id="chk07" name="check_option" class="option" value="승합"></li>
+                                            <li class=""><label class="chk08" for="chk08">수입</label><input type="checkbox" id="chk08" name="check_option" class="option" value="수입"></li>
+                                            <script>
+                                                const layout = document.getElementById('layout');
+                                                const checkbox = document.getElementById('checkbox');
 
                                                 checkbox.addEventListener('change', function() {
                                                     if (checkbox.checked) {
-                                                        layout.style.borderColor = 'green';
+                                                        layout.style.backgroundColor = 'green';
                                                     } else {
-                                                        layout.style.borderColor = 'lightgray';
+                                                        layout.style.backgroundColor = 'lightgray';
                                                     }
                                                 });
 
                                                 layout.addEventListener('click', function() {
                                                     checkbox.checked = !checkbox.checked;
                                                     if (checkbox.checked) {
-                                                        layout.style.borderColor = 'green';
+                                                        layout.style.backgroundColor = 'green';
                                                     } else {
-                                                        layout.style.borderColor = 'lightgray';
+                                                        layout.style.backgroundColor = 'lightgray';
                                                     }
                                                 });
-                                            </script>-->
+                                            </script>
 
 
                                         </ul>
