@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+<div id="root" style="height: 100%">
+    <div class="pc_wrap" style="">
+        <div class="wrap sub_wrap">
+
+            <div class="container">
+                <div class="inner">
+                    <div class="contents use_wrap ">
+                        <div class="title_wrap"><h2 class="title_30">장기 렌터카 (법인)</h2></div>
+                        <div class="tab_wrap mb40">
+                            <ul class="basic_tab">
+                                <li class=""><a href="/short_renting">단기대여안내</a></li>
+                                <li class=""><a href="/long_personal">장기서비스안내(개인)</a></li>
+                                <li class="on"><a href="/long_corporation">장기서비스안내(법인)</a></li>
+                            </ul>
+                        </div>
+                        <p class="title_24">법인 장기렌터카란?</p>
+                        <div class="center_img"><img src="img/img_use_info04.png" alt="차량 이미지">
+                            <div class="ex_txt"><p><strong>차량을 직접 구매하지 않고 24개월~48개월 동안 장기적으로 렌트하여 사용하는 차량운용 방법</strong>으로서
+                                보험, 세금, 차량관리, 사고처리 등 모든 차량관리업무를 SK렌터카가 전담하여 편리하게 이용할 수 있는 서비스예요.</p>
+                                <p>장기렌터카는 직접구매/할부/리스대비 초기 비용에 대한 부담이 없으며 월이용료 만으로 보험, 세금, 차량관리, 사고처리 서비스가 일괄 제공 가능한 가장
+                                    현실적인 선진국형 자동차 아웃소싱 모델이에요.</p></div>
+                        </div>
+                        <hr>
+                        <p class="title_18">법인 장기렌터카/직접구매/리스 비교</p>
+                        <div class="sub_tab">
+                            <ul>
+                                <li class="on"><a>경제성</a></li>
+                                <li class=""><a>편의성</a></li>
+                                <li class=""><a>차별성</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab_list">
+                            <div class="ex_txt">
+                                <ul class="dot_list">
+                                    <li>초기 부대비용 모든 것이 Zero! 취등록세, 공채매입, 할부이자, 수수료, 보험료, 세금 0원!</li>
+                                    <li>유지비로 지출되는 비용이 명확하며 사업자의 경우 비용처리가 가능해요.</li>
+                                    <li>월 요금에 세금, 보험료, 각종 세금 등 서비스 비용이 포함돼요.</li>
+                                    <li>LPG연료 이용 시 연료비 절감 효과 (휘발유:경유:LPG=100:85:50)</li>
+                                    <li>경승용차 및 9인승 이상 승합차량은 월렌트료의 부가세 환급처리가 가능해요.</li>
+                                    <li>법인기업의 경우 정비 걱정없이 차량을 관리 및 운영이 가능하며 사고로 인한 차량가격 손실, 보험비용 상승 등의 부담이 없어요.</li>
+                                </ul>
+                            </div>
+                            <div class="btn_group manual">
+                                <button class="btn"><span>법인 장기렌터카 / 직접구매 / 리스 비교</span></button>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="title_18">SK렌터카의 차별화된 서비스</p>
+                        <div class="table t_left">
+                            <table>
+                                <colgroup>
+                                    <col width="110px">
+                                </colgroup>
+                                <caption></caption>
+                                <tbody>
+                                <tr>
+                                    <th>자동운행기록계</th>
+                                    <td>SK렌터카가 제공하는 자동운행기록계는 차량에 전용 단말기(BLE Beacon),<br>스마트폰 앱 설치 한번으로 운행내역을 자동으로 기록하고
+                                        서버에 보관하고 있어요.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>차량관제시스템</th>
+                                    <td>SK렌터카가 제공하는 차량관제시스템은 효율적으로 차량을 관리함으로써<br>차량 유지 및 관리 비용을 획기적으로 절감할 수 있어요.</td>
+                                </tr>
+                                <tr>
+                                    <th>법인카셰어링</th>
+                                    <td>SK렌터카가 제공하는 법인카셰어링 솔루션이 적용된 차량은 앱에서 업무용 또는 개인용도로 예약, 사용할 수 있어요.<br>법인은 차량운영비를
+                                        절감하고 구성원은 저렴하게 렌터카를 이용할 수 있어요.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>법인 온라인<br>차량관리</th>
+                                    <td>SK렌터카는 법인 고객에게 언제 어디서든지 접근 가능한 Site 를 Open 하고, 실시간 접속하여 차량에 대한<br>정보를 제공받을 수 있도록
+                                        서비스를 무상 제공하고 있어요.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>법인고객<br> 단기렌터카 할인</th>
+                                    <td>SK렌터카는 고객사 임직원 모두에게 렌터카 월장기, 단기 대여시 할인된 가격으로 이용할 수 있도록 혜택을 드려요.</td>
+                                </tr>
+                                <tr>
+                                    <th>방문 점검<br> 서비스</th>
+                                    <td>SK렌터카는 자체 이동 순회점검센터로 체계화 된 서비스 제공하여 최적의 차량상태를 유지할 수 있도록 지원하며,<br>정비소를 방문하는 수고 또한
+                                        덜어드려요.
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr>
+                        <p class="title_18">법인사업자 대여요금 비용 처리에 따른 세제 절감혜택</p>
+                        <div class="table">
+                            <table>
+                                <caption></caption>
+                                <colgroup>
+                                    <col width="58%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>소득 세율</th>
+                                    <th>주민 세율</th>
+                                    <th>세율 합계</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>2억원 이하</td>
+                                    <td>10%</td>
+                                    <td>1%</td>
+                                    <td>11%</td>
+                                </tr>
+                                <tr>
+                                    <td>2억원 초과~ 200억원 이하</td>
+                                    <td>20%</td>
+                                    <td>2%</td>
+                                    <td>22%</td>
+                                </tr>
+                                <tr>
+                                    <td>200억원 초과</td>
+                                    <td>22%</td>
+                                    <td>2.2%</td>
+                                    <td>24.2%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="sub_cont mt20">
+                            <div class="inner"><p class="tit">법인사업자 절감금액 산출 예시(5대 운영 기준)</p>
+                                <ul class="sole_list">
+                                    <li><strong>3년간 손금 인정액</strong>
+                                        <div><span>80 만원/1대 X 36개월 X 5대</span><span>14,400 만원</span></div>
+                                    </li>
+                                    <li><strong>3년간 세액 절감총액</strong>
+                                        <div><span>14,400 만원 X 22%</span><span>3,168 만원</span></div>
+                                        <span class="sb_txt">과세표준 2억 초과 ~ 200억 이하, 월 대여료 80 만원 기준</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="title_18">상담안내</p><span class="title_14 txt_gray">상세한 견적 및 구매조건 확인을 원하시면 상담신청을 해주세요. 전문상담원이 안내해 드려요</span>
+                        <div class="sub_cont call_wrap">
+                            <div class="inner"><p class="call_num">SK렌터카 고객센터 <strong>1599-9111</strong></p><span
+                                    class="call_time">평일 09:00~18:00 (주말/공휴일 휴무)</span></div>
+                        </div>
+                        <p class="ex_txt02">고객센터 연결이 원활하지 않은 경우, 상담 요청시간 기준 24시간 이내(영업일 기준) 고객님이 남겨주신 연락처로 안내 드릴게요</p>
+                        <div class="btn_group multy">
+                            <button type="button" class="btn type01">상담신청</button>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="inner">
+                            <div class="res_form">
+                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
+                                    <button class="inland_btn">내륙 예약하기</button>
+                                </div>
+                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
+                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
+                                    <div class="carousel">
+                                        <ul class="btn_option_wrap small">
+                                            <li class="on"><a>전체</a></li>
+                                            <li class=""><a>전기차</a></li>
+                                            <li class=""><a>수입전기차</a></li>
+                                            <li class=""><a>제주 전기차 차박</a></li>
+                                            <li class=""><a>경형/소형</a></li>
+                                            <li class=""><a>중형/대형</a></li>
+                                            <li class=""><a>SUV</a></li>
+                                            <li class=""><a>승합</a></li>
+                                            <li class=""><a>수입</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btn_group">
+                                    <button class="btn type01">차량 조회하고 예약하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float_wrap">
+                        <div class="inner">
+                            <div class="chat_cont">
+                                <div class="chat_btn"><a> 상담하기</a></div>
+                                <ul class="chat_list">
+                                    <li class="chat"><a>채팅상담</a></li>
+                                    <li class="inquiry"><a>1:1문의 작성</a></li>
+                                </ul>
+                            </div>
+                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+<script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+        src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+    </body>
+</th:block>
+</html>

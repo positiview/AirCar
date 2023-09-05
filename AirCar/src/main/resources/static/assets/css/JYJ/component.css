@@ -6462,13 +6462,13 @@
   display: none !important;
 }
 .pc_wrap .bus_op_step li .step01 {
-  background-image: url(../img/contents/ico_bus_step01.png);
+  background-image: url(../../../img/ico_bus_step01.png);
 }
 .pc_wrap .bus_op_step li .step02 {
-  background-image: url(../img/contents/ico_bus_step02.png);
+  background-image: url(../../../img/ico_bus_step02.png);
 }
 .pc_wrap .bus_op_step li .step03 {
-  background-image: url(../img/contents/ico_bus_step03.png);
+  background-image: url(../../../img/ico_bus_step03.png);
 }
 .pc_wrap .bus_op_step li .ico {
   width: 64px;
@@ -6558,14 +6558,14 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-  background: url(../img/contents/ico_cards@24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_cards@24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .table .btn_group.manual {
   margin-top: 16px;
 }
 .pc_wrap .btn_group .bus_video.btn::before {
   top: 9px;
-  background: url(../img/contents/ico_bus_step03.png) no-repeat center / 24px;
+  background: url(../../../img/ico_bus_step03.png) no-repeat center / 24px;
 }
 /* 단기렌터카 */
 .pc_wrap .box_cont {
@@ -7216,7 +7216,7 @@
   content: '';
   width: 10px;
   height: 10px;
-  background: url(../img/contents/ico_plus.png) no-repeat center;
+  background: url(../../../img/ico_plus.png) no-repeat center;
 }
 .pc_wrap .ioan_guide ul li:last-child:after {
   display: none;
@@ -7250,16 +7250,16 @@
   margin: 0 6px;
 }
 .pc_wrap .sp_service_list.type li:nth-child(1)::after {
-  background-image: url(../img/contents/ico_service_sp_ty01.png);
+  background-image: url(../../../img/ico_service_sp_ty01.png);
 }
 .pc_wrap .sp_service_list.type li:nth-child(2)::after {
-  background-image: url(../img/contents/ico_service_sp_ty02.png);
+  background-image: url(../../../img/ico_service_sp_ty02.png);
 }
 .pc_wrap .sp_service_list.type li:nth-child(3)::after {
-  background-image: url(../img/contents/ico_service_sp_ty03.png);
+  background-image: url(../../../img/ico_service_sp_ty03.png);
 }
 .pc_wrap .sp_service_list.type li:nth-child(4)::after {
-  background-image: url(../img/contents/ico_service_sp_ty04.png);
+  background-image: url(../../../img/ico_service_sp_ty04.png);
 }
 
 .pc_wrap .manual_list {

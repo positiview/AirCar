@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+<div id="root" style="height: 100%">
+    <div class="pc_wrap" style="">
+        <div class="wrap sub_wrap">
+
+            <div class="container">
+                <div class="inner">
+                    <div class="contents use_wrap">
+                        <div class="title_wrap"><h2 class="title_30"> 이용안내 </h2></div>
+                        <div class="sub_cont">
+                            <div class="inner">
+                                <div class="title"><span><i><img src="img/ico_use02.png" alt=""></i> 서비스안내 </span>
+                                </div>
+                                <ul class="list">
+                                    <li><a href="/short_renting">단기대여안내</a></li>
+                                    <li><a href="/long_personal">장기서비스안내(개인)</a></li>
+                                    <li><a href="/long_corporation">장기서비스안내(법인)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sub_cont">
+                            <div class="inner">
+                                <div class="title"><span><i><img src="img/ico_use03.png" alt=""></i> 기타 안내 </span>
+                                </div>
+                                <ul class="list">
+                                    <li><a href="/discount">제휴할인</a></li>
+                                    <li><a href="/electric">전기차안내</a></li>
+                                    <li><a href="/insurance">보험대차안내</a></li>
+                                </ul>
+                            </div>
+                            <p class="title_18"></p>
+                            <div class="sub_title_wrap"><p class="title_18">지점 안내</p>
+
+                            </div>
+                            <div class="img_box type"><img src="img/img_bus_in_map_2F.jpg" alt=""></div>
+                            <div class="bus_in_txt">
+                                <dl>
+                                    <dt>주소</dt>
+                                    <dd>제주특별자치도 제주시 용문로 62(064-726-6460)</dd>
+                                </dl>
+                                <dl>
+                                    <dt>인수/반납 가능 시간</dt>
+                                    <dd>07:30 ~ 22:00 / 06:00 ~ 21:00</dd>
+                                </dl>
+                            </div>
+                            <p class="title_18">셔틀버스 안내</p>
+                            <div class="bus_map"><img src="img/img_busmap.png" alt=""></div>
+                        </div>
+                        <div class="bus_step">
+                            <ul>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_bus_step01.png"
+                                                               alt="step01"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.01</dt>
+                                            <dd>공항 'GATE 5'로 나오셔서 횡단보도를 건너세요.</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_bus_step02.png"
+                                                               alt="step02"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.02</dt>
+                                            <dd>횡단보도를 건너신 후 오른쪽 '렌터카 하우스'로 이동하세요.</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_bus_step03.png"
+                                                               alt="step03"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.03</dt>
+                                            <dd>렌터카 하우스 오른쪽 출입구를 통해 내부로 들어가세요.</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_bus_step04.png"
+                                                               alt="step04"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.04</dt>
+                                            <dd>렌터카 하우스를 통과해 맞은편 출입구로 나가세요.</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_bus_step05.png"
+                                                               alt="step05"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.05</dt>
+                                            <dd>SK렌터카 셔틀버스를 타고 제주지점으로 이동하세요.<br>(탑승위치 : 1구역 2승차장, 배차간격:6분)</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_bus_step06.png"
+                                                               alt="step06"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.06</dt>
+                                            <dd>제주지점 도착 후 차량을 픽업하고 즐겁게 제주도를 여행하세요.</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="title_18">셔틀버스 운행안내</p>
+                        <div class="sub_cont bus_op_wrap">
+                            <div class="inner">
+                                <ul class="bus_op_step">
+                                    <li>
+                                        <div class="ico step01"  ></div>
+                                        <dl class="txt">
+                                            <dt>제주공항</dt>
+                                            <dd>첫차 07:30<br> 막차 22:50</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <div class="ico step02"></div>
+                                        <dl class="txt">
+                                            <dt>셔틀버스</dt>
+                                            <dd>배차 간격<br>8~20분</dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <div class="ico step03"></div>
+                                        <dl class="txt">
+                                            <dt>SK렌터카 제주지점</dt>
+                                            <dd>첫차 05:50<br> 막차 21:30</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                                <div class="bus_op_txt"><p class="tit"><i><img
+                                        src="img/ico_imp_dark.png" alt=""></i>배차 및 소요시간은 교통상황에 따라 변동
+                                    가능</p>
+                                    <ul class="dot_list">
+                                        <li>셔틀버스 탑승 시 최소 출발 5분 전 탑승해주세요.</li>
+                                        <li>셔틀버스 배차 및 소요시간은 교통 상황에 따라 변동될 수 있어요. (성수기, 주말에는 교통 혼잡 발생)</li>
+                                        <li>일정에 차질이 없도록 반납 시 최소 비행기 출발 1시간 전 지점에 도착해주세요.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="title_18">제주지점 차량 관리 시스템</p>
+                        <div class="bus_step system">
+                            <ul>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_sytem_step01.png"
+                                                               alt="step01"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.01</dt>
+                                            <dd>차량 반납 후 세차</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_sytem_step02.png"
+                                                               alt="step02"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.02</dt>
+                                            <dd>안전 정비 점검</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="img_wrap"><img src="img/img_sytem_step03.png"
+                                                               alt="step03"></div>
+                                    <div class="cont_wrap">
+                                        <dl>
+                                            <dt>STEP.03</dt>
+                                            <dd>대차 준비 완료</dd>
+                                        </dl>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="sidebar">
+                        <div class="inner scroll_p">
+                            <div class="res_form">
+                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
+                                    <button class="inland_btn">내륙 예약하기</button>
+                                </div>
+                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
+                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
+                                    <div class="carousel">
+                                        <ul class="btn_option_wrap small">
+                                            <li class="on"><a>전체</a></li>
+                                            <li class=""><a>전기차</a></li>
+                                            <li class=""><a>수입전기차</a></li>
+                                            <li class=""><a>제주 전기차 차박</a></li>
+                                            <li class=""><a>경형/소형</a></li>
+                                            <li class=""><a>중형/대형</a></li>
+                                            <li class=""><a>SUV</a></li>
+                                            <li class=""><a>승합</a></li>
+                                            <li class=""><a>수입</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btn_group">
+                                    <button class="btn type01">차량 조회하고 예약하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float_wrap">
+                        <div class="inner">
+                            <div class="chat_cont">
+                                <div class="chat_btn"><a> 상담하기</a></div>
+                                <ul class="chat_list">
+                                    <li class="chat"><a>채팅상담</a></li>
+                                    <li class="inquiry"><a>1:1문의 작성</a></li>
+                                </ul>
+                            </div>
+                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+
+
+<script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+<script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+        src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+</body>
+</th:block>
+</html>

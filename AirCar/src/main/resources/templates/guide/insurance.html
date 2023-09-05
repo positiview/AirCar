@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+<div id="root" style="height: 100%">
+    <div class="pc_wrap" style="">
+        <div class="wrap sub_wrap">
+
+            <div class="container">
+                <div class="inner">
+                    <div class="contents use_wrap ">
+                        <div class="title_wrap"><h2 class="title_30">기타안내</h2></div>
+                        <div class="tab_wrap mb40">
+                            <ul class="basic_tab">
+                                <li class=""><a href="/discount">제휴할인</a></li>
+                                <li class=""><a href="/electric">전기차안내</a></li>
+                                <li class="on"><a href="/insurance">보험대차안내</a></li>
+                            </ul>
+                        </div>
+                        <p class="title_24">사고대차란?</p>
+                        <p class="title_14 mb16">자동차 사고로 인한 파손 및 오손 되었을 경우, 수리기간 동안 상대방 보험사로부터 대여료를 지불보증받고 렌터카를 이용하는
+                            서비스예요.</p>
+                        <ul class="dot_list">
+                            <li>피해차량 전체 복구가 불가능한 경우 : 사고대차 최대 사용기간 10일</li>
+                            <li>피해차량이 수리 가능한 대형 사고인 경우 : 차량 수리 완료 시까지 (최대 30일)</li>
+                        </ul>
+                        <hr>
+                        <p class="title_18">사고대차종류</p>
+                        <dl class="dl">
+                            <dt>사고(100%) 피해인 경우 차량 대여</dt>
+                            <dd>차량사고 시 피해차량의 과실이 없는 경우, 차량 수리 기간 동안 피해차량과 동급 차종의 차량 대여료를<br>손해보험사에서 렌터카 회사에 지급해요.</dd>
+                        </dl>
+                        <dl class="dl">
+                            <dt>쌍방과실 피해차</dt>
+                            <dd>가해자 과실분은 무료 사용, 피해자(본인) 과실분은 본인이 부담해요.</dd>
+                        </dl>
+                        <dl class="dl">
+                            <dt>자기 차량손해 차량 대여</dt>
+                            <dd>차량 사고 당사자가 손해보험사에 자동차보험(자차)을 가입한 경우, 본인 차량 수리 기간 동안의 차량 대여료를<br>보험회사에서 지급해요.</dd>
+                        </dl>
+                        <hr>
+                        <p class="title_18">SK렌터카의 사고대차 사용안내</p>
+                        <div class="center_img"><img src="img/img_rental_proc05.png"
+                                                     alt="SK렌터카의 사고대차 사용안내"></div>
+                        <hr>
+                        <p class="title_18">사고대차 자격기준</p>
+                        <div class="ioan_guide">
+                            <div class="sub_cont">
+                                <div class="inner"><p class="m_txt">승용차(9인 이상)</p>
+                                    <ul>
+                                        <li><span class="ico">2종</span><span class="text">2종 보통면허 이상</span></li>
+                                        <li><span class="ico">21세</span><span class="text">만 21세 이상</span></li>
+                                        <li><span class="ico">1년</span><span class="text">운전경력 1년 이상</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub_cont">
+                                <div class="inner"><p class="m_txt">승용차(10인 이상 15인 이하)</p>
+                                    <ul>
+                                        <li><span class="ico">1종</span><span class="text">1종 보통면허 이상</span></li>
+                                        <li><span class="ico">26세</span><span class="text">만 26세 이상</span></li>
+                                        <li><span class="ico">3년</span><span class="text">운전경력 3년 이상</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="title_18">사고대차 사용 중 추가 사고 시 보험 및 보상범위</p>
+                        <div class="table t_left">
+                            <table>
+                                <colgroup>
+                                    <col width="200px">
+                                </colgroup>
+                                <caption></caption>
+                                <tbody>
+                                <tr>
+                                    <th>대인</th>
+                                    <td>무한</td>
+                                </tr>
+                                <tr>
+                                    <th>대물</th>
+                                    <td>사고건당 2,000만 원</td>
+                                </tr>
+                                <tr>
+                                    <th>자손</th>
+                                    <td>인당 1,500만 원 한도</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr>
+                        <p class="title_18">SK렌터카가 제공하는 또다른 혜택</p>
+                        <ul class="sp_service_list type">
+                            <li>
+                                <dl>
+                                    <dt>자차손해<br> 면책제도</dt>
+                                    <dd>무상가입</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>국산 : 30만원 /<br> 건당</dt>
+                                    <dd>사고 발생 시 자차면책금 고객 부담</dd>
+                                    <dd>외산,전기차 : 50만원/건당</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>내비게이션<br> 무상 대여</dt>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>무상 Delivery<br> Service</dt>
+                                    <dd></dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar">
+                        <div class="inner scroll_p">
+                            <div class="res_form">
+                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
+                                    <button class="inland_btn">내륙 예약하기</button>
+                                </div>
+                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
+                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
+                                    <div class="carousel">
+                                        <ul class="btn_option_wrap small">
+                                            <li class="on"><a>전체</a></li>
+                                            <li class=""><a>전기차</a></li>
+                                            <li class=""><a>수입전기차</a></li>
+                                            <li class=""><a>제주 전기차 차박</a></li>
+                                            <li class=""><a>경형/소형</a></li>
+                                            <li class=""><a>중형/대형</a></li>
+                                            <li class=""><a>SUV</a></li>
+                                            <li class=""><a>승합</a></li>
+                                            <li class=""><a>수입</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btn_group">
+                                    <button class="btn type01">차량 조회하고 예약하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float_wrap">
+                        <div class="inner">
+                            <div class="chat_cont">
+                                <div class="chat_btn"><a> 상담하기</a></div>
+                                <ul class="chat_list">
+                                    <li class="chat"><a>채팅상담</a></li>
+                                    <li class="inquiry"><a>1:1문의 작성</a></li>
+                                </ul>
+                            </div>
+                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+<script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+        src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+    </body>
+</th:block>
+</html>
