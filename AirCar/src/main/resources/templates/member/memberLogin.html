@@ -47,7 +47,8 @@
     </script>
 </head>
 <body>
-<div class="pc_wrap">
+<th:block th:replace="fragments/header::headerFragment"></th:block>
+
     <div class="container">
         <div class="inner">
             <div class="contents" style="margin: auto; width: 850px;"><p class="login_tit">누구나, 모두가 AIRCAR 이제 시작해
@@ -118,6 +119,7 @@
 
         </div>
     </div>
-</div>
+<th:block th:replace="fragments/footer::footerFragment"></th:block>
+
 </body>
 </html>

@@ -522,7 +522,7 @@ html.scroll_hidden body {
   height: 28px;
   overflow: hidden;
   text-indent: -999rem;
-  background: url(../img/common/ico_close_24x24.png) no-repeat center / 24px; /* 수정*/
+  background: url(../img/common/ico_close_24x24.png) no-repeat center / 24px;
   outline: none;
   z-index: 2;
 }
@@ -1206,7 +1206,6 @@ html.scroll_hidden body {
   background: #f7f7f9;
   border: 1px solid #eceef0;
   border-radius: 12px;
-  cursor : pointer;
 }
 .pc_wrap .btn_option_wrap li.on > label {
   font-weight: 700;
