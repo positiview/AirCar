@@ -17,4 +17,12 @@ public class MemberController {
     public String signUpAgree(){
         return "member/signUpAgreeChk";
     }
+
+    @GetMapping("/mypage")
+    public String mypage(){
+        return "member/myPage";
+    }
+
+    @GetMapping("/myinfo")
+    public String myinfo(){return "member/myInfo";}
 }

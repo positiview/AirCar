@@ -439,13 +439,13 @@ html.scroll_hidden body {
   padding: 5px 0;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_place:before {
-  background: url(../img/common/ico_place_24x24.png) no-repeat center / 20px;
+  background: url(../../../img/ico_place_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_date:before {
-  background: url(../img/common/ico_date_24x24.png) no-repeat center / 20px;
+  background: url(../../../img/ico_date_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_car:before {
-  background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;
+  background: url(../../../img/ico_car_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form i {
   display: block;

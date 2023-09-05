@@ -187,29 +187,75 @@
                 ]
             });
 
-
-
+            //---------------------------------
+            // 레이어팝업 기능
             var layerPopup = $('.layerPopup');
-            layerPopup.hide();
+                layerPopup.hide();
 
 
             $('.open-layerPopup').click(function (){
-            layerPopup.show();
+                layerPopup.show();
+                $('body').css('overflow', 'hidden');
             });
 
             layerPopup.not('.layerPopup_wrap').click(function (e) {
-            if (!$(e.target).closest('.layerPopup_wrap').length) {
-            layerPopup.hide();
-            }
+                if (!$(e.target).closest('.layerPopup_wrap').length) {
+                    layerPopup.hide();
+                    $('body').css('overflow', 'visible');
+                }
             });
 
 
             // 닫기 버튼 클릭 시 팝업 숨기기
             $('.btn_close').click(function () {
-            layerPopup.hide();
+                layerPopup.hide();
+                $('body').css('overflow', 'visible');
             });
+            //----------------------------------
+            var passwordInput = $('#names');
+            var chkPW_Button = $('#chkPW');
+            passwordInput.on("keyup", function (){
+
+                if(passwordInput.val().length > 0){
+                    chkPW_Button.removeAttr("disabled");
+                    chkPW_Button.text("입력완료");
+                    chkPW_Button.click(function (){
+
+                       var chkPW = passwordInput.val();
 
 
+                       $.ajax({
+                           type:'GET',
+                           url:'/member/myinfo',
+                           success: function(response) {
+                               // 성공 시 처리
+                               console.log(response);
+                           },
+                           error: function() {
+                               // 에러 시 처리
+                               console.error('오류 발생');
+                           }
+                       })
+                       /*$.ajax({
+                           type: 'POST',
+                           url: '/member/passwordCheck',
+                           data: chkPW,
+                           success: function(response) {
+                               // 성공 시 처리
+                               console.log(response);
+                           },
+                           error: function() {
+                               // 에러 시 처리
+                               console.error('오류 발생');
+                           }
+                       })  비밀번호 확인 처리 */
+                    });
+
+                }else{
+                    chkPW_Button.attr("disabled","disabled");
+                    chkPW_Button.text("비밀번호를 입력해 주세요");
+                }
+            });
 
         });
     </script>

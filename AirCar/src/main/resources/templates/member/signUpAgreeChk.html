@@ -1,54 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/main.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/content.css?v=2}">
-
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick-theme.css}">
-    <link rel="icon" type="favicon" th:href="@{/assets/img/common/favicon.ico}">
-    <!-- Meta Pixel Code -->
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-    <script th:src="@{/assets/slick/slick.js}" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" th:src="@{/assets/js/slick.min.js}"></script>
-    <script type="text/javascript" async=""
-            src="https://www.googletagmanager.com/gtag/js?id=G-RCZFE6130Y&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="//cdn.tbase.co.kr/tbase/l4cts.v4.2d.js"></script>
-    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-KJBHNSV"></script>
-    <script th:src="@{/assets/js/global.js}"></script>
-    <script>
-
-        $(document).ready(function() {
-            var layerPopup = $('.layerPopup');
-            layerPopup.hide();
-
-
-            $('.open-layerPopup').click(function (){
-                layerPopup.show();
-            });
-
-            layerPopup.not('.layerPopup_wrap').click(function (e) {
-                if (!$(e.target).closest('.layerPopup_wrap').length) {
-                    layerPopup.hide();
-                }
-            });
-
-
-            // 닫기 버튼 클릭 시 팝업 숨기기
-            $('.btn_close').click(function () {
-                layerPopup.hide();
-            });
-
-        });
-    </script>
+    <th:block th:replace="fragments/SHM_Fragment::link"></th:block>
 </head>
-<body>
-
-        <th:block th:replace="fragments/header::headerFragment"></th:block>
+<th:block layout:fragment="content">
 
     <div class="container">
         <div class="inner">
@@ -116,6 +73,5 @@
             </div>
         </div>
     </div>
-<th:block th:replace="fragments/footer::footerFragment"></th:block>
-</body>
+</th:block>
 </html>
