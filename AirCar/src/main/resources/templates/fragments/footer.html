@@ -188,6 +188,29 @@
             });
 
 
+
+            var layerPopup = $('.layerPopup');
+            layerPopup.hide();
+
+
+            $('.open-layerPopup').click(function (){
+            layerPopup.show();
+            });
+
+            layerPopup.not('.layerPopup_wrap').click(function (e) {
+            if (!$(e.target).closest('.layerPopup_wrap').length) {
+            layerPopup.hide();
+            }
+            });
+
+
+            // 닫기 버튼 클릭 시 팝업 숨기기
+            $('.btn_close').click(function () {
+            layerPopup.hide();
+            });
+
+
+
         });
     </script>
     <!--<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>-->
