@@ -2,7 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
+<head>
+    <th:block th:replace="fragments/SHM_Fragment::link"></th:block>
+</head>
 <th:block layout:fragment="content">
+    <!--<th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function() {
+                $("html, body").animate({ scrollTop: 0 }, 400);  });
+
+
+        </script>
+    </th:block>-->
+
     <!--
     <style type="text/css">/* Slider */
     .slick-slider {
