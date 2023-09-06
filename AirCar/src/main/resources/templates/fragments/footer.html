@@ -47,6 +47,8 @@
     <!-- <script src="/skrentalApp/bundle.29105ee17c.js"></script> -->
 
     <script >
+        $(document).on("click", ".top_cont", function() {
+            $("html, body").animate({ scrollTop: 0 }, 400);  });
         $(document).ready(function () {
             datePickerSet($("#datepicker1"), $("#datepicker2"), true);
 
@@ -212,7 +214,7 @@
                 $('body').css('overflow', 'visible');
             });
             //----------------------------------
-            var passwordInput = $('#names');
+           /* var passwordInput = $('#names');
             var chkPW_Button = $('#chkPW');
             passwordInput.on("keyup", function (){
 
@@ -236,7 +238,7 @@
                                console.error('오류 발생');
                            }
                        })
-                       /*$.ajax({
+                       /!*$.ajax({
                            type: 'POST',
                            url: '/member/passwordCheck',
                            data: chkPW,
@@ -248,14 +250,16 @@
                                // 에러 시 처리
                                console.error('오류 발생');
                            }
-                       })  비밀번호 확인 처리 */
+                       })  비밀번호 확인 처리 *!/
                     });
 
                 }else{
                     chkPW_Button.attr("disabled","disabled");
                     chkPW_Button.text("비밀번호를 입력해 주세요");
                 }
-            });
+            });  비밀번호 확인 레이아웃 처리*/
+
+
 
         });
     </script>

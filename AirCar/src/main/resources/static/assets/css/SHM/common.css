@@ -3,6 +3,9 @@
 .pc_wrap {
   min-width: 1192px;
 }
+.pc_wrap a {
+  cursor: pointer;
+}
 html,
 body {
   color: #2e3033;
@@ -217,6 +220,11 @@ html.scroll_hidden body {
   line-height: 18px;
   color: #858b93;
 }
+.pc_wrap .header .side_menu .member li span{
+  font-size: 14px;
+  line-height: 18px;
+  color: #858b93;
+}
 .pc_wrap .header .side_menu .member li + li a::before {
   display: inline-block;
   content: '·';
@@ -250,7 +258,7 @@ html.scroll_hidden body {
   color: #858b93;
   margin-right: 8px;
 }
-.pc_wrap .header .side_menu .member_a .logout {
+.pc_wrap .header .side_menu .member .logout {
   display: block;
   width: 24px;
   height: 24px;
@@ -2045,7 +2053,7 @@ html.scroll_hidden body {
   box-sizing: border-box;
 }
 .pc_wrap .chk_box input[type='checkbox'] + label:before {
-  background: url(../img/common/ico_chk_gray_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_chk_gray_24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .chk_box input {
   position: absolute;
@@ -2066,15 +2074,15 @@ html.scroll_hidden body {
 .pc_wrap .chk_box input:checked + label::before,
 .pc_wrap .chk_box input:checked ~ label::before {
   height: 24px;
-  background: url(../img/common/ico_chk_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_chk_24x24.png) no-repeat center / 24px;
   border: 0 none;
 }
 .pc_wrap .chk_box input[type='radio'] + label:before {
-  background: url(../img/common/ico_radio_gray_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_radio_gray_24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .chk_box input[type='radio']:checked + label::before,
 .pc_wrap .chk_box input[type='radio']:checked ~ label::before {
-  background: url(../img/common/ico_radio_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_radio_24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .chk_box.type_btn {
   width: 100%;
@@ -2575,16 +2583,16 @@ html.scroll_hidden body {
   display: block;
   width: 100%;
   height: 24px;
-  background: url('../img/common/ico_chat.png') center no-repeat;
+  background: url(../../../img/ico_chat.png) center no-repeat;
   background-size: 24px;
   margin: 0 auto 4px auto;
 }
 .pc_wrap .float_wrap .chat_cont .chat a:before {
-  background: url('../img/common/float_chat.png') center no-repeat;
+  background: url(../../../img/float_chat.png) center no-repeat;
   background-size: 24px;
 }
 .pc_wrap .float_wrap .chat_cont .inquiry a:before {
-  background: url('../img/common/float_inquiry.png') center no-repeat;
+  background: url(../../../img/float_inquiry.png) center no-repeat;
   background-size: 24px;
 }
 .pc_wrap .float_wrap .chat_cont .chat_list {
@@ -2624,7 +2632,7 @@ html.scroll_hidden body {
   height: 76px;
   line-height: 76px;
   font-size: 0;
-  background: url(../img/common/ico_top.png) center no-repeat;
+  background: url(../../../img/ico_top.png) center no-repeat;
 }
 
 /* 태그박스 */

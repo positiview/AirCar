@@ -1,7 +1,7 @@
-/*
 package com.example.aircar.handler;
 
-import com.busanit.domain.FormMemberDto;
+
+import com.example.aircar.domain.MemberSecurityDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.Authentication;
@@ -21,11 +21,11 @@ public class CustomFormLoginSuccessHandler implements AuthenticationSuccessHandl
         log.info("-------------------------------------------");
         log.info(authentication.getPrincipal());
 
-        FormMemberDto formMemberDto =
-                (FormMemberDto) authentication.getPrincipal();
+        MemberSecurityDTO memberSecurityDTO =
+                (MemberSecurityDTO) authentication.getPrincipal();
 
         // 소셜 로그인이 아닐경우
-        if (!formMemberDto.isSocial()) {
+        if (!memberSecurityDTO.isSocial()) {
             log.info("일반 로그인!!!");
             response.sendRedirect("/");
 
@@ -40,4 +40,3 @@ public class CustomFormLoginSuccessHandler implements AuthenticationSuccessHandl
 
 
 
-*/

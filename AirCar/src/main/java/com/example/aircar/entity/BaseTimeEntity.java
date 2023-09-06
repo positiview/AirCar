@@ -1,4 +1,3 @@
-/*
 package com.example.aircar.entity;
 
 import lombok.Getter;
@@ -33,4 +32,3 @@ public abstract class BaseTimeEntity {
 
 
 
-*/
