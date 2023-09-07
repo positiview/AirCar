@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <th:block th:replace="fragments/SHM_Fragment::link"></th:block>
+</head>
+<th:block layout:fragment="content">
+    <div class="container">
+        <div class="inner">
+            <div class="contents" style="margin: auto;"><h2 class="title_30">주소정보 변경</h2>
+                <div class="caution_box mt40">
+                    <div class="detail_info noti_wrap mt0">
+                        <div class="detail_info__tit"><p class="title_14">약관에 동의해야 주소정보를 저장할 수 있어요</p></div>
+                    </div>
+                </div>
+                <div class="sub_cont mt12">
+                    <div class="inner">
+                        <div class="info_box">
+                            <div class="form_row in_btn"><span><label for="adress" class="form_label">주소</label><input
+                                    id="zipNo" type="text" readonly="" placeholder="우편번호" value=""></span>
+                                <button type="button" class="btn">주소검색</button>
+                                <input id="addr" type="text" readonly="" placeholder="주소" value=""><input id="dtlAddr"
+                                                                                                          type="text"
+                                                                                                          placeholder="상세주소"
+                                                                                                          value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub_cont">
+                    <div class="white_box">
+                        <div class="form_row select_box flex">
+                            <div class="row"><label for="cardClsNm" class="form_label">카드유형</label><select
+                                    name="cardClsNm">
+                                <option value="">카드 종류를 선택해 주세요</option>
+                                <option value="0">개인카드</option>
+                                <option value="1">법인카드(기명)</option>
+                                <option value="2">법인카드(무기명)</option>
+                            </select></div>
+                            <div class="row"><label for="cardNo" class="form_label">카드번호</label><input id="cardNo"
+                                                                                                       name="cardNo"
+                                                                                                       type="tel"
+                                                                                                       maxlength="16"
+                                                                                                       placeholder="카드 번호를 입력해 주세요"
+                                                                                                       value="">
+                                <div class="ico_wrap">
+                                    <button class="btn_reset"><span class="blind">reset</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form_row flex">
+                            <div class="row"><label for="validity" class="form_label">유효기간</label><input id="expDtm"
+                                                                                                         name="expDtm"
+                                                                                                         type="tel"
+                                                                                                         maxlength="4"
+                                                                                                         placeholder="MM/YY"
+                                                                                                         autocomplete="new-password"
+                                                                                                         value="">
+                                <div class="ico_wrap">
+                                    <button class="btn_reset"><span class="blind">reset</span></button>
+                                </div>
+                            </div>
+                            <div class="row"><label for="cardPw" class="form_label">비밀번호 앞 2자리</label>
+                                <div class="two_digits"><input id="cardPw" name="cardPw" type="password" maxlength="2"
+                                                               autocomplete="new-password"><span
+                                        class="hidden">**</span></div>
+                            </div>
+                        </div>
+                        <div class="form_row"><label for="birthday" class="form_label">생년월일 6자리</label><input
+                                name="idNo" type="tel" maxlength="6" placeholder="숫자만 입력해 주세요" value="">
+                            <div class="ico_wrap">
+                                <button class="btn_reset"><span class="blind">reset</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub_cont mt12">
+                    <div class="inner">
+                        <div class="agree_chk_wrap">
+                            <ul class="agree_list">
+                                <li class="mt0"><span class="chk_box"><input type="checkbox" id="agree01"
+                                                                             name="chk"><label for="agree01">개인정보 수집 및 이용 동의(선택)</label></span><span
+                                        class="view"><a>보기</a></span></li>
+                                <li><span class="chk_box"><input type="checkbox" id="agree01" name="agree01"><label
+                                        for="agree01">전자금융거래 이용약관(필수)</label></span><span class="view"><a>보기</a></span>
+                                </li>
+                                <li><span class="chk_box"><input type="checkbox" id="agree03" name="agree03"><label
+                                        for="agree03">개인(신용)정보 수집 및 이용 동의(선택)</label></span><span class="view"><a>보기</a></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_group single">
+                    <button type="button" class="btn type01 disabled">주소를 입력해주세요</button>
+                </div>
+            </div>
+            <div class="layerPopup open">
+                <div class="layerPopup_wrap" style="width: 400px;">
+                    <div class="layerPopup_heading"><h2 class="heading">새로운 주소를 입력해 주세요</h2>
+                        <button class="btn_close">닫기</button>
+                        <div class="search_input"><input type="text" placeholder="예) 청계천로 85, 삼일빌딩, 관철동 10-2">
+                            <div class="icons"><a class="icon_search_m"><span class="blind">검색</span></a></div>
+                        </div>
+                    </div>
+                    <div class="layerPopup_content"><p class="title_16">정확한 검색을 위해 다음 권장사항을<br> 확인해주세요</p>
+                        <ul class="dot_list mt24">
+                            <li>시·도 / 시·군·구 + 도로명주소<br><small>예) 종로구 사직로 161</small></li>
+                            <li>시·도 / 시·군·구 / 읍·면·동 + 지번<br><small>예) 종로구 관훈동 198-1</small></li>
+                            <li>시·도 / 시·군·구 + 도로명주소<br><small>예) 역삼동 737</small></li>
+                        </ul>
+                    </div>
+                    <div class="layerPopup_bottom">
+                        <div class="btn_group">
+                            <button class="btn type01 disabled">주소를 입력해 주세요</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</th:block>
+>
+</html>

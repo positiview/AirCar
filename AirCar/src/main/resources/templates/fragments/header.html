@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="headerFragment">
 
@@ -24,7 +24,8 @@
                     </div>
                     <div class="nav_wrap">
                         <div class="inner">
-                            <h1><a class="brand"><img src="/img/logo.png" width="107px" height="56px" alt="" style="left: 0;width: 148px;height: 91px;"></a></h1>
+                            <h1><a class="brand"><img src="/img/logo.png" width="107px" height="56px" alt=""
+                                                      style="left: 0;width: 148px;height: 91px;"></a></h1>
                             <nav>
                                 <ul>
                                     <li><a href="reserve">예약</a></li>
@@ -34,13 +35,31 @@
                                 </ul>
                             </nav>
                             <div class="side_menu">
-                                <ul class="member">
-                                    <li><a>로그인</a></li>
-                                    <li><a>회원가입</a></li>
+                                <ul class="member" sec:authorize="isAnonymous()">
+                                    <li><a href="/member/login">로그인</a></li>
+                                    <li><a href="/member/login">회원가입</a></li>
+                                </ul>
+                                <ul class="member" sec:authorize="isAuthenticated()">
+                                    <li><span><a href="member/mypage">[[${nickname}]]님</a> 안녕하세요</span></li>
+                                    <li><a class="open-layerPopup">로그아웃</a></li>
+                                    <li><a class="logout open-layerPopup"></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </header>
+                <div class="layerPopup alertPopup" style="display: none">
+                    <div class="layerPopup_wrap">
+                        <div class="layerPopup_content">
+                            <div class="pop_info"><p class="txt"><span>로그아웃 하시겠어요?<br></span></p></div>
+                        </div>
+                        <div class="layerPopup_bottom">
+                            <div class="btn_group btn_prompt">
+                                <button class="btn type04 btn_close" >취소</button>
+                                <button class="btn type01" onclick="location.href='/member/logout'">로그아웃</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 </th:block>
 </html>

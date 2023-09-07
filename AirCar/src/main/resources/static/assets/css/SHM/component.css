@@ -2169,7 +2169,7 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-  background: url(../img/common/ico_info.png) no-repeat 0 50%;
+  background: url(../../../img/ico_info.png) no-repeat 0 50%;
   background-size: 100%;
   vertical-align: middle;
 }
@@ -2189,7 +2189,7 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-  background: url(../img/common/ico_info.png) no-repeat 0 50%;
+  background: url(../../../img/ico_info.png) no-repeat 0 50%;
   background-size: 100%;
   vertical-align: middle;
 }
@@ -2202,7 +2202,7 @@
   width: 16px;
   height: 16px;
   margin-right: 6px;
-  background: url(../img/common/ico_info_w.png) no-repeat 0 50%;
+  background: url(../../../img/ico_info_w.png) no-repeat 0 50%;
   background-size: 100%;
   vertical-align: middle;
 }
@@ -3794,7 +3794,7 @@
   right: 0;
   width: 16px;
   height: 16px;
-  background: url(../img/common/ico_chevronR_16x16.png) no-repeat center;
+  background: url(../../../img/ico_chevronR_16x16.png) no-repeat center;
   background-size: 100%;
 }
 
@@ -4476,7 +4476,7 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-  background: url(../img/common/ico_info.png) no-repeat 0 50%;
+  background: url(../../../img/ico_info.png) no-repeat 0 50%;
   background-size: 100%;
 }
 
@@ -8139,7 +8139,7 @@
   width: 24px;
   height: 24px;
   margin-right: 8px;
-  background: url('../img/common/ico_info.png') no-repeat center;
+  background: url('../../../img/ico_info.png') no-repeat center;
   background-size: 24px auto;
   vertical-align: top;
 }

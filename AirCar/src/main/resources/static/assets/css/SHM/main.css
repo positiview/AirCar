@@ -65,9 +65,7 @@
 .pc_wrap .main_wrap .visual_wrap .main_desc em {
   font-weight: 700;
 }
-.pc_wrap .main_wrap .container .inner .sidebar {
-  top: -454px;
-}
+
 .pc_wrap .main_wrap .sidebar > .inner.scroll_p {
   top: 150px;
 }
