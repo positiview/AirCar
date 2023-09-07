@@ -31,6 +31,3 @@ public abstract class BaseTimeEntity {
 
 
 
-
-
-

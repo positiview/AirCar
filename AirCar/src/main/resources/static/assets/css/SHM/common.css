@@ -3,6 +3,9 @@
 .pc_wrap {
   min-width: 1192px;
 }
+.pc_wrap a {
+  cursor: pointer;
+}
 html,
 body {
   color: #2e3033;
@@ -26,8 +29,7 @@ button {
   font-weight: 400;
 }
 a {
-  outline: none ;
-  text-decoration-line: none !important;
+  outline: none;
 }
 input,
 textarea {
@@ -197,10 +199,10 @@ html.scroll_hidden body {
 .pc_wrap .header .brand {
   position: relative;
   display: inline-block;
-  width: 130px;
-  height: 105px;
+  width: 107px;
+  height: 56px;
   vertical-align: middle;
-  background: url(sk_logo.png) no-repeat center;
+  background: url(../../../img/sk_logo.png) no-repeat center;
   background-size: contain;
   text-indent: -9999px;
 }
@@ -208,13 +210,18 @@ html.scroll_hidden body {
   display: flex;
   height: 24px;
   align-items: center;
-  background: url(ico_login.png) no-repeat;
+  background: url(../../../img/ico_login.png) no-repeat;
   background-size: 24px;
   padding-left: 32px;
   margin-left: auto;
 }
 .pc_wrap .header .side_menu .member li a {
   font-size: 12px;
+  line-height: 18px;
+  color: #858b93;
+}
+.pc_wrap .header .side_menu .member li span{
+  font-size: 14px;
   line-height: 18px;
   color: #858b93;
 }
@@ -251,36 +258,36 @@ html.scroll_hidden body {
   color: #858b93;
   margin-right: 8px;
 }
-.pc_wrap .header .side_menu .member_a .logout {
+.pc_wrap .header .side_menu .member .logout {
   display: block;
   width: 24px;
   height: 24px;
-  background: url(../img/common/ico_logout.png) no-repeat;
+  background: url(../../../img/ico_logout.png) no-repeat;
   text-indent: -9999px;
 }
 
 .pc_wrap .ico_back {
-  background: url(../img/common/ico_back_24x24.png) no-repeat center / contain;
+  background: url(../../../img/ico_back_24x24.png) no-repeat center / contain;
 }
 .pc_wrap .ico_res {
-  background: url(../img/common/ico_res_28x28.png) no-repeat center / contain;
+  background: url(../../../img/ico_res_28x28.png) no-repeat center / contain;
 }
 .pc_wrap .ico_chat {
-  background: url(../img/common/ico_chat.png) no-repeat center / contain;
+  background: url(../../../img/ico_chat_28x28.png) no-repeat center / contain;
 }
 .pc_wrap .ico_menu {
-  background: url(../img/common/ico_menu_28x28.png) no-repeat center / contain;
+  background: url(../../../img/ico_menu_28x28.png) no-repeat center / contain;
 }
 .pc_wrap .ico_share {
-  background: url(../img/common/ico_share_24x24.png) no-repeat center / contain;
+  background: url(../../../img/ico_share_24x24.png) no-repeat center / contain;
 }
 .pc_wrap .ico_close {
-  background: url(../img/common/ico_close_24x24.png) no-repeat center / contain;
+  background: url(../../../img/ico_close_24x24.png) no-repeat center / contain;
 }
 .pc_wrap .ico_attention::before {
   width: 24px;
   height: 24px;
-  background: url(../img/common/ico_attention_24x24.png) no-repeat center / contain !important;
+  background: url(../../../img/ico_attention_24x24.png) no-repeat center / contain !important;
 }
 
 .pc_wrap .container {
@@ -327,7 +334,7 @@ html.scroll_hidden body {
 
 /* 사이드바 */
 .pc_wrap #sideScroll {
-  /*overflow-y: auto;*/
+  overflow-y: auto;
 }
 .pc_wrap .sidebar {
   position: absolute;
@@ -391,7 +398,7 @@ html.scroll_hidden body {
   color: #50555c;
   border: 0.5px solid #50555c;
   border-radius: 20px;
-  background: url(ico_outlink.png) center right 4px no-repeat;
+  background: url(../img/common/ico_outlink.png) center right 4px no-repeat;
   background-size: 16px;
   padding: 6px 22px 6px 10px;
   font-weight: 700;
@@ -430,31 +437,6 @@ html.scroll_hidden body {
   height: 20px;
   background-size: 20px;
   margin-right: 10px;
-  background-image: url("../../img/ico_place.png");
-  margin-left: 14px;
-}
-.pc_wrap .sidebar > .inner .res_form .cont2 > a:before {
-  position: relative;
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-size: 20px;
-  margin-right: 10px;
-  background-image: url(../../img/ico_date_24x24.png);
-  margin-left: 21px;
-  top: 7px;
-}
-.pc_wrap .sidebar > .inner .res_form .cont3 > a:before {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-size: 20px;
-  margin-right: 10px;
-  background-image: url(../../img/ico_date_24x24.png);
-  margin-left: 21px;
-  margin-top: 14px;
 }
 .pc_wrap .sidebar > .inner .res_form .btn_edit {
   font-style: normal;
@@ -465,13 +447,13 @@ html.scroll_hidden body {
   padding: 5px 0;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_place:before {
-  background: url("../../img/ico_place.png") no-repeat center / 20px;
+  background: url(../../../img/ico_place_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_date:before {
-  background: url("../../img/ico_date_24x24.png") no-repeat center / 20px;
+  background: url(../../../img/ico_date_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_car:before {
-  background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;
+  background: url(../../../img/ico_car_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form i {
   display: block;
@@ -490,7 +472,7 @@ html.scroll_hidden body {
   padding: 0 20px;
   margin-bottom: 27px; /* overflow-x: scroll; */
 }
-.pc_wrap .sidebar > .inner .res_form  .btn_option_wrap li > a {
+.pc_wrap .sidebar > .inner .res_form .btn_option_wrap li > label {
   display: block;
   font-size: 12px;
   line-height: 32px;
@@ -498,7 +480,7 @@ html.scroll_hidden body {
   border: 1px solid #d4d7dc;
   border-radius: 8px;
 }
-.pc_wrap .sidebar > .inner .res_form  .btn_option_wrap li.on > a {
+.pc_wrap .sidebar > .inner .res_form .btn_option_wrap li.on > label {
   border-color: #50555c;
   color: #2e3033;
 }
@@ -1034,7 +1016,6 @@ html.scroll_hidden body {
   background: #dee2e6;
   padding: 52px 0 63px 0;
   color: #50555c;
-  height: 206px;
 }
 .pc_wrap .footer_wrap.off {
   display: none;
@@ -1053,8 +1034,8 @@ html.scroll_hidden body {
   margin-left: -17px;
 }
 .pc_wrap .footer_wrap .footer .logo {
-  width: 125px;
-  height: 95px;
+  width: 104px;
+  height: 50px;
   margin-right: 56px;
 }
 .pc_wrap .footer_wrap .footer .footer_terms {
@@ -1136,7 +1117,7 @@ html.scroll_hidden body {
   height: 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.youtube a:before {
-  background: url(ico_youtube.png) center / 32px;
+  background: url(../img/common/ico_youtube.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.blog a:before {
   background: url(../img/common/ico_blog.png) center / 32px;
@@ -1145,13 +1126,13 @@ html.scroll_hidden body {
   background: url(../img/common/ico_facebook.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.instar a:before {
-  background: url(ico_instar.png) center / 32px;
+  background: url(../img/common/ico_instar.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.naver a:before {
   background: url(../img/common/ico_naver.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns li.tstory a:before {
-  background: url(ico_tstory.png) center / 32px;
+  background: url(../img/common/ico_tstory.png) center / 32px;
 }
 .pc_wrap .footer_wrap .footer .sns {
   font-size: 11px;
@@ -1181,7 +1162,7 @@ html.scroll_hidden body {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url(ico_chevronB_16x16.png) center right / 16px;
+  background: url(../img/common/ico_chevronB_16x16.png) center right / 16px;
 }
 .pc_wrap .footer_wrap .footer .copyright {
   font-size: 11px;
@@ -1208,9 +1189,8 @@ html.scroll_hidden body {
   flex-wrap: wrap;
 }
 .pc_wrap .btn_option_wrap li {
-  /*margin-right: 5px;
-  margin-top: 5px;*/
-  margin: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
 }
 .pc_wrap .btn_option_wrap li > a {
   display: flex;
@@ -1223,6 +1203,39 @@ html.scroll_hidden body {
   border: 1px solid #eceef0;
   border-radius: 12px;
 }
+/* =========label css 추가함 23-09-04  =========*/
+.pc_wrap .btn_option_wrap li > label {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 14px;
+  background: #f7f7f9;
+  border: 1px solid #eceef0;
+  border-radius: 12px;
+}
+.pc_wrap .btn_option_wrap li.on > label {
+  font-weight: 700;
+  color: #50555c;
+  background: #fff;
+  border: 1px solid #50555c;
+}
+.pc_wrap .btn_option_wrap.small li > label {
+  height: 34px;
+}
+.pc_wrap .btn_option_wrap li > input{
+  display: none;
+}
+.pc_wrap .btn_option_wrap li label:hover{
+  border-color: orange;
+}
+
+.pc_wrap .btn_option_wrap li input:checked + .label{
+  border-color: #50555c;
+}
+
+/*===============================================*/
 .pc_wrap .btn_option_wrap li.on > a {
   font-weight: 700;
   color: #50555c;
@@ -2040,7 +2053,7 @@ html.scroll_hidden body {
   box-sizing: border-box;
 }
 .pc_wrap .chk_box input[type='checkbox'] + label:before {
-  background: url(../img/common/ico_chk_gray_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_chk_gray_24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .chk_box input {
   position: absolute;
@@ -2061,15 +2074,15 @@ html.scroll_hidden body {
 .pc_wrap .chk_box input:checked + label::before,
 .pc_wrap .chk_box input:checked ~ label::before {
   height: 24px;
-  background: url(../img/common/ico_chk_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_chk_24x24.png) no-repeat center / 24px;
   border: 0 none;
 }
 .pc_wrap .chk_box input[type='radio'] + label:before {
-  background: url(../img/common/ico_radio_gray_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_radio_gray_24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .chk_box input[type='radio']:checked + label::before,
 .pc_wrap .chk_box input[type='radio']:checked ~ label::before {
-  background: url(../img/common/ico_radio_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_radio_24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .chk_box.type_btn {
   width: 100%;
@@ -2173,7 +2186,7 @@ html.scroll_hidden body {
   color: #50555c;
 }
 .pc_wrap .btn_group .btn.type01 {
-  background: url('../../img/btn_bg.jpg') no-repeat center / cover;
+  background: url('../../../img/btn_bg.jpg') no-repeat center / cover;
   background-position: 10% center;
   color: #fff;
   border: 0;
@@ -2570,16 +2583,16 @@ html.scroll_hidden body {
   display: block;
   width: 100%;
   height: 24px;
-  background: url('ico_chat.png') center no-repeat;
+  background: url(../../../img/ico_chat.png) center no-repeat;
   background-size: 24px;
   margin: 0 auto 4px auto;
 }
 .pc_wrap .float_wrap .chat_cont .chat a:before {
-  background: url('float_chat.png') center no-repeat;
+  background: url(../../../img/float_chat.png) center no-repeat;
   background-size: 24px;
 }
 .pc_wrap .float_wrap .chat_cont .inquiry a:before {
-  background: url('float_inquiry.png') center no-repeat;
+  background: url(../../../img/float_inquiry.png) center no-repeat;
   background-size: 24px;
 }
 .pc_wrap .float_wrap .chat_cont .chat_list {
@@ -2619,7 +2632,7 @@ html.scroll_hidden body {
   height: 76px;
   line-height: 76px;
   font-size: 0;
-  background: url(ico_top.png) center no-repeat;
+  background: url(../../../img/ico_top.png) center no-repeat;
 }
 
 /* 태그박스 */

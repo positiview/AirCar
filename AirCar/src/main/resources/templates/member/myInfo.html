@@ -1,0 +1,149 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <th:block th:replace="fragments/SHM_Fragment::link"></th:block>
+</head>
+<th:block layout:fragment="content">
+<div class="container">
+    <div class="inner">
+        <div class="contents">
+            <div class="title_wrap"><h2 class="title_30">내 정보 관리</h2><a class="link_btn mt40">마이페이지 홈으로</a></div>
+            <div class="sub_cont">
+                <div class="title_wrap"><p class="title_18">기본 정보</p></div>
+                <div class="white_box border">
+                    <div class="form_row">
+                        <div class="data_management"><label for="coname" class="form_label">아이디</label>
+                            <p class="data_txt">shm0119</p></div>
+                        <div class="data_management"><label for="password" class="form_label">비밀번호</label>
+                            <p class="data_txt notice">개인정보 보호를 위해 주기적으로 변경해주세요</p>
+                            <div class="btn_modify">
+                                <button class="btn">변경</button>
+                            </div>
+                        </div>
+                        <div class="data_management"><label for="sellphone" class="form_label">휴대폰 번호</label>
+                            <p class="data_txt">010-7614-9625</p>
+                            <div class="btn_modify">
+                                <button class="btn">본인 인증 후 변경</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub_cont">
+                <div class="title_wrap"><p class="title_18">추가정보</p></div>
+                <div class="white_box border">
+                    <div class="form_row">
+                        <div class="data_management"><label for="email" class="form_label">이메일</label>
+                            <p class="data_txt"></p></div>
+                        <div class="data_management"><label for="address" class="form_label">주소</label></div>
+                        <div class="data_management"><label for="driverLicense" class="form_label">운전면허정보</label>
+                            <p class="data_txt notice">미리 등록하면 예약이 더 빨라져요</p>
+                            <div class="btn_modify">
+                                <button class="btn">등록</button>
+                            </div>
+                        </div>
+                        <div class="data_management"><label for="payment" class="form_label">결제수단관리</label>
+                            <p class="data_txt notice">미리 등록하면 예약이 더 빨라져요</p>
+                            <div class="btn_modify">
+                                <button class="btn">변경</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub_cont">
+                <div class="title_wrap"><p class="title_18">간편 로그인 관리</p></div>
+                <div class="white_box border">
+                    <div class="form_row">
+                        <div class="data_management"><p class="data_txt">카카오</p>
+                            <div class="btn_modify"><span class="btn_switch"><input id="kakao" type="checkbox"
+                                                                                    name="kakaoLink" readonly=""><label
+                                    for="kakao"></label></span></div>
+                        </div>
+                        <div class="data_management"><p class="data_txt">네이버</p>
+                            <div class="btn_modify"><span class="btn_switch"><input id="naver" type="checkbox"
+                                                                                    name="naverLink" readonly=""><label
+                                    for="naver"></label></span></div>
+                        </div>
+                        <div class="data_management"><p class="data_txt">Apple</p>
+                            <div class="btn_modify"><span class="btn_switch"><input id="apple" type="checkbox"
+                                                                                    name="appleLink" readonly=""><label
+                                    for="apple"></label></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub_cont">
+                <div class="title_wrap"><p class="title_18">계정관리</p></div>
+                <div class="white_box border">
+                    <div class="form_row">
+                        <div class="data_management"><p class="data_txt">개인정보 유효기간 설정</p>
+                            <div class="btn_modify">
+                                <button class="btn arrow">개인정보 유효기간 설정 버튼</button>
+                            </div>
+                        </div>
+                        <div class="data_management"><p class="data_txt">로그아웃</p>
+                            <div class="btn_modify">
+                                <button class="btn arrow" id="logout">로그아웃 버튼</button>
+                            </div>
+                        </div>
+                        <div class="data_management"><p class="data_txt">회원탈퇴</p>
+                            <div class="btn_modify">
+                                <button class="btn arrow">회원탈퇴 버튼</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="white_box white_box__sm border mt16">
+                    <div class="form_row">
+                        <div class="data_management"><p class="data_txt"><img src="/assets/img/contents/ico_id_sk.png"
+                                                                              alt="결제 이미지" class="ico">SK 멤버사 인증</p>
+                            <div class="btn_modify">
+                                <button class="btn arrow">SK 멤버사 인증 버튼</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form name="reqPCCForm" method="post" action=""><input type="hidden" name="reqInfo" value=""><input
+                type="hidden" name="retUrl" value=""><input type="hidden" name="verSion" value="2"></form>
+        <div class="sidebar">
+            <div id="sideScroll" class="inner">
+                <div class="fillter_wrap"><h2>어떤 도움이 필요하세요</h2>
+                    <div class="menu_btns row3">
+                        <ul class="btns_list">
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main01.png" alt="결제 이미지"></div>
+                                <span>예약·변경</span></a></li>
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main02.png" alt="결제 이미지"></div>
+                                <span>운전자</span></a></li>
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main03.png" alt="결제 이미지"></div>
+                                <span>제휴·할인</span></a></li>
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main04.png" alt="결제 이미지"></div>
+                                <span>보험</span></a></li>
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main05.png" alt="결제 이미지"></div>
+                                <span>고장·사고</span></a></li>
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main06.png" alt="결제 이미지"></div>
+                                <span>장기렌터카</span></a></li>
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main07.png" alt="결제 이미지"></div>
+                                <span>유류비</span></a></li>
+                            <li><a>
+                                <div class="icon"><img src="img/ico_cs_main08.png" alt="결제 이미지"></div>
+                                <span>부가용품</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="btn_group"><a class="btn type02">고객센터로 이동</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</th:block>

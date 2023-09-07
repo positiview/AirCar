@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+<link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+<link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+<link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+<link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+<body style="">
+
+<!-- header -->
+<!-- Aside Start-->
+<aside class="left-panel" tabindex="5000" style="overflow: hidden; outline: none;">
+
+    <!-- brand -->
+    <div class="logo">
+        <a href="file_list.php" class="logo-expanded">
+            <span class="nav-label">AIRCAR 관리자</span>
+        </a>
+    </div>
+    <!-- / brand -->
+
+    <!-- Navbar Start -->
+    <nav class="navigation">
+        <ul class="list-unstyled">
+            <li class="has-submenu"><a href="/admin/main"><i class="fa fa-picture-o"></i> <span class="nav-label">홈관리</span></a>
+            </li>
+            <li class="has-submenu"><a href="/admin/member"><i class="fa fa-sun-o"></i> <span class="nav-label">회원관리</span></a>
+            </li>
+            <li class="has-submenu"><a href="/admin/reserve"><i class="fa fa-folder-open-o"></i> <span class="nav-label">예약관리</span></a>
+            </li>
+            <li class="has-submenu"><a href="planing.php"><i class="fa fa-crm"></i> <span class="nav-label">상담 관리</span></a>
+            </li>
+            <li class="has-submenu active"><a href="/admin/notices"><i class="fa fa-bell-o"></i> <span class="nav-label">문의 관리</span></a>
+            </li>
+            <li class="has-submenu"><a href="/admin/event"><i class="fa fa-bell-o"></i> <span class="nav-label">이벤트 관리</span></a>
+            </li>
+        </ul>
+    </nav>
+
+</aside>
+<!-- Aside Ends-->
+
+
+<!--Main Content Start -->
+<section class="content">
+
+    <!-- Header -->
+    <header class="top-head container-fluid">
+        <button type="button" class="navbar-toggle pull-left">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <!-- Left navbar -->
+        <h2 class="title_info pull-left fs18 navbar-left" style=" margin-top:15px;">
+        </h2>
+
+        <!-- Right navbar -->
+        <ul class="list-inline navbar-right top-menu top-right-menu">
+            <!-- user login dropdown start-->
+            <li class="dropdown text-center">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <img alt="" src="/img/ico65_bg.jpg" class="img-circle profile-img thumb-sm">
+                    <span class="username">sample님 </span> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
+                    <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+            </li>
+            <!-- user login dropdown end -->
+        </ul>
+        <!-- End right navbar -->
+
+    </header>
+    <!-- Header Ends -->
+
+
+    <!-- Page Content Start -->
+    <!-- ================== -->
+
+    <div class="wraper container-fluid">
+        <div class="page-title">
+            <h3 class="title">공지 등록 및 수정</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <form class="form-horizontal" action="/admin/noticesRegister" method="post">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">* 공지명</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" name="notices_title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">* 카테고리</label>
+                                <select name="notices_category"
+                                        style="border: 1px solid #ccc; width: 80%; height: 34px; margin-left: 15px">
+                                    <option name="change" value="예약·변경">예약·변경</option>
+                                    <option name="driver" value="운전자">운전자</option>
+                                    <option name="discount" value="제휴·할인">제휴·할인</option>
+                                    <option name="insurance" value="보험">보험</option>
+                                    <option name="breakdown" value="고장·사고">고장·사고</option>
+                                    <option name="rental" value="장기렌터카">장기렌터카</option>
+                                    <option name="breakdown" value="유류비">유류비</option>
+                                    <option name="rental" value="부가용품">부가용품</option>
+                                    <option name="rental" value="기타">기타</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">* 공지내용</label>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" name="notices_content"  style="height: 500px"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="border_top p-t-30  text-center">
+                                <button type="reset" class="btn btn-default w-md m-b-5">취소</button>
+                                <button type="submit" class="btn btn-info w-md m-b-5">등록</button>
+                                <!--수정버튼
+                                <button type="button" class="btn btn-warning w-md m-b-5">수정</button>
+                                -->
+                            </div>
+
+
+                        </form>
+
+                    </div><!-- end panel-body -->
+                </div><!-- end panel -->
+            </div>
+        </div> <!-- end row -->
+
+        <!--상품명 클릭시 모달팝업-->
+        <div id="panel-modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content  p-0 b-0">
+                    <div class="panel panel-color panel-info">
+                        <button type="button" class="close m-b-10" data-dismiss="modal" aria-hidden="true">×</button>
+                        <div class="panel-body">
+                            <div class=" m-b-10 pull-right col-md-12 input-group">
+                                <input type="search" class="form-control">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search m-r-5"></i>검색</button>
+                                </div><!-- /btn-group -->
+                            </div>
+                            <table class="table text-center" style="margin-bottom:0;">
+                                <tbody><tr>
+                                    <th class="active">번호</th>
+                                    <th class="active">상품번호</th>
+                                    <th class="active">상품명</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>12234123</td>
+                                    <td>수분에센스</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>12234123</td>
+                                    <td>수분에센스</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>12234123</td>
+                                    <td>수분에센스</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>12234123</td>
+                                    <td>수분아이크림</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>12234123</td>
+                                    <td>수분크림</td>
+                                </tr>
+                                </tbody></table>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+    </div>
+    <!-- Page Content Ends -->
+    <!-- ================== -->
+
+    <!-- Footer Start -->
+    <footer class="footer text_nor">
+        2016 © gmccoms. All rights reserved.
+    </footer>
+    <!-- Footer Ends -->
+
+
+
+</section>
+<!-- Main Content Ends -->
+
+
+
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/modernizr.min.js"></script>
+<script src="../js/jquery.scrollTo.min.js"></script>
+<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+
+
+
+<script src="../js/jquery.app.js"></script><div id="ascrail2000" class="nicescroll-rails" style="width: 5px; z-index: auto; cursor: default; position: fixed; top: 0px; left: 225px; height: 966px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; background-color: rgb(142, 144, 154); border: 0px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 5px; z-index: auto; top: 961px; left: 0px; position: fixed; cursor: default; display: none;"><div style="position: relative; top: 0px; height: 5px; width: 0px; background-color: rgb(142, 144, 154); border: 0px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;"></div></div>
+
+<!-- Dashboard -->
+<script src="../js/jquery.dashboard.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

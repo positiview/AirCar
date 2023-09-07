@@ -2,14 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-    <title>Title</title>
+    
 
 <!--    =================================================================-->
+
+    <title>AIRCAR</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick-theme.css}">
+
     <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{/assets/slick/slick.js}" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/assets/js/slick.min.js}"></script>
     <script th:src="@{/js/air-datepicker/dist/js/datepicker.js}"></script>
     <script th:src="@{/js/air-datepicker/dist/js/i18n/datepicker.ko.js}"></script>
     <th:block layout:fragment="script"></th:block>

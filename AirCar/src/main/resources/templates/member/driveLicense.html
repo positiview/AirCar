@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <th:block th:replace="fragments/SHM_Fragment::link"></th:block>
+</head>
+<th:block layout:fragment="content">
+<div class="container">
+    <div class="inner">
+        <div class="contents" style="margin: auto;"><h2 class="title_30">운전면허정보 입력</h2>
+            <div class="caution_box mt40">
+                <div class="detail_info noti_wrap mt0">
+                    <div class="detail_info__tit"><p class="title_14">약관에 동의해야 운전면허정보를 저장할 수 있어요</p></div>
+                </div>
+            </div>
+            <div class="sub_cont mt12">
+                <div class="inner">
+                    <div class="license_img"><img src="/img/img_license.png" alt="운전면허증예시"></div>
+                    <div class="info_box">
+                        <div class="select_box form_row "><label class="form_label">면허종류</label><select>
+                            <option value="">면허종류를 선택해주세요</option>
+                            <option value="106005">2종보통</option>
+                            <option value="106003">1종보통</option>
+                            <option value="106002">1종대형</option>
+                            <option value="106001">1종특수-대형견인차(트레일러)</option>
+                            <option value="106010">1종특수-구난차(레커)</option>
+                            <option value="106011">1종특수-소형견인차</option>
+                            <option value="106009">국제면허</option>
+                        </select></div>
+                        <div class="form_row "><label for="number" class="form_label">면허번호</label><input id="number"
+                                                                                                         maxlength="12"
+                                                                                                         type="text"
+                                                                                                         placeholder="면허번호를 입력해주세요"
+                                                                                                         value="">
+                            <div class="ex_box"><p class="txt">구면허증) 서울-01-123456-00 → 서울0112345600</p>
+                                <p class="txt">신면허증) 11-01-123456-00 → 110112345600</p></div>
+                        </div>
+                        <div class="form_row "><label for="isDate" class="form_label">발급일자</label><input id="isDate"
+                                                                                                         type="tel"
+                                                                                                         placeholder="예) 20210101"
+                                                                                                         value=""></div>
+                        <div class="form_row "><label for="exDate" class="form_label">만료일자</label><input id="exDate"
+                                                                                                         type="tel"
+                                                                                                         placeholder="예) 20251231"
+                                                                                                         value=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub_cont mt12">
+                <div class="inner">
+                    <div class="agree_chk_wrap"><span class="chk_box total_chk"><input type="checkbox" id="totalChk"
+                                                                                       name="payTotal"><label
+                            for="totalChk">전체동의</label></span>
+                        <ul class="agree_list">
+                            <li><span class="chk_box"><input type="checkbox" id="agree01" name="chk"><label
+                                    for="agree01">개인정보 수집 및 이용 동의(선택)</label></span><span class="view"><a>보기</a></span>
+                            </li>
+                            <li><span class="chk_box"><input type="checkbox" id="agree02" name="chk"><label
+                                    for="agree02">고유식별정보 수집 및 이용 동의(선택)</label></span><span
+                                    class="view"><a>보기</a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_group single01">
+                <button type="button" class="btn type01 disabled">운전자 정보를 입력해주세요</button>
+            </div>
+        </div>
+        <div class="float_wrap">
+            <div class="inner">
+                <div class="chat_cont">
+                    <div class="chat_btn"><a> 상담하기</a></div>
+                    <ul class="chat_list">
+                        <li class="chat"><a>채팅상담</a></li>
+                        <li class="inquiry"><a>1:1문의 작성</a></li>
+                    </ul>
+                </div>
+                <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</th:block>
+
+
+
+</html>
