@@ -42,6 +42,8 @@ public class Member extends BaseEntity {
 
     private String clientName;
 
+    private String nickname;
+
     public static Member createMember(MemberFormDto memberFormDTO, PasswordEncoder passwordEncoder){
         Member member = new Member();
         member.setName(memberFormDTO.getName());

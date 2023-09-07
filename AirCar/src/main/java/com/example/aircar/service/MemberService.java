@@ -4,6 +4,7 @@ import com.example.aircar.domain.MemberSecurityDTO;
 import com.example.aircar.entity.Member;
 import com.example.aircar.repository.MemberRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @AllArgsConstructor
+@Log4j2
 public class MemberService  {
 
     private MemberRepository memberRepository;
@@ -36,9 +38,19 @@ public class MemberService  {
         }
     }
 
-    /*@Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Member> member = memberRepository.findByEmailAndClientName(email);
+
+    /*public String getNicknameByEmail(String email){
+        Optional<Member> memberItem = memberRepository.findByEmail(email);
+        log.info("memberItem : " + memberItem);
+        if(memberItem.isEmpty()){
+            throw new UsernameNotFoundException(email);
+        }
+        return memberItem.get().getNickname();
+    }*/
+
+
+   /* public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<Member> member = memberRepository.findByEmail(email);
 
         if (!member.isPresent()) {
             throw new UsernameNotFoundException(email);

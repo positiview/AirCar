@@ -40,7 +40,7 @@
                                     <li><a href="/member/login">회원가입</a></li>
                                 </ul>
                                 <ul class="member" sec:authorize="isAuthenticated()">
-                                    <li><span><a href="member/mypage">님</a> 안녕하세요</span></li>
+                                    <li><span><a href="member/mypage">[[${nickname}]]님</a> 안녕하세요</span></li>
                                     <li><a class="open-layerPopup">로그아웃</a></li>
                                     <li><a class="logout open-layerPopup"></a></li>
                                 </ul>
