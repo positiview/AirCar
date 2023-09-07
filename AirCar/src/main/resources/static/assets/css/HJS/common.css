@@ -28,7 +28,6 @@ button {
 }
 a {
   outline: none ;
-  text-decoration-line: none !important;
 
 }
 input,
@@ -458,6 +457,7 @@ html.scroll_hidden body {
   margin-left: 21px;
   margin-top: 14px;
 }
+
 .pc_wrap .sidebar > .inner .res_form .btn_edit {
   font-style: normal;
   font-size: 14px;
