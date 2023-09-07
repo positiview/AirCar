@@ -4,8 +4,32 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 
-<th:block layout:fragment="content">
 
+<th:block layout:fragment="content">
+        <th:block layout:fragment="script">
+            <script th:inline="javascript">
+                $(document).on("click", ".top_cont", function() {
+                    $("html, body").animate({ scrollTop: 0 }, 400);  });
+
+
+            </script>
+        </th:block>
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
 
     <body style="overflow: visible;" cz-shortcut-listen="true">
 <div id="root" style="height: 100%">
@@ -176,11 +200,7 @@
                     <div class="float_wrap">
                         <div class="inner">
                             <div class="chat_cont">
-                                <div class="chat_btn"><a> 상담하기</a></div>
-                                <ul class="chat_list">
-                                    <li class="chat"><a>채팅상담</a></li>
-                                    <li class="inquiry"><a>1:1문의 작성</a></li>
-                                </ul>
+                                <div class="chat_btn"><a href="/counseling"> 상담하기</a></div>
                             </div>
                             <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
                         </div>

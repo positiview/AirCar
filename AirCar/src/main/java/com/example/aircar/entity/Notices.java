@@ -40,6 +40,7 @@ public class Notices{
 
     private String notices_category;
 
+    @Column(length = 5000)
     private String notices_content;
 
     @Column(updatable = false)

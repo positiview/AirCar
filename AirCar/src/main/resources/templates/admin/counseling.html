@@ -33,9 +33,9 @@
             </li>
             <li class="has-submenu"><a href="/admin/reserve"><i class="fa fa-folder-open-o"></i> <span class="nav-label">예약관리</span></a>
             </li>
-            <li class="has-submenu"><a href="/admin/counseling"><i class="fa fa-crm"></i> <span class="nav-label">상담 관리</span></a>
+            <li class="has-submenu active"><a href="/admin/counseling"><i class="fa fa-crm"></i> <span class="nav-label">상담 관리</span></a>
             </li>
-            <li class="has-submenu active"><a href="/admin/notices"><i class="fa fa-bell-o"></i> <span class="nav-label">문의 관리</span></a>
+            <li class="has-submenu"><a href="/admin/notices"><i class="fa fa-bell-o"></i> <span class="nav-label">문의 관리</span></a>
             </li>
             <li class="has-submenu"><a href="/admin/event"><i class="fa fa-bell-o"></i> <span class="nav-label">이벤트 관리</span></a>
             </li>
@@ -89,7 +89,7 @@
 
     <div class="wraper container-fluid">
         <div class="page-title">
-            <h3 class="title inline">문의 관리</h3> <a class="btn btn-info m-b-5 m-l-10" href="/admin/noticesRegister"><i class="fa fa-pencil"></i> <span>문의 등록</span> </a>
+            <h3 class="title inline">상담 관리</h3> <a class="btn btn-info m-b-5 m-l-10" href="/admin/answer"><i class="fa fa-pencil"></i> <span>문의 답변</span> </a>
         </div>
 
 
@@ -104,30 +104,30 @@
                                 <thead>
                                 <tr>
                                     <th>등록번호</th>
-                                    <th>카테고리</th>
+                                    <th>이메일</th>
                                     <th>제목</th>
                                     <th>내용</th>
                                     <th>등록일</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="notices : ${noticesList}">
-                                        <td th:text="${notices.bno}"></td>
+                                    <tr th:each="counseling : ${counselingList}">
+                                        <td th:text="${counseling.bno}"></td>
 
-                                        <td th:text="${notices.notices_category}"></td>
+                                        <td th:text="${counseling.counseling_email}"></td>
 
                                         <td>
-                                            <a th:href="@{noticesView(bno=${notices.bno})}" th:text="${notices.notices_title}"></a>
+                                            <a th:href="@{counselingAnswer(bno=${counseling.bno})}" th:text="${counseling.counseling_title}"></a>
                                         </td>
 
-                                        <td th:text="${notices.notices_content}"
+                                        <td th:text="${counseling.counseling_content}"
                                             style="width:500px;
                                                       overflow:hidden;
                                                       text-overflow:ellipsis;
                                                       white-space:nowrap;
                                                       display:inline-block;"
                                         ></td>
-                                        <td th:text="${#temporals.format(notices.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                        <td th:text="${#temporals.format(counseling.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                     </tr>
 
                                 </tbody>

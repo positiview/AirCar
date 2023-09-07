@@ -5,7 +5,14 @@
       layout:decorate="~{layouts/layout1}">
 
 <th:block layout:fragment="content">
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function() {
+                $("html, body").animate({ scrollTop: 0 }, 400);  });
 
+
+        </script>
+    </th:block>
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">

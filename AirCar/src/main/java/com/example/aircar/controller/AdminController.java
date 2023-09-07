@@ -1,13 +1,15 @@
 package com.example.aircar.controller;
 
+import com.example.aircar.domain.CounselingDTO;
 import com.example.aircar.domain.NoticesDTO;
+import com.example.aircar.entity.Counseling;
 import com.example.aircar.entity.Notices;
+import com.example.aircar.repository.CounselingRepository;
 import com.example.aircar.repository.NoticesRepository;
-import com.example.aircar.service.NoticesService;
+import com.example.aircar.service.MailService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +21,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 @AllArgsConstructor
+@Log4j2
 public class AdminController {
 
+
     private final NoticesRepository noticesRepository;
-    private final NoticesService noticesService;
+    private final CounselingRepository counselingRepository;
+    private final MailService mailService;
 
 
     @GetMapping("/main")
@@ -35,24 +40,7 @@ public class AdminController {
         return "/admin/member";
     }
 
-    @GetMapping("/notices")
-    public String notices(Model model){
-        List<Notices> noticesList = noticesRepository.findAll();
-        model.addAttribute("noticesList", noticesList);
 
-        return "admin/notices";
-    }
-
-//        @GetMapping("/notices")
-//        public String list(Model model, String keyword,
-//                       @PageableDefault(size = 5, sort = "bno",
-//                               direction = Sort.Direction.DESC) Pageable pageable) {
-//
-//        model.addAttribute("list",
-//                noticesService.getNoticesList(pageable));
-//
-//            return "admin/notices";
-//    }
 
     @GetMapping("/pencil")
     public String pencil(){
@@ -71,6 +59,14 @@ public class AdminController {
 
     @GetMapping("/event")
     public String event(){ return "/admin/event"; }
+
+    @GetMapping("/notices")
+    public String notices(Model model){
+        List<Notices> noticesList = noticesRepository.findAll();
+        model.addAttribute("noticesList", noticesList);
+
+        return "admin/notices";
+    }
 
     @GetMapping("/noticesRegister")
     public String noticesRegister(){
@@ -154,6 +150,50 @@ public class AdminController {
 
         return "redirect:/admin/notices";
     }
+
+    @GetMapping("/counseling")
+    public String counseling(Model model){
+        List<Counseling> counselingList = counselingRepository.findAll();
+        model.addAttribute("counselingList", counselingList);
+
+        return "admin/counseling";
+    }
+
+
+    @GetMapping("/counselingAnswer")
+    public String counselingAnswer(Long bno, Model model){
+        Counseling counseling = counselingRepository.findByBno(bno);
+
+
+        model.addAttribute("counseling", counseling);
+
+        return "/admin/counseling_answer";
+    }
+
+    @PostMapping("/answer")
+    public String answer(CounselingDTO counselingDto) {
+        log.info("bno======================================" + counselingDto.getBno());
+        Counseling counseling = new Counseling();
+
+        counseling.setBno(counselingDto.getBno());
+
+        counseling.setCounseling_email(counselingDto.getCounseling_email());
+        counseling.setCounseling_title(counselingDto.getCounseling_title());
+        counseling.setCounseling_content(counselingDto.getCounseling_content());
+        counseling.setCounseling_type(counselingDto.getCounseling_type());
+        counseling.setCounseling_stage(counselingDto.getCounseling_stage());
+
+        counseling.setAnswer(counselingDto.getAnswer());
+
+        counselingRepository.save(counseling);
+
+        mailService.CreateMail(counselingDto);
+
+        return "redirect:/admin/counselingAnswer?bno=" + counseling.getBno();
+    }
+
+
+
 }
 
 

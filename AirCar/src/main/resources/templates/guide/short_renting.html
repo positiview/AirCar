@@ -5,6 +5,16 @@
       layout:decorate="~{layouts/layout1}">
 
 <th:block layout:fragment="content">
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function() {
+                $("html, body").animate({ scrollTop: 0 }, 400);  });
+
+
+        </script>
+    </th:block>
+
+
 
 
     <body style="overflow: visible;" cz-shortcut-listen="true">
