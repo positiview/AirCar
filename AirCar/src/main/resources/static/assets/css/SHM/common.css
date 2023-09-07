@@ -530,6 +530,17 @@ html.scroll_hidden body {
   position: sticky;
   top: 121px;
 }
+.pc_wrap .sidebar .btn_option_wrap{
+  display: flex;
+  flex-wrap: wrap;
+
+  vertical-align: baseline;
+  letter-spacing: -0.528px;
+  margin-bottom: 27px;
+  overflow-x: visible;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 .pc_wrap #sideScroll.type {
   overflow-y: visible;
@@ -1232,9 +1243,9 @@ html.scroll_hidden body {
   flex-wrap: wrap;
 }
 .pc_wrap .btn_option_wrap li {
-  /*margin-right: 5px;
-  margin-top: 5px;  체크 */
-  margin:5px;
+  margin-right: 5px;
+  margin-top: 5px;
+
 }
 .pc_wrap .btn_option_wrap li > a {
   display: flex;
