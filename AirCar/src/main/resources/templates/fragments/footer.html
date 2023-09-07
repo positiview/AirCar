@@ -45,6 +45,19 @@
     </div>
     </div>
     <!-- <script src="/skrentalApp/bundle.29105ee17c.js"></script> -->
+    <script type="text/javascript"
+            src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5e2irqy82j"></script>
+    <script>
+            var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(35.15595081595379, 129.0595294670249 ), // 잠실 롯데월드를 중심으로 하는 지도
+            zoom: 18
+        });
+
+            var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(35.15595081595379, 129.0595294670249),
+            map: map
+        });
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -84,5 +97,7 @@
         });
     </script>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+
+
 </th:block>
 </html>

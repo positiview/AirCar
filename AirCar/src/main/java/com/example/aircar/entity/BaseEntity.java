@@ -1,4 +1,4 @@
-/*
+
 package com.example.aircar.entity;
 
 import lombok.Getter;
@@ -21,4 +21,4 @@ public class BaseEntity extends BaseTimeEntity{
     @LastModifiedBy
     private String modifyBy;
 }
-*/
+

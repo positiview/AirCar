@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<link rel="stylesheet" href="../../../../../../../123/calendar.css">
-<link rel="stylesheet" href="../../../../../../../123/common.css">
-<link rel="stylesheet" href="../../../../../../../123/component.css">
-<link rel="stylesheet" href="../../../../../../../123/content.css">
-<link rel="stylesheet" href="../../../../../../../123/main.css">
-<link rel="stylesheet" href="../../../../../../../123/reset.css">
+<th:block layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
 <body>
 
     <body style="overflow: visible;" cz-shortcut-listen="true">
@@ -217,5 +223,5 @@
                     src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
     </body>
 </body>
-
+</th:block>
 </html>

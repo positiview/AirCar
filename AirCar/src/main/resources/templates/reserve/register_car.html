@@ -4,127 +4,163 @@
       layout:decorate="~{layouts/layout1}">
 
 <th:block layout:fragment="content">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/reset.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/animate.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap-reset.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/helper.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/style-responsive.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/style.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/common.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/calendar.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/component.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/main.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/content.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
+  <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // 첫 번째 선택 상자(차량 브랜드)를 채우는 AJAX 호출
+      $.ajax({
+        url: '/getCarBrands',  // 서버에서 브랜드 목록을 가져오는 엔드포인트 URL
+        type: 'GET',
+        success: function(data) {
+          var carBrandSelect = $('#carBrand');
+          carBrandSelect.empty();  // 선택 상자 비우기
+          // carBrandSelect.append($('<option>', { value: '', text: '브랜드 선택' }));
+          $.each(data, function(index, brand) {
+            carBrandSelect.append($('<option>', { value: brand, text: brand }));
+          });
+        }
+      });
+
+      // 첫 번째 선택 상자 값 변경 시 두 번째 선택 상자 업데이트
+      $('#carBrand').on('change', function() {
+        var selectedBrandId = $(this).val();
+
+          // 두 번째 선택 상자(차량 모델)를 채우는 AJAX 호출
+          $.ajax({
+            url: '/getCarModels?brandName=' + selectedBrandId,  // 선택한 브랜드에 해당하는 모델 목록을 가져오는 엔드포인트 URL
+            type: 'GET',
+            success: function(data) {
+              var carModelSelect = $('#carModel');
+              carModelSelect.empty();  // 선택 상자 비우기
+              // carModelSelect.append($('<option>', { value: '', text: '모델 선택' }));
+              $.each(data, function(index, model) {
+                //carModelSelect.append($('<option>', { value: model.carName, text: model.carName, data: model.carImg }));
+                carModelSelect.append("<option value='" + model.carName + "'" + " data-img='" + model.carImg + "'>" + model.carName + "</option>");
+              });
+            }
+          });
+      });
+
+      $("#carModel").on("change", function(){
+        var index = $("#carModel option").index($("#carModel option:selected"));
+        var carImg = $(this).children().eq(index).data("img");
+        //$('#carImg').attr("src", "../../static/assets/upload/2023/09/05/" + carImg);
+        $('#carImg').attr("src", "/upload/1ec46a58-c9da-4b6e-b81c-0732bd498e54_@recommend01_1.jpg");
+      });
+      function OnChange() {
+        var selectedCarModel = $('#carModel').val();
+
+        $.ajax({
+          url: '/getImageUrl?carModel=' + selectedCarModel,
+          type: 'GET',
+          success: function(imageUrl) {
+            $('#carImg').attr('src', imageUrl);
+          }
+        });
+      }
+
+    });
+  </script>
+
+
+
   <div class="row" style="height: 785px">
     <div class="col-md-12">
 
       <div class="panel panel-default">
         <div class="panel-body">
 
-          <form class="form-horizontal" role="form">
+          <form class="form-horizontal"  action="/register_car" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <div class="form-group">
-              <label class="col-md-2 control-label">* 브랜드</label>
+              <label class="col-md-2 control-label" for="carBrand">* 브랜드</label>
               <div class="col-md-4">
-                <select class="form-control">
-                  <option>현대</option>
-                  <option>기아</option>
-                  <option>벤츠</option>
-                  <option>BMW</option>
-                  <option>아우디</option>
-                  <option>르노</option>
-                  <option>제네시스</option>
-                  <option>르노</option>
-                  <option>포르쉐</option>
-                  <option>Jeep</option>
-                  <option>테슬라</option>
-                  <option>KG모빌리티</option>
-                  <option>폭스바겐</option>
-                  <option>쉐보레</option>
+                <select class="form-control" name="brand" id="carBrand">
+                  <option value="1">브랜드</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-2 control-label">* 차종</label>
+              <label class="col-md-2 control-label" for="carModel">* 차종</label>
               <div class="col-md-4">
-                <select class="form-control">
-                  <option>쏘나타</option>
-                  <option>그랜저</option>
-                  <option>스파크</option>
-                  <option>모닝</option>
-                  <option>레이</option>
-                  <option>K3</option>
-                  <option>캐스퍼</option>
-                  <option>아반떼</option>
-                  <option>니로</option>
-                  <option>니로 플러스</option>
-                  <option>제타</option>
-                  <option>EV6</option>
-                  <option>아이오닉</option>
-                  <option>ID.4</option>
-                  <option>K5</option>
-                  <option>아이오닉6</option>
-                  <option>셀토스</option>
-                  <option>A4</option>
-                  <option>베뉴</option>
-                  <option>티볼리</option>
-                  <option>스포티지</option>
-                  <option>Q3</option>
-                  <option>모델3</option>
-                  <option>모델Y</option>
-                  <option>투싼</option>
-                  <option>GV60</option>
-                  <option>토레스</option>
-                  <option>Q4 e-tron</option>
-                  <option>카니발</option>
-                  <option>GV70</option>
-                  <option>쏘렌토</option>
-                  <option>스타리아</option>
-                  <option>K8</option>
-                  <option>G70</option>
-                  <option>iX3</option>
-                  <option>A6</option>
-                  <option>5시리즈</option>
-                  <option>랭글러</option>
-                  <option>타이칸</option>
+                <select class="form-control" name="name" id="carModel" >
+                  <option value="2"></option>
                 </select>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">* 모델명(한글)</label>
-              <div class="col-md-10">
-                <input type="text" class="form-control">
+            <div class="form-group" id="fuel" >
+              <label class="col-md-2 control-label">* 연료 종류</label>
+              <div class="col-md-4">
+                <select class="form-control" name="fuel">
+                  <option>전기차</option>
+                  <option>휘발유</option>
+                  <option>경유</option>
+                  <option>LPG</option>
+                </select>
               </div>
             </div>
-            <div class="form-group">
+
+            <div class="form-group" >
               <label class="col-md-2 control-label">* 색상</label>
               <div class="col-md-10">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="color" style="width: 470px;">
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-2 control-label">* 가격(SKU)</label>
               <div class="col-md-10">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="cost"  style="width: 470px;">
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-2 control-label">* 연식</label>
               <div class="col-md-10">
-                <input type="number" class="form-control">
+                <input type="number" class="form-control" name="year"  style="width: 470px;">
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-2 control-label">* 옵션</label>
               <div class="col-md-10">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="options"  style="width: 470px;">
               </div>
+            </div>
+
+            <div  style="width: 719px;height: 279px;border-radius:4px; border: 1px solid #ccc;position: absolute;bottom: 466px;left: 843px;">
+              <img id="carImg"  src="">
             </div>
 
             <div class="form-group">
               <label class="col-md-2 control-label">* 승차인원</label>
               <div class="col-md-10">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="people">
               </div>
             </div>
+
             <div class="form-group">
               <label class="col-md-2 control-label">* 운전자나이(이상)</label>
               <div class="col-md-10">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="driverAge">
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-2 control-label">* 운전경력(이상)</label>
               <div class="col-md-10">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="driverCareer">
               </div>
             </div>
 
@@ -133,19 +169,19 @@
             <div class="form-group">
               <label class="col-md-2 control-label">* 차량 하자</label>
               <div class="col-md-10">
-                <textarea class="form-control">검색어1,검색어2,검색어3,검색어4 (최대80자)</textarea>
+                <textarea class="form-control" name="defect">검색어1,검색어2,검색어3,검색어4 (최대80자)</textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-2 control-label">* 사용자분들께</label>
               <div class="col-md-10">
-                <textarea class="form-control">상품에 대한 요약 설명</textarea>
+                <textarea class="form-control" name="content">상품에 대한 요약 설명</textarea>
               </div>
             </div>
 
             <div class="border_top p-t-30  text-center">
               <button type="button" class="btn btn-default w-md m-b-5">취소</button>
-              <button type="button" class="btn btn-info w-md m-b-5">등록</button>
+              <button type="submit" class="btn btn-info w-md m-b-5">등록</button>
               <!--수정버튼
               <button type="button" class="btn btn-warning w-md m-b-5">수정</button>
               -->
