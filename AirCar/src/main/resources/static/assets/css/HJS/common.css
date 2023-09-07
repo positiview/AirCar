@@ -20,6 +20,7 @@ textarea,
 button {
   color: #50555c;
   outline: none;
+
 }
 ::placeholder {
   color: #d4d7dc;
@@ -28,6 +29,7 @@ button {
 a {
   outline: none ;
   text-decoration-line: none !important;
+
 }
 input,
 textarea {
@@ -430,7 +432,7 @@ html.scroll_hidden body {
   height: 20px;
   background-size: 20px;
   margin-right: 10px;
-  background-image: url("../../img/ico_place.png");
+  background-image: url("../../../img/ico_place.png");
   margin-left: 14px;
 }
 .pc_wrap .sidebar > .inner .res_form .cont2 > a:before {
@@ -441,7 +443,7 @@ html.scroll_hidden body {
   height: 20px;
   background-size: 20px;
   margin-right: 10px;
-  background-image: url(../../img/ico_date_24x24.png);
+  background-image: url(../../../img/ico_date_24x24.png);
   margin-left: 21px;
   top: 7px;
 }
@@ -452,7 +454,7 @@ html.scroll_hidden body {
   height: 20px;
   background-size: 20px;
   margin-right: 10px;
-  background-image: url(../../img/ico_date_24x24.png);
+  background-image: url(../../../img/ico_date_24x24.png);
   margin-left: 21px;
   margin-top: 14px;
 }
@@ -465,13 +467,13 @@ html.scroll_hidden body {
   padding: 5px 0;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_place:before {
-  background: url("../../img/ico_place.png") no-repeat center / 20px;
+  background: url("../../../img/ico_place.png") no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_date:before {
-  background: url("../../img/ico_date_24x24.png") no-repeat center / 20px;
+  background: url("../../../img/ico_date_24x24.png") no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form .ico_car:before {
-  background: url(../img/common/ico_car_24x24.png) no-repeat center / 20px;
+  background: url(../../../img/common/ico_car_24x24.png) no-repeat center / 20px;
 }
 .pc_wrap .sidebar > .inner .res_form i {
   display: block;
@@ -1852,7 +1854,7 @@ html.scroll_hidden body {
 .pc_wrap .form_row.error input,
 .form_row.error input,
 .pc_wrap .form_row.error textarea {
-  border-color: #f71010;
+  /*border-color: #f71010;*/
 } /* 2023-05-22 textarea error시 border-color 추가 */
 .pc_wrap .form_row.error .ico_error {
   display: block;
@@ -2173,7 +2175,7 @@ html.scroll_hidden body {
   color: #50555c;
 }
 .pc_wrap .btn_group .btn.type01 {
-  background: url('../../img/btn_bg.jpg') no-repeat center / cover;
+  background: url('../../../img/btn_bg.jpg') no-repeat center / cover;
   background-position: 10% center;
   color: #fff;
   border: 0;

@@ -1,132 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-                layout:decorate="~{layouts/layout1}">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 
 <th:block layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
     <style>
-        input::placeholder{
+        input::placeholder {
             color: black;
         }
     </style>
-        <div class="container">
-            <div class="inner">
-                <div class="contents">
-                    <div class="banner_hot">
-                        <div class="test">
-                                <li><a href="#"><img src="img/banner_hot_01.png"
-                                                     alt="제주 럭셔리 차박 빈손으로 떠나자"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="dill_box_type">
-                        <div class="dill_box_wrap">
-                            <div class="top_cont">
-                                <div class="main_ctext"><img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_kia.svg"
-                                                             alt="기아자동차" class="car_logo"><span class="car_enter">기아자동차</span><em
-                                        class="c_prd_name">모닝</em></div>
-                                <div class="img_area"><img
-                                        src="img/morning.png"
-                                        alt=""></div>
-                            </div>
-                            <ul class="dill_list_box">
-                                <li class="list_item" data-value="2300000000225_0"><a class="dill_list">
-                                    <div class="car_name">
-                                        <div class="tag_box"><em class="gray">제휴사차량</em></div>
-                                        <p class="main_name">[제휴사차량] 모닝 1.0 가솔린</p><span
-                                            class="sb_text">2021년식 · 5인승</span>
-                                    </div>
-                                    <div class="price_wrap">
-                                        <div class="price_info">
-                                            <div class="rate_box">회원할인</div>
-                                            <div class="price_num"><span
-                                                    class="price_regular">403,500원</span><span
-                                                    class="price_sale">102,570원</span><em
-                                                    class="rate">75%</em></div>
-                                        </div>
-                                        <div class="btn_group"><button class="btn type01"
-                                                                    >예약</button>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="dill_box_type">
-                        <div class="dill_box_wrap">
-                            <div class="top_cont">
-                                <div class="main_ctext"><img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_genesis.svg"
-                                                             alt="제네시스" class="car_logo"><span class="car_enter">제네시스</span><em
-                                        class="c_prd_name">G90 </em></div>
-                                <div class="img_area"><img
-                                        src="img/g90.png"
-                                        alt=""></div>
-                            </div>
-                            <ul class="dill_list_box">
-                                <li class="list_item end" data-value="HD35010001MR_93"><a
-                                        class="dill_list soldout">
-                                    <div class="car_name">
-                                        <p class="main_name">G90 3.5 가솔린 AWD</p><span
-                                            class="sb_text">2022년식 · 5인승 · 상시4륜구동</span>
-                                    </div>
-                                    <div class="price_wrap">
-                                        <div class="price_info">
-                                            <div class="rate_box">회원할인</div>
-                                            <div class="price_num"><span
-                                                    class="price_regular">1,438,200원</span><span
-                                                    class="price_sale">365,610원</span><em
-                                                    class="rate">75%</em></div>
-                                        </div>
-                                        <div class="btn_group"><button class="btn type01">예약마감</button>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="dill_box_type">
-                        <div class="dill_box_wrap">
-                            <div class="top_cont">
-                                <div class="main_ctext"><img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_porsche.svg"
-                                                             alt="포르쉐" class="car_logo"><span class="car_enter">포르쉐</span><em
-                                        class="c_prd_name">타이칸</em></div>
-                                <div class="img_area"><img
-                                        src="img/tikan.png"
-                                        alt=""></div>
-                            </div>
-                            <ul class="dill_list_box">
-                                <li class="list_item" data-value="PR01010001MC_94"><a class="dill_list">
-                                    <div class="car_name">
-                                        <div class="tag_box"><em class="blu"
-                                                                 style="margin-right: 3px;">프리미엄전기차</em><em
-                                                class="green">충전료 무료</em></div>
-                                        <p class="main_name">타이칸</p><span class="sb_text">22~23년식 · 5인승
-                                                    · 만 26세이상</span>
-                                    </div>
-                                    <div class="price_wrap">
-                                        <div class="price_info">
-                                            <div class="rate_box">회원할인</div>
-                                            <div class="price_num"><span
-                                                    class="price_regular">1,661,300원</span><span
-                                                    class="price_sale">596,760원</span><em
-                                                    class="rate">64%</em></div>
-                                        </div>
-                                        <div class="btn_group"><button class="btn type01">예약</button>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            </ul>
-                        </div>
+
+    <div class="container">
+        <div class="inner">
+            <div class="contents">
+                <div class="banner_hot">
+                    <div class="test">
+                        <li><a href="#"><img src="img/banner_hot_01.png"
+                                             alt="제주 럭셔리 차박 빈손으로 떠나자"></a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="sidebar">
-                    <div id="sideScroll" class="inner">
-                        <div class="res_form">
-                            <h2 class="title">선택한 여정</h2>
-                            <div class="cont"><a class="ico_place" style="font-size: 16px;  color: black; padding-left: 7px" href="/map">부산지점</a></div>
-                            <div class="cont2"     style="border-bottom: 1px solid #efefef;"><a class="ico_place2" > <input id="datepicker1" type="text" placeholder="시작일" style="border: none;padding-left: 0;margin-bottom: 11px;padding-top: 21px;padding-bottom: 8px;" ></a></div>
-                            <div class="cont3"><a class="ico_place3" > <input id="datepicker2" type="text" placeholder="반납일" style="border: none;padding-left: 0;margin-bottom: 11px;" ></a></div>
-                            <div class="btn_group"><button class="btn type02">재검색</button></div>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <div class="dill_box_type" th:each="car : ${carInfo}">
+                    <div class="dill_box_wrap">
+                        <div class="top_cont">
+                            <div class="main_ctext"><img th:src="@{'assets/upload/'+${car.brandImg}}" alt="기아자동차" class="car_logo"><span class="car_enter">
+                                <th:block th:text="${car.brand}"></th:block></span><em class="c_prd_name">
+                                <th:block th:text="${car.name}"></th:block>
+                            </em></div>
+                            <div class="img_area"><img th:src="@{'assets/upload/'+${car.carImg}}"></th:src>
+<!--                            <div class="img_area"><img th:src="@{'/assets/car/G90.png'}"></th:src>-->
+                            </div>
+                        </div>
+                        <ul class="dill_list_box">
+                            <li class="list_item" data-value="2300000000225_0"><a class="dill_list"
+                                                                                  th:href="@{car_detail(carNum=${car.car_num})}">
+                                <div class="car_name">
+                                    <div class="tag_box"><em class="gray">개인 차량</em></div>
+                                    <p class="main_name">[부산지점]
+                                        <th:block th:text="${car.name}"></th:block>
+                                        ·
+                                        <th:block th:text="${car.fuel}"></th:block>
+                                    <div><span class="sb_text"><th:block th:text="${car.year}"></th:block>년식 · <th:block
+                                            th:text="${car.people}"></th:block>인승</span></div>
+                                </div>
+                                <div class="price_wrap">
+                                    <div class="price_info">
+                                        <div class="rate_box">회원할인</div>
+                                        <div class="price_num"><span
+                                                class="price_regular">403,500원</span><span
+                                                class="price_sale"><th:block
+                                                th:text="${car.cost}"></th:block>원</span><em
+                                                class="rate">75%</em></div>
+                                    </div>
+                                    <div class="btn_group">
+                                        <button class="btn type01"
+                                                style="background-image: url(/img/btn_bg.jpg);line-height: 38px;"
+                                        >예약
+                                        </button>
+                                    </div>
+                                </div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="sidebar">
+                <div id="sideScroll" class="inner">
+                    <div class="res_form">
+                        <h2 class="title">선택한 여정</h2>
+                        <div class="cont"><a class="ico_place" style="font-size: 16px;  color: black; padding-left: 7px"
+                                             href="/map">부산지점</a></div>
+                        <div class="cont2" style="border-bottom: 1px solid #efefef;"><a class="ico_place2"> <input
+                                id="datepicker1" type="text" placeholder="시작일"
+                                style="border: none;padding-left: 0;margin-bottom: 11px;padding-top: 21px;padding-bottom: 8px;"></a>
+                        </div>
+                        <div class="cont3"><a class="ico_place3"> <input id="datepicker2" type="text" placeholder="반납일"
+                                                                         style="border: none;padding-left: 0;margin-bottom: 11px;"></a>
+                        </div>
+                        <div class="btn_group">
+                            <button class="btn type02">재검색</button>
+                        </div>
                     </div>
                 </div>
                 <div class="float_wrap">
@@ -156,5 +126,7 @@
         </div>
 
         </body>
+
+    </div>
 </th:block>
 </html>

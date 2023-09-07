@@ -2144,11 +2144,8 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-<<<<<<< HEAD
-  background: url(../img/contents/ico_mask.png) no-repeat 0 50%;
-=======
-  background: url(../../img/ico_mask.png) no-repeat 0 50%;
->>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
+  background: url(../../../img/ico_mask.png) no-repeat 0 50%;
+  background: url(../../../img/ico_mask.png) no-repeat 0 50%;
   background-size: 100%;
   vertical-align: middle;
 }
@@ -2198,11 +2195,8 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-<<<<<<< HEAD
-  background: url(../img/common/ico_info.png) no-repeat 0 50%;
-=======
-  background: url(../../img/ico_info.png) no-repeat 0 50%;
->>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
+  background: url(../../../img/ico_info.png) no-repeat 0 50%;
+  background: url(../../../img/ico_info.png) no-repeat 0 50%;
   background-size: 100%;
   vertical-align: middle;
 }
@@ -2320,27 +2314,24 @@
   margin: -2px 8px 0 0;
 }
 .pc_wrap .rental_area .rental_sel li.place:before {
-<<<<<<< HEAD
-  background: url(ico_place_24x24.png) no-repeat 0 50%;
+  background: url(../../../img/ico_place_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.date:before {
-  background: url(ico_date_24x24.png) no-repeat 0 50%;
+  background: url(../../../img/ico_date_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.brand:before {
-  background: url(../img/common/ico_car_24x24.png) no-repeat 0 50%;
-=======
-  background: url(../../img/ico_place.png) no-repeat 0 50%;
+  background: url(../../../img/ico_car_24x24.png) no-repeat 0 50%;
+  background: url(../../../img/ico_place.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.date:before {
-  background: url(../../img/ico_date_24x24.png) no-repeat 0 50%;
+  background: url(../../../img/ico_date_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_sel li.brand:before {
-  background: url(../../img/ico_car_24x24.png) no-repeat 0 50%;
->>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
+  background: url(../../../img/ico_car_24x24.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .rental_area .rental_price {
@@ -5383,6 +5374,8 @@
   font-weight: 700;
   line-height: 28px;
   text-indent: -12px;
+  position: relative;
+  right: 12px;
 }
 .pc_wrap .insur_tab li a .tit::before {
   display: inline-block;
