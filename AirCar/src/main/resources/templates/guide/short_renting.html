@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function() {
+                $("html, body").animate({ scrollTop: 0 }, 400);  });
+
+
+        </script>
+    </th:block>
+
+
+
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+<div id="root" style="height: 100%">
+    <div class="pc_wrap" style="">
+        <div class="wrap sub_wrap">
+            <div class="container">
+                <div class="inner">
+                    <div class="contents use_wrap alliance_wrap">
+                        <div class="title_wrap"><h2 class="title_30">단기 렌터카</h2></div>
+                        <div class="tab_wrap mb40">
+                            <ul class="basic_tab">
+                                <li class="on"><a href="/short_renting">단기대여안내</a></li>
+                                <li class=""><a href="/long_personal">장기서비스안내(개인)</a></li>
+                                <li class=""><a href="/long_corporation">장기서비스안내(법인)</a></li>
+                            </ul>
+                        </div>
+                        <div class="title_wrap">
+                            <div><p class="title_18">대여방법 및 절차</p><span class="title_14">SK렌터카 사용예약을 위해 고객님께서는 아래 절차대로 진행해 주세요</span>
+                            </div>
+                        </div>
+                        <div class="center_img"><img src="img/img_rental_proc01.png"
+                                                     alt="대여방법 및 절차"></div>
+                        <div class="ex_txt">
+                            <ul class="dot_list">
+                                <li>온라인으로 예약이 어려우신 경우 지점을 방문하시거나 전화로 예약이 가능합니다(고객센터 : 1599-9111)</li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <p class="title_18">대여자격</p>
+                        <p class="title_14 txt_gray">도로교통법상 유효한 운전면허증 소지자 (제주/내륙 예약시)</p>
+                        <p class="title_16 mt20">1. 한국인(외국영주권자 포함)</p>
+                        <div class="table">
+                            <table>
+                                <caption></caption>
+                                <colgroup>
+                                    <col width="*">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>이용가능 차종</th>
+                                    <th>나이</th>
+                                    <th>면허증</th>
+                                    <th>운전경력</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>9인승 이하 내연차,<br>전기차(프리미엄 전기차 제외)</td>
+                                    <td>만 21세 이상</td>
+                                    <td>2종보통 이상</td>
+                                    <td>1년 이상</td>
+                                </tr>
+                                <tr>
+                                    <td>수입 내연차, 프리미엄 전기차</td>
+                                    <td rowspan="2">만 26세 이상</td>
+                                    <td>2종보통 이상</td>
+                                    <td rowspan="2">3년 이상</td>
+                                </tr>
+                                <tr>
+                                    <td>11인승 이상 내연차</td>
+                                    <td>1종보통 이상</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <ul class="dot_list">
+                                <li>운전경력 인정기준 : 현 유효한 면허증의 면허취득일 기준(유효한 면허 이전의 모든 면허 경력 인정 불가)</li>
+                            </ul>
+                        </div>
+                        <p class="title_16 mt40">2. 외국인</p>
+                        <div class="table">
+                            <table>
+                                <caption>대여자격</caption>
+                                <colgroup>
+                                    <col width="30%">
+                                    <col width="35%">
+                                    <col width="35%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>승차 인원 9명 이하</th>
+                                    <th>승차 인원 10명 이상</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>라이선스</td>
+                                    <td>
+                                        <ul>
+                                            <li>① 교환된 한국 운전면허증 일반2종 이상</li>
+                                            <li>② 국제운전면허증(IDP) Class "B"</li>
+                                            <li>③ 주한미군 자동차운전면허증</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>① 교환된 한국 운전면허증 일반1종 이상</li>
+                                            <li>② 국제운전면허증(IDP) Class "D"</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>운전자 연령</td>
+                                    <td>만21세 이상</td>
+                                    <td>만26세 이상</td>
+                                </tr>
+                                <tr>
+                                    <td>세부사항</td>
+                                    <td>
+                                        <ul>
+                                            <li>1. IDP : 제네바 또는 비엔나협약 회원국에서 발생한 “B” 유형 스탬프 날인 필요</li>
+                                            <li>2. 주한미군 자가용 운전면허증 (승차인원 9 명 이하 차량만 대여가능)</li>
+                                            <li>3. 한국운전면허증 <br>- 국내 취득 면허 : 발급 후 1 년 이상<br>- 국내 교환 면허 : 운전경력 조항 면제<br>(*별도서류
+                                                확인 필수)
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>1. IDP : 제네바 또는 비엔나협약 회원국에서 발생한 “D”유형 스탬프 날인 필요</li>
+                                            <li>2. 한국운전면허증 : 취득 및 교환 모두 발급 후 3년 이상</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <ul class="dot_list">
+                                <li>외국 운전면허증에서 한국 운전면허증으로 교환된 면허는 발급 후 1 년 조항 면제 (9 인 이하 차종의 경우) 됩니다.<br>(*한국 운전면허 경력 면제
+                                    시 : 본국 운전면허증(로컬면허증)의 취득기간이 확인되는 대사관 확인 문서 or 아포스티유 인증서 확인)
+                                </li>
+                                <li class="f_700">주한미군 자가용 운전면허증 소지자는 최대 9인승 이하 차량만 대여 가능 합니다.</li>
+                                <li>국제 운전면허증의 유효기간과 별개로 국제 조약 및 관련 법령에 따라 해당 국가에 마지막 입국한날로부터 1년만 유효 합니다.</li>
+                                <li>국제운전면허증/여권/본국 운전면허증 서류 모두 영문 성/이름이 일치하지 않을 경우 무효 처리 될 수 있습니다.</li>
+                                <li>국제운전면허증으로 운전할 경우 운전면허증과 여권을 지참하지 않으면 무면허 운전으로 처벌받을 수 있으므로 운전 중에도 유효 서류 지참은 필수 입니다.
+                                </li>
+                                <li class="txt_orange">한국은 IDP(International Driving Permit) 국제운전면허증만 유효 (IDL 불가) 합니다.
+                                </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="table t_left"><p class="title_18">대여 중 사고시 보상범위</p>
+                            <table>
+                                <colgroup>
+                                    <col width="219px">
+                                </colgroup>
+                                <caption>대여자격</caption>
+                                <tbody>
+                                <tr>
+                                    <th>대인</th>
+                                    <td>무한대</td>
+                                </tr>
+                                <tr>
+                                    <th>대물</th>
+                                    <td>사고 건당 2천만원 한도</td>
+                                </tr>
+                                <tr>
+                                    <th>자손</th>
+                                    <td>
+                                        <ul>
+                                            <li>∙ 인당 1천5백만원 한도</li>
+                                            <li>∙ 사고 건당 1억5천만원 한도</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="ex_txt">
+                                <ul class="dot_list">
+                                    <li>계약서상 등록되지 않은 운전자는 종합보험혜택을 받으실 수 없어요.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="title_18">보험(차량손해면책제도)</p><span class="title_14">보험 가입 시 고객님의 귀책으로 인한 자차사고에 대해 보상을 받을 수 있는 제도예요.</span>
+                        <div class="table"><span class="desc">고객부담금 기준</span>
+                            <table>
+                                <caption>차량손해면책제도</caption>
+                                <colgroup>
+                                    <col width="100px">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>국산차량</th>
+                                    <th>수입차량</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td rowspan="3">내륙</td>
+                                    <td>일반자차 : 30만원</td>
+                                    <td rowspan="3">일반자차 : 50만원</td>
+                                </tr>
+                                <tr>
+                                    <td>PLUS 자차 : 10만원</td>
+                                </tr>
+                                <tr>
+                                    <td>SSUPER 자차 : 5만원</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">제주</td>
+                                    <td colspan="2">선택안함 : 전액</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">일반 자차 : 30만원</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">완전 자차 : 0원</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="ex_txt">
+                                <ul class="dot_list">
+                                    <li>단, 대여차량 계약 시 선택한 보험 종류에 따라 고객 부담금(면책금)이 차등 적용돼요.</li>
+                                    <li>수입차의 경우 보험 가입 시 내륙은 일반자차만 선택 가능하며 제주는 완전자차, 일반자차 모두 선택 가능해요.</li>
+                                    <li>보험을 선택하지 않으면 사고 시 모든 비용을 부담해야 해요.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="title_18">사고처리</p>
+                        <p class="title_14">예기치 못한 사고발생! 당황하지 마세요.</p>
+                        <div class="box_cont service">
+                            <ul>
+                                <li>ONE STOP 서비스</li>
+                                <li>사고처리 접수<em><i><img src="../../static/pc_assets/img/contents/ico_tel.png"
+                                                       alt=""></i>1599-9111</em></li>
+                                <li><i><img src="../../static/pc_assets/img/contents/ico_alert.png " alt=""></i>긴급출동 서비스</li>
+                            </ul>
+                        </div>
+                        <div class="ex_txt"><p>사고 및 고장 발생 시 사고접수(☎️1599-9111) 전화주세요.</p>
+                            <p>고객님의 안전을 위해 사고처리 전문가가 신속하게 상담해드릴게요. 단 교통법규 위반, 음주운전 등으로 인해<br>사고발생 시 보상의 범위가 좁혀질 수 있어요.
+                            </p></div>
+                        <hr>
+                        <p class="title_18">대여 시 유의사항</p>
+                        <div class="box_cont">
+                            <ul class="notes_list">
+                                <li><span class="ico" style="background-image: url(img/ico_notes01.png);"></span><span class="txt">실내금연</span></li>
+                                <li><span class="ico" style="background-image: url(img/ico_notes02.png);"></span><span class="txt">음주운전 금지</span></li>
+                                <li><span class="ico" style="background-image: url(img/ico_notes03.png);"></span><span class="txt">안전벨트 필수</span></li>
+                                <li><span class="ico" style="background-image: url(img/ico_notes04.png);"></span><span class="txt">반려동물 동승 시<br> 이동장 이용 필수</span></li>
+                                <li><span class="ico" style="background-image: url(img/ico_notes05.png);"></span><span class="txt">이용시간 연장 시<br> 사전 연락 필수</span></li>
+                            </ul>
+                        </div>
+                        <div class="ex_txt">
+                            <ul class="dot_list">
+                                <li>대여기간이 24시간 미만인 경우 할인혜택이 적용되지 않습니다</li>
+                                <li>예약자 본인 명의 제휴카드로만 할인 가능하며, 차량 예약 및 인수 시 제휴카드를 반드시 지참해 주시기 바랍니다</li>
+                                <li>대여 당일 차량인수 시 운전면허증 지참은 필수입니다.(도로교통법상 유효한 운전면허소지자)</li>
+                                <li>외국인의 경우, 국제운전면허증(B등급이상) 소지자에 한해 9인승 이하 차량만 대여 가능합니다</li>
+                                <li>제2운전자 등록은 예약자 외 2인에 한해 추가등록 가능합니다</li>
+                                <li>취소 및 위약규정<p>대여시간 72시간 이내 취소 시 순수차량 대여요금의 20% 위약금이 발생합니다.<br>대여시간 이후(NO-Show) 취소시
+                                    순수차량 대여요금의 30% 위약금이 발생합니다.<br>대여시간에서 2시간 경과시 예약이 임의로 취소됩니다.</p></li>
+                                <li>사전 동의 없이 임의로 연장해 사용하실 경우 차량 손해에 대해 보상 및 면책을 받지 못할 수 있으니,<br> 이용 연장 시 반드시 약속된 반납 시간
+                                    이전에 대여지점으로 연락바랍니다
+                                </li>
+                                <li>금지행위(음주/무면허운전 등)으로 인한 사고 발생 시 보험 혜택 적용이 불가합니다</li>
+                                <li>반려동물 동승(이동장 필수) 및 낚시용품 소지 시 크리닝비용(보험미적용/실비청구)이 추가 발생할 수 있습니다</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="inner scroll_p">
+                            <div class="res_form">
+                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
+                                    <button class="inland_btn">내륙 예약하기</button>
+                                </div>
+                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
+                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
+                                    <div class="carousel">
+                                        <ul class="btn_option_wrap small">
+                                            <li class="on"><a>전체</a></li>
+                                            <li class=""><a>전기차</a></li>
+                                            <li class=""><a>수입전기차</a></li>
+                                            <li class=""><a>제주 전기차 차박</a></li>
+                                            <li class=""><a>경형/소형</a></li>
+                                            <li class=""><a>중형/대형</a></li>
+                                            <li class=""><a>SUV</a></li>
+                                            <li class=""><a>승합</a></li>
+                                            <li class=""><a>수입</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btn_group">
+                                    <button class="btn type01">차량 조회하고 예약하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float_wrap">
+                        <div class="inner">
+                            <div class="chat_cont">
+                                <div class="chat_btn"><a> 상담하기</a></div>
+                                <ul class="chat_list">
+                                    <li class="chat"><a>채팅상담</a></li>
+                                    <li class="inquiry"><a>1:1문의 작성</a></li>
+                                </ul>
+                            </div>
+                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+            </div>
+    </div>
+</div>
+    <script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    <script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+            src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+</div>
+    </body>
+</th:block>
+</html>
