@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+    <th:block layout:fragment="content">
+        <th:block layout:fragment="script">
+            <script th:inline="javascript">
+                $(document).on("click", ".top_cont", function() {
+                    $("html, body").animate({ scrollTop: 0 }, 400);  });
+
+
+            </script>
+        </th:block>
+
+<div id="root" style="height: 100%">
+    <div class="pc_wrap" style="">
+        <div class="wrap sub_wrap">
+
+            <div class="container">
+                <div class="inner">
+                    <div class="contents use_wrap ">
+                        <div class="title_wrap"><h2 class="title_30">기타안내</h2></div>
+                        <div class="tab_wrap mb40">
+                            <ul class="basic_tab">
+                                <li class=""><a href="/discount">제휴할인</a></li>
+                                <li class="on"><a href="/electric">전기차안내</a></li>
+                                <li class=""><a href="/insurance">보험대차안내</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub_tab">
+                        </div>
+                        <div class="tab_list"><p class="title_24"></p>
+                            <div class="btn_group brochure"><a>
+                            </a></div>
+                            <p class="title_18 mt60">고급스러운 수입차</p>
+                            <ul class="brochure_list">
+                                <li>
+                                    <div class="brochure_top"><img src="img/@polestar2.png" alt="폴스타2">
+                                        <dl>
+                                            <dt>POLESTAR 2</dt>
+                                            <dd>Single Motor<br>안전의 대명사, 스웨덴 전기차</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>폴스타2</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>417km (78.0kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>5,490만원 (싱글모터)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>볼보 31개소 서비스를 통해 정비 가능 수입 EV 중 유일하게 보조금 100%지원</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/@TESLA3_200x120.png"
+                                                                   alt="테슬라 모델3">
+                                        <dl>
+                                            <dt>TESLA Model 3</dt>
+                                            <dd>Long Range<br>자율주행의 독보적 선구자</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>테슬라3</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>528km (85.0kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>6,159~7,079만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>오토파일럿 기능 기본 탑재, 수퍼차저 전국 39개소 (40분 내 완충)</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/@TESLAY_200x120.png"
+                                                                   alt="테슬라 모델Y">
+                                        <dl>
+                                            <dt>TESLA Model Y</dt>
+                                            <dd>Long Range<br>SUV로 경험하는 테슬라</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>폴스타2</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>511km (85.0kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>8,189만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>실용성을 높인 테슬라 차량, OTA를 통한 소프트웨어 업그레이드</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p class="title_18 mt60">트렌디한 감성</p>
+                            <ul class="brochure_list">
+                                <li>
+                                    <div class="brochure_top"><img src="img/@IONIQ5_200x120.png"
+                                                                   alt="아이오닉5">
+                                        <dl>
+                                            <dt>현대 IONIQ 5</dt>
+                                            <dd>첨단 장비와 넓은 실내를 한번에</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>IONIQ 5</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>429km (72.6kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>4,695~5,455만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>E-GMP 전기차 전용 플랫폼 적용, 18분 내 80% 충전 (350kWh 사용 시)</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/img_IONIQ6.png"
+                                                                   alt="아이오닉6">
+                                        <dl>
+                                            <dt>현대 IONIQ 6</dt>
+                                            <dd>감각적 디자인의 전기차</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>IONIQ 6</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>524km (77.4kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>5,200~6,385만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>E-GMP 차세대 전기차 플랫폼 적용, 첨단 사양 및 다양한 옵션</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/@EV6_200x120.png" alt="EV6">
+                                        <dl>
+                                            <dt>기아 EV6</dt>
+                                            <dd>세련된 전기차</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>EV6</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>429km (72.6kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>4,730~5,895만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>2022 유럽 올해의 차 선정, E-GMP 플랫폼 공유로 넓은 실내 공간</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p class="title_18 mt60">국산 프리미엄급</p>
+                            <ul class="brochure_list">
+                                <li>
+                                    <div class="brochure_top"><img src="img/@GV60_200x120.png"
+                                                                   alt="GV60">
+                                        <dl>
+                                            <dt>GENESIS GV60</dt>
+                                            <dd>제네시스 최초 E-GMP 플랫폼 탑재</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>GENESIS GV60</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>451km (77.4kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>5,590~6,490만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>쿠페형 CUV 스타일 적용, 부스트 모드 작동시 최대 490마력 증폭</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/@eGV70_200x120.png"
+                                                                   alt="eGV70">
+                                        <dl>
+                                            <dt>GENESIS eGV70</dt>
+                                            <dd>Active Premium 전기차</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>GENESIS eGV70</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>400km (77.4kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>7,332만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>브랜드 최초de-트레인 모드 탑재, 노이즈 캔슬링 기술로 노면 소음 억제</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/@eg80_200x120.png"
+                                                                   alt="eG80">
+                                        <dl>
+                                            <dt>GENESIS eG80</dt>
+                                            <dd>고급스러운 전기차</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>GENESIS eG80</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>427km (87.2kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>8,281만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>고급스러운 디자인 및 승차감, 동급 대형 세단 대비 유지비 절감 효과</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p class="title_18 mt60">합리적인 가격</p>
+                            <ul class="brochure_list">
+                                <li>
+                                    <div class="brochure_top"><img src="img/@NIROEV_200x120.png"
+                                                                   alt="NIRO EV">
+                                        <dl>
+                                            <dt>기아 NIRO EV</dt>
+                                            <dd>국내 전기차 최고 가성비</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>기아 NIRO EV</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>385km (64.0kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>4,590~4,790만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>저렴한 가격으로 택시/관공서 인기, 풀체인지 예정으로 구형 탈피</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/@BOLTEV_200x120.png"
+                                                                   alt="BOLT EV">
+                                        <dl>
+                                            <dt>쉐보레 BOLT EV</dt>
+                                            <dd>운전이 쉬운 전기차</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>쉐보레 BOLT EV</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>414km (66.0kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>4,130만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>신규 출시된 모델로 인한 희소성, 타 전기차량 대비 저렴한 가격</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="brochure_top"><img src="img/@BOLTEUV_200x120.png"
+                                                                   alt="BOLT EUV">
+                                        <dl>
+                                            <dt>쉐보레 BOLT EUV</dt>
+                                            <dd>소형 SUV 크기로 실용성 확보</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="table t_left">
+                                        <table>
+                                            <colgroup>
+                                                <col width="200px">
+                                            </colgroup>
+                                            <caption>쉐보레 BOLT EUV</caption>
+                                            <tbody>
+                                            <tr>
+                                                <th>주행거리(완충기준)</th>
+                                                <td>403km (66.0kWh 배터리)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>소비자가격</th>
+                                                <td>4,490만원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>특장점</th>
+                                                <td>최대 1,288L 적재 공간 보유, 시야 확보를 위한 디스플레이 룸미러 탑재</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <p class="title_18">상담안내</p><span class="title_14 txt_gray">상세한 견적 및 구매조건 확인을 원하시면 상담신청을 해주세요. 전문상담원이 안내해드려요</span>
+                        <div class="sub_cont call_wrap">
+                            <div class="inner"><p class="call_num">SK렌터카 고객센터 <strong>1599-9111</strong></p><span
+                                    class="call_time">평일 09:00~18:00 (주말/공휴일 휴무)</span></div>
+                        </div>
+                        <p class="ex_txt02">고객센터 연결이 원활하지 않은 경우, 상담 요청시간 기준 24시간 이내(영업일 기준) 고객님이 남겨주신 연락처로 안내 드릴게요</p>
+                        <div class="btn_group multy">
+                            <button type="button" class="btn type04">상담센터 찾기</button>
+                            <button type="button" class="btn type01">상담신청</button>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="inner scroll_p">
+                            <div class="res_form">
+                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
+                                    <button class="inland_btn">내륙 예약하기</button>
+                                </div>
+                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
+                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
+                                    <div class="carousel">
+                                        <ul class="btn_option_wrap small">
+                                            <li class="on"><a>전체</a></li>
+                                            <li class=""><a>전기차</a></li>
+                                            <li class=""><a>수입전기차</a></li>
+                                            <li class=""><a>제주 전기차 차박</a></li>
+                                            <li class=""><a>경형/소형</a></li>
+                                            <li class=""><a>중형/대형</a></li>
+                                            <li class=""><a>SUV</a></li>
+                                            <li class=""><a>승합</a></li>
+                                            <li class=""><a>수입</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btn_group">
+                                    <button class="btn type01">차량 조회하고 예약하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float_wrap">
+                        <div class="inner">
+                            <div class="chat_cont">
+                                <div class="chat_btn"><a> 상담하기</a></div>
+                                <ul class="chat_list">
+                                    <li class="chat"><a>채팅상담</a></li>
+                                    <li class="inquiry"><a>1:1문의 작성</a></li>
+                                </ul>
+                            </div>
+                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+<script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+        src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+</body>
+</th:block>
+</html>

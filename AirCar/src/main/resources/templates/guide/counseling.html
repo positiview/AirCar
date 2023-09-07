@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="content">
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function () {
+                $("html, body").animate({scrollTop: 0}, 400);
+            });
+
+
+        </script>
+    </th:block>
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+    <div id="root" style="height: 100%">
+        <div class="pc_wrap" style="">
+            <div class="wrap sub_wrap">
+                <div class="container">
+                    <div class="inner">
+                        <div class="contents">
+                            <div class="title_wrap"><h2 class="title_30">1:1문의</h2></div>
+                            <div class="tab_wrap">
+                            </div>
+                            <form class="form-horizontal" action="/counselingRegister" method="post">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                            <div class="sub_cont">
+                                <div class="res_tit"><p class="title_18 mb0">무엇이든 물어보세요</p>
+                                    <p class="desc">답변이 완료되면 이메일로 확인할 수 있어요</p></div>
+
+                                <div class="mt20"><p class="title_18">기본정보</p></div>
+                                <div class="white_box">
+                                    <div class="form_row " ><label for="email" class="form_label" >이메일</label>
+                                        <input name="counseling_email"
+                                            id="email" type="text" placeholder="이메일을 입력해주세요" value="" ></div>
+                                </div>
+                                <div class="mt60"><p class="title_18">상담내용</p></div>
+                                <div class="white_box">
+                                    <div class="form_row flex">
+                                        <div class="row"><label for="pattern" class="form_label">유형</label>
+                                            <div id="pattern" class="select_box"><select id="counselTypeCd"  name="counseling_type">
+                                                <option value="칭찬">칭찬</option>
+                                                <option value="제안">제안</option>
+                                                <option value="민원불만">민원불만</option>
+                                                <option value="문의">문의</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="row"><label for="step" class="form_label">단계</label>
+                                            <div id="step" class="select_box"><select id="counselRegDt"  name="counseling_stage">
+                                                <option value="예약/계약상담">예약/계약상담</option>
+                                                <option value="차량인도">차량인도</option>
+                                                <option value="정비/사고">정비/사고</option>
+                                                <option value="결제">결제</option>
+                                                <option value="계약변경/종료">계약변경/종료</option>
+                                                <option value="기타">기타</option>
+                                            </select></div>
+                                        </div>
+                                    </div>
+                                    <div class="form_row "><label for="title" class="form_label">제목</label>
+                                        <input name="counseling_title"
+                                            id="title" type="text" placeholder="한글 기준 2자~20자 사이로 입력해 주세요" value="">
+                                    </div>
+                                    <div class="form_row "><label
+                                                                  class="form_label">내용</label>
+                                        <textarea id="content"  name="counseling_content"
+                                                                                                         placeholder="한글 기준 10자 이상 입력해 주세요"
+                                                                                                         style="height: 160px;"></textarea>
+                                    </div>
+                                </div>
+                                <p class="msg_info">상담 유형을 칭찬 또는 제안으로 선택하거나, 상담 내용이 SK렌터카 서비스와 관련이 없는 경우 별도의 답변을 드리지
+                                    않습니다</p>
+
+                            <div class="btn_group multy">
+                                <button type="reset"  class="btn type04">취소</button>
+                                <button type="submit" class="btn type04">작성완료</button>
+                            </div>
+
+                        </div>
+
+                            </form>
+
+                    </div>
+                </div>
+                <div>
+                    <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    <script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+            src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+    </div>
+    </body>
+</th:block>
+</html>

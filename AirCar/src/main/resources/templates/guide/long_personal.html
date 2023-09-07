@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="content">
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function() {
+                $("html, body").animate({ scrollTop: 0 }, 400);  });
+
+
+        </script>
+    </th:block>
+
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+<div id="root" style="height: 100%">
+    <div class="pc_wrap" style="">
+        <div class="wrap sub_wrap">
+
+            <div class="container">
+                <div class="inner">
+                    <div class="contents use_wrap ">
+                        <div class="title_wrap"><h2 class="title_30">장기 렌터카 (개인)</h2></div>
+                        <div class="tab_wrap mb40">
+                            <ul class="basic_tab">
+                                <li class=""><a href="/short_renting">단기대여안내</a></li>
+                                <li class="on"><a href="/long_personal">장기서비스안내(개인)</a></li>
+                                <li class=""><a href="/long_corporation">장기서비스안내(법인)</a></li>
+                            </ul>
+                        </div>
+                        <p class="title_24">신차구매의 Smart Choice </p><span class="title_16">SK의 스마트한 생각이 스마트한 자동차 생활을 선사합니다</span>
+                        <div class="center_img"><img src="img/img_use_info01.png" alt="차량 이미지">
+                            <div class="ex_txt"><p>신차, 한번의 소비까지 수많은 결정의 단계를 거침은 물론이며 구입비용 외 각종 세금, 유지비용까지 꼼꼼히 따져봐야해요.
+                                똑똑한 당신의 신차구매를 위해 똑똑한 SK렌터카가 가장 최적의 솔루션을 제안해드려요.</p></div>
+                        </div>
+                        <hr>
+                        <p class="title_18">신차 구매 시 고려사항</p>
+
+                        <div class="tab_list"><p class="ex_txt">차량선택은 각 차종에 대한 꼼꼼한 비교는 물론 고객의 Car Life Style 및 재정적인 부분까지
+                            모두 고려해야 하기 때문에 보다 당사의 비교 컨설팅 프로그램을 이용하여 현명한 선택을 할 수 있어요.</p>
+                            <p class="title_16 mt40">SK렌터카의 차별화된 서비스</p>
+                            <div class="brand_logo">
+                                <ul class="carousel">
+                                    <div class="slick-slider slick-initialized" dir="ltr" style="    display: inline-flex">
+                                        <div class="slick-list">
+                                            <div class="slick-track"
+                                                 style="width: 760px; opacity: 1; transform: translate3d(0px, 0px, 0px);     display: inline-flex">
+                                                <div data-index="0" class="slick-slide slick-active slick-current"
+                                                     tabindex="-1" aria-hidden="false"
+                                                     style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_hyundai.svg"
+                                                                 alt="현대로고"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="1" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_genesis.svg"
+                                                                 alt="제네시스"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="2" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_kia.svg" alt="기아 로고">
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="3" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_renault.svg"
+                                                                 alt="르노삼성 로고"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="4" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_chevrolet.svg"
+                                                                 alt="쉐보레 로고"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="5" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_toyota.svg"
+                                                                 alt="토요타 로고"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="6" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_lexus.svg"
+                                                                 alt="렉서스 로고"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="7" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_landrover.svg"
+                                                                 alt="랜드로버 로고"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="8" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_volkswagen.svg"
+                                                                 alt="폭스바겐 로고"></li>
+                                                    </div>
+                                                </div>
+                                                <div data-index="9" class="slick-slide slick-active" tabindex="-1"
+                                                     aria-hidden="false" style="outline: none; width: 76px;">
+                                                    <div>
+                                                        <li tabindex="-1" style="width: 100%; display: inline-block;">
+                                                            <img src="img/logo_jaguar.svg"
+                                                                 alt="제규어 로고"></li>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+
+                            </div>
+                            <div class="ex_txt">
+                                <ul class="dot_list">
+                                    <li>수입차 취급 브랜드 및 모델 : 약 25개 브랜드, 700여개 모델을 취급해요.</li>
+                                    <li>상기 브랜드 및 취급 차종은 제조사 및 수입원의 별도 고지없이 변경될 수 있어요.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="title_18">SK장기렌터카 고객을 위한 특별한 혜택</p>
+                        <p class="title_14 txt_gray">오프라인 예약 고객에 한정돼요.</p>
+                        <p class="title_16"> 제주 SK렌터카 무료 이용권 연 2매 제공 </p>
+                        <p class="title_14 txt_gray">SK장기렌터카를 이용하는 고객님들께 제주 SK렌터카 상품권을 드려요.(테슬라 등 일부 차종 제외)</p>
+                        <div class="img_box"><img src="img/@rent_event_01.png" class="mt16"></div>
+                        <hr>
+                        <p class="title_18">개인사업자 대여요금 비용 처리에 따른 세제 절감혜택</p>
+                        <div class="table">
+                            <table>
+                                <caption></caption>
+                                <colgroup>
+                                    <col width="58%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>구분</th>
+                                    <th>소득 세율</th>
+                                    <th>주민 세율</th>
+                                    <th>세율 합계</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1,200 만원 초과 ~ 4,600 만원 이하</td>
+                                    <td>15%</td>
+                                    <td>1.5%</td>
+                                    <td>16.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>4,600만원 초과 ~ 8,800만원 이하</td>
+                                    <td>24%</td>
+                                    <td>2.4%</td>
+                                    <td>26.4%</td>
+                                </tr>
+                                <tr>
+                                    <td>8,800만원 초과 ~ 3억원 이하</td>
+                                    <td>35%</td>
+                                    <td>3.5%</td>
+                                    <td>38.2%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="sub_cont mt20">
+                            <div class="inner"><p class="tit">개인사업자 절감금액 산출 예시(1대 운영 기준)</p><span class="sb_txt">과세표준 2억 초과 ~ 200억 이하, 월 대여료 80 만원 기준</span>
+                                <ul class="sole_list">
+                                    <li><strong>3년간 손금 인정액</strong>
+                                        <div><span>80 만원/1대 X 36개월 X 1대</span><span>2,880 만원</span></div>
+                                    </li>
+                                    <li><strong>3년간 세액 절감총액</strong>
+                                        <div><span>2,880 만원 X 38.5%</span><span>1,109 만원</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="title_18">상담안내</p><span class="title_14 txt_gray">상세한 견적 및 구매조건 확인을 원하시면 상담신청을 해주세요. 전문상담원이 안내해 드려요</span>
+                        <div class="sub_cont call_wrap">
+                            <div class="inner"><p class="call_num">SK렌터카 고객센터 <strong>1599-9111</strong></p><span
+                                    class="call_time">평일 09:00~18:00 (주말/공휴일 휴무)</span></div>
+                        </div>
+                        <p class="ex_txt02">고객센터 연결이 원활하지 않은 경우, 상담 요청시간 기준 24시간 이내(영업일 기준) 고객님이 남겨주신 연락처로 안내 드릴게요</p>
+                        <div class="btn_group multy">
+                            <button type="button" class="btn type04">상담센터 찾기</button>
+                            <button type="button" class="btn type01">상담신청</button>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="inner">
+                            <div class="res_form">
+                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
+                                    <button class="inland_btn">내륙 예약하기</button>
+                                </div>
+                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
+                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
+                                    <div class="carousel">
+                                        <ul class="btn_option_wrap small">
+                                            <li class="on"><a>전체</a></li>
+                                            <li class=""><a>전기차</a></li>
+                                            <li class=""><a>수입전기차</a></li>
+                                            <li class=""><a>제주 전기차 차박</a></li>
+                                            <li class=""><a>경형/소형</a></li>
+                                            <li class=""><a>중형/대형</a></li>
+                                            <li class=""><a>SUV</a></li>
+                                            <li class=""><a>승합</a></li>
+                                            <li class=""><a>수입</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="btn_group">
+                                    <button class="btn type01">차량 조회하고 예약하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float_wrap">
+                        <div class="inner">
+                            <div class="chat_cont">
+                                <div class="chat_btn"><a> 상담하기</a></div>
+                                <ul class="chat_list">
+                                    <li class="chat"><a>채팅상담</a></li>
+                                    <li class="inquiry"><a>1:1문의 작성</a></li>
+                                </ul>
+                            </div>
+                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+<script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+        src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+</body>
+</th:block>
+</html>
