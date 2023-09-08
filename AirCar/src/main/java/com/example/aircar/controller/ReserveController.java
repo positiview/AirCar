@@ -3,8 +3,10 @@ package com.example.aircar.controller;
 import com.example.aircar.domain.CarDTO;
 import com.example.aircar.entity.Car;
 import com.example.aircar.entity.Files;
+import com.example.aircar.entity.Member;
 import com.example.aircar.repository.CarRepository;
 import com.example.aircar.repository.FilesRepository;
+import com.example.aircar.repository.MemberRepository;
 import com.example.aircar.repository.ReserveRepository;
 import com.example.aircar.service.CarService;
 import com.example.aircar.service.ReserveService;
@@ -27,6 +29,7 @@ public class ReserveController {
     private FilesRepository filesRepository;
     private CarService carService;
     private ReserveService reserveService;
+    private MemberRepository memberRepository;
 
 //    @GetMapping("/reserve")
 //    public String reserve(){
@@ -71,10 +74,10 @@ public class ReserveController {
         return "reserve/car_detail";
     }
 
-    @GetMapping("/reserve_first")
-    public String first() {
-        return "/reserve/reserve_first";
-    }
+//    @GetMapping("/reserve_first")
+//    public String first() {
+//        return "/reserve/reserve_first";
+//    }
 
     @GetMapping("/upload")
     public String upload(){
@@ -94,5 +97,12 @@ public class ReserveController {
         return "reserve/reserve";
     }
 
+    @GetMapping("/reserve_first")
+    public String reserve2(Long carNum,Model model){
+        Car car = carRepository.findByCarNum(carNum);
+        model.addAttribute("car" ,car);
+        model.addAttribute("carPay", carService.getCarInfo());
+        return "reserve/reserve_first";
+    }
 
 }

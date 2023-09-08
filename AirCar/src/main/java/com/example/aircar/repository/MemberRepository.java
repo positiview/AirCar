@@ -11,7 +11,6 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Optional<Member> findByEmailAndClientName(String email, String clientName);
-
     @Modifying
     @Transactional
     @Query("UPDATE Member m SET m.password = :password WHERE m.email = :email")
