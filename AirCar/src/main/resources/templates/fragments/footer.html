@@ -276,8 +276,38 @@
 
         });
     </script>
-
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var liItems = document.querySelectorAll(".insur_tab li");
+            var btnToggleItems = document.querySelectorAll("p.btn");
+
+            // 클릭 이벤트 리스너를 만듭니다.
+            function onClickLi(event) {
+                // 다른 li 요소의 테두리 색을 초기화합니다.
+                for (var j = 0; j < liItems.length; j++) {
+                    liItems[j].classList.remove("active");
+                }
+                for (var j = 0; j < btnToggleItems.length; j++) {
+                    btnToggleItems[j].classList.remove("active");
+                }
+
+                // 현재 클릭한 li 요소에 "active" 클래스를 추가하여 테두리 색을 변경합니다.
+                this.classList.add("active");
+                console.log(this);
+            }
+
+            // 각 li 요소에 클릭 이벤트 리스너를 추가합니다.
+            for (var i = 0; i < liItems.length; i++) {
+                liItems[i].addEventListener("click", onClickLi);
+            }
+            for (var i = 0; i < btnToggleItems.length; i++) {
+                btnToggleItems[i].addEventListener("click", onClickLi);
+            }
+        });
+
+
+    </script>
 
 
 

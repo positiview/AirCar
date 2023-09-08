@@ -20,6 +20,8 @@
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
     <div class="container">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <input type="hidden" name="carNum" th:value="${car.carNum}"/>
         <div class="inner">
             <div class="contents">
                 <div class="title_wrap"><h2 class="title_30"> 예약 </h2>
@@ -33,23 +35,23 @@
                     <div class="inner"><p class="title_16 major">보험 선택하기</p>
                         <p class="title_14 txt_lightgray">상대방과 나를 보호하는 종합보험이 포함되어 있어요</p>
                         <ul class="insur_tab horz">
-                            <li class=""><a class="">
+                            <li id="firstQ"><a >
                                 <div class="tit_wrap"><h4 class="tit">선택안함</h4>
                                     <p class="ex_txt">323,000원 추가</p></div>
                                 <div class="txt_wrap"><p class="txt">사고 시 고객부담금</p>
-                                    <p class="btn">전액</p></div>
+                                    <p class="btn" style="background-color: orange">전액</p></div>
                             </a></li>
-                            <li class=""><a class="">
+                            <li id="secondQ"><a >
                                 <div class="tit_wrap"><h4 class="tit">일반자차</h4>
                                     <p class="ex_txt">323,000원 추가</p></div>
                                 <div class="txt_wrap"><p class="txt">사고 시 고객부담금</p>
-                                    <p class="btn">30만원</p></div>
+                                    <p class="btn" style="background-color: orange">30만원</p></div>
                             </a></li>
-                            <li class="on"><a class="type">
+                            <li id="thirdQ"><a >
                                 <div class="tit_wrap"><h4 class="tit">완전자차</h4>
                                     <p class="ex_txt">323,000원 추가</p></div>
                                 <div class="txt_wrap"><p class="txt">사고 시 고객부담금</p>
-                                    <p class="btn">면제</p></div>
+                                    <p class="btn" style="background-color: orange">면제</p></div>
                             </a></li>
                         </ul>
                         <div class="cont_btm">
@@ -121,7 +123,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="sidebar">
+            <div class="sidebar" style="top: -10px;">
                 <div id="sideScroll" class="inner" style="max-height: 632px;">
                     <div>
                         <div class="title_wrap"><p class="title_18">여정 정보</p></div>
@@ -129,9 +131,9 @@
                                 src="/assets/../img/morning.png"
                                 alt=""></div>
                         <div class="side_box journey_wrap">
-                            <div><p class="tit">황재승님의 여정</p>
+                            <div><p class="tit"> 황재승님의 여정</p>
                                 <dl>
-                                    <dt><i><img src="/assets/img/contents/ico_journey01.png" alt=""></i>제주지점</dt>
+                                    <dt><i><img src="/assets/img/contents/ico_journey01.png" alt=""></i>부산지점</dt>
                                 </dl>
                             </div>
                             <div>
@@ -148,10 +150,10 @@
                             </div>
                             <div>
                                 <dl>
-                                    <dt><i><img src="/assets/img/contents/ico_journey03.png" alt=""></i>스파크 1.0 가솔린</dt>
+                                    <dt><i><img src="/assets/img/contents/ico_journey03.png" alt=""></i><th:block th:text="${car.brand}"></th:block> / <th:block th:text="${car.name}"></th:block> / <th:block th:text="${car.fuel}"></th:block> </dt>
                                     <dd>
-                                        2021년식
-                                        가솔린
+                                        <th:block th:text="${car.year}"></th:block>년식
+                                        <th:block th:text="${car.fuel}"></th:block>
                                     </dd>
                                 </dl>
                             </div>
@@ -177,13 +179,13 @@
                                 </li>
                             </ul>
                             <ul class="pay_list total">
-                                <li><span>총 결제금액</span><span> 1,169,370원</span></li>
+                                <li><span>총 결제금액</span><span><th:block th:text="${car.cost}" ></th:block> 원</span></li>
                                 <li class="desc">항목별 합계금액 원 단위 절상 또는 절사</li>
                             </ul>
                         </div>
                         <div class="btn_group">
-                            <div class="balloon_bt_box">
-                                <button type="button" class="btn type01 disabled">입력완료</button>
+                            <div class="balloon_bt_box" style="color: black;  border-radius: 14px;">
+                                <button type="button" class="btn type01" style="color: white;line-height: 0px;">입력완료</button>
                                 <p class="balloon_box" style="width: 200px;">보험선택 및 운전자 정보를 입력해주세요</p>
                                 <form name="payForm" method="post"
                                       action="https://web.nicepay.co.kr/v3/webstd/js/nicepay-3.0.js"><input
@@ -218,6 +220,8 @@
             </div>
         </div>
     </div>
+
+
     </body>
 </th:block>
 

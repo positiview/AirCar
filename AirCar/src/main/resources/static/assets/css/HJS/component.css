@@ -146,6 +146,16 @@
   line-height: 24px;
 }
 
+/* 클릭 시 li 색 변경 */
+.insur_tab li.active {
+  border: 3px solid orange;
+  border-radius: 14px;/* 테두리 색을 빨간색으로 변경 */
+}
+.btn {
+ background-color: orange;
+}
+
+
 /* form */
 .pc_wrap .form_control .form_row.in_btn span > .form_label,
 .pc_wrap .form_control .form_row .form_label {
