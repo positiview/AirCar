@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 <head>
-    <th:block th:replace="fragments/SHM_Fragment::link"></th:block>
+    <th:block th:replace="fragments/CSS_Fragment::link"></th:block>
 </head>
 <th:block layout:fragment="content">
 
@@ -73,17 +73,7 @@
         /*.prev{display:inline-block; width:30px; height:30px; background:black; }
         .next{display:inline-block; width:30px; height:30px; background:red;}*/
 
-        .sidebar .btn_option_wrap{
-            display: flex;
-            flex-wrap: wrap;
 
-            vertical-align: baseline;
-            letter-spacing: -0.528px;
-            margin-bottom: 27px;
-            overflow-x: visible;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
 
         .center button{
             top: 50% !important;
@@ -468,7 +458,7 @@
                             </ul>
                         </div>
                     </div>
-
+                    <th:block th:replace="fragments/sidebarBook2::sidebarBook"></th:block>
                     <div class="float_wrap">
                         <div class="inner">
                             <div class="chat_cont">
