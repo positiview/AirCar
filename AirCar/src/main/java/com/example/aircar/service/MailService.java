@@ -4,6 +4,7 @@ import com.example.aircar.domain.CounselingDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,8 +19,8 @@ public class MailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(counselingDto.getCounseling_email());
         message.setFrom(senderEmail);
-        message.setSubject(counselingDto.getCounseling_title());
-        message.setText(counselingDto.getCounseling_content());
+        message.setSubject("[문의 답변드립니다]"+counselingDto.getCounseling_title());
+        message.setText(counselingDto.getAnswer());
 
         javaMailSender.send(message);
     }

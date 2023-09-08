@@ -1,6 +1,7 @@
 package com.example.aircar.repository;
 
 import com.example.aircar.entity.Member;
+import com.example.aircar.entity.Notices;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
 
     Optional<Member> findByEmail(String email);
+
+    Member findByMno(Long mno);
 }
