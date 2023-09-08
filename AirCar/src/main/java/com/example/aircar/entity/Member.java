@@ -18,9 +18,9 @@ import javax.persistence.*;
 public class Member extends BaseEntity {
 
     @Id
-    @Column(name="member_id")
+    @Column(name="mno")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long mNo;
+    private Long mno;
 
     private String password;
 
