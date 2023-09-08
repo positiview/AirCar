@@ -9,13 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @Log4j2
 public class MainController {
 
     @GetMapping("/main")
-    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO member) {
+    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO member,
+                           HttpServletRequest request) {
 
         String nickname = "";
         if (member != null) {
@@ -24,7 +28,14 @@ public class MainController {
             log.info("nickname : " + nickname);
         }
 
-            model.addAttribute("nickname", nickname);
+
+
+        model.addAttribute("nickname", nickname);
+
+
+        HttpSession session = request.getSession();
+        session.setAttribute("nickname", nickname);
+
             return "main/homepage";
     }
 
