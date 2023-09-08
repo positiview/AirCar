@@ -61,7 +61,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         log.info("Nickname : " + nickname);
 
 
-        return generateDTO(email, clientName, nickname, paramMap);
+        return generateDTO(email, nickname, paramMap);
     }
 
 
@@ -107,8 +107,8 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         return userinfo;
     }
 
-    private MemberSecurityDTO generateDTO(String email, String clientName, String nickname, Map<String, Object> paramMap) {
-        Optional<Member> result = memberRepository.findByEmailAndClientName(email,clientName);
+    private MemberSecurityDTO generateDTO(String email, String nickname, Map<String, Object> paramMap) {
+        Optional<Member> result = memberRepository.findByEmail(email);
 
         // DB에 해당 이메일의 사용자가 없다면 자동으로 회원 가입 처리
         if (result.isEmpty()) {
@@ -119,7 +119,6 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
                     .password(passwordEncoder.encode("1111"))
                     .email(email)
                     .social(true)
-                    .clientName(clientName)
                     .nickname(nickname)
                     .role(Role.USER)
                     .build();
@@ -128,7 +127,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             memberRepository.save(member);
 
             MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(email,
-                    "1111", email, true, clientName, nickname,
+                    "1111", email, true, nickname,
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
             memberSecurityDTO.setAttr(paramMap);
 
@@ -137,7 +136,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             Member member = result.get();
             MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(
                     member.getName(), member.getPassword(), member.getEmail(),
-                    member.isSocial(), member.getClientName(), member.getNickname(),
+                    member.isSocial(), member.getNickname(),
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_" + member.getRole())));
 
             return memberSecurityDTO;

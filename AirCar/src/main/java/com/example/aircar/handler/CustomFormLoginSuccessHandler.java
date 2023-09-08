@@ -27,7 +27,7 @@ public class CustomFormLoginSuccessHandler implements AuthenticationSuccessHandl
         // 소셜 로그인이 아닐경우
         if (!memberSecurityDTO.isSocial()) {
             log.info("일반 로그인!!!");
-            response.sendRedirect("/");
+            response.sendRedirect("/main");
 
         } else {
             log.info("소셜 로그인!!! 일반 로그인 불가");

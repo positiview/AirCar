@@ -1,18 +1,22 @@
 package com.example.aircar.controller;
 
 
+import com.example.aircar.domain.LoginDTO;
+import com.example.aircar.domain.MemberSecurityDTO;
+import com.example.aircar.entity.Member;
 import com.example.aircar.service.CustomOAuth2UserDetailsService;
 import com.example.aircar.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -29,27 +33,59 @@ public class MemberController {
         return "member/memberLogin";
     }
 
-    @PostMapping("/login")
-    public String login(String id, String password){
+    /*@PostMapping("/login")
+    public String login(@RequestBody LoginDTO loginDTO, Model model){
+        String userId = loginDTO.getId(); // userId는 email이다
         // 사용자가 입력한 비밀번호
-        String userInputPassword = "password";
+        String userPassword = loginDTO.getPw();
 
         // 데이터베이스에서 가져온 저장된 해시된 비밀번호
-        String storedHashedPassword = "$2a$10$7AxNWsnM2UnYPlc3D9.kmuBRx15anSXcYWTM08M7g0TczrlwbNy4W";
+        Member member =  memberService.getUserInfo(userId);
+        String storedHashedPassword = member.getPassword();
+        boolean passwordMatches = passwordEncoder.matches(userPassword, storedHashedPassword);
 
-        // PasswordEncoder를 생성합니다.
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        if(passwordMatches){
 
-        // 사용자가 입력한 비밀번호를 동일한 방식으로 해싱하여 저장된 해시된 비밀번호와 비교합니다.
-        boolean passwordMatches = passwordEncoder.matches(userInputPassword, storedHashedPassword);
+            if(member.getRole().toString().equals("USER")){
+                return "redirect:/main/homepage";
+            }else {
+                return "redirect:/admin/main";
+            }
+        }else{
+            *//*model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");*//*
 
-        return "main/homepage";
+            return "redirect:/login";
+        }
+    }*/
+    @PostMapping("/login")
+    public String login(String id, String pw, Model model){
+
+
+        // 데이터베이스에서 가져온 저장된 해시된 비밀번호
+        Member member =  memberService.getUserInfo(id);
+        String storedHashedPassword = member.getPassword();
+        boolean passwordMatches = passwordEncoder.matches(pw, storedHashedPassword);
+
+        if(passwordMatches){
+
+            if(member.getRole().toString().equals("USER")){
+                model.addAttribute("member",member);
+                //return "/main/homepage";
+                return "redirect:/main";
+            }else {
+                return "redirect:/admin/main";
+            }
+        }else{
+            model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
+
+            return "redirect:/login";
+        }
     }
     @GetMapping("/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
 
-        return "member/memberLoginForm";
+        return "member/memberLogin";
     }
 
     @GetMapping("/signUpAgree")
@@ -87,5 +123,23 @@ public class MemberController {
         return "member/memberLoginForm";
     }*/
 
+
+    @PostMapping("/passwordCheck")
+    public ResponseEntity<String> passwordCheck(Model model, @AuthenticationPrincipal MemberSecurityDTO member, String password){
+
+        String email = member.getEmail();
+        String userInputPassword = password;
+        String storedHashedPassword = memberService.getPassword(email);
+
+        boolean passwordMatches = passwordEncoder.matches(userInputPassword, storedHashedPassword);
+
+        /*if(passwordMatches){
+            return "/myinfo";
+        }else{
+            model.addAttribute("pwChkErrMsg", "비밀번호를 잘못 입력하셨습니다.");
+            return "redirect:/myPage";
+        }*/
+        return new ResponseEntity<>("correct", HttpStatus.OK);
+    }
 
 }

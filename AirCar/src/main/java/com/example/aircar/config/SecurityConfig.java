@@ -30,14 +30,15 @@ public class SecurityConfig {
         // 페이지 권한 설정, 로그인 페이지 설정, 로그아웃 메소드 등에 대한 설정을 작성
         http.formLogin()
                 .loginPage("/member/login")
-//                .defaultSuccessUrl("/")
+                /*.defaultSuccessUrl("/main")*/
                 .successHandler(authenticationFormLoginSuccessHandler())
-                .usernameParameter("email")
-                .failureUrl("/member/login/error")
+                .usernameParameter("id")
+                .passwordParameter("pw")
+                .failureUrl("/login")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/main")
         ;
 
         http.oauth2Login()
