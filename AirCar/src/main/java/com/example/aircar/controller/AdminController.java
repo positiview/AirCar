@@ -1,10 +1,13 @@
 package com.example.aircar.controller;
 
 import com.example.aircar.domain.CounselingDTO;
+import com.example.aircar.domain.MemberDTO;
 import com.example.aircar.domain.NoticesDTO;
 import com.example.aircar.entity.Counseling;
+import com.example.aircar.entity.Member;
 import com.example.aircar.entity.Notices;
 import com.example.aircar.repository.CounselingRepository;
+import com.example.aircar.repository.MemberRepository;
 import com.example.aircar.repository.NoticesRepository;
 import com.example.aircar.service.MailService;
 import lombok.AllArgsConstructor;
@@ -27,6 +30,7 @@ public class AdminController {
 
     private final NoticesRepository noticesRepository;
     private final CounselingRepository counselingRepository;
+    private final MemberRepository memberRepository;
     private final MailService mailService;
 
 
@@ -34,13 +38,6 @@ public class AdminController {
     public String main(){
         return "/admin/main";
     }
-
-    @GetMapping("/member")
-    public String member(){
-        return "/admin/member";
-    }
-
-
 
     @GetMapping("/pencil")
     public String pencil(){
@@ -189,7 +186,48 @@ public class AdminController {
 
         mailService.CreateMail(counselingDto);
 
-        return "redirect:/admin/counselingAnswer?bno=" + counseling.getBno();
+        return "redirect:/admin/counselingAnswer?mno=" + counseling.getBno();
+    }
+
+    @GetMapping("/member")
+    public String member(Model model){
+        List<Member> memberList = memberRepository.findAll();
+        model.addAttribute("memberList", memberList);
+
+        return "admin/member";
+    }
+
+    @GetMapping("/memberView")
+    public String memberView(Long mno, Model model){
+        Member member = memberRepository.findByMno(mno);
+
+
+        model.addAttribute("member", member);
+
+        return "admin/member_view";
+    }
+
+    @GetMapping("/memberUpdate")
+    public String memberUpdate(Long mno, Model model) {
+        Member member = memberRepository.findByMno(mno);
+
+        model.addAttribute("member", member);
+
+        return "admin/member_update";
+    }
+
+    @PostMapping("/memberUpdate")
+    public String memberUpdate(MemberDTO memberDto) {
+        Member member = new Member();
+
+        member.setMno(memberDto.getMno());
+        member.setNickname(memberDto.getNickname());
+        member.setEmail(memberDto.getEmail());
+        member.setPassword(memberDto.getPassword());
+
+        memberRepository.save(member);
+
+        return "redirect:/admin/memberView?mno=" + member.getMno();
     }
 
 

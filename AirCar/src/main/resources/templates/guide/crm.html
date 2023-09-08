@@ -22,11 +22,9 @@
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
@@ -169,34 +167,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar">
-                        <div class="inner scroll_p">
-                            <div class="res_form">
-                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
-                                    <button class="inland_btn">내륙 예약하기</button>
-                                </div>
-                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
-                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
-                                    <div class="carousel">
-                                        <ul class="btn_option_wrap small">
-                                            <li class="on"><a>전체</a></li>
-                                            <li class=""><a>전기차</a></li>
-                                            <li class=""><a>수입전기차</a></li>
-                                            <li class=""><a>제주 전기차 차박</a></li>
-                                            <li class=""><a>경형/소형</a></li>
-                                            <li class=""><a>중형/대형</a></li>
-                                            <li class=""><a>SUV</a></li>
-                                            <li class=""><a>승합</a></li>
-                                            <li class=""><a>수입</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn_group">
-                                    <button class="btn type01">차량 조회하고 예약하기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
                     <div class="float_wrap">
                         <div class="inner">
                             <div class="chat_cont">

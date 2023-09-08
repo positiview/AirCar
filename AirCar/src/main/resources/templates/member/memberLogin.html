@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 <head>
-    <th:block th:replace="fragments/SHM_Fragment::link"></th:block>
+    <th:block th:replace="fragments/CSS_Fragment::link"></th:block>
 </head>
 <th:block layout:fragment="content">
 
@@ -27,7 +27,7 @@
                                                                                                          placeholder="비밀번호를 입력해 주세요"
                                                                                                          value=""></div>
                             <div class="btn_group">
-                                <button type="button" class="btn type01">로그인</button>
+                                <button type="button" class="btn type01" id="loginButton">로그인</button>
                             </div>
                             <ul class="login_link">
                                 <li><a class="open-layerPopup">회원가입</a></li>
@@ -76,7 +76,33 @@
                 </div>
             </div>
             <script>
+                $(document).ready(function () {
+                    $("#loginButton").click(function () {
+                        var id = $("#id").val();
+                        var password = $("#password").val();
 
+                        var data = {
+                            id: id,
+                            password: password
+                        };
+
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/member/login",
+                            data: data,
+                            success: function (response) {
+                                // 성공적으로 응답을 받았을 때의 처리
+                                console.log("로그인 성공 response : ", response);
+                                /
+                            },
+                            error: function (xhr, status, error) {
+                                // 에러 처리
+                                console.error("로그인 실패...", status, error);
+                            }
+                        });
+                    });
+                });
             </script>
         </div>
     </div>
