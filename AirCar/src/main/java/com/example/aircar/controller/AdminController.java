@@ -219,7 +219,7 @@ public class AdminController {
     @PostMapping("/memberUpdate")
     public String memberUpdate(MemberDTO memberDto) {
         Member member = new Member();
-
+        log.info("mno : " + memberDto.getMno());
         member.setMno(memberDto.getMno());
         member.setNickname(memberDto.getNickname());
         member.setEmail(memberDto.getEmail());

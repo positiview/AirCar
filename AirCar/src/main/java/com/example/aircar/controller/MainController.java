@@ -18,17 +18,17 @@ import javax.servlet.http.HttpSession;
 public class MainController {
 
     @GetMapping("/main")
-    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO member,
+    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO memberSecurityDTO,
                            HttpServletRequest request) {
 
         String nickname = "";
-        if (member != null) {
+        if (memberSecurityDTO != null) {
 
-            nickname = member.getNickname();
+            nickname = memberSecurityDTO.getNickname();
             log.info("nickname : " + nickname);
         }
 
-
+        log.info("member 정보 : "+ memberSecurityDTO);
 
         model.addAttribute("nickname", nickname);
 
