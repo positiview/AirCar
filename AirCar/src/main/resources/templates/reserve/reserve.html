@@ -39,11 +39,11 @@
                 <div class="dill_box_type" th:each="car : ${carInfo}">
                     <div class="dill_box_wrap">
                         <div class="top_cont">
-                            <div class="main_ctext"><img th:src="@{'assets/upload/'+${car.brandImg}}" alt="기아자동차" class="car_logo"><span class="car_enter">
+                            <div class="main_ctext"><img th:src="@{'img_upload/'+${car.brandImg}}" alt="기아자동차" class="car_logo"><span class="car_enter">
                                 <th:block th:text="${car.brand}"></th:block></span><em class="c_prd_name">
                                 <th:block th:text="${car.name}"></th:block>
                             </em></div>
-                            <div class="img_area"><img th:src="@{'assets/upload/'+${car.carImg}}"></th:src>
+                            <div class="img_area"><img th:src="@{'img_upload/'+${car.carImg}}"></th:src>
 <!--                            <div class="img_area"><img th:src="@{'/assets/car/G90.png'}"></th:src>-->
                             </div>
                         </div>

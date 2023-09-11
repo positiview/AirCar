@@ -20,4 +20,12 @@ public class NoticesService {
         return noticesRepository.findAll(pageable);
     }
 
+
+    public Page<Notices> getNoticesTitleList(String keyword, Pageable pageable){
+        return noticesRepository.getByNotices_titleLike(keyword, pageable);
+    }
+
+    public Page<Notices> getNoticesContentList(String keyword, Pageable pageable) {
+        return noticesRepository.getByNotices_contentLike(keyword, pageable);
+    }
 }

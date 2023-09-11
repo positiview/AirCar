@@ -1,95 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
-<link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
-<link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
-<link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
-<link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
-<body style="">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+
 
 <!-- header -->
-<!-- Aside Start-->
-<aside class="left-panel" tabindex="5000" style="overflow: hidden; outline: none;">
-
-    <!-- brand -->
-    <div class="logo">
-        <a href="file_list.php" class="logo-expanded">
-            <span class="nav-label">AIRCAR 관리자</span>
-        </a>
-    </div>
-    <!-- / brand -->
-
-    <!-- Navbar Start -->
-    <nav class="navigation">
-        <ul class="list-unstyled">
-            <li class="has-submenu"><a href="/admin/main"><i class="fa fa-picture-o"></i> <span class="nav-label">홈관리</span></a>
-            </li>
-            <li class="has-submenu"><a href="/admin/member"><i class="fa fa-sun-o"></i> <span class="nav-label">회원관리</span></a>
-            </li>
-            <li class="has-submenu"><a href="/admin/reserve"><i class="fa fa-folder-open-o"></i> <span class="nav-label">예약관리</span></a>
-            </li>
-            <li class="has-submenu active"><a href="/admin/counseling"><i class="fa fa-crm"></i> <span class="nav-label">상담 관리</span></a>
-            </li>
-            <li class="has-submenu"><a href="/admin/notices"><i class="fa fa-bell-o"></i> <span class="nav-label">문의 관리</span></a>
-            </li>
-            <li class="has-submenu"><a href="/admin/event"><i class="fa fa-bell-o"></i> <span class="nav-label">이벤트 관리</span></a>
-            </li>
-            <li class="has-submenu"><a href="/admin/event"><i class="fa fa-bell-o"></i> <span class="nav-label">차량 관리</span></a>
-            </li>
-        </ul>
-    </nav>
-
-</aside>
-<!-- Aside Ends-->
-
-
-<!--Main Content Start -->
-<section class="content">
-
-    <!-- Header -->
-    <header class="top-head container-fluid">
-        <button type="button" class="navbar-toggle pull-left">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-
-        <!-- Left navbar -->
-        <h2 class="title_info pull-left fs18 navbar-left" style=" margin-top:15px;">
-        </h2>
-
-        <!-- Right navbar -->
-        <ul class="list-inline navbar-right top-menu top-right-menu">
-            <!-- user login dropdown start-->
-            <li class="dropdown text-center">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <img alt="" src="/img/ico65_bg.jpg" class="img-circle profile-img thumb-sm">
-                    <span class="username">sample님 </span> <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
-                    <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                </ul>
-            </li>
-            <!-- user login dropdown end -->
-        </ul>
-        <!-- End right navbar -->
-
-    </header>
-    <!-- Header Ends -->
-
 
     <!-- Page Content Start -->
     <!-- ================== -->
-
+<th:block layout:fragment="admin_content">
     <div class="wraper container-fluid">
         <div class="page-title">
-            <h3 class="title inline">상담 관리</h3> <a class="btn btn-info m-b-5 m-l-10" href="/admin/answer"><i class="fa fa-pencil"></i> <span>문의 답변</span> </a>
+            <h3 class="title inline">문의 관리</h3>
         </div>
 
 
@@ -133,23 +55,52 @@
                                 </tbody>
                             </table>
                         </div>
-                        <ul class="pagination m-b-5 pull-right">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="disabled"><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+
+                        <nav aria-label="Page navigation example ">
+                            <th:block th:if="${counselingList.totalElements > 0}">
+                                <ul class="pagination justify-content-center" style="display: flex; justify-content: center;"
+                                    th:with="start=${(counselingList.number/counselingList.totalPages)*counselingList.totalPages + 1},
+                    end=${(counselingList.totalPages == 0) ? 1 :
+                    (start + (counselingList.totalPages - 1) < counselingList.totalPages ? start + (counselingList.totalPages - 1) : counselingList.totalPages)}">
+
+                                    <li th:class="${counselingList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/admin/counseling(page=0)}">First</a>
+                                    </li>
+                                    <li th:class="${counselingList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="${counselingList.first} ? '#' : @{/admin/counseling(page=${counselingList.number} - 1)}">Previous</a>
+                                    </li>
+                                    <li th:each="page: ${#numbers.sequence(start, end)}" th:class="${page == counselingList.number + 1} ? 'page-item active' : 'page-item' ">
+                                        <a class="page-link" th:href="@{/admin/counseling(page=${page - 1})}">[[${page}]]</a>
+                                    </li>
+                                    <li th:class="${counselingList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="${counselingList.last} ? '#' : @{/admin/counseling(page=${counselingList.number} + 1)}">Next</a>
+                                    </li>
+                                    <li th:class="${counselingList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/admin/counseling(page=${counselingList.totalPages - 1})}">Last</a>
+                                    </li>
+                                </ul>
+                            </th:block>
+                            <th:block th:unless="${counselingList.totalElements > 0}">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                </ul>
+                            </th:block>
+                        </nav>
+                        <nav class="navbar bg-body-tertiary" style="display: flex; justify-content: center;">
+                            <div class="container-fluid">
+                                <form action="/admin/counseling" id="searchForm" class="d-flex" role="search" style="display: flex; align-items: center;">
+                                    <select name="searchType" class="form-select" aria-label="Default select example" style="height: 30px">
+                                        <option value="" th:selected="${searchType} == ''">--</option>
+                                        <option value="title" th:selected="${searchType} == 'title'">제목</option>
+                                        <option value="content" th:selected="${searchType} == 'content'">내용</option>
+                                    </select>
+                                    <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search" th:value="${keyword}">
+                                    <button class="btn btn-outline-success" id="btnSearch" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -162,29 +113,3 @@
     <!-- Page Content Ends -->
     <!-- ================== -->
 
-    <!-- Footer Start -->
-    <footer class="footer text_nor">
-        2016 © gmccoms. All rights reserved.
-    </footer>
-    <!-- Footer Ends -->
-
-
-
-</section>
-<!-- Main Content Ends -->
-
-
-
-<!-- js placed at the end of the document so the pages load faster -->
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/modernizr.min.js"></script>
-<script src="../js/jquery.scrollTo.min.js"></script>
-<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
-
-<script src="../js/jquery.app.js"></script><div id="ascrail2000" class="nicescroll-rails" style="width: 5px; z-index: auto; cursor: default; position: fixed; top: 0px; left: 225px; height: 966px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; background-color: rgb(142, 144, 154); border: 0px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 5px; z-index: auto; top: 961px; left: 0px; position: fixed; cursor: default; display: none;"><div style="position: relative; top: 0px; height: 5px; width: 0px; background-color: rgb(142, 144, 154); border: 0px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;"></div></div>
-
-
-</body>
-
-</html>

@@ -99,11 +99,11 @@ public class ReserveController {
     }
 
 
-    @GetMapping("/upload")
-    public String upload(){
-
-        return "/reserve/upload";
-    }
+//    @GetMapping("/upload")
+//    public String upload(){
+//
+//        return "/admin/upload";
+//    }
 
     @GetMapping("/reserve")
     public String reserve(Model model){

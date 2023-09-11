@@ -1,11 +1,14 @@
 package com.example.aircar.service;
 
-import com.example.aircar.domain.MemberSecurityDTO;
+
 import com.example.aircar.entity.Member;
 import com.example.aircar.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -84,4 +87,17 @@ public class MemberService  {
 
         return dto;
     }*/
+
+    public Page<Member> getMemberList(Pageable pageable) {
+        return memberRepository.findAll(pageable);
+    }
+
+
+    public Page<Member> getnicknameList(String keyword, Pageable pageable) {
+        return memberRepository.getBynicknameLike(keyword, pageable);
+    }
+
+    public Page<Member> getemailList(String keyword, Pageable pageable) {
+        return memberRepository.getByemailLike(keyword, pageable);
+    }
 }

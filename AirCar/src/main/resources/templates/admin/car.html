@@ -16,7 +16,7 @@
 
     <div class="wraper container-fluid">
         <div class="page-title">
-            <h3 class="title inline">회원 관리</h3>
+            <h3 class="title inline">게시글 관리</h3>
         </div>
 
 
@@ -30,57 +30,57 @@
                             <table class="table text-center">
                                 <thead>
                                 <tr>
-                                    <th>등록번호</th>
-                                    <th>닉네임</th>
-                                    <th>이메일</th>
-                                    <th>가입경로</th>
-                                    <th>가입일자</th>
+                                    <th>썸네일</th>
+                                    <th>브랜드</th>
+                                    <th>차종</th>
+                                    <th>작성자</th>
+                                    <th>등록일</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="member : ${memberList}">
+                                    <tr th:each="car : ${carList}">
 
-                                        <td th:text="${member.mno}"></td>
+                                        <td th:text="${car.carNum}"></td>
 
-                                        <td th:text="${member.nickname}"></td>
+                                        <td th:text="${car.brand}"></td>
 
                                         <td>
-                                            <a th:href="@{memberView(mno=${member.mno})}" th:text="${member.email}"></a>
+                                            <a th:href="@{carView(carNum=${car.carNum})}" th:text="${car.name}"></a>
                                         </td>
 
-                                        <td th:text="${member.clientName}"></td>
+                                        <td th:text="${car.modifyBy}"></td>
 
-                                        <td th:text="${#temporals.format(member.regTime, 'yyyy-MM-dd')}"></td>
+                                        <td th:text="${#temporals.format(car.regTime, 'yyyy-MM-dd')}"></td>
                                     </tr>
 
                                 </tbody>
                             </table>
                         </div>
                         <nav aria-label="Page navigation example ">
-                            <th:block th:if="${memberList.totalElements > 0}">
+                            <th:block th:if="${carList.totalElements > 0}">
                                 <ul class="pagination justify-content-center" style="display: flex; justify-content: center;"
-                                    th:with="start=${(memberList.number/memberList.totalPages)*memberList.totalPages + 1},
-                    end=${(memberList.totalPages == 0) ? 1 :
-                    (start + (memberList.totalPages - 1) < memberList.totalPages ? start + (memberList.totalPages - 1) : memberList.totalPages)}">
+                                    th:with="start=${(carList.number/carList.totalPages)*carList.totalPages + 1},
+                    end=${(carList.totalPages == 0) ? 1 :
+                    (start + (carList.totalPages - 1) < carList.totalPages ? start + (carList.totalPages - 1) : carList.totalPages)}">
 
-                                    <li th:class="${memberList.first} ? 'page-item disabled' : 'page-item'">
-                                        <a class="page-link" th:href="@{/admin/member(page=0)}">First</a>
+                                    <li th:class="${carList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/admin/car(page=0)}">First</a>
                                     </li>
-                                    <li th:class="${memberList.first} ? 'page-item disabled' : 'page-item'">
-                                        <a class="page-link" th:href="${memberList.first} ? '#' : @{/admin/member(page=${memberList.number} - 1)}">Previous</a>
+                                    <li th:class="${carList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="${carList.first} ? '#' : @{/admin/car(page=${memberList.number} - 1)}">Previous</a>
                                     </li>
-                                    <li th:each="page: ${#numbers.sequence(start, end)}" th:class="${page == memberList.number + 1} ? 'page-item active' : 'page-item' ">
-                                        <a class="page-link" th:href="@{/admin/notices(page=${page - 1})}">[[${page}]]</a>
+                                    <li th:each="page: ${#numbers.sequence(start, end)}" th:class="${page == carList.number + 1} ? 'page-item active' : 'page-item' ">
+                                        <a class="page-link" th:href="@{/admin/car(page=${page - 1})}">[[${page}]]</a>
                                     </li>
-                                    <li th:class="${memberList.last} ? 'page-item disabled' : 'page-item'">
-                                        <a class="page-link" th:href="${memberList.last} ? '#' : @{/admin/member(page=${memberList.number} + 1)}">Next</a>
+                                    <li th:class="${carList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="${carList.last} ? '#' : @{/admin/car(page=${carList.number} + 1)}">Next</a>
                                     </li>
-                                    <li th:class="${memberList.last} ? 'page-item disabled' : 'page-item'">
-                                        <a class="page-link" th:href="@{/admin/member(page=${memberList.totalPages - 1})}">Last</a>
+                                    <li th:class="${carList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/admin/car(page=${carList.totalPages - 1})}">Last</a>
                                     </li>
                                 </ul>
                             </th:block>
-                            <th:block th:unless="${memberList.totalElements > 0}">
+                            <th:block th:unless="${carList.totalElements > 0}">
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item active">
                                         <a class="page-link" href="#">1</a>

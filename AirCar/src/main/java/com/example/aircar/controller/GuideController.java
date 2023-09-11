@@ -2,17 +2,23 @@ package com.example.aircar.controller;
 
 import com.example.aircar.domain.CounselingDTO;
 import com.example.aircar.entity.Counseling;
+import com.example.aircar.entity.Notices;
 import com.example.aircar.repository.CounselingRepository;
+import com.example.aircar.repository.NoticesRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class GuideController {
 
     private final CounselingRepository counselingRepository;
+    private final NoticesRepository noticesRepository;
 
     @GetMapping("/crm")
     public String crmForm(){
@@ -79,5 +85,22 @@ public class GuideController {
         return "redirect:/reserve";
     }
 
+
+    @GetMapping("/notices")
+    public String notices(Model model){
+        List<Notices> noticesList = noticesRepository.findAll();
+        model.addAttribute("noticesList", noticesList);
+
+        return "/guide/notices";
+    }
+
+    @GetMapping("/noticesView")
+    public String noticesView(Long bno, Model model){
+        Notices notices = noticesRepository.findByBno(bno);
+
+        model.addAttribute("notices", notices);
+
+        return "/guide/notices_view";
+    }
 
 }
