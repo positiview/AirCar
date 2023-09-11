@@ -3,21 +3,23 @@ package com.example.aircar.controller;
 import com.example.aircar.domain.CounselingDTO;
 import com.example.aircar.domain.MemberDTO;
 import com.example.aircar.domain.NoticesDTO;
+import com.example.aircar.entity.Car;
 import com.example.aircar.entity.Counseling;
 import com.example.aircar.entity.Member;
 import com.example.aircar.entity.Notices;
-import com.example.aircar.repository.CounselingRepository;
-import com.example.aircar.repository.MemberRepository;
-import com.example.aircar.repository.NoticesRepository;
-import com.example.aircar.service.MailService;
+import com.example.aircar.repository.*;
+import com.example.aircar.service.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -32,6 +34,13 @@ public class AdminController {
     private final CounselingRepository counselingRepository;
     private final MemberRepository memberRepository;
     private final MailService mailService;
+    private FilesRepository filesRepository;
+    private final CarRepository carRepository;
+    private final NoticesService noticesService;
+    private final CounselingService counselingService;
+    private final MemberService memberService;
+    private final CarService carService;
+
 
 
     @GetMapping("/main")
@@ -57,13 +66,44 @@ public class AdminController {
     @GetMapping("/event")
     public String event(){ return "/admin/event"; }
 
+
+//    @GetMapping("/notices")
+//    public String notices(Model model){
+//        List<Notices> noticesList = noticesRepository.findAll();
+//        model.addAttribute("noticesList", noticesList);
+//
+//        return "admin/notices";
+//    }
+
+
+
     @GetMapping("/notices")
-    public String notices(Model model){
-        List<Notices> noticesList = noticesRepository.findAll();
-        model.addAttribute("noticesList", noticesList);
+    public String notices(Model model,
+                       @RequestParam(defaultValue = "")String searchType,
+                       @RequestParam(defaultValue = "")String keyword,
+                       @PageableDefault(size = 5, sort = "bno",
+                               direction = Sort.Direction.DESC)Pageable pageable) {
+
+        if (searchType.equals("title")) {
+            model.addAttribute("noticesList",
+                    noticesService.getNoticesTitleList(keyword, pageable));
+        } else if (searchType.equals("content")) {
+            model.addAttribute("noticesList",
+                    noticesService.getNoticesContentList(keyword, pageable));
+        } else {
+            model.addAttribute("noticesList",
+                    noticesService.getNoticesList(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
 
         return "admin/notices";
     }
+
+
+
 
     @GetMapping("/noticesRegister")
     public String noticesRegister(){
@@ -149,12 +189,31 @@ public class AdminController {
     }
 
     @GetMapping("/counseling")
-    public String counseling(Model model){
-        List<Counseling> counselingList = counselingRepository.findAll();
-        model.addAttribute("counselingList", counselingList);
+    public String counseling(Model model,
+                             @RequestParam(defaultValue = "")String searchType,
+                              @RequestParam(defaultValue = "")String keyword,
+                              @PageableDefault(size = 5, sort = "bno",
+                                  direction = Sort.Direction.DESC)Pageable pageable){
+
+        if (searchType.equals("title")) {
+            model.addAttribute("counselingList",
+                    counselingService.getCounselingTitleList(keyword, pageable));
+        } else if (searchType.equals("content")) {
+            model.addAttribute("counselingList",
+                    counselingService.getCounselingTitleList(keyword, pageable));
+        } else {
+            model.addAttribute("counselingList",
+                    counselingService.getCounselingList(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
 
         return "admin/counseling";
     }
+
+
 
 
     @GetMapping("/counselingAnswer")
@@ -164,7 +223,7 @@ public class AdminController {
 
         model.addAttribute("counseling", counseling);
 
-        return "/admin/counseling_answer";
+        return "admin/counseling_answer";
     }
 
     @PostMapping("/answer")
@@ -186,16 +245,34 @@ public class AdminController {
 
         mailService.CreateMail(counselingDto);
 
-        return "redirect:/admin/counselingAnswer?mno=" + counseling.getBno();
+        return "redirect:/admin/counselingAnswer?bno=" + counseling.getBno();
     }
 
     @GetMapping("/member")
-    public String member(Model model){
-        List<Member> memberList = memberRepository.findAll();
-        model.addAttribute("memberList", memberList);
+    public String member(Model model,
+                         @RequestParam(defaultValue = "")String searchType,
+                         @RequestParam(defaultValue = "")String keyword,
+                         @PageableDefault(size = 5, sort = "mno",
+                                 direction = Sort.Direction.DESC)Pageable pageable){
+
+        if (searchType.equals("nickname")) {
+            model.addAttribute("memberList",
+                    memberService.getnicknameList(keyword, pageable));
+        } else if (searchType.equals("email")) {
+            model.addAttribute("memberList",
+                    memberService.getemailList(keyword, pageable));
+        } else {
+            model.addAttribute("memberList",
+                    memberService.getMemberList(pageable));
+        }
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
 
         return "admin/member";
     }
+
+
 
     @GetMapping("/memberView")
     public String memberView(Long mno, Model model){
@@ -221,13 +298,60 @@ public class AdminController {
         Member member = new Member();
 
         member.setMno(memberDto.getMno());
-        member.setNickname(memberDto.getNickname());
-        member.setEmail(memberDto.getEmail());
         member.setPassword(memberDto.getPassword());
+        member.setName((memberDto.getName()));
+        member.setEmail(memberDto.getEmail());
+        member.setSocial(member.isSocial());
+        member.setClientName(member.getClientName());
+        member.setNickname(memberDto.getNickname());
+        member.setRole(memberDto.getRole());
+
+
 
         memberRepository.save(member);
 
         return "redirect:/admin/memberView?mno=" + member.getMno();
+    }
+
+    @GetMapping("/upload")
+    public String upload(){
+
+        return "/admin/upload";
+    }
+
+    @GetMapping("/car")
+    public String car(Model model,
+                      @RequestParam(defaultValue = "")String searchType,
+                      @RequestParam(defaultValue = "")String keyword,
+                      @PageableDefault(size = 5, sort = "carNum",
+                              direction = Sort.Direction.DESC)Pageable pageable) {
+
+        if (searchType.equals("title")) {
+            model.addAttribute("carList",
+                    carService.getbrandList(keyword, pageable));
+        } else if (searchType.equals("content")) {
+            model.addAttribute("carList",
+                    carService.getnameList(keyword, pageable));
+        } else {
+            model.addAttribute("carList",
+                    carService.getcarList1(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
+        return "admin/car";
+    }
+
+    @GetMapping("/carView")
+    public String carView(Long carNum, Model model){
+        Car car = carRepository.findByCarNum(carNum);
+
+
+        model.addAttribute("car", car);
+
+        return "admin/car_view";
     }
 
 

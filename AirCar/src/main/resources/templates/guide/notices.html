@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="content">
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function() {
+                $("html, body").animate({ scrollTop: 0 }, 400);  });
+
+
+        </script>
+    </th:block>
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+    <div id="root" style="height: 100%">
+    <div class="pc_wrap" style="">
+        <div class="wrap sub_wrap">
+
+            <div class="container">
+                <div class="inner">
+                    <div class="contents">
+                        <div class="title_wrap">
+                            <h2 class="title_30 search_form__row">자주 찾는 질문
+                                <div class="serch_wrap">
+                                    <div class="form_row"><input id="search" name="search" type="text"
+                                                                 placeholder="궁금한 점을 입력해보세요" value="">
+                                        <button class="btn_serch"><span class="blind">Search</span></button>
+                                    </div>
+                                </div>
+                            </h2>
+                        </div>
+                        <div class="board_tab">
+                            <ul class="reviw_box">
+                                <li class="reviw_list active"><a><span class="review_txt">전체</span></a></li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main01.png"></span><span class="review_txt">예약·변경</span></a>
+                                </li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main02.png"></span><span
+                                        class="review_txt">운전자</span></a></li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main03.png"></span><span class="review_txt">제휴·할인</span></a>
+                                </li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main04.png"></span><span
+                                        class="review_txt">보험</span></a></li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main05.png"></span><span class="review_txt">고장·사고</span></a>
+                                </li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main06.png"></span><span class="review_txt">장기렌터카</span></a>
+                                </li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main07.png"></span><span
+                                        class="review_txt">유류비</span></a></li>
+                                <li class="reviw_list"><a><span class="img_icon"><img
+                                        src="/assets/img/contents/ico_cs_main08.png"></span><span class="review_txt">부가용품</span></a>
+                                </li>
+                                <li class="reviw_list"><a><span class="review_txt">기타</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="branch_serch"><p class="title_18">자주 찾는 질문을 모아봤어요</p>
+                            <div class="table-responsive clear_bt">
+                                <table class="table text-center">
+                                                                        <tbody>
+                                    <tr th:each="notices : ${noticesList}">
+
+                                        <td>
+                                            <a th:href="@{noticesView(bno=${notices.bno})}" th:text="${notices.notices_title}"></a>
+                                        </td>
+
+
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            </a></div>
+
+                            <nav class="pagination" aria-label="Page navigation">
+                                <ol>
+                                    <li class="page_item" aria-current="page">
+                                        <button class="page_link active">1</button>
+                                    </li>
+                                    <li class="page_item">
+                                        <button class="page_link">2</button>
+                                    </li>
+                                    <li class="page_item">
+                                        <button class="page_link">3</button>
+                                    </li>
+                                    <li class="page_item">
+                                        <button class="page_link">4</button>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
+                    <div class="float_wrap">
+                        <div class="inner">
+                            <div class="chat_cont">
+                                <div class="chat_btn"><a> 상담하기</a></div>
+                                <ul class="chat_list">
+                                    <li class="chat"><a>채팅상담</a></li>
+                                    <li class="inquiry"><a>1:1문의 작성</a></li>
+                                </ul>
+                            </div>
+                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+            </div>
+            <div class="footer_wrap">
+        </div>
+    </div>
+</div>
+    <script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    <script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+            src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+    </body>
+</th:block>
+</html>

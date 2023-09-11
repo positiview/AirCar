@@ -3,10 +3,13 @@ package com.example.aircar.service;
 import com.example.aircar.domain.CarDTO;
 import com.example.aircar.entity.Car;
 import com.example.aircar.entity.Files;
+import com.example.aircar.entity.Member;
 import com.example.aircar.repository.CarRepository;
 import com.example.aircar.repository.FilesRepository;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -101,6 +104,19 @@ public class CarService {
 //        }
 //    }
 
+    public Page<Car> getcarList1(Pageable pageable) {
+
+        return carRepository.findAll(pageable);
+    }
+
+
+    public Page<Car> getbrandList(String keyword, Pageable pageable) {
+        return carRepository.getBybrandLike(keyword, pageable);
+    }
+
+    public Page<Car> getnameList(String keyword, Pageable pageable) {
+        return carRepository.getBynameLike(keyword, pageable);
+    }
 
 
     }

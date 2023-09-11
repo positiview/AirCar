@@ -20,7 +20,7 @@ import java.util.List;
 @ToString
 public class Car extends BaseEntity{
     @Id
-    @Column(name = "carNum")
+    @Column(name = "car_num")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long carNum;
 

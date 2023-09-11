@@ -1,7 +1,8 @@
 package com.example.aircar.repository;
 
 import com.example.aircar.entity.Member;
-import com.example.aircar.entity.Notices;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -21,4 +22,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Optional<Member> findByEmail(String email);
 
     Member findByMno(Long mno);
+
+    @Query("select m from Member m where m.nickname like %:keyword% order by m.mno desc")
+    Page<Member> getBynicknameLike(String keyword, Pageable pageable);
+
+    @Query("select m from Member m where m.email like %:keyword% order by m.mno desc")
+    Page<Member> getByemailLike(String keyword, Pageable pageable);
 }
