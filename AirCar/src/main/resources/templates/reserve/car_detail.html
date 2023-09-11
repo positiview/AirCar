@@ -14,8 +14,8 @@
    <!-- <link rel="stylesheet" th:href="@{/assets/css/HJS/common.css}">-->
     <link rel="stylesheet" th:href="@{/assets/css/HJS/calendar.css}">
     <!--<link rel="stylesheet" th:href="@{/assets/css/HJS/component.css}">-->
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/main.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/content.css}">
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/main.css}">-->
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/content.css}">-->
     <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
@@ -23,15 +23,15 @@
 <!--    <th:block th:each="car : ${carInfo}">-->
     <div class="container"  >
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-        <input type="hidden" name="carNum" th:value="${car.carNum}"/>
+        <input type="hidden" name="carNum" th:value="${car.car_num}"/>
         <div class="inner">
             <div class="contents">
                 <div class="title_wrap"><h2 class="title_30 mb0">차량상세</h2></div>
                 <div class="top_product">
-                  <div class="img_area"><img th:src="@{'assets/upload/'+${carinfo[1].carImg}}"></div>
-                    <div class="product_box"><p class="car_logo"><img
-                            src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_kia.svg"
-                            alt="기아자동차"></p>
+                  <div class="img_area"><img th:src="@{'assets/upload/'+${car.carImg}}"></div>
+                    <div class="product_box"><p class="car_logo">
+<!--                        <img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_kia.svg" alt="기아자동차"></p>-->
+                        <img th:src="@{'assets/upload/'+${car.brandImg}}" th:alt="${car.brand}"></p>
                         <div class="brand_info">
                             <h2>기아자동차 <strong>
                                 <th:block th:text="${car.name}"></th:block>
@@ -79,37 +79,6 @@
                                 <em> 년 이상</em></p>
                         </li>
                     </ul>
-                </div>
-                <div class="detail_info user_review_box" style="margin-top: 32px;">
-                    <div class="detail_info__tit"><p class="title_20">이용자 리뷰</p>
-                        <p class="title_14">고객들은 이런 경험을 했어요</p></div>
-                    <div class="more_btn"><a>더보기</a></div>
-                    <div class="chips_list">
-                        <div class="chips chips_icon"><span class="img_icon"><img
-                                src="/assets/img/common/ico_rv_map.png"
-                                alt=""></span><span class="txt">지점 내 시설이 잘되어 있어요</span><em
-                                class="number">2</em></div>
-                        <div class="chips chips_icon"><span class="img_icon"><img
-                                src="/assets/img/common/ico_rv_info.png"
-                                alt=""></span><span class="txt">차량 대여/반납이 신속해요</span><em
-                                class="number">2</em></div>
-                        <div class="chips chips_icon"><span class="img_icon"><img
-                                src="/assets/img/common/ico_rv_find.png"
-                                alt=""></span><span class="txt">지점에 찾아가기 쉬워요</span><em
-                                class="number">2</em></div>
-                        <div class="chips chips_icon"><span class="img_icon"><img
-                                src="/assets/img/common/ico_rv_card.png"
-                                alt=""></span><span class="txt">홈페이지 예약 및 결제가 편리해요</span><em
-                                class="number">2</em></div>
-                        <div class="chips chips_icon"><span class="img_icon"><img
-                                src="/assets/img/common/ico_rv_clean.png"
-                                alt=""></span><span class="txt">차량 관리 상태가 좋아요</span><em
-                                class="number">1</em></div>
-                        <div class="chips chips_icon"><span class="img_icon"><img
-                                src="/assets/img/common/ico_rv_board.png"
-                                alt=""></span><span class="txt">주행 성능이 우수해요</span><em
-                                class="number">1</em></div>
-                    </div>
                 </div>
                 <div class="detail_info" style="margin-top: 32px;">
                     <div class="detail_info__tit"><p class="title_20">차량옵션</p></div>
@@ -234,7 +203,7 @@
                             </div>
                         </div>
                         <div class="btn_group type01">
-                            <button class="btn type01"   th:onclick="'window.location.href=\'' + @{/reserve_first(carNum=${car.carNum})} + '\''"
+                            <button class="btn type01"   th:onclick="'window.location.href=\'' + @{/reserve_first(carNum=${car.car_num})} + '\''"
                                     style="line-height:11px "><th:block th:text="${car.cost}"></th:block> 원으로 예약하기
                             </button>
                         </div>

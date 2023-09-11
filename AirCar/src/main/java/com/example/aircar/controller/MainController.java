@@ -36,7 +36,7 @@ public class MainController {
         HttpSession session = request.getSession();
         session.setAttribute("nickname", nickname);
 
-            return "main/homepage";
+        return "main/homepage";
     }
 
     @GetMapping("/index")
