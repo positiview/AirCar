@@ -3,8 +3,10 @@
 .pc_wrap {
   min-width: 1192px;
 }
-.pc_wrap a {
+.pc_wrap a:hover {
   cursor: pointer;
+  outline: none;
+  text-decoration: none;
 }
 html,
 body {

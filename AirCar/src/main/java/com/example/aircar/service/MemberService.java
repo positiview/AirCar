@@ -54,6 +54,10 @@ public class MemberService  {
     }
 
 
+    public void updatePhone(String phone, String email){
+        memberRepository.updatePhone(phone,email);
+    }
+
     /*public String getNicknameByEmail(String email){
         Optional<Member> memberItem = memberRepository.findByEmail(email);
         log.info("memberItem : " + memberItem);

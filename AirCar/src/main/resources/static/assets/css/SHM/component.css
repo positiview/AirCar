@@ -7344,6 +7344,9 @@
   width: 50%;
   margin: 0 25px;
 }
+.pc_wrap .login_box .login_normal{
+  width: 90%;
+}
 .pc_wrap .login_box .form_row + .form_row {
   margin-top: 12px;
 }

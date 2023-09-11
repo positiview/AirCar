@@ -18,8 +18,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @AllArgsConstructor
+@SessionAttributes("memberInfo")
 public class MemberController {
 
 
@@ -93,13 +97,20 @@ public class MemberController {
         return "member/signUpAgreeChk";
     }
 
+    @GetMapping("/singupForm")
+    public String signupForm(){
+        return "member/signupForm";
+    }
+
     @GetMapping("/mypage")
     public String mypage(){
         return "member/myPage";
     }
 
-    @GetMapping("/myinfo")
-    public String myinfo(){return "member/myInfo";}
+    @GetMapping("/myInfo")
+    public String myinfo(Model model,  @ModelAttribute("memberInfo") MemberSecurityDTO mDTO){
+        model.addAttribute("memberInfo",mDTO);
+        return "member/myInfo";}
 
     @GetMapping("/license")
     public String driveLicense(){
@@ -125,21 +136,39 @@ public class MemberController {
 
 
     @PostMapping("/passwordCheck")
-    public ResponseEntity<String> passwordCheck(Model model, @AuthenticationPrincipal MemberSecurityDTO member, String password){
+    @ResponseBody
+    public ResponseEntity<String> passwordCheck(Model model, @RequestBody String password, @ModelAttribute("memberInfo") MemberSecurityDTO mDTO){
 
-        String email = member.getEmail();
-        String userInputPassword = password;
-        String storedHashedPassword = memberService.getPassword(email);
+
+        String email = mDTO.getEmail();
+        String userInputPassword = password.replace("=","");
+        Member member2 = memberService.getUserInfo(email);
+        if(member2 == null){
+            model.addAttribute("pwChkErrMsg", "비밀번호를 잘못 입력하셨습니다.");
+            /*return "redirect:/myPage";*/
+            return new ResponseEntity<>("false", HttpStatus.OK);
+        }
+        String storedHashedPassword = member2.getPassword();
 
         boolean passwordMatches = passwordEncoder.matches(userInputPassword, storedHashedPassword);
 
-        /*if(passwordMatches){
-            return "/myinfo";
+        if(passwordMatches){
+            return new ResponseEntity<>("correct", HttpStatus.OK);
         }else{
             model.addAttribute("pwChkErrMsg", "비밀번호를 잘못 입력하셨습니다.");
-            return "redirect:/myPage";
-        }*/
-        return new ResponseEntity<>("correct", HttpStatus.OK);
+            /*return "redirect:/myPage";*/
+            return new ResponseEntity<>("false", HttpStatus.OK);
+        }
+
     }
 
+    @PostMapping("/updatePhone")
+    @ResponseBody
+    public ResponseEntity<String> updatePhone(@RequestBody String phone, @ModelAttribute("memberInfo") MemberSecurityDTO mDTO){
+        String email = mDTO.getEmail();
+        String phoneNum = phone.replace("=","");
+        memberService.updatePhone(phoneNum,email);
+
+        return new ResponseEntity<>("success",HttpStatus.OK);
+    }
 }

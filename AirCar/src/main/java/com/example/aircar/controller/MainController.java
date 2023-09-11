@@ -18,22 +18,24 @@ import javax.servlet.http.HttpSession;
 public class MainController {
 
     @GetMapping("/main")
-    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO memberSecurityDTO,
+    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO mDTO,
                            HttpServletRequest request) {
 
         String nickname = "";
-        if (memberSecurityDTO != null) {
+        HttpSession session = request.getSession();
+        if (mDTO != null) {
 
-            nickname = memberSecurityDTO.getNickname();
+            nickname = mDTO.getNickname();
             log.info("nickname : " + nickname);
+            session.setAttribute("memberInfo", mDTO);
         }
 
-        log.info("member 정보 : "+ memberSecurityDTO);
+        log.info("member 정보 : "+ mDTO);
 
         model.addAttribute("nickname", nickname);
 
 
-        HttpSession session = request.getSession();
+
         session.setAttribute("nickname", nickname);
 
             return "main/homepage";

@@ -41,7 +41,7 @@
                                     <li><a href="/login">회원가입</a></li>
                                 </ul>
                                 <ul class="member" sec:authorize="isAuthenticated()">
-                                    <li><span><a href="/mypage">[[${session.nickname}]]님</a> 안녕하세요</span></li>
+                                    <li><span><a href="/mypage">[[${nickname}]]님</a> 안녕하세요</span></li>
                                     <li><a href="register_car">차량등록</a></li>
                                     <li><a class="open-layerPopup">로그아웃</a></li>
                                     <li><a class="logout open-layerPopup"></a></li>

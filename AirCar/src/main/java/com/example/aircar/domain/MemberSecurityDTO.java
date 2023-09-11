@@ -23,11 +23,12 @@ public class MemberSecurityDTO extends User implements OAuth2User {
 
     private boolean social;
 
+    private String phone;
     private String nickname;
     private Role role;
     private Map<String, Object> attr;
 
-    public MemberSecurityDTO(String username, String password, String email, boolean social,  String nickname,
+    public MemberSecurityDTO(String username, String password, String email, boolean social, String phone, String nickname,
                               Collection<? extends GrantedAuthority> authorities){
         super(username, password, authorities);
 

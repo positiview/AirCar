@@ -5,6 +5,76 @@
     <th:block th:replace="fragments/CSS_Fragment::link"></th:block>
 </head>
 <th:block layout:fragment="content">
+    <script>
+        $(document).ready(function () {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            //---------------------------------
+            // 레이어팝업 기능
+            var layerPopup = $('.layerPopup');
+
+
+
+            $('#open-layerPopup1').click(function () {
+                layerPopup.show();
+                $('body').css('overflow', 'hidden');
+            });
+
+            layerPopup.not('.layerPopup_wrap').click(function (e) {
+                if (!$(e.target).closest('.layerPopup_wrap').length) {
+                    layerPopup.hide();
+                    $('body').css('overflow', 'visible');
+                }
+            });
+
+            //----------------------------------
+            var phoneInput = $('#phoneInput');
+            var chk_Button = $('#chkBtn');
+            phoneInput.on("keyup", function () {
+
+                if (phoneInput.val().length > 0) {
+                    chk_Button.removeAttr("disabled");
+                } else {
+                    chk_Button.attr("disabled", "disabled");
+                }
+            });
+
+            chk_Button.click(function (){
+
+                var phone = phoneInput.val();
+
+                console.log(phone);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/updatePhone',
+                    data: phone,
+
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "success") {
+                            alert("휴대폰 정보 업데이트 완료")
+
+                            location.href = "/myInfo";
+                        } else {
+                            // 비밀번호가 일치하지 않는 경우
+                            console.error('휴대폰 정보 업데이트 에러 발생');
+                        }
+                    },
+                    error: function() {
+                        // 에러 시 처리
+                        console.error('POST 전송 오류 발생');
+                    }
+                })
+            });
+
+        });
+    </script>
 <div class="container">
     <div class="inner">
         <div class="contents">
@@ -14,7 +84,7 @@
                 <div class="white_box border">
                     <div class="form_row">
                         <div class="data_management"><label for="coname" class="form_label">아이디</label>
-                            <p class="data_txt">shm0119</p></div>
+                            <p class="data_txt">[[${memberInfo.getEmail()}]]</p></div>
                         <div class="data_management"><label for="password" class="form_label">비밀번호</label>
                             <p class="data_txt notice">개인정보 보호를 위해 주기적으로 변경해주세요</p>
                             <div class="btn_modify">
@@ -22,9 +92,33 @@
                             </div>
                         </div>
                         <div class="data_management"><label for="sellphone" class="form_label">휴대폰 번호</label>
-                            <p class="data_txt">010-7614-9625</p>
+                            <p class="data_txt">[[${memberInfo.get}</p>
                             <div class="btn_modify">
-                                <button class="btn">본인 인증 후 변경</button>
+                                <button class="btn" id="open-layerPopup1">변경</button>
+                            </div>
+                        </div>
+                        <div class="layerPopup small" style="display: none">
+                            <div class="layerPopup_wrap">
+                                <div class="layerPopup_heading"><h2 class="heading">휴대폰 번호를 입력해 주세요</h2>
+                                    <button class="btn_close">닫기</button>
+                                </div>
+                                <div class="layerPopup_content">
+                                    <div class="form_control">
+                                        <div class="form_row">
+                                            <label for="phoneInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
+                                            <input id="phoneInput" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="layerPopup_bottom bottom_gray">
+                                    <div class="btn_group">
+                                        <button id="chkBtn" class="btn type01" disabled>번호 수정 완료</button>
+
+
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,28 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sub_cont">
-                <div class="title_wrap"><p class="title_18">간편 로그인 관리</p></div>
-                <div class="white_box border">
-                    <div class="form_row">
-                        <div class="data_management"><p class="data_txt">카카오</p>
-                            <div class="btn_modify"><span class="btn_switch"><input id="kakao" type="checkbox"
-                                                                                    name="kakaoLink" readonly=""><label
-                                    for="kakao"></label></span></div>
-                        </div>
-                        <div class="data_management"><p class="data_txt">네이버</p>
-                            <div class="btn_modify"><span class="btn_switch"><input id="naver" type="checkbox"
-                                                                                    name="naverLink" readonly=""><label
-                                    for="naver"></label></span></div>
-                        </div>
-                        <div class="data_management"><p class="data_txt">Apple</p>
-                            <div class="btn_modify"><span class="btn_switch"><input id="apple" type="checkbox"
-                                                                                    name="appleLink" readonly=""><label
-                                    for="apple"></label></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="sub_cont">
                 <div class="title_wrap"><p class="title_18">계정관리</p></div>
                 <div class="white_box border">

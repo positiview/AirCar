@@ -63,6 +63,8 @@
         $(document).on("click", ".top_cont", function() {
             $("html, body").animate({ scrollTop: 0 }, 400);  });
         $(document).ready(function () {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
             datePickerSet($("#datepicker1"), $("#datepicker2"), true);
 
             function datePickerSet(sDate, eDate, flag) {
@@ -117,6 +119,8 @@
                 $('.chk').closest('li').removeClass('on'); // 모든 라벨의 테두리 색상 초기화
                 $('input[type="checkbox"]').prop('checked', false); // 모든 체크박스 해제
             });
+
+
 
 
             // 모든 클래스가 해제시 전체 클래스 on
@@ -227,7 +231,7 @@
                 $('body').css('overflow', 'visible');
             });
             //----------------------------------
-            /*var passwordInput = $('#pwInput');
+            var passwordInput = $('#pwInput');
             var chkPW_Button = $('#chkPW');
             passwordInput.on("keyup", function (){
 
@@ -246,21 +250,24 @@
 
                 var password = passwordInput.val();
 
-
+                console.log(password);
 
                 $.ajax({
                     type: 'POST',
                     url: '/passwordCheck',
-                    data: JSON.stringify(password),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function(response) {
-                        var isValid = response.isValid;
+                    data: password,
 
-                        if (isValid) {
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "correct") {
                             // 비밀번호가 일치하는 경우
                             $("#pwChkErrMsg").text("비밀번호가 일치합니다.");
-                            window.location.href = "/myInfo";
+                            location.href = "/myInfo";
                         } else {
                             // 비밀번호가 일치하지 않는 경우
                             $("#pwChkErrMsg").text("비밀번호가 일치하지 않습니다.");
@@ -271,7 +278,7 @@
                         console.error('POST 전송 오류 발생');
                     }
                 })
-            });*/
+            });
 
 
         });
