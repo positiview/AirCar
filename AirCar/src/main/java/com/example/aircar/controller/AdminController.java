@@ -296,13 +296,12 @@ public class AdminController {
     @PostMapping("/memberUpdate")
     public String memberUpdate(MemberDTO memberDto) {
         Member member = new Member();
-
+        log.info("mno : " + memberDto.getMno());
         member.setMno(memberDto.getMno());
         member.setPassword(memberDto.getPassword());
         member.setName((memberDto.getName()));
         member.setEmail(memberDto.getEmail());
         member.setSocial(member.isSocial());
-        member.setClientName(member.getClientName());
         member.setNickname(memberDto.getNickname());
         member.setRole(memberDto.getRole());
 

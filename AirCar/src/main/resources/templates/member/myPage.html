@@ -94,12 +94,11 @@
                     </div>
                     <div class="layerPopup_content">
                         <div class="form_control">
-                            <div class="form_row"><label for="names" class="form_label">비밀번호</label><input id="names"
-                                                                                                           name="names"
-                                                                                                           type="password"
-                                                                                                           placeholder="영문, 숫자, 특수문자 포함 10~20자 이내"
-                                                                                                           maxlength="20">
+                            <div class="form_row">
+                                <label for="pwInput" class="form_label">비밀번호</label><p id="pwChkErrMsg"></p>
+                                <input id="pwInput" name="names" type="password" placeholder="영문, 숫자, 특수문자 포함 10~20자 이내" maxlength="20">
                             </div>
+
                         </div>
                     </div>
                     <div class="layerPopup_bottom bottom_gray">
@@ -149,18 +148,7 @@
                     </div>
                 </div>
             </div>
-            <div class="float_wrap">
-                <div class="inner">
-                    <div class="chat_cont">
-                        <div class="chat_btn"><a> 상담하기</a></div>
-                        <ul class="chat_list">
-                            <li class="chat"><a>채팅상담</a></li>
-                            <li class="inquiry"><a>1:1문의 작성</a></li>
-                        </ul>
-                    </div>
-                    <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
         </div>
     </div>
 </th:block>

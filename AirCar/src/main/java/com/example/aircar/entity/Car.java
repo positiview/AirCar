@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,6 +47,9 @@ public class Car extends BaseEntity{
 
     @UpdateTimestamp
     private LocalDateTime updateDate;
+
+    private Date startDate;
+    private Date endDate;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private  member_num;

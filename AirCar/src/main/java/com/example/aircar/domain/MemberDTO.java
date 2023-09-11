@@ -18,8 +18,8 @@ public class MemberDTO {
     private String email;
     private LocalDateTime regTime;
     private LocalDateTime updateTime;
-    private  boolean social;
-    private String clientName;
+    private boolean social;
+
     private String nickname;
     private String createBy;
     private String modifyBy;

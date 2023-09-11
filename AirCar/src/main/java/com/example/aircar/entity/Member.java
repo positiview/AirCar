@@ -26,7 +26,7 @@ public class Member extends BaseEntity {
 
     private String name;
 
-
+    @Column(unique = true)
     private String email;
 
    /* private String address;
@@ -39,8 +39,6 @@ public class Member extends BaseEntity {
     private Role role;
 
     private boolean social;
-
-    private String clientName;
 
     private String nickname;
 

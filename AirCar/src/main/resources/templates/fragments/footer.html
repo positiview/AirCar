@@ -227,51 +227,51 @@
                 $('body').css('overflow', 'visible');
             });
             //----------------------------------
-           /* var passwordInput = $('#names');
+            /*var passwordInput = $('#pwInput');
             var chkPW_Button = $('#chkPW');
             passwordInput.on("keyup", function (){
 
                 if(passwordInput.val().length > 0){
                     chkPW_Button.removeAttr("disabled");
                     chkPW_Button.text("입력완료");
-                    chkPW_Button.click(function (){
 
-                       var chkPW = passwordInput.val();
-
-
-                       $.ajax({
-                           type:'GET',
-                           url:'/member/myinfo',
-                           success: function(response) {
-                               // 성공 시 처리
-                               console.log(response);
-                           },
-                           error: function() {
-                               // 에러 시 처리
-                               console.error('오류 발생');
-                           }
-                       })
-                       /!*$.ajax({
-                           type: 'POST',
-                           url: '/member/passwordCheck',
-                           data: chkPW,
-                           success: function(response) {
-                               // 성공 시 처리
-                               console.log(response);
-                           },
-                           error: function() {
-                               // 에러 시 처리
-                               console.error('오류 발생');
-                           }
-                       })  비밀번호 확인 처리 *!/
-                    });
 
                 }else{
                     chkPW_Button.attr("disabled","disabled");
                     chkPW_Button.text("비밀번호를 입력해 주세요");
                 }
-            });  비밀번호 확인 레이아웃 처리*/
+            });
 
+            chkPW_Button.click(function (){
+
+                var password = passwordInput.val();
+
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/passwordCheck',
+                    data: JSON.stringify(password),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function(response) {
+                        var isValid = response.isValid;
+
+                        if (isValid) {
+                            // 비밀번호가 일치하는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치합니다.");
+                            window.location.href = "/myInfo";
+                        } else {
+                            // 비밀번호가 일치하지 않는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치하지 않습니다.");
+                        }
+                    },
+                    error: function() {
+                        // 에러 시 처리
+                        console.error('POST 전송 오류 발생');
+                    }
+                })
+            });*/
 
 
         });
@@ -310,6 +310,47 @@
     </script>
 
 
+    <script th:inline="javascript">
+        var sessionNickname = /*[[${session.nickname}]]*/ '';
+        document.getElementById("nickname").value = sessionNickname;
+    </script>
+
+    <script th:inline="javascript" >
+        $(document).ready(function() {
+            // 초기 car.cost 값 가져오기
+            var carCost = parseFloat($("#cost").text().replace(/[^0-9]/g, '')); // 숫자만 추출
+
+            // firstI 클릭 이벤트
+            $("#firstI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 0; // 예시: 0으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+
+            // secondI 클릭 이벤트
+            $("#secondI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 50000; // 50000을 더한 값으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+
+            // thirdI 클릭 이벤트
+            $("#thirdI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 100000; // 100000을 더한 값으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+        });
+    </script>
+
+    <!--결제 api-->
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js" type="text/javascript"></script>
 
 </th:block>
 </html>
