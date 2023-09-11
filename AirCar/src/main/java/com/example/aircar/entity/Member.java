@@ -31,6 +31,7 @@ public class Member extends BaseEntity {
 
     private String phone;
     private String client;
+    private String contactEmail;
    /* private String address;
 
     private String license;

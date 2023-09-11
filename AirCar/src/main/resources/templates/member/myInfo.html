@@ -11,12 +11,12 @@
             var header = $("meta[name='_csrf_header']").attr("content");
 
 
-            //----------------------------------
-            var phoneInput = $('#phoneInput');
-            var chk_Button = $('#chkBtn');
-            phoneInput.on("keyup", function () {
+           /* // 수정 레이어----------------------------------
+            var modify = $('.modifier');
+            var chk_Button = $('.chkBtn');
+            modify.on("keyup", function () {
 
-                if (phoneInput.val().length > 0) {
+                if (modify.val().length > 0) {
                     chk_Button.removeAttr("disabled");
                 } else {
                     chk_Button.attr("disabled", "disabled");
@@ -25,17 +25,17 @@
 
             chk_Button.click(function (){
 
-                var phone = phoneInput.val();
+                var data = modify.val();
 
-                console.log(phone);
+                console.log(data);
 
                 $.ajax({
                     type: 'POST',
                     url: '/updatePhone',
-                    data: phone,
+                    data: data,
 
                     beforeSend : function(xhr)
-                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    {   /!*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*!/
                         xhr.setRequestHeader(header, token);
                     },
                     success: function(response) {
@@ -55,7 +55,7 @@
                         console.error('POST 전송 오류 발생');
                     }
                 })
-            });
+            });*/
 
         });
     </script>
@@ -78,7 +78,7 @@
                         <div class="data_management"><label for="sellphone" class="form_label">휴대폰 번호</label>
                             <p class="data_txt">[[${session.memberInfo.getPhone()}]]</p>
                             <div class="btn_modify">
-                                <button class="btn" id="open-layerPopup1">변경</button>
+                                <button class="btn" id="modifyPhone">변경</button>
                             </div>
                         </div>
                         <div class="layerPopup small1" style="display: none">
@@ -90,7 +90,7 @@
                                     <div class="form_control">
                                         <div class="form_row">
                                             <label for="phoneInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
-                                            <input id="phoneInput" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
+                                            <input id="phoneInput" class="modifier" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
                                         </div>
 
                                     </div>
@@ -122,7 +122,7 @@
                         <div class="data_management"><label for="nickname" class="form_label">닉네임</label>
                             <p class="data_txt">[[${session.memberInfo.getNickname()}]]</p></div>
                             <div class="btn_modify">
-                                <button class="btn" id="modifyNick">수정</button>
+                                <button class="btn" id="modifyNickname">수정</button>
                             </div>
                         <div class="data_management"><label for="driverLicense" class="form_label">운전면허정보</label>
                             <p class="data_txt notice">미리 등록하면 예약이 더 빨라져요</p>
@@ -145,14 +145,14 @@
                                     <div class="form_control">
                                         <div class="form_row">
                                             <label for="emailInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
-                                            <input id="emailInput" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
+                                            <input id="emailInput" class="modifier" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
                                         </div>
 
                                     </div>
                                 </div>
                                 <div class="layerPopup_bottom bottom_gray">
                                     <div class="btn_group">
-                                        <button id="chkBtn" class="btn type01" disabled>번호 수정 완료</button>
+                                        <button id="chkBtn" class="btn type01" disabled>이메일 수정 완료</button>
 
 
                                     </div>
@@ -169,7 +169,7 @@
                                     <div class="form_control">
                                         <div class="form_row">
                                             <label for="nickInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
-                                            <input id="nickInput" name="names" type="text" placeholder="[[${session.memberInfo.getNickname}]]" maxlength="20">
+                                            <input id="nickInput" class="modifier" name="names" type="text" placeholder="[[${session.memberInfo.getNickname}]]" maxlength="20">
                                         </div>
 
                                     </div>
@@ -223,41 +223,7 @@
         </div>
         <form name="reqPCCForm" method="post" action=""><input type="hidden" name="reqInfo" value=""><input
                 type="hidden" name="retUrl" value=""><input type="hidden" name="verSion" value="2"></form>
-        <div class="sidebar">
-            <div id="sideScroll" class="inner">
-                <div class="fillter_wrap"><h2>어떤 도움이 필요하세요</h2>
-                    <div class="menu_btns row3">
-                        <ul class="btns_list">
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main01.png" alt="결제 이미지"></div>
-                                <span>예약·변경</span></a></li>
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main02.png" alt="결제 이미지"></div>
-                                <span>운전자</span></a></li>
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main03.png" alt="결제 이미지"></div>
-                                <span>제휴·할인</span></a></li>
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main04.png" alt="결제 이미지"></div>
-                                <span>보험</span></a></li>
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main05.png" alt="결제 이미지"></div>
-                                <span>고장·사고</span></a></li>
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main06.png" alt="결제 이미지"></div>
-                                <span>장기렌터카</span></a></li>
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main07.png" alt="결제 이미지"></div>
-                                <span>유류비</span></a></li>
-                            <li><a>
-                                <div class="icon"><img src="img/ico_cs_main08.png" alt="결제 이미지"></div>
-                                <span>부가용품</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="btn_group"><a class="btn type02">고객센터로 이동</a></div>
-                </div>
-            </div>
-        </div>
+        <th:block th:replace="fragments/sidebarCustomerCenter::sidebarCC"></th:block>
     </div>
 </div>
 </th:block>

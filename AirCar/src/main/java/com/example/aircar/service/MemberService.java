@@ -60,6 +60,9 @@ public class MemberService  {
     public void updatePhone(String phone, String email){
         memberRepository.updatePhone(phone,email);
     }
+    public void updateNickname(String nickname, String email){
+        memberRepository.updateNickname(nickname,email);
+    }
 
     /*public String getNicknameByEmail(String email){
         Optional<Member> memberItem = memberRepository.findByEmail(email);

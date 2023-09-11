@@ -218,7 +218,7 @@
             layerPopPop(layerPopup2,open_layer2);
             // 휴대폰 번호 변경
             var layerPopup3 = $('.small1');
-            var open_layer3 = $('.myInfoPop');
+            var open_layer3 = $('#modifyPhone');
             layerPopPop(layerPopup3,open_layer3);
             // 이메일 변경
             var layerPopup4 = $('.small2');
@@ -226,14 +226,20 @@
             layerPopPop(layerPopup4,open_layer4);
             // 닉네임 변경
             var layerPopup5 = $('.small3');
-            var open_layer5 = $('#modifyNick');
+            var open_layer5 = $('#modifyNickname');
             layerPopPop(layerPopup5,open_layer5);
 
+
+            var buttonId = "";
             function layerPopPop(layerPopup, open_layer){
+
 
                 open_layer.click(function(){
                     layerPopup.show();
                     $('body').css('overflow', 'hidden');
+                    buttonId = open_layer.attr("id");
+
+                    console.log("버튼의 아이디 : "+buttonId);
                 })
 
                 layerPopup.not('.layerPopup_wrap').click(function (e) {
@@ -246,7 +252,55 @@
                     layerPopup.hide();
                     $('body').css('overflow', 'visible');
                 });
+
             }
+            // 수정 레이어----------------------------------
+            var modify = $('.modifier');
+            var chk_Button = $('.chkBtn');
+            modify.on("keyup", function () {
+
+                if (modify.val().length > 0) {
+                    chk_Button.removeAttr("disabled");
+                } else {
+                    chk_Button.attr("disabled", "disabled");
+                }
+            });
+
+            chk_Button.click(function (){
+
+                var data = {access:buttonId,
+                            value: modify.val()};
+
+                console.log(data);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/updateMember',
+                    data:  JSON.stringify(data),
+                    contentType: 'application/json;',
+                    dataType: 'json',
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "success") {
+                            alert("휴대폰 정보 업데이트 완료")
+
+                            location.href = "/myInfo";
+                        } else {
+                            // 비밀번호가 일치하지 않는 경우
+                            console.error('휴대폰 정보 업데이트 에러 발생');
+                        }
+                    },
+                    error: function() {
+                        // 에러 시 처리
+                        console.error('POST 전송 오류 발생');
+                    }
+                })
+            });
             //----------------------------------
             // 닫기 버튼 클릭 시 팝업 숨기기
             //----------------------------------

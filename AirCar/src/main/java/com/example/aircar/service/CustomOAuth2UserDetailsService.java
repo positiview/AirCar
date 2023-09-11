@@ -121,6 +121,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
                     .social(true)
                     .phone(phone)
                     .client(client)
+                    .contactEmail(email)
                     .nickname(nickname)
                     .role(Role.USER)
                     .build();

@@ -2,12 +2,14 @@ package com.example.aircar.controller;
 
 
 
+import com.example.aircar.domain.ModifyDTO;
 import com.example.aircar.entity.Member;
 import com.example.aircar.service.CustomOAuth2UserDetailsService;
 import com.example.aircar.service.MemberService;
 import lombok.AllArgsConstructor;
 
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
+@Log4j2
 @AllArgsConstructor
 @SessionAttributes("memberInfo")
 public class MemberController {
@@ -160,12 +163,22 @@ public class MemberController {
 
     }
 
-    @PostMapping("/updatePhone")
+    @PostMapping("/updateMember")
     @ResponseBody
-    public ResponseEntity<String> updatePhone(@RequestBody String phone, @ModelAttribute("memberInfo") Member member){
+    public ResponseEntity<String> updatePhone(@RequestBody ModifyDTO modifyDTO, @ModelAttribute("memberInfo") Member member){
+        String access = modifyDTO.getAccess().replace("modify","");
+        String value = modifyDTO.getValue();
+        log.info("access 값 : "+access);
+        log.info("value 값 : "+value);
         String email = member.getEmail();
-        String phoneNum = phone.replace("=","");
-        memberService.updatePhone(phoneNum,email);
+        switch (access){
+            case "Phone":
+                memberService.updatePhone(value,email);
+                break;
+            case "Email":
+            case "Nickname":
+        }
+        /*String phoneNum = phone.replace("=","");*/
 
         return new ResponseEntity<>("success",HttpStatus.OK);
     }
