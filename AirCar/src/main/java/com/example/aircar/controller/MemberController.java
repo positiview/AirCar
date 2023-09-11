@@ -1,25 +1,21 @@
 package com.example.aircar.controller;
 
 
-import com.example.aircar.domain.LoginDTO;
-import com.example.aircar.domain.MemberSecurityDTO;
+
 import com.example.aircar.entity.Member;
 import com.example.aircar.service.CustomOAuth2UserDetailsService;
 import com.example.aircar.service.MemberService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 @AllArgsConstructor
@@ -103,13 +99,16 @@ public class MemberController {
     }
 
     @GetMapping("/mypage")
-    public String mypage(){
+    public String mypage(Model model, @ModelAttribute("nickname") String nickname){
+
+
+        model.addAttribute("nickname", nickname);
         return "member/myPage";
     }
 
     @GetMapping("/myInfo")
-    public String myinfo(Model model,  @ModelAttribute("memberInfo") MemberSecurityDTO mDTO){
-        model.addAttribute("memberInfo",mDTO);
+    public String myinfo(){
+
         return "member/myInfo";}
 
     @GetMapping("/license")
@@ -137,10 +136,9 @@ public class MemberController {
 
     @PostMapping("/passwordCheck")
     @ResponseBody
-    public ResponseEntity<String> passwordCheck(Model model, @RequestBody String password, @ModelAttribute("memberInfo") MemberSecurityDTO mDTO){
+    public ResponseEntity<String> passwordCheck(Model model, @RequestBody String password, @ModelAttribute("memberInfo") Member member){
 
-
-        String email = mDTO.getEmail();
+        String email = member.getEmail();
         String userInputPassword = password.replace("=","");
         Member member2 = memberService.getUserInfo(email);
         if(member2 == null){
@@ -164,8 +162,8 @@ public class MemberController {
 
     @PostMapping("/updatePhone")
     @ResponseBody
-    public ResponseEntity<String> updatePhone(@RequestBody String phone, @ModelAttribute("memberInfo") MemberSecurityDTO mDTO){
-        String email = mDTO.getEmail();
+    public ResponseEntity<String> updatePhone(@RequestBody String phone, @ModelAttribute("memberInfo") Member member){
+        String email = member.getEmail();
         String phoneNum = phone.replace("=","");
         memberService.updatePhone(phoneNum,email);
 

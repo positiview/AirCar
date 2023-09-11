@@ -12,9 +12,9 @@
                 <div class="title_wrap"><h2 class="title_30">마이페이지</h2></div>
                 <div class="sub_cont">
                     <div class="profile_cont">
-                        <div class="txt"><p class="name"><strong>[[${session.nickname}]]님 </strong>안녕하세요!</p>
+                        <div class="txt"><p class="name"><strong>[[${session.memberInfo.getNickname()}]]님 </strong>안녕하세요!</p>
                             <p class="desc">언제나, 어디서나 AIRCAR와 함께해 주세요</p></div>
-                        <button class="link_btn open-layerPopup">내 정보 관리</button>
+                        <button class="link_btn myInfoPop">내 정보 관리</button>
                     </div>
                 </div>
                 <div class="sub_cont">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="sub_cont">
                     <div class="title_wrap"><p class="title_18">나의 공유카</p></div>
-                    <a target="_blank" class="white_box">
+                    <a target="_blank" class="white_box" href="register_car">
                         <figure class="row_cards"><img src="../img/main_b05.jpg" alt="">
                             <figcaption><p class="title_16">스마트 쉐어</p>
                                 <p class="title_14">계약부터 장비까지 스마트 쉐어로 관리해 보세요</p></figcaption>

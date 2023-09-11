@@ -30,6 +30,7 @@ public class Member extends BaseEntity {
     private String email;
 
     private String phone;
+    private String client;
    /* private String address;
 
     private String license;
@@ -40,6 +41,7 @@ public class Member extends BaseEntity {
     private Role role;
 
     private boolean social;
+
 
     private String nickname;
 

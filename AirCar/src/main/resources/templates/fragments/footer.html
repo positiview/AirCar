@@ -207,29 +207,48 @@
             });
 
             //---------------------------------
-            // 레이어팝업 기능
-            var layerPopup = $('.layerPopup');
-                layerPopup.hide();
+            /* 레이어 모음 */
+            // 헤더 레이어팝업 기능
+            var layerPopup = $('.alertPopup');
+            var open_layer = $('.open-layerPopup');
+            layerPopPop(layerPopup,open_layer);
+            // 마이페이지 내정보관리 레이어팝업
+            var layerPopup2 = $('.small');
+            var open_layer2 = $('.myInfoPop');
+            layerPopPop(layerPopup2,open_layer2);
+            // 휴대폰 번호 변경
+            var layerPopup3 = $('.small1');
+            var open_layer3 = $('.myInfoPop');
+            layerPopPop(layerPopup3,open_layer3);
+            // 이메일 변경
+            var layerPopup4 = $('.small2');
+            var open_layer4 = $('#modifyEmail');
+            layerPopPop(layerPopup4,open_layer4);
+            // 닉네임 변경
+            var layerPopup5 = $('.small3');
+            var open_layer5 = $('#modifyNick');
+            layerPopPop(layerPopup5,open_layer5);
 
+            function layerPopPop(layerPopup, open_layer){
 
-            $('.open-layerPopup').click(function (){
-                layerPopup.show();
-                $('body').css('overflow', 'hidden');
-            });
+                open_layer.click(function(){
+                    layerPopup.show();
+                    $('body').css('overflow', 'hidden');
+                })
 
-            layerPopup.not('.layerPopup_wrap').click(function (e) {
-                if (!$(e.target).closest('.layerPopup_wrap').length) {
+                layerPopup.not('.layerPopup_wrap').click(function (e) {
+                    if (!$(e.target).closest('.layerPopup_wrap').length) {
+                        layerPopup.hide();
+                        $('body').css('overflow', 'visible');
+                    }
+                });
+                $('.btn_close').click(function () {
                     layerPopup.hide();
                     $('body').css('overflow', 'visible');
-                }
-            });
-
-
+                });
+            }
+            //----------------------------------
             // 닫기 버튼 클릭 시 팝업 숨기기
-            $('.btn_close').click(function () {
-                layerPopup.hide();
-                $('body').css('overflow', 'visible');
-            });
             //----------------------------------
             var passwordInput = $('#pwInput');
             var chkPW_Button = $('#chkPW');

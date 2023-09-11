@@ -9,23 +9,7 @@
         $(document).ready(function () {
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
-            //---------------------------------
-            // 레이어팝업 기능
-            var layerPopup = $('.layerPopup');
 
-
-
-            $('#open-layerPopup1').click(function () {
-                layerPopup.show();
-                $('body').css('overflow', 'hidden');
-            });
-
-            layerPopup.not('.layerPopup_wrap').click(function (e) {
-                if (!$(e.target).closest('.layerPopup_wrap').length) {
-                    layerPopup.hide();
-                    $('body').css('overflow', 'visible');
-                }
-            });
 
             //----------------------------------
             var phoneInput = $('#phoneInput');
@@ -78,12 +62,12 @@
 <div class="container">
     <div class="inner">
         <div class="contents">
-            <div class="title_wrap"><h2 class="title_30">내 정보 관리</h2><a class="link_btn mt40">마이페이지 홈으로</a></div>
+            <div class="title_wrap"><h2 class="title_30">내 정보 관리</h2><a class="link_btn mt40" href="/mypage">마이페이지 홈으로</a></div>
             <div class="sub_cont">
                 <div class="title_wrap"><p class="title_18">기본 정보</p></div>
                 <div class="white_box border">
                     <div class="form_row">
-                        <div class="data_management"><label for="coname" class="form_label">아이디</label>
+                        <div class="data_management"><label for="coname" class="form_label">아이디 / 소셜 [[${session.memberInfo.getClient()}]]</label>
                             <p class="data_txt">[[${memberInfo.getEmail()}]]</p></div>
                         <div class="data_management"><label for="password" class="form_label">비밀번호</label>
                             <p class="data_txt notice">개인정보 보호를 위해 주기적으로 변경해주세요</p>
@@ -92,12 +76,12 @@
                             </div>
                         </div>
                         <div class="data_management"><label for="sellphone" class="form_label">휴대폰 번호</label>
-                            <p class="data_txt">[[${memberInfo.get}</p>
+                            <p class="data_txt">[[${session.memberInfo.getPhone()}]]</p>
                             <div class="btn_modify">
                                 <button class="btn" id="open-layerPopup1">변경</button>
                             </div>
                         </div>
-                        <div class="layerPopup small" style="display: none">
+                        <div class="layerPopup small1" style="display: none">
                             <div class="layerPopup_wrap">
                                 <div class="layerPopup_heading"><h2 class="heading">휴대폰 번호를 입력해 주세요</h2>
                                     <button class="btn_close">닫기</button>
@@ -113,7 +97,7 @@
                                 </div>
                                 <div class="layerPopup_bottom bottom_gray">
                                     <div class="btn_group">
-                                        <button id="chkBtn" class="btn type01" disabled>번호 수정 완료</button>
+                                        <button class="btn type01 chkBtn" disabled>번호 수정 완료</button>
 
 
                                     </div>
@@ -121,6 +105,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -129,18 +115,73 @@
                 <div class="white_box border">
                     <div class="form_row">
                         <div class="data_management"><label for="email" class="form_label">이메일</label>
-                            <p class="data_txt"></p></div>
-                        <div class="data_management"><label for="address" class="form_label">주소</label></div>
+                            <p class="data_txt">[[${session.memberInfo.getEmail()}]]</p></div>
+                            <div class="btn_modify">
+                                <button class="btn" id="modifyEmail">수정</button>
+                            </div>
+                        <div class="data_management"><label for="nickname" class="form_label">닉네임</label>
+                            <p class="data_txt">[[${session.memberInfo.getNickname()}]]</p></div>
+                            <div class="btn_modify">
+                                <button class="btn" id="modifyNick">수정</button>
+                            </div>
                         <div class="data_management"><label for="driverLicense" class="form_label">운전면허정보</label>
                             <p class="data_txt notice">미리 등록하면 예약이 더 빨라져요</p>
                             <div class="btn_modify">
-                                <button class="btn">등록</button>
+                                <button class="btn" id="modifyAddr">등록</button>
                             </div>
                         </div>
                         <div class="data_management"><label for="payment" class="form_label">결제수단관리</label>
                             <p class="data_txt notice">미리 등록하면 예약이 더 빨라져요</p>
                             <div class="btn_modify">
-                                <button class="btn">변경</button>
+                                <button class="btn" id="modifyPay">변경</button>
+                            </div>
+                        </div>
+                        <div class="layerPopup small2" style="display: none">
+                            <div class="layerPopup_wrap">
+                                <div class="layerPopup_heading"><h2 class="heading">이메일을 입력해 주세요</h2>
+                                    <button class="btn_close">닫기</button>
+                                </div>
+                                <div class="layerPopup_content">
+                                    <div class="form_control">
+                                        <div class="form_row">
+                                            <label for="emailInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
+                                            <input id="emailInput" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="layerPopup_bottom bottom_gray">
+                                    <div class="btn_group">
+                                        <button id="chkBtn" class="btn type01" disabled>번호 수정 완료</button>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layerPopup small3" style="display: none">
+                            <div class="layerPopup_wrap">
+                                <div class="layerPopup_heading"><h2 class="heading">닉네임을 입력해 주세요</h2>
+                                    <button class="btn_close">닫기</button>
+                                </div>
+                                <div class="layerPopup_content">
+                                    <div class="form_control">
+                                        <div class="form_row">
+                                            <label for="nickInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
+                                            <input id="nickInput" name="names" type="text" placeholder="[[${session.memberInfo.getNickname}]]" maxlength="20">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="layerPopup_bottom bottom_gray">
+                                    <div class="btn_group">
+                                        <button class="btn type01 chkBtn" disabled>닉네임 수정 완료</button>
+
+
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>

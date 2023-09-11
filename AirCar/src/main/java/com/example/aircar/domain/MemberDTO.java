@@ -16,6 +16,8 @@ public class MemberDTO {
     private String password;
     private String name;
     private String email;
+    private String phone;
+    private String client;
     private LocalDateTime regTime;
     private LocalDateTime updateTime;
     private boolean social;
