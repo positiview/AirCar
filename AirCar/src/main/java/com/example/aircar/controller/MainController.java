@@ -38,7 +38,7 @@ public class MainController {
 
         session.setAttribute("nickname", nickname);
 
-            return "main/homepage";
+        return "main/homepage";
     }
 
     @GetMapping("/index")

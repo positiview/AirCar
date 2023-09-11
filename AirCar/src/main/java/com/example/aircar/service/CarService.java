@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class CarService {
     public List<Files> getAllCarModel(String brandName) {
         return filesRepository.findByBrandName(brandName);
     }
+
+
 
     public List<CarDTO> getCarInfo() {
         List<Car> carList = carRepository.findAll();
@@ -91,6 +94,10 @@ public class CarService {
         return carRepository.findAll();
     }
 
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
+    }
+
 
 //    public String getCarImageByModel(String carImg) {
 //        List<Files> filesList = filesRepository.findByCarName(carImg);
@@ -102,6 +109,33 @@ public class CarService {
 //    }
 
 
+    public CarDTO getCarInfo(Long carNum) {
+        Car car = carRepository.findByCarNum(carNum);
+        Files imgFiles = filesRepository.findByCarName(car.getName());
+        CarDTO carDTO = new CarDTO();
+        carDTO.setCar_num(car.getCarNum());
+        carDTO.setKind(car.getKind());
+        carDTO.setColor(car.getColor());
+        carDTO.setBrand(car.getBrand());
+        carDTO.setName(car.getName());
+        carDTO.setCost(car.getCost());
+        carDTO.setYear(car.getYear());
+        carDTO.setOptions(car.getOptions());
+        carDTO.setFuel(car.getFuel());
+        carDTO.setPeople(car.getPeople());
+        carDTO.setArea(car.getArea());
+        carDTO.setDetailarea(car.getDetailarea());
+        carDTO.setDefect(car.getDefect());
+        carDTO.setContent(car.getContent());
+        carDTO.setRegDate(car.getRegDate());
+        carDTO.setUpdateDate(car.getUpdateDate());
+        carDTO.setDriverAge(car.getDriverAge());
+        carDTO.setDriverCareer(car.getDriverCareer());
+        carDTO.setBrandImg(imgFiles.getBrandImg());
+        carDTO.setCarImg(imgFiles.getCarImg());
 
+        return carDTO;
     }
+
+}
 

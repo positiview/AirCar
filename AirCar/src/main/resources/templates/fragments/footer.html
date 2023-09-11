@@ -283,7 +283,7 @@
 
         });
     </script>
-    <!--<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>-->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var liItems = document.querySelectorAll(".insur_tab li");
@@ -317,6 +317,47 @@
     </script>
 
 
+    <script th:inline="javascript">
+        var sessionNickname = /*[[${session.nickname}]]*/ '';
+        document.getElementById("nickname").value = sessionNickname;
+    </script>
+
+    <script th:inline="javascript" >
+        $(document).ready(function() {
+            // 초기 car.cost 값 가져오기
+            var carCost = parseFloat($("#cost").text().replace(/[^0-9]/g, '')); // 숫자만 추출
+
+            // firstI 클릭 이벤트
+            $("#firstI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 0; // 예시: 0으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+
+            // secondI 클릭 이벤트
+            $("#secondI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 50000; // 50000을 더한 값으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+
+            // thirdI 클릭 이벤트
+            $("#thirdI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 100000; // 100000을 더한 값으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+        });
+    </script>
+
+    <!--결제 api-->
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js" type="text/javascript"></script>
 
 </th:block>
 </html>

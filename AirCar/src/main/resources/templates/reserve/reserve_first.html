@@ -19,6 +19,7 @@
     <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+    <form method="post" action="/reserveInfo" id="frm">
     <div class="container">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <input type="hidden" name="carNum" th:value="${car.carNum}"/>
@@ -35,19 +36,19 @@
                     <div class="inner"><p class="title_16 major">보험 선택하기</p>
                         <p class="title_14 txt_lightgray">상대방과 나를 보호하는 종합보험이 포함되어 있어요</p>
                         <ul class="insur_tab horz">
-                            <li id="firstQ"><a >
+                            <li id="firstQ"><a id="firstI" >
                                 <div class="tit_wrap"><h4 class="tit">선택안함</h4>
                                     <p class="ex_txt">323,000원 추가</p></div>
                                 <div class="txt_wrap"><p class="txt">사고 시 고객부담금</p>
                                     <p class="btn" style="background-color: orange">전액</p></div>
                             </a></li>
-                            <li id="secondQ"><a >
+                            <li id="secondQ"><a id="secondI" >
                                 <div class="tit_wrap"><h4 class="tit">일반자차</h4>
                                     <p class="ex_txt">323,000원 추가</p></div>
                                 <div class="txt_wrap"><p class="txt">사고 시 고객부담금</p>
                                     <p class="btn" style="background-color: orange">30만원</p></div>
                             </a></li>
-                            <li id="thirdQ"><a >
+                            <li id="thirdQ"><a id="thirdI">
                                 <div class="tit_wrap"><h4 class="tit">완전자차</h4>
                                     <p class="ex_txt">323,000원 추가</p></div>
                                 <div class="txt_wrap"><p class="txt">사고 시 고객부담금</p>
@@ -62,10 +63,10 @@
                 <div class="sub_cont"><p class="title_18">운전자(예약자) 정보를 입력해 주세요</p><span class="title_14">입력한 정보는 안전하게 보호할게요</span>
                     <div class="inner"><p class="title_16 major">기본정보</p>
                         <div class="info_box mb40">
-                            <div class="form_row "><label for="name" class="form_label">이름</label><input id="name"
+                            <div class="form_row "><label for="name" class="form_label">이름</label><input id="nickname"
                                                                                                          type="text"
                                                                                                          placeholder="이름을 입력해주세요"
-                                                                                                         value="황재승"
+                                                                                                         value=""
                                                                                                          disabled="">
                             </div>
                             <div class="form_row "><label for="phone" class="form_label">휴대폰</label><input id="phone"
@@ -127,11 +128,9 @@
                 <div id="sideScroll" class="inner" style="max-height: 632px;">
                     <div>
                         <div class="title_wrap"><p class="title_18">여정 정보</p></div>
-                        <div class="car_img"><img
-                                src="/assets/../img/morning.png"
-                                alt=""></div>
+
                         <div class="side_box journey_wrap">
-                            <div><p class="tit"> 황재승님의 여정</p>
+                            <div><p class="tit"> [[${session.nickname}]]님의 여정</p>
                                 <dl>
                                     <dt><i><img src="/assets/img/contents/ico_journey01.png" alt=""></i>부산지점</dt>
                                 </dl>
@@ -179,40 +178,14 @@
                                 </li>
                             </ul>
                             <ul class="pay_list total">
-                                <li><span>총 결제금액</span><span><th:block th:text="${car.cost}" ></th:block> 원</span></li>
+                                <li><span>총 결제금액</span><span id="cost"><th:block th:text="${car.cost}" ></th:block> 원</span></li>
                                 <li class="desc">항목별 합계금액 원 단위 절상 또는 절사</li>
                             </ul>
                         </div>
                         <div class="btn_group">
                             <div class="balloon_bt_box" style="color: black;  border-radius: 14px;">
-                                <button type="button" class="btn type01" style="color: white;line-height: 0px;">입력완료</button>
+                                <button type="button"  id="pay_btn" onclick="requestPay()" class="btn type01" style="color: white;line-height: 0px;">입력완료</button>
                                 <p class="balloon_box" style="width: 200px;">보험선택 및 운전자 정보를 입력해주세요</p>
-                                <form name="payForm" method="post"
-                                      action="https://web.nicepay.co.kr/v3/webstd/js/nicepay-3.0.js"><input
-                                        type="hidden" name="PayMethod" value="CARD"><input type="hidden"
-                                                                                           name="GoodsName"
-                                                                                           value="스파크 1.0 가솔린"><input
-                                        type="hidden" name="DirectShowOpt" value=""><input type="hidden"
-                                                                                           name="NicepayReserved"
-                                                                                           value=""><input type="hidden"
-                                                                                                           name="DirectEasyPay"
-                                                                                                           value=""><input
-                                        type="hidden" name="EasyPayMethod" value=""><input type="hidden" name="Amt"
-                                                                                           value="1169370"><input
-                                        type="hidden" name="MID" value="skr000012m"><input type="hidden"
-                                                                                           name="Moid"><input
-                                        type="hidden" name="BuyerName" value="황재승"><input type="hidden" name="BuyerTel"
-                                                                                          value="01029487741"><input
-                                        type="hidden" name="NpLang" value="KO"><input type="hidden" name="GoodsCl"
-                                                                                      value="1"><input type="hidden"
-                                                                                                       name="TransType"
-                                                                                                       value="0"><input
-                                        type="hidden" anme="CharSet" value="utf-8"><input type="hidden"
-                                                                                          name="ReqReserved"><input
-                                        type="hidden" name="EdiDate" value="20230904145109"><input type="hidden"
-                                                                                                   name="SignData"
-                                                                                                   value="87cb1eff59cf217db635eb90f4381a87fc613005a4dc8fbca8b5c44b0c1e05cb">
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -220,9 +193,72 @@
             </div>
         </div>
     </div>
-
+    </form>
 
     </body>
+    <!--결제 api-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js" type="text/javascript"></script>
+    <script>
+
+        var sessionNickname = /*[[${session.nickname}]]*/ '';
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        var IMP = window.IMP;
+        IMP.init("imp02185841");
+        var carCost = parseFloat($("#cost").text().replace(/[^0-9]/g, ''));
+            function requestPay() {
+            IMP.init('iamport'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+            IMP.request_pay({
+                pg: "kakaopay.{TC0ONETIME}",
+                pay_method: "card",
+                merchant_uid : 'merchant_'+new Date().getTime(),
+                name : '결제테스트',
+                amount : /*carCost*/100,
+                buyer_email : 'iamport@siot.do',
+                buyer_name : '구매자',
+                buyer_tel : '010-1234-5678',
+                buyer_addr : '서울특별시 강남구 삼성동',
+                buyer_postcode : '123-456'
+            }, function (rsp) { // callback
+                console.log(rsp);
+                if (rsp.success) {
+                    var msg = "예약이 완료 되었습니다";
+                    var result = {
+                        "carName": '[[${car.name}]]',
+                        "nickname": '[[${session.nickname}]]',
+                        "email" : '[[${email}]]',
+                        "carNum": '[[${car.carNum}]]'
+                    }
+
+                    console.log(result);
+
+                    $.ajax({
+                        url: '/reserveInfo',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(result),
+                        beforeSend : function(xhr)
+                        {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                            xhr.setRequestHeader(header, token);
+                        },
+                        success: function (res) {
+                            console.log(res);
+                            location.href = res;
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+               }else{
+                    var msg = '결제 실패';
+                    msg += '\n에러내용 : ' + rsp.error_msg;
+                }
+                alert(msg);
+            });
+        }
+    </script>
 </th:block>
 
 </html>
