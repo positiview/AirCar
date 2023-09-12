@@ -88,6 +88,7 @@ public class CarService {
                 carDTO.setDriverCareer(carList.get(i).getDriverCareer());
                 carDTO.setStartDate(carList.get(i).getStartDate());
                 carDTO.setEndDate(carList.get(i).getEndDate());
+                carDTO.setReserveStatus(carList.get(i).getReserveStatus());
 
                 if(filesList != null && filesList.size() > 0) {
                     for(int j = 0; j < filesList.size(); j++) {
@@ -183,6 +184,7 @@ public class CarService {
         carDTO.setCarImg(imgFiles.getCarImg());
         carDTO.setStartDate(car.getStartDate());
         carDTO.setEndDate(car.getEndDate());
+        carDTO.setReserveStatus(car.getReserveStatus());
 
         return carDTO;
     }

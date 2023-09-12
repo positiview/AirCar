@@ -1,13 +1,7 @@
 package com.example.aircar.controller;
 
-import com.example.aircar.domain.CarDTO;
-import com.example.aircar.domain.CounselingDTO;
-import com.example.aircar.domain.MemberDTO;
-import com.example.aircar.domain.NoticesDTO;
-import com.example.aircar.entity.Car;
-import com.example.aircar.entity.Counseling;
-import com.example.aircar.entity.Member;
-import com.example.aircar.entity.Notices;
+import com.example.aircar.domain.*;
+import com.example.aircar.entity.*;
 import com.example.aircar.repository.*;
 import com.example.aircar.service.*;
 import lombok.AllArgsConstructor;
@@ -23,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
@@ -41,32 +36,30 @@ public class AdminController {
     private final CounselingService counselingService;
     private final MemberService memberService;
     private final CarService carService;
-
-
+    private final ReserveService reserveService;
+    private final ReserveRepository reserveRepository;
 
 
     @GetMapping("/main")
-    public String main(){
+    public String main() {
         return "/admin/main";
     }
 
     @GetMapping("/pencil")
-    public String pencil(){
+    public String pencil() {
         return "/admin/pencil";
     }
 
     @GetMapping("/register")
-    public String register(){
+    public String register() {
         return "/admin/register";
     }
 
-    @GetMapping("/reserve")
-    public String reserve(){
-        return "/admin/reserve";
-    }
 
     @GetMapping("/event")
-    public String event(){ return "/admin/event"; }
+    public String event() {
+        return "/admin/event";
+    }
 
 
 //    @GetMapping("/notices")
@@ -78,13 +71,12 @@ public class AdminController {
 //    }
 
 
-
     @GetMapping("/notices")
     public String notices(Model model,
-                       @RequestParam(defaultValue = "")String searchType,
-                       @RequestParam(defaultValue = "")String keyword,
-                       @PageableDefault(size = 5, sort = "bno",
-                               direction = Sort.Direction.DESC)Pageable pageable) {
+                          @RequestParam(defaultValue = "") String searchType,
+                          @RequestParam(defaultValue = "") String keyword,
+                          @PageableDefault(size = 5, sort = "bno",
+                                  direction = Sort.Direction.DESC) Pageable pageable) {
 
         if (searchType.equals("title")) {
             model.addAttribute("noticesList",
@@ -105,13 +97,10 @@ public class AdminController {
     }
 
 
-
-
     @GetMapping("/noticesRegister")
-    public String noticesRegister(){
+    public String noticesRegister() {
         return "/admin/notices_register";
     }
-
 
 
     @PostMapping("/noticesRegister")
@@ -124,7 +113,6 @@ public class AdminController {
         notices.setRegDate(noticesDto.getReg_time());
 
         noticesRepository.save(notices);
-
 
 
 //        // 첨부파일 저장
@@ -143,7 +131,7 @@ public class AdminController {
     }
 
     @GetMapping("/noticesView")
-    public String noticesView(Long bno, Model model){
+    public String noticesView(Long bno, Model model) {
         Notices notices = noticesRepository.findByBno(bno);
 
         model.addAttribute("notices", notices);
@@ -192,10 +180,10 @@ public class AdminController {
 
     @GetMapping("/counseling")
     public String counseling(Model model,
-                             @RequestParam(defaultValue = "")String searchType,
-                              @RequestParam(defaultValue = "")String keyword,
-                              @PageableDefault(size = 5, sort = "bno",
-                                  direction = Sort.Direction.DESC)Pageable pageable){
+                             @RequestParam(defaultValue = "") String searchType,
+                             @RequestParam(defaultValue = "") String keyword,
+                             @PageableDefault(size = 5, sort = "bno",
+                                     direction = Sort.Direction.DESC) Pageable pageable) {
 
         if (searchType.equals("title")) {
             model.addAttribute("counselingList",
@@ -216,10 +204,8 @@ public class AdminController {
     }
 
 
-
-
     @GetMapping("/counselingAnswer")
-    public String counselingAnswer(Long bno, Model model){
+    public String counselingAnswer(Long bno, Model model) {
         Counseling counseling = counselingRepository.findByBno(bno);
 
 
@@ -252,10 +238,10 @@ public class AdminController {
 
     @GetMapping("/member")
     public String member(Model model,
-                         @RequestParam(defaultValue = "")String searchType,
-                         @RequestParam(defaultValue = "")String keyword,
+                         @RequestParam(defaultValue = "") String searchType,
+                         @RequestParam(defaultValue = "") String keyword,
                          @PageableDefault(size = 5, sort = "mno",
-                                 direction = Sort.Direction.DESC)Pageable pageable){
+                                 direction = Sort.Direction.DESC) Pageable pageable) {
 
         if (searchType.equals("nickname")) {
             model.addAttribute("memberList",
@@ -275,9 +261,8 @@ public class AdminController {
     }
 
 
-
     @GetMapping("/memberView")
-    public String memberView(Long mno, Model model){
+    public String memberView(Long mno, Model model) {
         Member member = memberRepository.findByMno(mno);
 
 
@@ -308,24 +293,23 @@ public class AdminController {
         member.setRole(memberDto.getRole());
 
 
-
         memberRepository.save(member);
 
         return "redirect:/admin/memberView?mno=" + member.getMno();
     }
 
     @GetMapping("/upload")
-    public String upload(){
+    public String upload() {
 
         return "/admin/upload";
     }
 
     @GetMapping("/car")
     public String car(Model model,
-                      @RequestParam(defaultValue = "")String searchType,
-                      @RequestParam(defaultValue = "")String keyword,
+                      @RequestParam(defaultValue = "") String searchType,
+                      @RequestParam(defaultValue = "") String keyword,
                       @PageableDefault(size = 5, sort = "carNum",
-                              direction = Sort.Direction.DESC)Pageable pageable) {
+                              direction = Sort.Direction.DESC) Pageable pageable) {
 
         if (searchType.equals("title")) {
             model.addAttribute("carList",
@@ -346,7 +330,7 @@ public class AdminController {
     }
 
     @GetMapping("/carView")
-    public String carView(Long carNum, Model model){
+    public String carView(Long carNum, Model model) {
         Car car = carRepository.findByCarNum(carNum);
 
 
@@ -368,27 +352,24 @@ public class AdminController {
     public String carUpdate(CarDTO carDto) {
         Car car = new Car();
 
-        carDto.setCar_num(carDto.getCar_num());
-        carDto.setKind(carDto.getKind());
-        carDto.setColor(carDto.getColor());
-        carDto.setBrand(carDto.getBrand());
-        carDto.setName(carDto.getName());
-        carDto.setCost(carDto.getCost());
-        carDto.setYear(carDto.getYear());
-        carDto.setOptions(carDto.getOptions());
-        carDto.setFuel(carDto.getFuel());
-        carDto.setPeople(carDto.getPeople());
-        carDto.setArea(carDto.getArea());
-        carDto.setDetailarea(carDto.getDetailarea());
-        carDto.setDefect(carDto.getDefect());
-        carDto.setContent(carDto.getContent());
-        carDto.setRegDate(carDto.getRegDate());
-        carDto.setUpdateDate(carDto.getUpdateDate());
-        carDto.setDriverAge(carDto.getDriverAge());
-        carDto.setDriverCareer(carDto.getDriverCareer());
-
-        carDto.setCarImg(carDto.getCarImg());
-        carDto.setBrandImg(carDto.getBrandImg());
+        car.setCarNum(carDto.getCar_num());
+        car.setKind(carDto.getKind());
+        car.setColor(carDto.getColor());
+        car.setBrand(carDto.getBrand());
+        car.setName(carDto.getName());
+        car.setCost(carDto.getCost());
+        car.setYear(carDto.getYear());
+        car.setOptions(carDto.getOptions());
+        car.setFuel(carDto.getFuel());
+        car.setPeople(carDto.getPeople());
+        car.setArea(carDto.getArea());
+        car.setDetailarea(carDto.getDetailarea());
+        car.setDefect(carDto.getDefect());
+        car.setContent(carDto.getContent());
+        car.setRegDate(carDto.getRegDate());
+        car.setUpdateDate(carDto.getUpdateDate());
+        car.setDriverAge(carDto.getDriverAge());
+        car.setDriverCareer(carDto.getDriverCareer());
 
         carRepository.save(car);
 
@@ -410,8 +391,73 @@ public class AdminController {
         return "redirect:/admin/car";
     }
 
+    @GetMapping("/reserve")
+    public String reserve(Model model,
+                          @RequestParam(defaultValue = "") String searchType,
+                          @RequestParam(defaultValue = "") String keyword,
+                          @PageableDefault(size = 5, sort = "rno",
+                                  direction = Sort.Direction.DESC) Pageable pageable) {
+
+        if (searchType.equals("title")) {
+            model.addAttribute("reserveList",
+                    reserveService.getnicknameList(keyword, pageable));
+        } else if (searchType.equals("content")) {
+            model.addAttribute("reserveList",
+                    reserveService.getemailList(keyword, pageable));
+        } else {
+            model.addAttribute("reserveList",
+                    reserveService.getreserveList(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
+        return "admin/reserve";
+    }
+
+    @GetMapping("/reserveView")
+    public String reserveView(@RequestParam(name = "rno") String rno, Model model) {
+        UUID reserveId = UUID.fromString(rno);
+        Reserve reserve = reserveRepository.findByRno(reserveId);
+        model.addAttribute("reserve", reserve);
+        return "admin/reserve_view";
+    }
+
+
+    @GetMapping("/reserveUpdate")
+    public String reserveUpdate(@RequestParam(name = "rno") String rno, Model model) {
+        UUID reserveId = UUID.fromString(rno);
+        Reserve reserve = reserveRepository.findByRno(reserveId);
+
+        model.addAttribute("reserve", reserve);
+
+        return "admin/reserve_update";
+    }
+
+    @PostMapping("/reserveUpdate")
+    public String reserveUpdate(ReserveDTO reserveDto) {
+        Reserve reserve = new Reserve();
+
+        reserve.setRno(reserveDto.getRno());
+        reserve.setCarName(reserveDto.getCarName());
+        reserve.setEmail(reserveDto.getEmail());
+        reserve.setStartDate(reserveDto.getStartDate());
+        reserve.setEndDate(reserveDto.getEndDate());
+
+        reserveRepository.save(reserve);
+
+        return "redirect:/admin/reserveView?rno=" + reserve.getRno();
+    }
+
+    @PostMapping("/reserveDelete")
+    public String reserveDelete(ReserveDTO reserveDto) {
+        // 게시글을 DB에서 삭제(+reply +boardAttach)
+        reserveRepository.deleteById(reserveDto.getRno());
+
+        return "redirect:/admin/reserve";
+    }
 
 
 }
-
 

@@ -3,6 +3,7 @@ package com.example.aircar.controller;
 import com.example.aircar.domain.ReserveDTO;
 import com.example.aircar.entity.Car;
 import com.example.aircar.repository.CarRepository;
+import com.example.aircar.repository.ReserveRepository;
 import com.example.aircar.service.CarService;
 import com.example.aircar.service.ReserveService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -30,13 +31,12 @@ public class PayController {
     private CarService carService;
     @Autowired
     private CarRepository carRepository;
-
+    @Autowired
+    private ReserveRepository reserveRepository;
 
     @PostMapping("/reserveInfo")
     public String reserveInsert(@RequestBody ReserveDTO reserveDTO, HttpSession session, RedirectAttributes rttr) {
         reserveService.saveReserve(reserveDTO,session,rttr);
-
-
         return "redirect:/reserve"; // 뷰 이름을 반환하지 않습니다.
     }
 

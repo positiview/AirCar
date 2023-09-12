@@ -7,8 +7,8 @@
 <th:block layout:fragment="content">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/reset.css}">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/animate.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap-reset.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap.min.css}">
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap-reset.css}">-->
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap.min.css}">-->
     <link rel="stylesheet" th:href="@{/assets/css/HJS/helper.css}">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/style-responsive.css}">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/style.css}">
@@ -43,8 +43,8 @@
                                         class="title_14">출발일이 가까운 예약부터 볼 수 있어요 </span>
                                 </div>
                                 <div class="sub_cont" style="margin-top: 30px;" th:if="${reserveList == null}">
-                                    <div class="car_info_box" style="padding-top: 8px;padding-bottom: 0px;">
-                                        <div class="no_data"  style="height: 289px;">
+                                    <div class="car_info_box" style="padding-top: 30px;padding-bottom: 0px;">
+                                        <div class="no_data"  style="height: 225px;">
                                             <dl>
                                                 <dt><strong>검색 결과가 없어요</strong></dt>
                                                 <dd><a>렌터카 예약하기</a></dd>
@@ -53,14 +53,16 @@
                                     </div>
                                 </div>
                                 <div class="sub_cont" style="margin-top: 30px;" th:unless="${reserveList == null}" th:each="reserve : ${reserveList}">
-                                    <div class="car_info_box" style="padding-top: 8px;padding-bottom: 0px;">
-                                        <div class="no_data"   style="height: 289px;">
+                                    <div class="car_info_box" style="padding-top: 30px;padding-bottom: 0px;">
+                                        <div class="no_data"   style="height: 220px;">
                                             <h3 style="font-size: 16px; text-align: left; ">예약번호 : <th:block th:text="${reserve.rno}"></th:block> </h3>
-                                            <img th:src="@{'assets/upload/'+${reserve.carImg}}" alt="" style="position: relative;width: 321px;left: 167px;bottom: 15px;">
+
+                                            <img th:src="@{'img_upload/'+${reserve.carImg}}" alt="" style="position: relative;width: 321px;left: 167px;bottom: 15px;">
                                             <h3 style="position: relative;right: 300px;bottom: 103px;font-size: 29px;" th:text="${reserve.carName}">포르쉐 타이칸</h3>
                                             <h3 style="position: relative;right: 230px;bottom: 105px;font-size: 17px;left: -222px;color: #80808073;font-weight: 400;"><th:block th:text="${reserve.startDate}"></th:block> ~
+
                                                 <th:block th:text="${reserve.endDate}"></th:block> </h3>
-                                            <h3 style="position: relative;right: 293px;bottom: 113px;font-size: 16px;left: -284px;color: #80808073;font-weight: 400;">부산·전포지점</h3>
+                                            <h3 style="position: relative;right: 293px;bottom: 99px;font-size: 16px;left: -284px;color: #80808073;font-weight: 400;">부산·전포지점</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -90,9 +92,9 @@
                             <div class="sidebar">
                                 <div id="sideScroll" class="inner scroll_p">
                                     <div class="fillter_wrap">
-                                        <h2>도움이 필요하세요?</h2>
+                                        <h2 style="margin: 0px">도움이 필요하세요?</h2>
                                         <p class="desc">SK렌터카 고객센터는 언제나 열려있어요</p>
-                                        <div class="btn_group"><a class="btn type02">고객센터로 이동</a></div>
+                                        <div class="btn_group"><a class="btn type02" style="line-height: 55px;" href="http://localhost:8085/crm">고객센터로 이동</a></div>
                                     </div>
                                 </div>
                             </div>

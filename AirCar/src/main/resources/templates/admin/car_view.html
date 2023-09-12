@@ -25,48 +25,81 @@
 
                                     <div class="board_detail" style="margin-bottom: 50px">
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">브랜드</span>
+                                            <span class="input-group-text" >브랜드</span>
                                             <pre style="width: 650px"><span th:text="${car.brand}"></span></pre>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">차량명</span>
+                                            <span class="input-group-text">차종</span>
                                             <pre style="width: 650px"><span th:text="${car.name}"></span></pre>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">색상</span>
+                                            <span class="input-group-text">시작일</span>
+                                            <pre style="width: 650px"><span th:text="${car.startDate}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">반납일</span>
+                                            <pre style="width: 650px"><span th:text="${car.endDate}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">색상</span>
                                             <pre style="width: 650px"><span th:text="${car.color}"></span></pre>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">가격</span>
-                                            <pre style="width: 650px"><span th:text="${car.cost}"></span></pre>
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">옵션</span>
-                                            <pre style="width: 650px"><span th:text="${car.options}"></span></pre>
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">승차인원</span>
+                                            <span class="input-group-text">연료종류</span>
                                             <pre style="width: 650px"><span th:text="${car.fuel}"></span></pre>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">운전자나이</span>
+                                            <span class="input-group-text">가격</span>
+                                            <pre style="width: 650px"><span th:text="${car.cost}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">연식</span>
+                                            <pre style="width: 650px"><span th:text="${car.year}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">옵션</span>
+                                            <pre style="width: 650px"><span th:text="${car.options}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">승차인원</span>
                                             <pre style="width: 650px"><span th:text="${car.people}"></span></pre>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">운전경력</span>
-                                            <pre style="width: 650px"><span th:text="${car.area}"></span></pre>
+                                            <span class="input-group-text">운전자나이(이상)</span>
+                                            <pre style="width: 650px"><span th:text="${car.driverAge}"></span></pre>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon2">차량하자</span>
+                                            <span class="input-group-text">운전경력(이상)</span>
+                                            <pre style="width: 650px"><span th:text="${car.driverCareer}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">차량 하자</span>
                                             <pre style="width: 650px"><span th:text="${car.detailarea}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">사용자분께</span>
+                                            <pre style="width: 650px"><span th:text="${car.kind}"></span></pre>
                                         </div>
                                         <!-- 다른 속성들도 필요한 대로 출력합니다. -->
                                     </div>
 
                                     <div class="input-group mb-3 pagination justify-content-center">
+                                        <!-- 수정 버튼 -->
                                         <button type="button" class="btn btn-warning" style="margin-right: 20px; width: 100px"
                                                 th:onclick="|location.href='@{/admin/carUpdate(carNum=${car.carNum})}'|">수정</button>
-                                        <button type="submit" class="btn btn-danger btnDelete" style="margin-right: 20px; width: 100px" id="deleteBoard">삭제</button>
+                                        <!-- 삭제 버튼 클릭 시 모달 열기 -->
+                                        <button type="button" class="btn btn-danger btnDelete" style="margin-right: 20px; width: 100px" id="deleteCar">삭제</button>
+                                        <!-- 모달 다이얼로그 -->
+                                        <div id="carModal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close" style="position: absolute; right: 10px; top: 10px;">&times;</span>
+                                                <div style="text-align: center;">
+                                                    <p>정말로 삭제하시겠습니까?</p>
+                                                    <button id="confirmDeleteCarBtn" type="submit" class="btn btn-danger" style="width: 100px">확인</button>
+                                                    <button id="cancelDeleteCarBtn" type="button" class="btn btn-primary" style="width: 100px">취소</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button type="button" class="btn btn-primary" style="width: 100px"
                                                 th:onclick="|location.href='@{/admin/car}'|">목록</button>
                                     </div>
@@ -83,11 +116,47 @@
         </div>
     </div>
 
-    <script src="/skrentalApp/bundle.29105ee17c.js"></script>
+    <script>
+        // Get the modal
+        var carModal = document.getElementById("carModal");
 
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
-    <script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
-            src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+        // Get the button that opens the modal
+        var deleteCarBtn = document.getElementById("deleteCar");
+
+        // Get the <span> element that closes the modal
+        var carModalClose = carModal.getElementsByClassName("close")[0];
+
+        // Get the confirmation buttons
+        var confirmDeleteCarBtn = document.getElementById("confirmDeleteCarBtn");
+        var cancelDeleteCarBtn = document.getElementById("cancelDeleteCarBtn");
+
+        // When the user clicks the delete button, open the modal
+        deleteCarBtn.onclick = function () {
+            carModal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        carModalClose.onclick = function () {
+            carModal.style.display = "none";
+        }
+
+        // When the user clicks on the confirm delete button, submit the form
+        confirmDeleteCarBtn.onclick = function () {
+            document.forms[0].submit(); // Submit the form
+            carModal.style.display = "none"; // Close the modal
+        }
+
+        // When the user clicks on the cancel delete button, close the modal
+        cancelDeleteCarBtn.onclick = function () {
+            carModal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target === carModal) {
+                carModal.style.display = "none";
+            }
+        }
+    </script>
 </th:block>
 </html>

@@ -39,6 +39,7 @@ public class CarDTO {
     private String brandImg;
     private Date startDate;
     private Date endDate;
+    private Long reserveStatus;
 
     //private int
 }

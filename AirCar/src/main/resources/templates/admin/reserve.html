@@ -16,82 +16,94 @@
 
     <div class="wraper container-fluid">
         <div class="page-title">
-            <h3 class="title inline">예약 관리</h3> <a class="btn btn-info m-b-5 m-l-10" href="planing_register.php"><i class="fa fa-pencil"></i> <span>기획전 등록</span> </a>
+            <h3 class="title inline">예약 관리</h3>
         </div>
+
 
         <div class="row">
             <div class="col-md-12">
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="btn-group m-b-10 pull-left">
-                            <button type="button" class="btn btn-default">홈노출</button>
-                            <button type="button" class="btn btn-default">홈노출중지</button>
-                            <button type="button" class="btn btn-default">일시중지</button>
-                            <button type="button" class="btn btn-default">중지해제</button>
-                        </div>
 
                         <div class="table-responsive clear_bt">
                             <table class="table text-center">
                                 <thead>
                                 <tr>
-                                    <th><label class="cr-styled"><input type="checkbox"><i class="fa"></i></label></th>
-                                    <th>등록번호</th>
-                                    <th>홈노출</th>
-                                    <th>홈노출순서</th>
-                                    <th>기획전 상태</th>
-                                    <th>노출상태</th>
-                                    <th>노출타입</th>
-                                    <th>제목</th>
-                                    <th>기간</th>
-                                    <th>연관상품개수</th>
+                                    <th>예약번호</th>
+                                    <th>예약자</th>
+                                    <th>차종</th>
+                                    <th>시작일</th>
+                                    <th>종료일</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td><label class="cr-styled"><input type="checkbox"><i class="fa"></i></label></td>
-                                    <td>1111</td>
-                                    <td>O</td>
-                                    <td></td>
-                                    <td>진행중</td>
-                                    <td>일시중지</td>
-                                    <td>배너</td>
-                                    <td>2015 연말결산! 가장 사랑받은 화장품</td>
-                                    <td>2015.12.15-<br>2015.12.31</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td><label class="cr-styled"><input type="checkbox"><i class="fa"></i></label></td>
-                                    <td>1112</td>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td>마감</td>
-                                    <td>일시중지</td>
-                                    <td>상품</td>
-                                    <td>2015 연말결산! 가장 사랑받은 화장품</td>
-                                    <td>2015.12.15-<br>2015.12.31</td>
-                                    <td>3</td>
-                                </tr>
+                                    <tr th:each="reserve : ${reserveList}">
+
+                                        <td>
+                                            <a th:href="@{reserveView(rno=${reserve.rno})}" th:text="${reserve.rno}"></a>
+                                        </td>
+
+                                        <td th:text="${reserve.email}"></td>
+
+                                        <td th:text="${reserve.carName}"></td>
+
+
+                                        <td th:text="${reserve.startDate}"></td>
+
+                                        <td th:text="${reserve.endDate}"></td>
+
+                                    </tr>
+
+
                                 </tbody>
                             </table>
                         </div>
-                        <ul class="pagination m-b-5 pull-right">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="disabled"><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <nav aria-label="Page navigation example ">
+                            <th:block th:if="${reserveList.totalElements > 0}">
+                                <ul class="pagination justify-content-center" style="display: flex; justify-content: center;"
+                                    th:with="start=${(reserveList.number/reserveList.totalPages)*reserveList.totalPages + 1},
+                    end=${(reserveList.totalPages == 0) ? 1 :
+                    (start + (reserveList.totalPages - 1) < reserveList.totalPages ? start + (reserveList.totalPages - 1) : reserveList.totalPages)}">
+
+                                    <li th:class="${reserveList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/admin/reserve(page=0)}">First</a>
+                                    </li>
+                                    <li th:class="${reserveList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="${reserveList.first} ? '#' : @{/admin/reserve(page=${memberList.number} - 1)}">Previous</a>
+                                    </li>
+                                    <li th:each="page: ${#numbers.sequence(start, end)}" th:class="${page == reserveList.number + 1} ? 'page-item active' : 'page-item' ">
+                                        <a class="page-link" th:href="@{/admin/car(page=${page - 1})}">[[${page}]]</a>
+                                    </li>
+                                    <li th:class="${reserveList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="${reserveList.last} ? '#' : @{/admin/reserve(page=${reserveList.number} + 1)}">Next</a>
+                                    </li>
+                                    <li th:class="${reserveList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/admin/reserve(page=${reserveList.totalPages - 1})}">Last</a>
+                                    </li>
+                                </ul>
+                            </th:block>
+                            <th:block th:unless="${reserveList.totalElements > 0}">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                </ul>
+                            </th:block>
+                        </nav>
+                        <nav class="navbar bg-body-tertiary" style="display: flex; justify-content: center;">
+                            <div class="container-fluid">
+                                <form action="/admin/notices" id="searchForm" class="d-flex" role="search" style="display: flex; align-items: center;">
+                                    <select name="searchType" class="form-select" aria-label="Default select example" style="height: 30px">
+                                        <option value="" th:selected="${searchType} == ''">--</option>
+                                        <option value="nickname" th:selected="${searchType} == 'nickname'">닉네임</option>
+                                        <option value="email" th:selected="${searchType} == 'email'">이메일</option>
+                                    </select>
+                                    <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search" th:value="${keyword}">
+                                    <button class="btn btn-outline-success" id="btnSearch" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
                     </div>
                 </div>
             </div>
