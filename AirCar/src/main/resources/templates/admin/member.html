@@ -48,8 +48,6 @@
                                             <a th:href="@{memberView(mno=${member.mno})}" th:text="${member.email}"></a>
                                         </td>
 
-                                        <td th:text="${member.clientName}"></td>
-
                                         <td th:text="${#temporals.format(member.regTime, 'yyyy-MM-dd')}"></td>
                                     </tr>
 

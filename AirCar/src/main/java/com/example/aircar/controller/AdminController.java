@@ -1,5 +1,6 @@
 package com.example.aircar.controller;
 
+import com.example.aircar.domain.CarDTO;
 import com.example.aircar.domain.CounselingDTO;
 import com.example.aircar.domain.MemberDTO;
 import com.example.aircar.domain.NoticesDTO;
@@ -40,6 +41,7 @@ public class AdminController {
     private final CounselingService counselingService;
     private final MemberService memberService;
     private final CarService carService;
+
 
 
 
@@ -351,6 +353,61 @@ public class AdminController {
         model.addAttribute("car", car);
 
         return "admin/car_view";
+    }
+
+    @GetMapping("/carUpdate")
+    public String carUpdate(Long carNum, Model model) {
+        Car car = carRepository.findByCarNum(carNum);
+
+        model.addAttribute("car", car);
+
+        return "admin/car_update";
+    }
+
+    @PostMapping("/carUpdate")
+    public String carUpdate(CarDTO carDto) {
+        Car car = new Car();
+
+        carDto.setCar_num(carDto.getCar_num());
+        carDto.setKind(carDto.getKind());
+        carDto.setColor(carDto.getColor());
+        carDto.setBrand(carDto.getBrand());
+        carDto.setName(carDto.getName());
+        carDto.setCost(carDto.getCost());
+        carDto.setYear(carDto.getYear());
+        carDto.setOptions(carDto.getOptions());
+        carDto.setFuel(carDto.getFuel());
+        carDto.setPeople(carDto.getPeople());
+        carDto.setArea(carDto.getArea());
+        carDto.setDetailarea(carDto.getDetailarea());
+        carDto.setDefect(carDto.getDefect());
+        carDto.setContent(carDto.getContent());
+        carDto.setRegDate(carDto.getRegDate());
+        carDto.setUpdateDate(carDto.getUpdateDate());
+        carDto.setDriverAge(carDto.getDriverAge());
+        carDto.setDriverCareer(carDto.getDriverCareer());
+
+        carDto.setCarImg(carDto.getCarImg());
+        carDto.setBrandImg(carDto.getBrandImg());
+
+        carRepository.save(car);
+
+        return "redirect:/admin/carView?carNum=" + car.getCarNum();
+    }
+
+    @GetMapping("/carDelete")
+    public String carDelete(Long carNum) {
+        carRepository.deleteById(carNum);
+
+        return "redirect:/admin/car";
+    }
+
+    @PostMapping("/carDelete")
+    public String carDeletes(CarDTO carDto) {
+        // 게시글을 DB에서 삭제(+reply +boardAttach)
+        carRepository.deleteById(carDto.getCar_num());
+
+        return "redirect:/admin/car";
     }
 
 

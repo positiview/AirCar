@@ -28,10 +28,15 @@
 
                         <div class="board_detail" style="margin-bottom: 50px">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">제목</span>
+                                <span class="input-group-text" >제목</span>
                                 <pre style="width: 650px"><th:block th:text="${notices.notices_title}"> </th:block></pre>
                             </div>
+
                             <div class="board_contents mt20"><p>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">카테고리</span>
+                                    <pre style="width: 650px"><th:block th:text="${notices.notices_category}"> </th:block></pre>
+                                </div>
                                 <div align="" style="">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon2">내용</span>

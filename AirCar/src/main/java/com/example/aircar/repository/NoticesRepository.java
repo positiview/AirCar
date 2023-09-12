@@ -25,4 +25,10 @@ public interface NoticesRepository extends JpaRepository<Notices, Long> {
     Page<Notices> getByNotices_contentLike(String keyword, Pageable pageable);
 
 
+    @Query("select n from Notices n where n.notices_title like %:keyword% order by n.bno desc")
+    Page<Notices> findByNotices_titleContaining(String keyword, Pageable pageable);
+
+
+
+
 }
