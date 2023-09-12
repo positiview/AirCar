@@ -5,11 +5,16 @@ import com.example.aircar.entity.Counseling;
 import com.example.aircar.entity.Notices;
 import com.example.aircar.repository.CounselingRepository;
 import com.example.aircar.repository.NoticesRepository;
+import com.example.aircar.service.NoticesService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -19,9 +24,19 @@ public class GuideController {
 
     private final CounselingRepository counselingRepository;
     private final NoticesRepository noticesRepository;
+    private final NoticesService noticesService;
+
+//    @GetMapping("/crm")
+//    public String crmForm(){
+//        return "/guide/crm";
+//    }
 
     @GetMapping("/crm")
-    public String crmForm(){
+    public String crm(Model model,
+                      @RequestParam(defaultValue = "") String keyword,
+                      @PageableDefault(size = 5, sort = "bno", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("noticesList", noticesService.getNoticesTitleList1(keyword, pageable));
+        model.addAttribute("keyword", keyword);
         return "/guide/crm";
     }
 
@@ -86,11 +101,20 @@ public class GuideController {
     }
 
 
-    @GetMapping("/notices")
-    public String notices(Model model){
-        List<Notices> noticesList = noticesRepository.findAll();
-        model.addAttribute("noticesList", noticesList);
+//    @GetMapping("/notices")
+//    public String notices(Model model){
+//        List<Notices> noticesList = noticesRepository.findAll();
+//        model.addAttribute("noticesList", noticesList);
+//
+//        return "/guide/notices";
+//    }
 
+    @GetMapping("/notices")
+    public String notices(Model model,
+                          @RequestParam(defaultValue = "") String keyword,
+                          @PageableDefault(size = 10, sort = "bno", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("noticesList", noticesService.getNoticesTitleList1(keyword, pageable));
+        model.addAttribute("keyword", keyword);
         return "/guide/notices";
     }
 
@@ -102,5 +126,7 @@ public class GuideController {
 
         return "/guide/notices_view";
     }
+
+
 
 }

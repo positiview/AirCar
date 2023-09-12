@@ -40,10 +40,10 @@
             <div class="contents">
                 <div class="title_wrap"><h2 class="title_30 mb0">차량상세</h2></div>
                 <div class="top_product">
-                  <div class="img_area"><img th:src="@{'assets/upload/'+${car.carImg}}"></div>
+                  <div class="img_area"><img th:src="@{'img_upload/'+${car.carImg}}"></div>
                     <div class="product_box"><p class="car_logo">
 <!--                        <img src="https://homepage.skcarrental.com/pc_assets/img/contents/logo_kia.svg" alt="기아자동차"></p>-->
-                        <img th:src="@{'assets/upload/'+${car.brandImg}}" th:alt="${car.brand}"></p>
+                        <img th:src="@{'img_upload/'+${car.brandImg}}" th:alt="${car.brand}"></p>
                         <div class="brand_info">
                             <h2>기아자동차 <strong>
                                 <th:block th:text="${car.name}"></th:block>

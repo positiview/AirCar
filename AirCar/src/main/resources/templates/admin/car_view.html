@@ -32,12 +32,40 @@
                                             <span class="input-group-text" id="basic-addon2">차량명</span>
                                             <pre style="width: 650px"><span th:text="${car.name}"></span></pre>
                                         </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">색상</span>
+                                            <pre style="width: 650px"><span th:text="${car.color}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">가격</span>
+                                            <pre style="width: 650px"><span th:text="${car.cost}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">옵션</span>
+                                            <pre style="width: 650px"><span th:text="${car.options}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">승차인원</span>
+                                            <pre style="width: 650px"><span th:text="${car.fuel}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">운전자나이</span>
+                                            <pre style="width: 650px"><span th:text="${car.people}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">운전경력</span>
+                                            <pre style="width: 650px"><span th:text="${car.area}"></span></pre>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">차량하자</span>
+                                            <pre style="width: 650px"><span th:text="${car.detailarea}"></span></pre>
+                                        </div>
                                         <!-- 다른 속성들도 필요한 대로 출력합니다. -->
                                     </div>
 
                                     <div class="input-group mb-3 pagination justify-content-center">
                                         <button type="button" class="btn btn-warning" style="margin-right: 20px; width: 100px"
-                                                th:onclick="|location.href='@{/admin/carUpdate(bno=${car.carNum})}'|">수정</button>
+                                                th:onclick="|location.href='@{/admin/carUpdate(carNum=${car.carNum})}'|">수정</button>
                                         <button type="submit" class="btn btn-danger btnDelete" style="margin-right: 20px; width: 100px" id="deleteBoard">삭제</button>
                                         <button type="button" class="btn btn-primary" style="width: 100px"
                                                 th:onclick="|location.href='@{/admin/car}'|">목록</button>

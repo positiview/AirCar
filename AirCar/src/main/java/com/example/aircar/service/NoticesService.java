@@ -28,4 +28,8 @@ public class NoticesService {
     public Page<Notices> getNoticesContentList(String keyword, Pageable pageable) {
         return noticesRepository.getByNotices_contentLike(keyword, pageable);
     }
+
+    public Page<Notices> getNoticesTitleList1(String keyword, Pageable pageable) {
+        return noticesRepository.findByNotices_titleContaining(keyword, pageable);
+    }
 }
