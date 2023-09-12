@@ -43,7 +43,7 @@ public class UploadController {
             }
 
         }
-        return "redirect:/reserve";
+        return "redirect:/admin/upload";
     }
 
 

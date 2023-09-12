@@ -59,9 +59,16 @@
                             </dl>
                             <button type="button" class="btn">1:1문의</button>
                         </div>
-                        <div class="btn_group single"><a class="btn">목록으로 돌아가기</a></div>
-                    </div>
-                    <div class="float_wrap">
+                        <div class="btn_group single center-container">
+                            <button type="button" class="btn btn-primary" style="width: 100px; background-color: darkgray"
+                                    th:onclick="|location.href='@{/notices}'|">
+                                <p class="center-text;" style="height: 30px; margin: 0; position: relative; top: -10px;">목록</p>
+                            </button>
+                        </div>
+
+
+
+                        <div class="float_wrap">
                         <div class="inner">
                             <div class="chat_cont">
                                 <div class="chat_btn"><a> 상담하기</a></div>
