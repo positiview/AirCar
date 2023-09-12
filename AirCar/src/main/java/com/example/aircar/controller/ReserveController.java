@@ -89,6 +89,9 @@ public class ReserveController {
     @GetMapping("/reserve_confirm")
     public String reserveConfirm(@AuthenticationPrincipal MemberSecurityDTO memberSecurityDTO, Model model, ReserveDTO reserveDTO, HttpSession httpSession){
 //        List<Reserve> reserve = reserveService.findUUIDByEmail(memberSecurityDTO.getEmail());
+        if(memberSecurityDTO == null) {
+            return "redirect:/login";
+        }
         List<ReserveDTO> reserveDTOList = reserveService.getReserveInfoByEmail(memberSecurityDTO.getEmail());
 //        log.info("로그번호 : {} ",reserve);
         model.addAttribute("reserveList", reserveDTOList);

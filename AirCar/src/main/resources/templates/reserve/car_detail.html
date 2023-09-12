@@ -19,11 +19,23 @@
     <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+    <script>
+        window.onload = function () {
+            var status1 = [[${car.reserveStatus}]];
+            if (status1 == 1 ){
 
+                alert("예약이 완료된 차량입니다.");
+                window.location.href = '/reserve';
+
+
+            }
+        }
+    </script>
 <!--    <th:block th:each="car : ${carInfo}">-->
     <div class="container"  >
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <input type="hidden" name="carNum" th:value="${car.car_num}"/>
+        <input type="hidden" name= "reserveStatus" th:value="${car.reserveStatus}">
         <div class="inner">
             <div class="contents">
                 <div class="title_wrap"><h2 class="title_30 mb0">차량상세</h2></div>
@@ -196,7 +208,7 @@
                         </ul>
                         <div class="rental_price">
                             <div class="sale"><span class="sale_price">회원 할인가</span><span
-                                    class="price"><th:block th:text="${car.cost}"></th:block> 원</span><span
+                                    class="price"><th:block th:text="${#numbers.formatInteger(car.cost, 3, 'COMMA')}"></th:block> 원</span><span
                                     class="sale_rate">81%</span></div>
                             <div class="default"><span class="default_price">표준가</span><span
                                     class="price">403,500원</span>

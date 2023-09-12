@@ -17,9 +17,11 @@ public interface ReserveRepository extends JpaRepository<Reserve, UUID> {
     @Query("select r from Reserve r where r.email = :email")
     List<Reserve> findByEmail(@Param("email") String email);
 
+
     @Query("select r from Reserve r where r.nickname like %:keyword% order by r.rno desc")
     Page<Reserve> getByNicknameLike(String keyword, Pageable pageable);
 
     @Query("select r from Reserve r where r.email like %:keyword% order by r.rno desc")
     Page<Reserve> getByemailLike(String keyword, Pageable pageable);
+
 }

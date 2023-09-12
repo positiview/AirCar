@@ -26,4 +26,6 @@ public class ReserveDTO {
     private Date startDate;
     private Date endDate;
 
+    private Long reserveStatus;
+
 }
