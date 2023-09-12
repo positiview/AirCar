@@ -18,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
+
 
 @Controller
 @Log4j2
@@ -113,6 +115,13 @@ public class MemberController {
     public String myinfo(){
 
         return "member/myInfo";}
+
+
+    @GetMapping("/myreserve")
+    public String myReserve(){
+        return "etc/myreserve";
+    }
+
 
     @GetMapping("/license")
     public String driveLicense(){

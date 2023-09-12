@@ -209,8 +209,8 @@
             //---------------------------------
             /* 레이어 모음 */
             // 헤더 레이어팝업 기능
-            var layerPopup = $('.alertPopup');
-            var open_layer = $('.open-layerPopup');
+            var layerPopup = $('.alertPopup');   // 보여줄 레이어
+            var open_layer = $('.open-layerPopup');  // 팝업 버튼
             layerPopPop(layerPopup,open_layer);
             // 마이페이지 내정보관리 레이어팝업
             var layerPopup2 = $('.small');
@@ -344,6 +344,9 @@
                         } else {
                             // 비밀번호가 일치하지 않는 경우
                             $("#pwChkErrMsg").text("비밀번호가 일치하지 않습니다.");
+                            passwordInput.focus();
+                            passwordInput.val("");
+
                         }
                     },
                     error: function() {

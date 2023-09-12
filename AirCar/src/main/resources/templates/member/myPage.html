@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 <head>
     <th:block th:replace="fragments/CSS_Fragment::link"></th:block>
 </head>
+
 <th:block layout:fragment="content">
 
     <div class="container">
@@ -18,7 +20,7 @@
                     </div>
                 </div>
                 <div class="sub_cont">
-                    <div class="title_wrap"><p class="title_18">나의 단기렌트</p><a class="moreview">전체보기</a></div>
+                    <div class="title_wrap"><p class="title_18">나의 단기렌트</p><a class="moreview" href="/myreserve">전체보기</a></div>
                     <div class="car_info_box" style="cursor: pointer;">
                         <div class="car_info__txt"><p class="reservation_num" style="display: flex;">예약번호<span
                                 aria-live="polite" aria-busy="true"><span class="react-loading-skeleton"
@@ -68,7 +70,7 @@
                     <div class="layerPopup_content">
                         <div class="form_control">
                             <div class="form_row">
-                                <label for="pwInput" class="form_label">비밀번호</label><p id="pwChkErrMsg"></p>
+                                <label for="pwInput" class="form_label">비밀번호</label><p id="pwChkErrMsg" style="color:red"></p>
                                 <input id="pwInput" name="names" type="password" placeholder="영문, 숫자, 특수문자 포함 10~20자 이내" maxlength="20">
                             </div>
 
