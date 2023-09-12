@@ -35,4 +35,6 @@ public class Reserve extends BaseEntity{
     private Date startDate;
     private Date endDate;
 
+    private Long reserveStatus;
+
 }

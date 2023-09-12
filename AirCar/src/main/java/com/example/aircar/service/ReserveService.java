@@ -47,6 +47,13 @@ public class ReserveService {
         reserve.setRegDate(reserveDTO.getRegDate());
         reserve.setStartDate(reserveDTO.getStartDate());
         reserve.setEndDate(reserveDTO.getEndDate());
+        reserve.setReserveStatus(1L);
+        Long carNum = reserveDTO.getCarNum();
+        Car car = carRepository.findByCarNum(carNum); // 이 메서드는 적절하게 구현되어야 합니다.
+        if (car != null) {
+            car.setReserveStatus(1L);
+            carRepository.save(car);
+        }
 //        reserve.setReserveDate(reserve.getReserveDate());
         return reserveRepository.save(reserve);
     }

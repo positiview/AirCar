@@ -14,4 +14,6 @@ public interface ReserveRepository extends JpaRepository<Reserve, UUID> {
 
     @Query("select r from Reserve r where r.email = :email")
     List<Reserve> findByEmail(@Param("email") String email);
+
+
 }

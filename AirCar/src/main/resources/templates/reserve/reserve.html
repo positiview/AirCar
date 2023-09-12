@@ -24,6 +24,7 @@
             color: black;
         }
     </style>
+
     <div class="container">
         <div class="inner">
             <div class="contents">
@@ -35,7 +36,9 @@
                     </div>
                 </div>
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                <div class="dill_box_type" th:each="car : ${carInfo}">
+                <div class="dill_box_type" th:each="car, carStatus : ${carInfo}">
+                    <input type="hidden" name= "reserveStatus" th:value="${car.reserveStatus}">
+                    <input type="hidden" class="idx" th:value="${carStatus.index}">
                     <div class="dill_box_wrap">
                         <div class="top_cont">
                             <div class="main_ctext"><img th:src="@{'img_upload/'+${car.brandImg}}" alt="기아자동차" class="car_logo"><span class="car_enter">
@@ -72,10 +75,7 @@
                                                 class="rate">75%</em></div>
                                     </div>
                                     <div class="btn_group">
-                                        <button class="btn type01"
-                                                style="background-image: url(/img/btn_bg.jpg);line-height: 38px;"
-                                        >예약
-                                        </button>
+                                        <button th:class="'btn type01 btnStatus' + ${carStatus.index}" th:data-status="${car.reserveStatus}" id="reserveButton" style="background-image: url(/img/btn_bg.jpg);line-height: 38px;" >예약</button>
                                     </div>
                                 </div>
                             </a></li>
@@ -120,5 +120,46 @@
         </body>
 
     </div>
+    <script>
+        window.onload = function() {
+            // input type=hidden 태그 가져옴
+            var hiddenStatus =  document.getElementsByName("reserveStatus");
+
+            // input type=hidden 의 status값을 가져와서 값이 1인 버튼 스타일 변경
+            for(var i = 0; i < hiddenStatus.length; i++) {
+                // hidden 값(=reserve_status값)
+                var statusValue = hiddenStatus[i].value;
+
+                if(statusValue == 1) {
+                    var index = hiddenStatus[i].nextElementSibling.value;
+                    var reserveButton =  document.querySelector(".btnStatus" + index);
+                    console.log(reserveButton);
+                    //reserveButton[0].style.backgroundColor = "gray"; // 배경색을 회색으로 변경
+                    reserveButton.style ="";
+                    reserveButton.style.lineHeight ="31px";
+                    reserveButton.style.backgroundColor="#777777";
+                    reserveButton.style.color="black";
+                    reserveButton.innerText="예약 완료";
+                    reserveButton.disabled = true; // 버튼 비활성화
+                    reserveButton.addEventListener("click", function() {
+                        alert("예약이 완료된 차량입니다");
+                    });
+                }
+            }
+            // console.log(hiddenStatus);
+            // var reserveButton = document.getElementsByClassName("type01");
+            //
+            //
+            // if (status == 1) {
+            //     // 예약 상태가 1인 경우
+            //     reserveButton.style.backgroundColor = "gray"; // 배경색을 회색으로 변경
+            //     reserveButton.disabled = true; // 버튼 비활성화
+            //
+            //     reserveButton.addEventListener("click", function() {
+            //         alert("예약이 완료된 차량입니다");
+            //     });
+            // }
+        }
+    </script>
 </th:block>
 </html>

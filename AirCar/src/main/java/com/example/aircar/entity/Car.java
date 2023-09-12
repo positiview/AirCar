@@ -51,6 +51,8 @@ public class Car extends BaseEntity{
     private Date startDate;
     private Date endDate;
 
+    private Long reserveStatus;
+
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private  member_num;
 

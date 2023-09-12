@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .successHandler(authenticationFormLoginSuccessHandler())
                 .usernameParameter("id")
                 .passwordParameter("pw")
-                .failureUrl("/login")
+                .failureUrl("/member/login")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .loginPage("/member/login")
                 .defaultSuccessUrl("/main")
                 /*.successHandler(authenticationSuccessHandler())*/
-                .failureUrl("/member/login/error")
+                .failureUrl("/member/login")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
