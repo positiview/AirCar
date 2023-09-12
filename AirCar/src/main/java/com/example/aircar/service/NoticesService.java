@@ -35,7 +35,7 @@ public class NoticesService {
     }
 
     public Page<Notices> getNoticesTitleList1(String keyword, Pageable pageable) {
-        return noticesRepository.findByNotices_titleContaining(keyword, pageable);
+        return noticesRepository.findByNotices_categoryContaining(keyword, pageable);
     }
 
 
