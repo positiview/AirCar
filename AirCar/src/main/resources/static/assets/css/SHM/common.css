@@ -3,8 +3,10 @@
 .pc_wrap {
   min-width: 1192px;
 }
-.pc_wrap a {
+.pc_wrap a:hover {
   cursor: pointer;
+  outline: none;
+  text-decoration: none;
 }
 html,
 body {
@@ -440,7 +442,7 @@ html.scroll_hidden body {
   height: 20px;
   background-size: 20px;
   margin-right: 10px;
-  background-image: url("../../../img/ico_place.png");
+
   margin-left: 14px;
 }
 .pc_wrap .sidebar > .inner .res_form .cont2 > a:before {

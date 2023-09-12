@@ -1,25 +1,28 @@
 package com.example.aircar.controller;
 
 
-import com.example.aircar.domain.LoginDTO;
-import com.example.aircar.domain.MemberSecurityDTO;
+
+import com.example.aircar.domain.ModifyDTO;
 import com.example.aircar.entity.Member;
 import com.example.aircar.service.CustomOAuth2UserDetailsService;
 import com.example.aircar.service.MemberService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
+
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
+@Log4j2
 @AllArgsConstructor
+@SessionAttributes("memberInfo")
 public class MemberController {
 
 
@@ -93,13 +96,23 @@ public class MemberController {
         return "member/signUpAgreeChk";
     }
 
+    @GetMapping("/singupForm")
+    public String signupForm(){
+        return "member/signupForm";
+    }
+
     @GetMapping("/mypage")
-    public String mypage(){
+    public String mypage(Model model, @ModelAttribute("nickname") String nickname){
+
+
+        model.addAttribute("nickname", nickname);
         return "member/myPage";
     }
 
-    @GetMapping("/myinfo")
-    public String myinfo(){return "member/myInfo";}
+    @GetMapping("/myInfo")
+    public String myinfo(){
+
+        return "member/myInfo";}
 
     @GetMapping("/license")
     public String driveLicense(){
@@ -125,21 +138,48 @@ public class MemberController {
 
 
     @PostMapping("/passwordCheck")
-    public ResponseEntity<String> passwordCheck(Model model, @AuthenticationPrincipal MemberSecurityDTO member, String password){
+    @ResponseBody
+    public ResponseEntity<String> passwordCheck(Model model, @RequestBody String password, @ModelAttribute("memberInfo") Member member){
 
         String email = member.getEmail();
-        String userInputPassword = password;
-        String storedHashedPassword = memberService.getPassword(email);
+        String userInputPassword = password.replace("=","");
+        Member member2 = memberService.getUserInfo(email);
+        if(member2 == null){
+            model.addAttribute("pwChkErrMsg", "비밀번호를 잘못 입력하셨습니다.");
+            /*return "redirect:/myPage";*/
+            return new ResponseEntity<>("false", HttpStatus.OK);
+        }
+        String storedHashedPassword = member2.getPassword();
 
         boolean passwordMatches = passwordEncoder.matches(userInputPassword, storedHashedPassword);
 
-        /*if(passwordMatches){
-            return "/myinfo";
+        if(passwordMatches){
+            return new ResponseEntity<>("correct", HttpStatus.OK);
         }else{
             model.addAttribute("pwChkErrMsg", "비밀번호를 잘못 입력하셨습니다.");
-            return "redirect:/myPage";
-        }*/
-        return new ResponseEntity<>("correct", HttpStatus.OK);
+            /*return "redirect:/myPage";*/
+            return new ResponseEntity<>("false", HttpStatus.OK);
+        }
+
     }
 
+    @PostMapping("/updateMember")
+    @ResponseBody
+    public ResponseEntity<String> updatePhone(@RequestBody ModifyDTO modifyDTO, @ModelAttribute("memberInfo") Member member){
+        String access = modifyDTO.getAccess().replace("modify","");
+        String value = modifyDTO.getValue();
+        log.info("access 값 : "+access);
+        log.info("value 값 : "+value);
+        String email = member.getEmail();
+        switch (access){
+            case "Phone":
+                memberService.updatePhone(value,email);
+                break;
+            case "Email":
+            case "Nickname":
+        }
+        /*String phoneNum = phone.replace("=","");*/
+
+        return new ResponseEntity<>("success",HttpStatus.OK);
+    }
 }

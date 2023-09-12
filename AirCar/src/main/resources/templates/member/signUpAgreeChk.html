@@ -6,6 +6,24 @@
     <th:block th:replace="fragments/CSS_Fragment::link"></th:block>
 </head>
 <th:block layout:fragment="content">
+    <script>
+        $(document).ready(function (){
+            var agree01 = $('#agree01');
+            var agree02 = $('#agree02');
+            var submitButton = $('#submitButton');
+
+            function changeSubmitButton(){
+                if(agree01.prop("checked") && agree02.prop("checked")){
+                    submitButton.removeClass("disabled").prop("disabled",false).text("동의 완료");
+                }else {
+                    submitButton.addClass("disabled").prop("disabled", true).text("약관에 동의해주세요");
+                }
+            }
+
+            agree01.on("change",changeSubmitButton);
+            agree02.on("change",changeSubmitButton);
+        })
+    </script>
 
     <div class="container">
         <div class="inner">
@@ -41,7 +59,7 @@
                     </ul>
                 </div>
                 <div class="btn_group multy">
-                    <button type="button" class="btn type01 disabled" disabled>약관에 동의해주세요</button>
+                    <button type="button" class="btn type01 disabled" disabled id="submitButton" onclick="location.href='/singupForm'">약관에 동의해주세요</button>
                 </div>
                 <!--<div class="btn_group multy"><button type="button" class="btn type01">동의 완료</button></div>-->
             </div>

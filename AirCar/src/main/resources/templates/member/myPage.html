@@ -5,43 +5,16 @@
     <th:block th:replace="fragments/CSS_Fragment::link"></th:block>
 </head>
 <th:block layout:fragment="content">
-    <script>
-        $(document).ready(function() {
 
-
-            $('.get_gogo').click(function() {
-                // 전달할 데이터
-                var dataToSend = {
-                    param: 'example_value'
-                };
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/your-controller-url',
-                    data: dataToSend,
-                    success: function(response) {
-                        // 성공 시 처리
-                        console.log(response);
-                    },
-                    error: function() {
-                        // 에러 시 처리
-                        console.error('오류 발생');
-                    }
-                });
-            });
-
-
-        });
-    </script>
     <div class="container">
         <div class="inner">
             <div class="contents">
                 <div class="title_wrap"><h2 class="title_30">마이페이지</h2></div>
                 <div class="sub_cont">
                     <div class="profile_cont">
-                        <div class="txt"><p class="name"><strong>[[${session.nickname}]]님 </strong>안녕하세요!</p>
+                        <div class="txt"><p class="name"><strong>[[${session.memberInfo.getNickname()}]]님 </strong>안녕하세요!</p>
                             <p class="desc">언제나, 어디서나 AIRCAR와 함께해 주세요</p></div>
-                        <button class="link_btn open-layerPopup">내 정보 관리</button>
+                        <button class="link_btn myInfoPop">내 정보 관리</button>
                     </div>
                 </div>
                 <div class="sub_cont">
@@ -80,7 +53,7 @@
                 </div>
                 <div class="sub_cont">
                     <div class="title_wrap"><p class="title_18">나의 공유카</p></div>
-                    <a target="_blank" class="white_box">
+                    <a target="_blank" class="white_box" href="register_car">
                         <figure class="row_cards"><img src="../img/main_b05.jpg" alt="">
                             <figcaption><p class="title_16">스마트 쉐어</p>
                                 <p class="title_14">계약부터 장비까지 스마트 쉐어로 관리해 보세요</p></figcaption>
@@ -113,41 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar">
-                <div id="sideScroll" class="inner scroll_p">
-                    <div class="fillter_wrap"><h2>어떤 도움이 필요하세요</h2>
-                        <div class="menu_btns row3">
-                            <ul class="btns_list">
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main01.png" alt="결제 이미지"></div>
-                                    <span>예약·변경</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main02.png" alt="결제 이미지"></div>
-                                    <span>운전자</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main03.png" alt="결제 이미지"></div>
-                                    <span>제휴·할인</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main04.png" alt="결제 이미지"></div>
-                                    <span>보험</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main05.png" alt="결제 이미지"></div>
-                                    <span>고장·사고</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main06.png" alt="결제 이미지"></div>
-                                    <span>장기렌터카</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main07.png" alt="결제 이미지"></div>
-                                    <span>유류비</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="../img/ico_cs_main08.png" alt="결제 이미지"></div>
-                                    <span>부가용품</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="btn_group"><a class="btn type02">고객센터로 이동</a></div>
-                    </div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/sidebarCustomerCenter::sidebarCC"></th:block>
             <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
         </div>
     </div>

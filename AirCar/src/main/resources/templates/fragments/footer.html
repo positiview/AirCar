@@ -63,6 +63,8 @@
         $(document).on("click", ".top_cont", function() {
             $("html, body").animate({ scrollTop: 0 }, 400);  });
         $(document).ready(function () {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
             datePickerSet($("#datepicker1"), $("#datepicker2"), true);
 
             function datePickerSet(sDate, eDate, flag) {
@@ -117,6 +119,8 @@
                 $('.chk').closest('li').removeClass('on'); // 모든 라벨의 테두리 색상 초기화
                 $('input[type="checkbox"]').prop('checked', false); // 모든 체크박스 해제
             });
+
+
 
 
             // 모든 클래스가 해제시 전체 클래스 on
@@ -203,31 +207,104 @@
             });
 
             //---------------------------------
-            // 레이어팝업 기능
-            var layerPopup = $('.layerPopup');
-                layerPopup.hide();
+            /* 레이어 모음 */
+            // 헤더 레이어팝업 기능
+            var layerPopup = $('.alertPopup');
+            var open_layer = $('.open-layerPopup');
+            layerPopPop(layerPopup,open_layer);
+            // 마이페이지 내정보관리 레이어팝업
+            var layerPopup2 = $('.small');
+            var open_layer2 = $('.myInfoPop');
+            layerPopPop(layerPopup2,open_layer2);
+            // 휴대폰 번호 변경
+            var layerPopup3 = $('.small1');
+            var open_layer3 = $('#modifyPhone');
+            layerPopPop(layerPopup3,open_layer3);
+            // 이메일 변경
+            var layerPopup4 = $('.small2');
+            var open_layer4 = $('#modifyEmail');
+            layerPopPop(layerPopup4,open_layer4);
+            // 닉네임 변경
+            var layerPopup5 = $('.small3');
+            var open_layer5 = $('#modifyNickname');
+            layerPopPop(layerPopup5,open_layer5);
 
 
-            $('.open-layerPopup').click(function (){
-                layerPopup.show();
-                $('body').css('overflow', 'hidden');
-            });
+            var buttonId = "";
+            function layerPopPop(layerPopup, open_layer){
 
-            layerPopup.not('.layerPopup_wrap').click(function (e) {
-                if (!$(e.target).closest('.layerPopup_wrap').length) {
+
+                open_layer.click(function(){
+                    layerPopup.show();
+                    $('body').css('overflow', 'hidden');
+                    buttonId = open_layer.attr("id");
+
+                    console.log("버튼의 아이디 : "+buttonId);
+                })
+
+                layerPopup.not('.layerPopup_wrap').click(function (e) {
+                    if (!$(e.target).closest('.layerPopup_wrap').length) {
+                        layerPopup.hide();
+                        $('body').css('overflow', 'visible');
+                    }
+                });
+                $('.btn_close').click(function () {
                     layerPopup.hide();
                     $('body').css('overflow', 'visible');
+                });
+
+            }
+            // 수정 레이어----------------------------------
+            var modify = $('.modifier');
+            var chk_Button = $('.chkBtn');
+            modify.on("keyup", function () {
+
+                if (modify.val().length > 0) {
+                    chk_Button.removeAttr("disabled");
+                } else {
+                    chk_Button.attr("disabled", "disabled");
                 }
             });
 
+            chk_Button.click(function (){
 
-            // 닫기 버튼 클릭 시 팝업 숨기기
-            $('.btn_close').click(function () {
-                layerPopup.hide();
-                $('body').css('overflow', 'visible');
+                var data = {access:buttonId,
+                            value: modify.val()};
+
+                console.log(data);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/updateMember',
+                    data:  JSON.stringify(data),
+                    contentType: 'application/json;',
+                    dataType: 'json',
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "success") {
+                            alert("휴대폰 정보 업데이트 완료")
+
+                            location.href = "/myInfo";
+                        } else {
+                            // 비밀번호가 일치하지 않는 경우
+                            console.error('휴대폰 정보 업데이트 에러 발생');
+                        }
+                    },
+                    error: function() {
+                        // 에러 시 처리
+                        console.error('POST 전송 오류 발생');
+                    }
+                })
             });
             //----------------------------------
-            /*var passwordInput = $('#pwInput');
+            // 닫기 버튼 클릭 시 팝업 숨기기
+            //----------------------------------
+            var passwordInput = $('#pwInput');
             var chkPW_Button = $('#chkPW');
             passwordInput.on("keyup", function (){
 
@@ -246,21 +323,24 @@
 
                 var password = passwordInput.val();
 
-
+                console.log(password);
 
                 $.ajax({
                     type: 'POST',
                     url: '/passwordCheck',
-                    data: JSON.stringify(password),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function(response) {
-                        var isValid = response.isValid;
+                    data: password,
 
-                        if (isValid) {
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "correct") {
                             // 비밀번호가 일치하는 경우
                             $("#pwChkErrMsg").text("비밀번호가 일치합니다.");
-                            window.location.href = "/myInfo";
+                            location.href = "/myInfo";
                         } else {
                             // 비밀번호가 일치하지 않는 경우
                             $("#pwChkErrMsg").text("비밀번호가 일치하지 않습니다.");
@@ -271,7 +351,7 @@
                         console.error('POST 전송 오류 발생');
                     }
                 })
-            });*/
+            });
 
 
         });

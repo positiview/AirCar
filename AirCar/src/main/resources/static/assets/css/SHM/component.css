@@ -4101,7 +4101,7 @@
   font-size: 14px;
   line-height: 22px;
   margin-left: 12px;
-  text-decoration: underline;
+
 }
 .pc_wrap .data_management .btn_modify .btn.arrow {
   display: inline-block;
@@ -7343,6 +7343,9 @@
 .login_guide {
   width: 50%;
   margin: 0 25px;
+}
+.pc_wrap .login_box .login_normal{
+  width: 90%;
 }
 .pc_wrap .login_box .form_row + .form_row {
   margin-top: 12px;
