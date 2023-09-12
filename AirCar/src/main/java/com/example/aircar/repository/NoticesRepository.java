@@ -30,5 +30,4 @@ public interface NoticesRepository extends JpaRepository<Notices, Long> {
 
 
 
-
 }

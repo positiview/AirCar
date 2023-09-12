@@ -118,6 +118,7 @@ public class GuideController {
         return "/guide/notices";
     }
 
+
     @GetMapping("/noticesView")
     public String noticesView(Long bno, Model model){
         Notices notices = noticesRepository.findByBno(bno);

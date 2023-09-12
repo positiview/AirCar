@@ -14,6 +14,38 @@
 
 
         </script>
+
+
+
+        <script
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            $(function() {
+                // tab operation
+                $('.tabmenu').click(function() {
+                    var activeTab = $(this).attr('data-tab');
+                    $('li').css('background-color', 'white');
+                    $(this).css('background-color', 'green');
+                    $.ajax({
+                        type : 'GET',                 //get방식으로 통신
+                        url : activeTab + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                        dataType : "html",            //html형식으로 값 읽기
+                        error : function() {          //통신 실패시
+                            alert('통신실패!');
+                        },
+                        success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+                            $('#tabcontent').html(data);
+                        }
+                    });
+                });
+                $('#default').click();
+            });
+        </script>
+
+
+
+
+
     </th:block>
 
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
@@ -53,6 +85,20 @@
 
                                     </div>
                                 </h2>
+                            </div>
+                            <div class="board_tab">
+                                <ul class="reviw_box">
+                                    <li class="reviw_list active">
+                                        <a href="/notices">전체</a>
+                                    </li>
+                                    <li class="reviw_list">
+                                        <a href="/notices?category=예약·변경">예약·변경</a>
+                                    </li>
+                                    <li class="reviw_list">
+                                        <a href="/notices?category=운전자">운전자</a>
+                                    </li>
+                                    <!-- 다른 카테고리들을 추가하세요 -->
+                                </ul>
                             </div>
                             <div class="board_tab">
                                 <ul class="reviw_box">
