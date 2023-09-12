@@ -18,8 +18,16 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("UPDATE Member m SET m.password = :password WHERE m.email = :email")
     void updatePassword(String password, String email);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE Member m SET m.phone = :phone WHERE m.email = :email")
+    void updatePhone(String phone, String email);
 
-    /*Optional<Member> findByEmailAndClientName(String email);*/
+    @Modifying
+    @Transactional
+    @Query("UPDATE Member m SET m.nickname = :nickname WHERE m.email = :email")
+    void updateNickname(String nickname, String email);
+
 
     Member findPasswordByEmail(String email);
 
@@ -31,5 +39,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Query("select m from Member m where m.email like %:keyword% order by m.mno desc")
     Page<Member> getByemailLike(String keyword, Pageable pageable);
+
+
 
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Data
@@ -36,7 +37,8 @@ public class CarDTO {
 //    private String carName;
     private String carImg;
     private String brandImg;
-
+    private Date startDate;
+    private Date endDate;
 
     //private int
 }

@@ -2,6 +2,10 @@ package com.example.aircar.controller;
 
 import com.example.aircar.domain.MemberSecurityDTO;
 
+import com.example.aircar.entity.Member;
+import com.example.aircar.repository.MemberRepository;
+import com.example.aircar.service.MemberService;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,26 +19,31 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @Log4j2
+@AllArgsConstructor
 public class MainController {
 
+    MemberService memberService;
+
     @GetMapping("/main")
-    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO memberSecurityDTO,
+    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO mDTO,
                            HttpServletRequest request) {
-
-        String nickname = "";
-        if (memberSecurityDTO != null) {
-
-            nickname = memberSecurityDTO.getNickname();
-            log.info("nickname : " + nickname);
-        }
-
-        log.info("member 정보 : "+ memberSecurityDTO);
-
-        model.addAttribute("nickname", nickname);
 
 
         HttpSession session = request.getSession();
-        session.setAttribute("nickname", nickname);
+        if (mDTO != null) {
+
+            String email = mDTO.getEmail();
+            log.info("email 값 : " + email);
+            Member member = memberService.getUserInfo(email);
+            session.setAttribute("memberInfo", member);
+
+        }
+
+        log.info("member 정보 : "+ mDTO);
+
+
+
+
 
         return "main/homepage";
     }

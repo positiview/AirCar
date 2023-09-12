@@ -39,6 +39,7 @@ public class SecurityConfig {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/main")
+                .invalidateHttpSession(true)
         ;
 
         http.oauth2Login()
@@ -50,6 +51,7 @@ public class SecurityConfig {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/main")
+                .invalidateHttpSession(true)
         ;
 
 // csrf 전송 끄기
