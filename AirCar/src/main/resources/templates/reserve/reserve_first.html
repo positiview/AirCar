@@ -137,13 +137,10 @@
                             </div>
                             <div>
                                 <dl>
-                                    <dt><i><img src="/assets/img/contents/ico_journey02.png" alt=""></i>11.24(금) 16:30 ~
-                                        12.13(수) 14:00
+                                    <dt><i><img src="/assets/img/contents/ico_journey02.png" alt=""></i><th:block th:text="${car.startDate}"></th:block>
+                                         ~ <th:block th:text="${car.endDate}"></th:block>
                                     </dt>
-                                    <dd>총
-                                        18일
-                                        21시간
-                                        30분
+                                    <dd>
                                     </dd>
                                 </dl>
                             </div>
@@ -229,7 +226,9 @@
                         "carName": '[[${car.name}]]',
                         "nickname": '[[${session.nickname}]]',
                         "email" : '[[${email}]]',
-                        "carNum": '[[${car.carNum}]]'
+                        "carNum": '[[${car.carNum}]]',
+                        "startDate" :'[[${car.startDate}]]',
+                        "endDate" : '[[${car.endDate}]]'
                     }
 
                     console.log(result);

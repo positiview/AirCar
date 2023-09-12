@@ -23,4 +23,7 @@ public class ReserveDTO {
     private String brandImg;
     private String carImg;
 
+    private Date startDate;
+    private Date endDate;
+
 }

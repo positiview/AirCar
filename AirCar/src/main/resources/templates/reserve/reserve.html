@@ -24,7 +24,6 @@
             color: black;
         }
     </style>
-
     <div class="container">
         <div class="inner">
             <div class="contents">
@@ -56,8 +55,12 @@
                                         <th:block th:text="${car.name}"></th:block>
                                         ·
                                         <th:block th:text="${car.fuel}"></th:block>
-                                    <div><span class="sb_text"><th:block th:text="${car.year}"></th:block>년식 · <th:block
-                                            th:text="${car.people}"></th:block>인승</span></div>
+                                    <div><span class="sb_text">
+                                            <th:block th:text="${car.year}"></th:block>년식 ·
+                                            <th:block th:text="${car.people}"></th:block>인승 ·
+                                            <th:block th:text="${car.startDate}"></th:block> ~
+                                            <th:block th:text="${#dates.format(car.endDate,'yyyy-MM-dd')}"></th:block>
+                                    </span> </div>
                                 </div>
                                 <div class="price_wrap">
                                     <div class="price_info">

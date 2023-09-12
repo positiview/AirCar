@@ -42,26 +42,29 @@
                                     <p class="title_18"> 내 예약 </p><span
                                         class="title_14">출발일이 가까운 예약부터 볼 수 있어요 </span>
                                 </div>
-                                <div class="sub_cont" style="margin-top: 30px;">
+                                <div class="sub_cont" style="margin-top: 30px;" th:if="${reserveList == null}">
                                     <div class="car_info_box" style="padding-top: 8px;padding-bottom: 0px;">
-                                        <div class="no_data" th:if="${reserveList == null}" style="height: 289px;">
+                                        <div class="no_data"  style="height: 289px;">
                                             <dl>
                                                 <dt><strong>검색 결과가 없어요</strong></dt>
                                                 <dd><a>렌터카 예약하기</a></dd>
                                             </dl>
                                         </div>
-                                        <th:block th:unless="${reserveList == null}">
-                                        <div class="no_data" th:each="reserve : ${reserveList}"  style="height: 289px;">
+                                    </div>
+                                </div>
+                                <div class="sub_cont" style="margin-top: 30px;" th:unless="${reserveList == null}" th:each="reserve : ${reserveList}">
+                                    <div class="car_info_box" style="padding-top: 8px;padding-bottom: 0px;">
+                                        <div class="no_data"   style="height: 289px;">
                                             <h3 style="font-size: 16px; text-align: left; ">예약번호 : <th:block th:text="${reserve.rno}"></th:block> </h3>
                                             <img th:src="@{'assets/upload/'+${reserve.carImg}}" alt="" style="position: relative;width: 321px;left: 167px;bottom: 15px;">
                                             <h3 style="position: relative;right: 300px;bottom: 103px;font-size: 29px;" th:text="${reserve.carName}">포르쉐 타이칸</h3>
-                                            <h3 style="position: relative;right: 230px;bottom: 105px;font-size: 17px;left: -205px;color: #80808073;font-weight: 400;">09-01 |목| 10시 ~ 09-03 |토| 10시</h3>
+                                            <h3 style="position: relative;right: 230px;bottom: 105px;font-size: 17px;left: -222px;color: #80808073;font-weight: 400;"><th:block th:text="${reserve.startDate}"></th:block> ~
+                                                <th:block th:text="${reserve.endDate}"></th:block> </h3>
                                             <h3 style="position: relative;right: 293px;bottom: 113px;font-size: 16px;left: -284px;color: #80808073;font-weight: 400;">부산·전포지점</h3>
                                         </div>
-                                        </th:block>
                                     </div>
                                 </div>
-                                
+
                                 <div class="sub_cont">
                                     <p class="title_18">자주 찾는 질문</p>
                                     <div class="sub_tit_box"><span class="title_14">예약과 관련해 자주 찾는 질문을 모아봤어요</span><a

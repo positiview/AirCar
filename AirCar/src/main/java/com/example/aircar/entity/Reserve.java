@@ -32,4 +32,7 @@ public class Reserve extends BaseEntity{
     private Date reserveDate;
     private LocalDateTime regDate;
 
+    private Date startDate;
+    private Date endDate;
+
 }
