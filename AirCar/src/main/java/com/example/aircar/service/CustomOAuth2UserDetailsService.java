@@ -115,7 +115,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             // 회원 추가
             // id = 이메일 주소 / 패스워드는 1111
             Member member = Member.builder()
-                    .name(email)
+                    .name(nickname)
                     .password(passwordEncoder.encode("1111"))
                     .email(email)
                     .social(true)

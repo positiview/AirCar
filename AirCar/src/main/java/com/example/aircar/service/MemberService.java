@@ -1,6 +1,7 @@
 package com.example.aircar.service;
 
 
+import com.example.aircar.domain.MemberSecurityDTO;
 import com.example.aircar.entity.Member;
 import com.example.aircar.repository.MemberRepository;
 import lombok.AllArgsConstructor;
@@ -56,7 +57,9 @@ public class MemberService  {
             }
     }
 
-
+    public void deleteUser(String email){
+        memberRepository.deleteByEmail(email);
+    }
     public void updatePhone(String phone, String email){
         memberRepository.updatePhone(phone,email);
     }

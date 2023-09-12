@@ -18,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.*;
 
 
@@ -190,5 +192,37 @@ public class MemberController {
         /*String phoneNum = phone.replace("=","");*/
 
         return new ResponseEntity<>("success",HttpStatus.OK);
+    }
+
+    @PostMapping("/deleteMember")
+    @ResponseBody
+    public ResponseEntity<String> deleteMember(HttpServletRequest request, Model model, @RequestBody String password, @ModelAttribute("memberInfo") Member member){
+
+        String email = member.getEmail();
+        String userInputPassword = password.replace("=","");
+        Member member2 = memberService.getUserInfo(email);
+        if(member2 == null){
+            model.addAttribute("pwChkErrMsg", "비밀번호를 잘못 입력하셨습니다.");
+            /*return "redirect:/myPage";*/
+            return new ResponseEntity<>("false", HttpStatus.OK);
+        }
+        String storedHashedPassword = member.getPassword();
+
+        boolean passwordMatches = passwordEncoder.matches(userInputPassword, storedHashedPassword);
+
+        if(passwordMatches){
+            memberService.deleteUser(email);
+            HttpSession session = request.getSession(false);
+
+            if(session != null) {
+                session.invalidate();
+            }
+            return new ResponseEntity<>("correct", HttpStatus.OK);
+        }else{
+            model.addAttribute("pwChkErrMsg", "비밀번호를 잘못 입력하셨습니다.");
+            /*return "redirect:/myPage";*/
+            return new ResponseEntity<>("false", HttpStatus.OK);
+        }
+
     }
 }

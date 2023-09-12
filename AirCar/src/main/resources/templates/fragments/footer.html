@@ -228,7 +228,10 @@
             var layerPopup5 = $('.small3');
             var open_layer5 = $('#modifyNickname');
             layerPopPop(layerPopup5,open_layer5);
-
+            // 회원 탈퇴
+            var layerPopup6 = $('.deletePopup');
+            var open_layer6 = $('.deleteBtn');
+            layerPopPop(layerPopup6,open_layer6);
 
             var buttonId = "";
             function layerPopPop(layerPopup, open_layer){
@@ -306,16 +309,17 @@
             //----------------------------------
             var passwordInput = $('#pwInput');
             var chkPW_Button = $('#chkPW');
+            var delete_Button = $('#delete');
             passwordInput.on("keyup", function (){
 
                 if(passwordInput.val().length > 0){
-                    chkPW_Button.removeAttr("disabled");
-                    chkPW_Button.text("입력완료");
+                    $('.pwBtn').removeAttr("disabled");
+                    chkPW_Button.text("입력 완료");
+                    delete_Button.text("회원 탈퇴");
 
 
                 }else{
-                    chkPW_Button.attr("disabled","disabled");
-                    chkPW_Button.text("비밀번호를 입력해 주세요");
+                    $('.pwBtn').attr("disabled","disabled").text("비밀번호를 입력해 주세요");
                 }
             });
 
@@ -355,6 +359,39 @@
                     }
                 })
             });
+
+            delete_Button.click(function (){
+                var password = passwordInput.val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/deleteMember',
+                    data: password,
+
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "correct") {
+                            // 비밀번호가 일치하는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치합니다.");
+                            location.href = "/main";
+                        } else {
+                            // 비밀번호가 일치하지 않는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치하지 않습니다.");
+                            passwordInput.focus();
+                            passwordInput.val("");
+
+                        }
+                    },
+                    error: function() {
+                        // 에러 시 처리
+                        console.error('POST 전송 오류 발생');
+                    }
+                })
+            })
 
 
         });
