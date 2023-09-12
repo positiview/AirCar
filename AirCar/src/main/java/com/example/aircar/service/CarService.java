@@ -7,6 +7,7 @@ import com.example.aircar.entity.Member;
 import com.example.aircar.repository.CarRepository;
 import com.example.aircar.repository.FilesRepository;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -16,7 +17,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -135,6 +138,28 @@ public class CarService {
     public CarDTO getCarInfo(Long carNum) {
         Car car = carRepository.findByCarNum(carNum);
         Files imgFiles = filesRepository.findByCarName(car.getName());
+
+
+        return getCarDtoSet(car,imgFiles);
+    }
+
+    public List<CarDTO> searchCar(Date startdate, Date enddate){
+        List<Car> carDTOList = carRepository.findAll();
+
+        List<CarDTO> result = new ArrayList<>();
+        for(Car cars : carDTOList){
+
+            if(!startdate.before(cars.getStartDate()) && !enddate.after(cars.getEndDate())){
+                Files imgFiles = filesRepository.findByCarName(cars.getName());
+                result.add(getCarDtoSet(cars,imgFiles));
+
+            }
+        }
+
+        return result;
+    }
+
+    public CarDTO getCarDtoSet(Car car, Files imgFiles){
         CarDTO carDTO = new CarDTO();
         carDTO.setCar_num(car.getCarNum());
         carDTO.setKind(car.getKind());
@@ -161,6 +186,5 @@ public class CarService {
 
         return carDTO;
     }
-
 }
 

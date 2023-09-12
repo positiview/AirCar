@@ -63,6 +63,7 @@
         $(document).on("click", ".top_cont", function() {
             $("html, body").animate({ scrollTop: 0 }, 400);  });
         $(document).ready(function () {
+
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
             datePickerSet($("#datepicker1"), $("#datepicker2"), true);
@@ -98,7 +99,7 @@
             function isValidStr(str) {
                 return str === null || str === undefined || str === "";
             }
-
+            //================================================================
             $('.chk').click(function() {
                 var $li = $(this).closest('li'); // 클릭된 라벨의 부모 li 요소 선택
                 $li.toggleClass('on'); // li 요소의 클래스를 토글
@@ -213,19 +214,19 @@
             var open_layer = $('.open-layerPopup');  // 팝업 버튼
             layerPopPop(layerPopup,open_layer);
             // 마이페이지 내정보관리 레이어팝업
-            var layerPopup2 = $('.small');
+            var layerPopup2 = $('.myInfo');
             var open_layer2 = $('.myInfoPop');
             layerPopPop(layerPopup2,open_layer2);
             // 휴대폰 번호 변경
-            var layerPopup3 = $('.small1');
+            var layerPopup3 = $('.phoneLayer');
             var open_layer3 = $('#modifyPhone');
             layerPopPop(layerPopup3,open_layer3);
             // 이메일 변경
-            var layerPopup4 = $('.small2');
+            var layerPopup4 = $('.emailLayer');
             var open_layer4 = $('#modifyEmail');
             layerPopPop(layerPopup4,open_layer4);
             // 닉네임 변경
-            var layerPopup5 = $('.small3');
+            var layerPopup5 = $('.nicknameLayer');
             var open_layer5 = $('#modifyNickname');
             layerPopPop(layerPopup5,open_layer5);
             // 회원 탈퇴
@@ -234,6 +235,13 @@
             layerPopPop(layerPopup6,open_layer6);
 
             var buttonId = "";
+
+            function getId(a){
+                a.click(function (){
+                    buttonId = a.attr("id");
+                    console.log("버튼의 아이디 : "+buttonId);
+                })
+            }
             function layerPopPop(layerPopup, open_layer){
 
 
@@ -257,55 +265,68 @@
                 });
 
             }
+
+
             // 수정 레이어----------------------------------
-            var modify = $('.modifier');
-            var chk_Button = $('.chkBtn');
-            modify.on("keyup", function () {
 
-                if (modify.val().length > 0) {
-                    chk_Button.removeAttr("disabled");
-                } else {
-                    chk_Button.attr("disabled", "disabled");
-                }
-            });
+            var chk_Button1 = $('#chkBtn1');
+            var chk_Button2 = $('#chkBtn2');
+            var chk_Button3 = $('#chkBtn3');
 
-            chk_Button.click(function (){
-
-                var data = {access:buttonId,
-                            value: modify.val()};
-
-                console.log(data);
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/updateMember',
-                    data:  JSON.stringify(data),
-                    contentType: 'application/json;',
-                    dataType: 'json',
-                    beforeSend : function(xhr)
-                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                        xhr.setRequestHeader(header, token);
-                    },
-                    success: function(response) {
-
-
-                        if (response === "success") {
-                            alert("휴대폰 정보 업데이트 완료")
-
-                            location.href = "/myInfo";
-                        } else {
-                            // 비밀번호가 일치하지 않는 경우
-                            console.error('휴대폰 정보 업데이트 에러 발생');
-                        }
-                    },
-                    error: function() {
-                        // 에러 시 처리
-                        console.error('POST 전송 오류 발생');
+            var modify1 = $('#modifier1');
+            var modify2 = $('#modifier2');
+            var modify3 = $('#modifier3');
+            setupModifyButton(modify1, chk_Button1);
+            setupModifyButton(modify2, chk_Button2);
+            setupModifyButton(modify3, chk_Button3)
+            function setupModifyButton(modifyElement, chkButton) {
+                modifyElement.on("keyup", function () {
+                    if (modifyElement.val().length > 0) {
+                        chkButton.removeAttr("disabled");
+                    } else {
+                        chkButton.attr("disabled", "disabled");
                     }
-                })
-            });
+                });
+
+                chkButton.click(function () {
+                    var data = {
+                        access: buttonId,
+                        value: modifyElement.val()
+                    };
+
+                    console.log(data);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/updateMember',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json;',
+                        /*dataType: 'json',*/
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader(header, token);
+                        },
+                        success: function (response) {
+                            if (response === "success") {
+                                alert("정보 업데이트 완료")
+                                location.href = "/myInfo";
+                            } else {
+                                console.error('정보 업데이트 에러 발생');
+                            }
+                        },
+                        error: function () {
+                            console.error('POST 전송 오류 발생');
+                        }
+                    });
+                });
+            }
+
+
             //----------------------------------
-            // 닫기 버튼 클릭 시 팝업 숨기기
+            // 닫기 버튼 클릭 시 팝업 숨기기 작성하시오;;
+
+
+
+
             //----------------------------------
             var passwordInput = $('#pwInput');
             var chkPW_Button = $('#chkPW');
@@ -326,6 +347,7 @@
             chkPW_Button.click(function (){
 
                 var password = passwordInput.val();
+
 
                 console.log(password);
 

@@ -68,7 +68,7 @@
                 <div class="white_box border">
                     <div class="form_row">
                         <div class="data_management"><label for="coname" class="form_label">아이디 / 소셜 [[${session.memberInfo.getClient()}]]</label>
-                            <p class="data_txt">[[${memberInfo.getEmail()}]]</p></div>
+                            <p class="data_txt">[[${yourInfo.getEmail()}]]</p></div>
                         <div class="data_management"><label for="password" class="form_label">비밀번호</label>
                             <p class="data_txt notice">개인정보 보호를 위해 주기적으로 변경해주세요</p>
                             <div class="btn_modify">
@@ -76,12 +76,12 @@
                             </div>
                         </div>
                         <div class="data_management"><label for="sellphone" class="form_label">휴대폰 번호</label>
-                            <p class="data_txt">[[${session.memberInfo.getPhone()}]]</p>
+                            <p class="data_txt">[[${yourInfo.getPhone()}]]</p>
                             <div class="btn_modify">
                                 <button class="btn" id="modifyPhone">변경</button>
                             </div>
                         </div>
-                        <div class="layerPopup small1" style="display: none">
+                        <div class="layerPopup small phoneLayer" style="display: none">
                             <div class="layerPopup_wrap">
                                 <div class="layerPopup_heading"><h2 class="heading">휴대폰 번호를 입력해 주세요</h2>
                                     <button class="btn_close">닫기</button>
@@ -89,15 +89,15 @@
                                 <div class="layerPopup_content">
                                     <div class="form_control">
                                         <div class="form_row">
-                                            <label for="phoneInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
-                                            <input id="phoneInput" class="modifier" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
+                                            <label for="modify_phone" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
+                                            <input id="modifier1" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
                                         </div>
 
                                     </div>
                                 </div>
                                 <div class="layerPopup_bottom bottom_gray">
                                     <div class="btn_group">
-                                        <button class="btn type01 chkBtn" disabled>번호 수정 완료</button>
+                                        <button id="chkBtn1" class="btn type01" disabled>번호 수정 완료</button>
 
 
                                     </div>
@@ -115,12 +115,12 @@
                 <div class="white_box border">
                     <div class="form_row">
                         <div class="data_management"><label for="email" class="form_label">이메일</label>
-                            <p class="data_txt">[[${session.memberInfo.getEmail()}]]</p></div>
+                            <p class="data_txt">[[${yourInfo.getContactEmail()}]]</p></div>
                             <div class="btn_modify">
                                 <button class="btn" id="modifyEmail">수정</button>
                             </div>
                         <div class="data_management"><label for="nickname" class="form_label">닉네임</label>
-                            <p class="data_txt">[[${session.memberInfo.getNickname()}]]</p></div>
+                            <p class="data_txt">[[${yourInfo.getNickname()}]]</p></div>
                             <div class="btn_modify">
                                 <button class="btn" id="modifyNickname">수정</button>
                             </div>
@@ -136,7 +136,7 @@
                                 <button class="btn" id="modifyPay">변경</button>
                             </div>
                         </div>
-                        <div class="layerPopup small2" style="display: none">
+                        <div class="layerPopup small emailLayer" style="display: none">
                             <div class="layerPopup_wrap">
                                 <div class="layerPopup_heading"><h2 class="heading">이메일을 입력해 주세요</h2>
                                     <button class="btn_close">닫기</button>
@@ -144,23 +144,19 @@
                                 <div class="layerPopup_content">
                                     <div class="form_control">
                                         <div class="form_row">
-                                            <label for="emailInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
-                                            <input id="emailInput" class="modifier" name="names" type="text" placeholder="ex) 010-7878-1212" maxlength="13">
+                                            <label for="modify_contactEmail" class="form_label">Contact Email here..</label><!--<p id="pwChkErrMsg"></p>-->
+                                            <input  id="modifier2" name="names" type="text" placeholder="ex) busanIT2023@computeracademy.com" maxlength="30">
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="layerPopup_bottom bottom_gray">
                                     <div class="btn_group">
-                                        <button id="chkBtn" class="btn type01" disabled>이메일 수정 완료</button>
-
-
+                                        <button id="chkBtn2" class="btn type01" disabled>이메일 수정 완료</button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="layerPopup small3" style="display: none">
+                        <div class="layerPopup small nicknameLayer" style="display: none">
                             <div class="layerPopup_wrap">
                                 <div class="layerPopup_heading"><h2 class="heading">닉네임을 입력해 주세요</h2>
                                     <button class="btn_close">닫기</button>
@@ -168,15 +164,15 @@
                                 <div class="layerPopup_content">
                                     <div class="form_control">
                                         <div class="form_row">
-                                            <label for="nickInput" class="form_label">Phone No.</label><!--<p id="pwChkErrMsg"></p>-->
-                                            <input id="nickInput" class="modifier" name="names" type="text" placeholder="[[${session.memberInfo.getNickname}]]" maxlength="20">
+                                            <label for="modify_Nickname" class="form_label">Nickname here...</label><!--<p id="pwChkErrMsg"></p>-->
+                                            <input id="modifier3" name="names" type="text" th:placeholder="${yourInfo.getNickname}" maxlength="20">
                                         </div>
 
                                     </div>
                                 </div>
                                 <div class="layerPopup_bottom bottom_gray">
                                     <div class="btn_group">
-                                        <button class="btn type01 chkBtn" disabled>닉네임 수정 완료</button>
+                                        <button id="chkBtn3" class="btn type01" disabled>닉네임 수정 완료</button>
 
 
                                     </div>

@@ -585,7 +585,7 @@ html.scroll_hidden body {
   height: 28px;
   overflow: hidden;
   text-indent: -999rem;
-  background: url(../img/common/ico_close_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_close_24x24.png) no-repeat center / 24px;
   outline: none;
   z-index: 2;
 }
@@ -2551,7 +2551,7 @@ html.scroll_hidden body {
   height: 28px;
   overflow: hidden;
   text-indent: -999rem;
-  background: url(../img/common/ico_close_24x24.png) no-repeat center / 24px;
+  background: url(../../../img/ico_close_24x24.png) no-repeat center / 24px;
   outline: none;
   z-index: 2;
 }

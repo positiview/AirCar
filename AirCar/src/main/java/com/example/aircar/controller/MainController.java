@@ -25,7 +25,7 @@ public class MainController {
     MemberService memberService;
 
     @GetMapping("/main")
-    public String homepage(Model model, @AuthenticationPrincipal MemberSecurityDTO mDTO,
+    public String homepage(@AuthenticationPrincipal MemberSecurityDTO mDTO,
                            HttpServletRequest request) {
 
 

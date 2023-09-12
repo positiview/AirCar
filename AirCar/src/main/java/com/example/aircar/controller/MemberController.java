@@ -2,6 +2,7 @@ package com.example.aircar.controller;
 
 
 
+import com.example.aircar.domain.MemberSecurityDTO;
 import com.example.aircar.domain.ModifyDTO;
 import com.example.aircar.entity.Member;
 import com.example.aircar.service.CustomOAuth2UserDetailsService;
@@ -13,6 +14,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -114,8 +116,10 @@ public class MemberController {
     }
 
     @GetMapping("/myInfo")
-    public String myinfo(){
-
+    public String myinfo(@AuthenticationPrincipal MemberSecurityDTO mDTO, Model model){
+        String email = mDTO.getEmail();
+        ;
+        model.addAttribute("yourInfo",memberService.getUserInfo(email));
         return "member/myInfo";}
 
 
@@ -187,9 +191,14 @@ public class MemberController {
                 memberService.updatePhone(value,email);
                 break;
             case "Email":
+                memberService.updateContactEmail(value,email);
+                break;
             case "Nickname":
+                memberService.updateNickname(value,email);
+                break;
         }
-        /*String phoneNum = phone.replace("=","");*/
+
+
 
         return new ResponseEntity<>("success",HttpStatus.OK);
     }
