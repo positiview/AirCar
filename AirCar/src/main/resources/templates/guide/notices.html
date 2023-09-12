@@ -30,6 +30,36 @@
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
 
+    <script>
+            $(document).ready(function (){
+                $(".reviw_list").on("click",function() {
+                    var id = $(this).data("id");
+
+                    $.ajax({
+                        url : "/getData",
+                        method : "GET",
+                        data : {keyword: id},
+                        contentType : "text",
+                        success : function (response) {
+                            console.log("###########################################:" + response);
+                            var appendHtml = "";
+                            $.each(response, function(index, item){
+                                console.log(item);
+                                var str = "<a >" + item.notices_title +"</a>";
+                                appendHtml += str;
+                            });
+
+                            console.log(appendHtml);
+                            $(".table-responsive").html(appendHtml);
+                            //$(".table text-center").html(appendHtml);
+                        },
+                        error: function (error) {
+                            console.error("ERROR : ", error)
+                        }
+                    })
+                })
+            })
+    </script>
     <body style="overflow: visible;" cz-shortcut-listen="true">
     <div id="root" style="height: 100%">
         <div class="pc_wrap" style="">
@@ -56,14 +86,14 @@
                             </div>
                             <div class="board_tab">
                                 <ul class="reviw_box">
-                                    <li class="reviw_list active"><a><span class="review_txt">전체</span></a></li>
-                                    <li class="reviw_list"><a><span class="img_icon"><img
+                                    <li class="reviw_list" data-id="" active><a><span class="review_txt">전체</span></a></li>
+                                    <li class="reviw_list" data-id="예약·변경"><a><span class="img_icon"><img
                                             src="img/ico_cs_main01.png"></span><span class="review_txt">예약·변경</span></a>
                                     </li>
-                                    <li class="reviw_list"><a><span class="img_icon"><img
+                                    <li class="reviw_list" data-id="운전자"><a><span class="img_icon"><img
                                             src="img/ico_cs_main02.png"></span><span
                                             class="review_txt">운전자</span></a></li>
-                                    <li class="reviw_list"><a><span class="img_icon"><img
+                                    <li class="reviw_list"  data-id="제휴·할인"><a><span class="img_icon"><img
                                             src="img/ico_cs_main03.png"></span><span class="review_txt">제휴·할인</span></a>
                                     </li>
                                     <li class="reviw_list"><a><span class="img_icon"><img
@@ -84,7 +114,7 @@
                                     <li class="reviw_list"><a><span class="review_txt">기타</span></a></li>
                                 </ul>
                             </div>
-                            <div class="branch_serch"><p class="title_18">자주 찾는 질문을 모아봤어요</p>
+                            <div class="branch_search"><p class="title_18">자주 찾는 질문을 모아봤어요</p>
                                 <div class="table-responsive clear_bt">
                                     <table class="table text-center">
                                         <tbody>
