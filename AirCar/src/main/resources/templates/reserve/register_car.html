@@ -19,7 +19,10 @@
   <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
   <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
   <link rel="stylesheet" th:href="@{/assets/css/register.css}">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+  <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
+  <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/register.css}">
   <script>
     $(document).ready(function() {
       // 첫 번째 선택 상자(차량 브랜드)를 채우는 AJAX 호출
@@ -79,7 +82,7 @@
 
 
 
-  <div class="row" style="height: 785px">
+  <div class="row" style="height: 900px;">
     <div class="col-md-12">
 
       <div class="panel panel-default">
@@ -114,6 +117,29 @@
                 </select>
               </div>
             </div>
+            <!--!!!!!!!!!!!!!!!!!!!!!-->
+
+
+
+            <!--!!!!!!!!!!!!!!!!!!!!!-->
+            <div class="form-group" >
+              <label class="col-md-2 control-label">* 시작일</label>
+              <div class="col-md-10">
+                <div class="cont2"><a class="ico_place2"> <input class="form-control" id="datepicker1" type="text" placeholder="시작일" name="startDate"
+                        ></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" >
+              <label class="col-md-2 control-label">* 반납일</label>
+              <div class="col-md-10">
+                <div class="cont3"><a class="ico_place3"> <input  class="form-control" id="datepicker2" type="text" placeholder="반납일" name="endDate"></a>
+                </div>
+              </div>
+            </div>
+
+
+
 
             <div class="form-group" >
               <label class="col-md-2 control-label">* 색상</label>
@@ -140,9 +166,7 @@
               </div>
             </div>
 
-            <div  style="width: 719px;height: 279px;border-radius:4px; border: 1px solid #ccc;position: absolute;bottom: 466px;left: 843px;">
-              <img id="carImg"  src="">
-            </div>
+
 
             <div class="form-group">
               <label class="col-md-2 control-label">* 승차인원</label>

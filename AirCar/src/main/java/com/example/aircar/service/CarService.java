@@ -8,6 +8,7 @@ import com.example.aircar.repository.CarRepository;
 import com.example.aircar.repository.FilesRepository;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Log4j2
 public class CarService {
 
     private CarRepository carRepository;
@@ -38,7 +40,10 @@ public class CarService {
         car.setDriverCareer(carDTO.getDriverCareer());
         car.setDefect(carDTO.getDefect());
         car.setContent(carDTO.getContent());
+        car.setStartDate(carDTO.getStartDate());
+        car.setEndDate(carDTO.getEndDate());
         carRepository.save(car);
+        log.info(carDTO.getStartDate());
         return carRepository.save(car);
     }
 
@@ -78,6 +83,8 @@ public class CarService {
                 carDTO.setUpdateDate(carList.get(i).getUpdateDate());
                 carDTO.setDriverAge(carList.get(i).getDriverAge());
                 carDTO.setDriverCareer(carList.get(i).getDriverCareer());
+                carDTO.setStartDate(carList.get(i).getStartDate());
+                carDTO.setEndDate(carList.get(i).getEndDate());
 
                 if(filesList != null && filesList.size() > 0) {
                     for(int j = 0; j < filesList.size(); j++) {
@@ -149,6 +156,8 @@ public class CarService {
         carDTO.setDriverCareer(car.getDriverCareer());
         carDTO.setBrandImg(imgFiles.getBrandImg());
         carDTO.setCarImg(imgFiles.getCarImg());
+        carDTO.setStartDate(car.getStartDate());
+        carDTO.setEndDate(car.getEndDate());
 
         return carDTO;
     }

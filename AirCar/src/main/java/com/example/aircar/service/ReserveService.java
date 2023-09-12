@@ -45,6 +45,8 @@ public class ReserveService {
         reserve.setNickname(reserveDTO.getNickname());
         reserve.setEmail(reserveDTO.getEmail());
         reserve.setRegDate(reserveDTO.getRegDate());
+        reserve.setStartDate(reserveDTO.getStartDate());
+        reserve.setEndDate(reserveDTO.getEndDate());
 //        reserve.setReserveDate(reserve.getReserveDate());
         return reserveRepository.save(reserve);
     }
@@ -64,6 +66,8 @@ public class ReserveService {
             reserveDTO.setRegDate(reserveList.get(i).getRegDate());
             reserveDTO.setBrandImg(filesRepository.findByCarName(reserveList.get(i).getCarName()).getBrandImg());
             reserveDTO.setCarImg(filesRepository.findByCarName(reserveList.get(i).getCarName()).getCarImg());
+            reserveDTO.setStartDate(reserveList.get(i).getStartDate());
+            reserveDTO.setEndDate(reserveList.get(i).getEndDate());
 
             reserveDTOSList.add(reserveDTO);
         }

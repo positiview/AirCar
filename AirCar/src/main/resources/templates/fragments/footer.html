@@ -75,7 +75,7 @@
                         language: 'ko',
                         autoClose: true,
                         onSelect: function (formattedDate, date, inst) {
-                            var selectedDateText = "시작일 :  " + formattedDate;
+                            var selectedDateText = formattedDate;
                             sDate.val(selectedDateText);
                         }
                     });
@@ -86,7 +86,7 @@
                         language: 'ko',
                         autoClose: true,
                         onSelect: function (formattedDate, date, inst) {
-                            var selectedDateText = "종료일 :  " + formattedDate;
+                            var selectedDateText =  formattedDate;
                             eDate.val(selectedDateText);
                         }
                     });
