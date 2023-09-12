@@ -121,6 +121,7 @@ public class GuideController {
         return "/guide/notices";
     }
 
+
     @GetMapping("/getData")
     @ResponseBody
     public List<Notices> getData(Model model, @RequestParam(defaultValue = "") String keyword, Pageable pageable) {

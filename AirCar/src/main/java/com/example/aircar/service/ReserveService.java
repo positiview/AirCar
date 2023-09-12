@@ -9,6 +9,8 @@ import com.example.aircar.repository.FilesRepository;
 import com.example.aircar.repository.ReserveRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -79,5 +81,19 @@ public class ReserveService {
             reserveDTOSList.add(reserveDTO);
         }
         return reserveDTOSList;
+    }
+
+    public Page<Reserve> getreserveList(Pageable pageable) {
+
+        return reserveRepository.findAll(pageable);
+    }
+
+
+    public Page<Reserve> getnicknameList(String keyword, Pageable pageable) {
+        return reserveRepository.getByNicknameLike(keyword, pageable);
+    }
+
+    public Page<Reserve> getemailList(String keyword, Pageable pageable) {
+        return reserveRepository.getByemailLike(keyword, pageable);
     }
 }
