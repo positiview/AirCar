@@ -232,6 +232,7 @@ public class AdminController {
 
         mailService.CreateMail(counselingDto);
 
+
         return "redirect:/admin/counselingAnswer?bno=" + counseling.getBno();
     }
 
@@ -330,10 +331,10 @@ public class AdminController {
                       @PageableDefault(size = 5, sort = "carNum",
                               direction = Sort.Direction.DESC) Pageable pageable) {
 
-        if (searchType.equals("title")) {
+        if (searchType.equals("brand")) {
             model.addAttribute("carList",
                     carService.getbrandList(keyword, pageable));
-        } else if (searchType.equals("content")) {
+        } else if (searchType.equals("name")) {
             model.addAttribute("carList",
                     carService.getnameList(keyword, pageable));
         } else {

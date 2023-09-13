@@ -3,6 +3,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
+
+
 <th:block layout:fragment="content">
     <th:block layout:fragment="script">
         <script th:inline="javascript">
@@ -13,19 +15,18 @@
         </script>
     </th:block>
 
-
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">-->
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">-->
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
@@ -179,47 +180,20 @@
                         </div>
                         <p class="ex_txt02">고객센터 연결이 원활하지 않은 경우, 상담 요청시간 기준 24시간 이내(영업일 기준) 고객님이 남겨주신 연락처로 안내 드릴게요</p>
                         <div class="btn_group multy">
-                            <button type="button" class="btn type01">상담신청</button>
+                            <button type="button" class="btn type01" th:onclick="|location.href='@{/counseling}'|">상담신청</button>
                         </div>
                     </div>
                     <div class="sidebar">
                         <div class="inner">
                             <div class="res_form">
-                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
-                                    <button class="inland_btn">내륙 예약하기</button>
-                                </div>
-                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
-                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
-                                    <div class="carousel">
-                                        <ul class="btn_option_wrap small">
-                                            <li class="on"><a>전체</a></li>
-                                            <li class=""><a>전기차</a></li>
-                                            <li class=""><a>수입전기차</a></li>
-                                            <li class=""><a>제주 전기차 차박</a></li>
-                                            <li class=""><a>경형/소형</a></li>
-                                            <li class=""><a>중형/대형</a></li>
-                                            <li class=""><a>SUV</a></li>
-                                            <li class=""><a>승합</a></li>
-                                            <li class=""><a>수입</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn_group">
-                                    <button class="btn type01">차량 조회하고 예약하기</button>
-                                </div>
+                                <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
+
                             </div>
                         </div>
                     </div>
                     <div class="float_wrap">
                         <div class="inner">
-                            <div class="chat_cont">
-                                <div class="chat_btn"><a> 상담하기</a></div>
-                                <ul class="chat_list">
-                                    <li class="chat"><a>채팅상담</a></li>
-                                    <li class="inquiry"><a>1:1문의 작성</a></li>
-                                </ul>
-                            </div>
-                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                            <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
                         </div>
                     </div>
                 </div>

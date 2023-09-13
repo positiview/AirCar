@@ -2880,9 +2880,9 @@
   width: 20px;
   height: 20px;
 <<<<<<< HEAD
-  background: url(../img/common/ico_chat.png) no-repeat center / 20px;
+  background: url(img/ico_chat.png) no-repeat center / 20px;
 =======
-  background: url(../img/common/ico_chat_28x28.png) no-repeat center / 20px;
+  background: url(img/ico_chat_28x28.png) no-repeat center / 20px;
 >>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
 }
 .pc_wrap .btn.consulting::before {
@@ -2892,7 +2892,7 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url(../img/common/ico_Chating_28x28.png) no-repeat center / 20px;
+  background: url(/img/ico_Chating_28x28.png) no-repeat center / 20px;
 }
 .pc_wrap .btn.consulting {
   width: calc(100% / 3);
@@ -3004,7 +3004,7 @@
   width: 32px;
   height: 32px;
   margin-left: -32px;
-  background: url('../img/contents/ico_chkB.png') no-repeat 0 50%;
+  background: url('img/ico_chkB.png') no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .check_tab_box label .box {
@@ -3041,7 +3041,7 @@
 }
 .pc_wrap .check_tab_box input:checked + label:before {
   content: '';
-  background: url('../img/contents/ico_chkB_on.png') no-repeat 0 50%;
+  background: url('img/ico_chkB_on.png') no-repeat 0 50%;
 }
 
 /* download box */
@@ -3146,7 +3146,7 @@
   content: '';
   width: 16px;
   height: 100%;
-  background: url(../img/common/ico_chevronR_grey02_16x16.png) no-repeat center;
+  background: url(img/ico_chevronR_grey02_16x16.png) no-repeat center;
   background-size: 16px;
 }
 .pc_wrap .branch_serch .branch_wrap .list_txt {
@@ -3178,7 +3178,7 @@
   height: 16px;
   margin-right: 6px;
   display: inline-block;
-  background: url(../img/common/ico_pin.png) no-repeat center / 16px;
+  background: url(img/ico_pin.png) no-repeat center / 16px;
 }
 .pc_wrap .branch_serch .branch_wrap .register {
   position: absolute;
@@ -3356,7 +3356,7 @@
   padding: 32px 0 0;
 }
 .pc_wrap .filter_wrap select {
-  background: url(../img/common/ico_acoodw_b_20x20.png) no-repeat right center;
+  background: url(img/ico_acoodw_b_20x20.png) no-repeat right center;
   background-size: 16px;
   font-size: 14px;
   padding-right: 16px;
@@ -3655,7 +3655,7 @@
   display: block;
   width: 24px;
   height: 24px;
-  background: url(../img/common/ico_error_24x24.png) no-repeat center / 24px;
+  background: url(img/ico_error_24x24.png) no-repeat center / 24px;
 }
 .pc_wrap .white_box .form_row .form_certify {
   display: flex;
@@ -3783,7 +3783,7 @@
   height: 16px;
   margin: -1px 4px 0 0;
   vertical-align: top;
-  background: url(../img/common/ico_exclamation.png) no-repeat 0 50%;
+  background: url(img/ico_exclamation.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .down_list_info {
@@ -3823,7 +3823,7 @@
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  background: url(../img/common/ico_down.png) no-repeat center;
+  background: url(img/ico_down.png) no-repeat center;
   background-size: 100%;
 }
 .pc_wrap .down_list_info.link_type dd {
@@ -4163,7 +4163,7 @@
   display: block;
   width: 24px;
   height: 24px;
-  background: url('../img/common/ico_error_24x24.png') no-repeat center / 24px;
+  background: url('img/ico_error_24x24.png') no-repeat center / 24px;
 }
 .pc_wrap .form_row .data_management:first-child .ico_wrap {
   top: 36px;
@@ -4229,7 +4229,7 @@
   height: 24px;
   overflow: hidden;
   text-indent: -999rem;
-  background: url(../img/common/ico_close_24x24.png) no-repeat center / 24px;
+  background: url(img/ico_close_24x24.png) no-repeat center / 24px;
   z-index: 2;
 }
 .pc_wrap .mypage_aside .desc {
@@ -4292,19 +4292,19 @@
 }
 .pc_wrap .good_box .sel.good label::before {
   content: '';
-  background: url(../img/common/ico_good_40x40.png) no-repeat 0 50%;
+  background: url(img/ico_good_40x40.png) no-repeat 0 50%;
 }
 .pc_wrap .good_box .sel.bad label::before {
   content: '';
-  background: url(../img/common/ico_bad_40x40.png) no-repeat 0 50%;
+  background: url(img/ico_bad_40x40.png) no-repeat 0 50%;
 }
 .pc_wrap .good_box .sel.good input[type='radio']:checked + label:before {
   content: '';
-  background: url(../img/common/ico_good_40x40_active.png) no-repeat 0 50%;
+  background: url(img/ico_good_40x40_active.png) no-repeat 0 50%;
 }
 .pc_wrap .good_box .sel.bad input[type='radio']:checked + label:before {
   content: '';
-  background: url(../img/common/ico_bad_40x40_active.png) no-repeat 0 50%;
+  background: url(img/ico_bad_40x40_active.png) no-repeat 0 50%;
 }
 .pc_wrap .good_box .sel input[type='radio']:checked + label {
   border: 1px solid #50555c;
@@ -4329,10 +4329,10 @@
   margin-bottom: 0;
 } /* 2023-06-09 추가 */
 .pc_wrap .user_review_tit .good_box .sel.good input[type='radio']:checked + label::before {
-  background: url(../img/common/ico_good_60x60_active.png) no-repeat 0 50%;
+  background: url(img/ico_good_60x60_active.png) no-repeat 0 50%;
 } /* 2023-06-09 추가 */
 .pc_wrap .user_review_tit .good_box .sel.bad input[type='radio']:checked + label::before {
-  background: url(../img/common/ico_bad_60x60_active.png) no-repeat 0 50%;
+  background: url(img/ico_bad_60x60_active.png) no-repeat 0 50%;
 } /* 2023-06-09 추가 */
 
 .pc_wrap .form_area {
@@ -4388,10 +4388,10 @@
 .pc_wrap .visual_overview {
   min-height: 160px;
   margin: 0 0 40px 0;
-  background: url(../img/etc/@dump_illustor.png) no-repeat 100% 50%;
+  background: url(img/@dump_illustor.png) no-repeat 100% 50%;
 }
 .pc_wrap .visual_overview.unregister {
-  background: url(../img/contents/img_unregister.png) no-repeat 100% 50%;
+  background: url(img/img_unregister.png) no-repeat 100% 50%;
 }
 .pc_wrap .visual_overview .obj {
   max-width: 60%;
@@ -4428,9 +4428,9 @@
   height: 28px;
   margin-right: 6px;
 <<<<<<< HEAD
-  background: url(../img/common/ico_chat.png) no-repeat 0 50%;
+  background: url(img/ico_chat.png) no-repeat 0 50%;
 =======
-  background: url(../img/common/ico_chat_28x28.png) no-repeat 0 50%;
+  background: url(img/ico_chat_28x28.png) no-repeat 0 50%;
 >>>>>>> e8bbf20d73bfcca94b395506c43572fd2bf22391
   background-size: 100%;
 }
@@ -4480,7 +4480,7 @@
   left: 0;
   width: 16px;
   height: 16px;
-  background: url(../img/common/ico_exclamation.png) no-repeat 0 50%;
+  background: url(img/ico_exclamation.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .agreement .list {
@@ -4522,7 +4522,7 @@
   width: 24px;
   height: 24px;
   margin-right: 6px;
-  background: url(../img/common/ico_info.png) no-repeat 0 50%;
+  background: url(img/ico_info.png) no-repeat 0 50%;
   background-size: 100%;
 }
 
@@ -4724,11 +4724,11 @@
   border-color: #eceef0;
 }
 .pc_wrap .category_sel_link .change.date label:before {
-  background: url(../img/contents/ico_clock@32x32.png) no-repeat center;
+  background: url(img/ico_clock@32x32.png) no-repeat center;
   background-size: 100%;
 }
 .pc_wrap .category_sel_link .change.car label:before {
-  background: url(../img/contents/ico_step04.png) no-repeat center;
+  background: url(img/ico_step04.png) no-repeat center;
   background-size: 100%;
 }
 
@@ -4765,7 +4765,7 @@
   margin-right: 4px;
   width: 20px;
   height: 20px;
-  background: url(../img/contents/ico_lighting@20x20.png) no-repeat 0 50%;
+  background: url(img/ico_lighting@20x20.png) no-repeat 0 50%;
   background-size: 100%;
 }
 .pc_wrap .side_box + .btn_more_show {
@@ -4810,7 +4810,7 @@
   right: 0;
   width: 12px;
   height: 12px;
-  background: url(../img/contents/ico_new@12x12.png) no-repeat center;
+  background: url(img/ico_new@12x12.png) no-repeat center;
   background-size: 100%;
 }
 .pc_wrap .side_wide .side_box {
@@ -5055,7 +5055,7 @@
   content: '';
   width: 16px;
   height: 16px;
-  background: url(../img/contents/ico_down_b.png) no-repeat center;
+  background: url(img/ico_down_b.png) no-repeat center;
   position: relative;
   top: -2px;
   margin-left: 5px;
@@ -5182,7 +5182,7 @@
   content: '';
   width: 16px;
   height: 100%;
-  background: url(../img/common/ico_chevronR_grey02_16x16.png) no-repeat center;
+  background: url(img/ico_chevronR_grey02_16x16.png) no-repeat center;
   background-size: 16px;
 }
 .pc_wrap .branch_wrap p + p {
