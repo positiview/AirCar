@@ -4,12 +4,20 @@
 <th:block th:fragment="sidebarBook">
     <script>
         $(document).ready(function () {
+            var startDate = "";
+            var endDate = "";
+            var currentDate = new Date();
+            var tomorrowDate = new Date();
+            tomorrowDate.setDate(currentDate.getDate() + 2);
+
             $('#dateRangePicker').daterangepicker({
                 opens: 'left', // 달력이 왼쪽에서 열리도록 설정
 
                 locale: {
                     format: 'YYYY-MM-DD' // 날짜 형식 설정
-                }
+                },startDate: currentDate,
+                endDate: tomorrowDate
+
             });
 
 
@@ -18,12 +26,23 @@
                 // 선택된 날짜 범위 출력
 
                 console.log('선택된 날짜 범위: ' + picker.startDate.format('YYYY-MM-DD') + ' ~ ' + picker.endDate.format('YYYY-MM-DD'));
-                startdate = picker.startDate.format('YYYY-MM-DD');
-                enddate = picker.endDate.format('YYYY-MM-DD');
-                $('startdate').val(startdate);
-                $('enddate').val(enddate);
+                startDate = picker.startDate.format('YYYY-MM-DD');
+                endDate = picker.endDate.format('YYYY-MM-DD');
+                $('input[name=start]').val(startDate);
+                $('input[name=end]').val(endDate);
 
             });
+
+            $('#search-car').click(function (e){
+                var startValue = $('input[name=start]').val();
+                var endValue = $('input[name=end]').val();
+
+                if(!startValue || !endValue){
+                    alert("날짜를 선택해주세요.");
+                    e.preventDefault();
+                }
+            });
+
         });
     </script>
     <style>
@@ -41,7 +60,7 @@
                     <div class="cont"><a class="ico_place" style="cursor: default;" href="/map">부산지점</a>
                         <!--<button class="inland_btn">내륙 예약하기</button>-->
                     </div>
-                    <div class="cont"><a class="ico_date"><input id="dateRangePicker" type="text" readonly/></a></div>
+                    <div class="cont"><a class="ico_date"><input id="dateRangePicker" type="text" readonly placeholder="날짜를 선택해주세요"/></a></div>
                     <div class="cont"><a class="ico_car"><input id="chooseCount" type="text" value="모든 차량" readonly/><i class="ico_reset"></i></a>
                         <div class="option_list">
                             <ul class="btn_option_wrap small">
@@ -72,8 +91,8 @@
         </div>
         <div class="postDate">
             <div>
-                <input type="hidden" name="startdate" value="">
-                <input type="hidden" name="enddate" value="">
+                <input type="hidden" name="start">
+                <input type="hidden" name="end">
             </div>
         </div>
     </form>

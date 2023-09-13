@@ -7,29 +7,43 @@
         $(document).ready(function () {
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
-            var startdate = "";
-            var enddate = "";
+            var startDate = "";
+            var endDate = "";
+            var currentDate = new Date();
+            var tomorrowDate = new Date();
+            tomorrowDate.setDate(currentDate.getDate() + 2);
 
             $('#dateRangePicker').daterangepicker({
                 opens: 'left', // 달력이 왼쪽에서 열리도록 설정
 
                 locale: {
                     format: 'YYYY-MM-DD' // 날짜 형식 설정
-                }
+                },startDate: currentDate,
+                endDate: tomorrowDate
+
             });
+
 
             // 날짜 범위가 선택되었을 때 이벤트 처리
             $('#dateRangePicker').on('apply.daterangepicker', function (ev, picker) {
                 // 선택된 날짜 범위 출력
-                var str="";
+
                 console.log('선택된 날짜 범위: ' + picker.startDate.format('YYYY-MM-DD') + ' ~ ' + picker.endDate.format('YYYY-MM-DD'));
-                startdate = picker.startDate.format('YYYY-MM-DD');
-                enddate = picker.endDate.format('YYYY-MM-DD');
-                str+='<div>';
-                str+='      <input type="hidden" name="startdate" value="'+startdate+'">';
-                str+='      <input type="hidden" name="enddate" value="'+enddate+'">';
-                str+='</div>';
-                $('.postDate').html(str);
+                startDate = picker.startDate.format('YYYY-MM-DD');
+                endDate = picker.endDate.format('YYYY-MM-DD');
+                $('input[name=start]').val(startDate);
+                $('input[name=end]').val(endDate);
+
+            });
+
+            $('#search-car').click(function (e){
+                var startValue = $('input[name=start]').val();
+                var endValue = $('input[name=end]').val();
+
+                if(!startValue || !endValue){
+                    alert("날짜를 선택해주세요.");
+                    e.preventDefault();
+                }
             });
 
            /* $('#search-car').click(function (){
@@ -105,6 +119,8 @@
         </div>
     </div>
         <div class="postDate">
+            <input type="hidden" name="start">
+            <input type="hidden" name="end">
         </div>
     </form>
 </th:block>

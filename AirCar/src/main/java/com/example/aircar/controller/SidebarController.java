@@ -23,11 +23,11 @@ public class SidebarController {
 
     CarService carService;
     @PostMapping("/searchCar")
-    public String searchCar(String startdate, String enddate, Model model){
+    public String searchCar(String start, String end, Model model){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date startDate = formatter.parse(startdate);
-            Date endDate = formatter.parse(enddate);
+            Date startDate = formatter.parse(start);
+            Date endDate = formatter.parse(end);
             List<CarDTO> carsDTO = carService.searchCar(startDate, endDate);
             model.addAttribute("carInfo", carsDTO);
         } catch (ParseException e) {
