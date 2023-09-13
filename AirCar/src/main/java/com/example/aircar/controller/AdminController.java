@@ -168,7 +168,7 @@ public class AdminController {
     }
 
     @PostMapping("/noticesDelete")
-    public String delete(NoticesDTO noticesDto) {
+    public String noticesDelete(NoticesDTO noticesDto) {
         // 게시글을 DB에서 삭제(+reply +boardAttach)
         noticesRepository.deleteById(noticesDto.getBno());
 
@@ -295,6 +295,21 @@ public class AdminController {
         return "redirect:/admin/memberView?mno=" + member.getMno();
     }
 
+    @GetMapping("/memberDelete")
+    public String memberDelete(Long mno) {
+        memberRepository.deleteById(mno);
+
+        return "redirect:/admin/member";
+    }
+
+    @PostMapping("/memberDelete")
+    public String memberDelete(MemberDTO memberDto) {
+        // 게시글을 DB에서 삭제(+reply +boardAttach)
+        memberRepository.deleteById(memberDto.getMno());
+
+        return "redirect:/admin/member";
+    }
+
     @GetMapping("/upload")
     public String upload() {
 
@@ -354,7 +369,7 @@ public class AdminController {
     public String carUpdate(@ModelAttribute("carDTO") CarDTO carDto) {
         Car car = new Car();
 
-        car.setCarNum(carDto.getCar_num());
+        car.setCarNum(carDto.getCarNum());
         car.setKind(carDto.getKind());
         car.setColor(carDto.getColor());
         car.setBrand(carDto.getBrand());
@@ -372,6 +387,8 @@ public class AdminController {
         car.setUpdateDate(carDto.getUpdateDate());
         car.setDriverAge(carDto.getDriverAge());
         car.setDriverCareer(carDto.getDriverCareer());
+        car.setStartDate(carDto.getStartDate());
+        car.setEndDate(carDto.getEndDate());
 
         carRepository.save(car);
 
@@ -386,9 +403,9 @@ public class AdminController {
     }
 
     @PostMapping("/carDelete")
-    public String carDeletes(CarDTO carDto) {
+    public String carDelete(CarDTO carDto) {
         // 게시글을 DB에서 삭제(+reply +boardAttach)
-        carRepository.deleteById(carDto.getCar_num());
+        carRepository.deleteById(carDto.getCarNum());
 
         return "redirect:/admin/car";
     }
@@ -450,6 +467,15 @@ public class AdminController {
         reserveRepository.save(reserve);
 
         return "redirect:/admin/reserveView?rno=" + reserve.getRno();
+    }
+
+
+
+    @GetMapping("/reserveDelete")
+    public String reserveDelete(UUID rno) {
+        reserveRepository.deleteById(rno);
+
+        return "redirect:/admin/reserve";
     }
 
     @PostMapping("/reserveDelete")

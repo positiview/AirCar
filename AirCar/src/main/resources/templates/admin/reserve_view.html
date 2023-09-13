@@ -19,7 +19,7 @@
                             <div class="title_wrap"><h2 class="title_30 search_form__row">예약 관리</h2></div>
                             <!-- reserve 객체가 null인 경우 처리 -->
 
-                            <form action="/admin/reserverDelete" method="post">
+                            <form action="/admin/reserveDelete" method="post">
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                                 <input type="hidden" name="rno" th:value="${reserve.rno}"/>
 
@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-primary" style="width: 100px"
-                                            th:onclick="|location.href='@{/admin/car}'|">목록</button>
+                                            th:onclick="|location.href='@{/admin/reserve}'|">목록</button>
                                 </div>
                             </form>
 

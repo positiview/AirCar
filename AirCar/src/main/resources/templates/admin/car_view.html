@@ -18,7 +18,7 @@
                         <div class="contents" style="margin: auto;">
                             <div class="title_wrap"><h2 class="title_30 search_form__row">게시글 관리</h2></div>
                             <!-- car 객체가 null인 경우 처리 -->
-                            <div th:if="${car != null}" class="car-details">
+
                                 <form action="/admin/carDelete" method="post">
                                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                                     <input type="hidden" name="carNum" th:value="${car.carNum}"/>
@@ -113,7 +113,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
     <script>

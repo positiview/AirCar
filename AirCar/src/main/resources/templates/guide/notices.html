@@ -77,7 +77,7 @@
                             var appendHtml = "";
                             $.each(response, function(index, item){
                                 console.log(item);
-                                var str = "<a >" + item.notices_title +"</a>";
+                                var str = "<div class=\"branch_wrap\"><a href='noticesView?bno="+item.bno+"'>"+ item.notices_title +"</a></div>";
                                 appendHtml += str;
                             });
 
@@ -92,6 +92,8 @@
                 })
             })
     </script>
+
+
     <body style="overflow: visible;" cz-shortcut-listen="true">
     <div id="root" style="height: 100%">
         <div class="pc_wrap" style="">
