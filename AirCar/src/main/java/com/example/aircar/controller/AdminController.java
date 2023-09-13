@@ -39,6 +39,8 @@ public class AdminController {
 
     @GetMapping("/main")
     public String main() {
+
+
         return "/admin/main";
     }
 

@@ -1,5 +1,6 @@
 package com.example.aircar.controller;
 
+import com.example.aircar.constant.Role;
 import com.example.aircar.domain.MemberSecurityDTO;
 
 import com.example.aircar.entity.Member;
@@ -56,5 +57,25 @@ public class MainController {
     @GetMapping("/bookoverseas")
     public String bookoverseas(){
         return "etc/bookoverseas";
+    }
+
+
+    @GetMapping("/direct")
+    public String direct(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        Member mem = (Member) session.getAttribute("memberInfo");
+
+        if (mem == null) {
+
+            return "redirect:/login";
+        } else {
+            Role role = mem.getRole();
+            if (Role.ADMIN.equals(role)) {
+                return "redirect:/admin/main";
+            } else {
+                return "redirect:/mypage";
+            }
+        }
     }
 }

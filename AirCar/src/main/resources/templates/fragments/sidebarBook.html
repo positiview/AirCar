@@ -3,84 +3,6 @@
 
 <th:block th:fragment="sidebarBook">
 
-    <script>
-        $(document).ready(function () {
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
-            var startDate = "";
-            var endDate = "";
-            var currentDate = new Date();
-            var tomorrowDate = new Date();
-            tomorrowDate.setDate(currentDate.getDate() + 2);
-
-            $('#dateRangePicker').daterangepicker({
-                opens: 'left', // 달력이 왼쪽에서 열리도록 설정
-
-                locale: {
-                    format: 'YYYY-MM-DD' // 날짜 형식 설정
-                },startDate: currentDate,
-                endDate: tomorrowDate
-
-            });
-
-
-            // 날짜 범위가 선택되었을 때 이벤트 처리
-            $('#dateRangePicker').on('apply.daterangepicker', function (ev, picker) {
-                // 선택된 날짜 범위 출력
-
-                console.log('선택된 날짜 범위: ' + picker.startDate.format('YYYY-MM-DD') + ' ~ ' + picker.endDate.format('YYYY-MM-DD'));
-                startDate = picker.startDate.format('YYYY-MM-DD');
-                endDate = picker.endDate.format('YYYY-MM-DD');
-                $('input[name=start]').val(startDate);
-                $('input[name=end]').val(endDate);
-
-            });
-
-            $('#search-car').click(function (e){
-                var startValue = $('input[name=start]').val();
-                var endValue = $('input[name=end]').val();
-
-                if(!startValue || !endValue){
-                    alert("날짜를 선택해주세요.");
-                    e.preventDefault();
-                }
-            });
-
-           /* $('#search-car').click(function (){
-
-                var carinfo = {
-                    startDate : startdate,
-                    endDate : enddate,
-                }
-
-                $.ajax({
-                    url:'searchCar',
-                    method:'POST',
-                    data: JSON.stringify(carinfo),
-                    beforeSend : function(xhr)
-                    {   /!*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*!/
-                        xhr.setRequestHeader(header, token);
-                    },
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success:function (response){
-                        location.href = "/reserve";
-                    }
-
-                })
-            })*/
-
-
-        });
-    </script>
-    <style>
-        #dateRangePicker, #chooseCount{
-            border: none;
-
-        }
-
-
-    </style>
     <form action="/searchCar" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     <div class="sidebar">
@@ -89,8 +11,8 @@
                 <div class="cont"><a class="ico_place" style="cursor: default;" href="/map">부산지점</a>
                     <!--<button class="inland_btn">내륙 예약하기</button>-->
                 </div>
-                <div class="cont"><a class="ico_date"><input id="dateRangePicker" type="text" readonly/></a></div>
-                <div class="cont"><a class="ico_car"><input id="chooseCount" type="text" value="모든 차량" readonly/><i class="ico_reset"></i></a>
+                <div class="cont"><a class="ico_date"><input class="dateRangePicker" type="text" readonly/></a></div>
+                <div class="cont"><a class="ico_car"><input class="chooseCount" type="text" value="모든 차량" readonly/><i class="ico_reset"></i></a>
                     <div class="option_list">
                         <ul class="btn_option_wrap small">
 
@@ -113,7 +35,7 @@
                     </div>
                 </div>
                 <div class="btn_group">
-                    <button class="btn type01" id="search-car" type="submit">차량 조회하고 예약하기</button>
+                    <button class="btn type01 search-car"  type="submit">차량 조회하고 예약하기</button>
                 </div>
             </div>
         </div>

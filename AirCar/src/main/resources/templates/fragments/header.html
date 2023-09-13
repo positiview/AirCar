@@ -2,7 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="headerFragment">
+    <style>
+        .dateRangePicker, .chooseCount{
+            border: none;
 
+        }
+
+
+    </style>
     <div id="root" style="height: 100%">
         <div class="pc_wrap" style="">
             <div class="wrap sub_wrap main_wrap">
@@ -15,10 +22,9 @@
                             </ul>
                         </div>
                         <ul>
-                            <li><a href="/admin/main" target="_blank" rel="noreferrer">관리자 페이지</a>
+                            <li sec:authorize="isAuthenticated()"><a href="register_car" >차량등록</a></li>
                             </li>
-                            <li><a href="/mypage" target="_blank"
-                                   rel="noreferrer">마이페이지</a></li>
+                            <li><a href="/direct" rel="noreferrer">마이페이지</a></li>
                         </ul>
                     </div>
                     <div class="nav_wrap">
@@ -34,7 +40,7 @@
                             </nav>
                             <div class="side_menu">
 
-                                
+
 
                                 <ul class="member" sec:authorize="isAnonymous()">
                                     <li><a href="/login">로그인</a></li>
@@ -42,7 +48,6 @@
                                 </ul>
                                 <ul class="member" sec:authorize="isAuthenticated()">
                                     <li><span><a href="/mypage">[[${session.memberInfo.getNickname()}]]님</a></span></li>
-                                    <li><a href="register_car">차량등록</a></li>
                                     <li><a class="open-layerPopup">로그아웃</a></li>
                                     <li><a class="logout open-layerPopup"></a></li>
                                 </ul>
