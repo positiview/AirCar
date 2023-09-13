@@ -11,10 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -304,6 +301,11 @@ public class AdminController {
         return "/admin/upload";
     }
 
+    @ModelAttribute("carDTO")
+    public CarDTO carDTO() {
+        return new CarDTO();
+    }
+
     @GetMapping("/car")
     public String car(Model model,
                       @RequestParam(defaultValue = "") String searchType,
@@ -349,7 +351,7 @@ public class AdminController {
     }
 
     @PostMapping("/carUpdate")
-    public String carUpdate(CarDTO carDto) {
+    public String carUpdate(@ModelAttribute("carDTO") CarDTO carDto) {
         Car car = new Car();
 
         car.setCarNum(carDto.getCar_num());
