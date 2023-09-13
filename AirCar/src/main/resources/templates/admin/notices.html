@@ -91,14 +91,13 @@
                                         <td>
                                             <a th:href="@{noticesView(bno=${notices.bno})}" th:text="${notices.notices_title}"></a>
                                         </td>
-
-                                        <td th:text="${notices.notices_content}"
-                                            style="width:500px;
-                                                      overflow:hidden;
-                                                      text-overflow:ellipsis;
-                                                      white-space:nowrap;
-                                                      display:inline-block;"
-                                        ></td>
+                                        <td style="width: 500px;
+                                               overflow: hidden;
+                                               text-overflow: ellipsis;
+                                               white-space: nowrap;
+                                               display: inline-block;">
+                                            <span th:text="${notices.notices_content}"></span>
+                                        </td>
                                         <td th:text="${#temporals.format(notices.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                     </tr>
 

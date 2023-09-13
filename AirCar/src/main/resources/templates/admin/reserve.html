@@ -70,10 +70,10 @@
                                         <a class="page-link" th:href="@{/admin/reserve(page=0)}">First</a>
                                     </li>
                                     <li th:class="${reserveList.first} ? 'page-item disabled' : 'page-item'">
-                                        <a class="page-link" th:href="${reserveList.first} ? '#' : @{/admin/reserve(page=${memberList.number} - 1)}">Previous</a>
+                                        <a class="page-link" th:href="${reserveList.first} ? '#' : @{/admin/reserve(page=${reserveList.number} - 1)}">Previous</a>
                                     </li>
                                     <li th:each="page: ${#numbers.sequence(start, end)}" th:class="${page == reserveList.number + 1} ? 'page-item active' : 'page-item' ">
-                                        <a class="page-link" th:href="@{/admin/car(page=${page - 1})}">[[${page}]]</a>
+                                        <a class="page-link" th:href="@{/admin/reserve(page=${page - 1})}">[[${page}]]</a>
                                     </li>
                                     <li th:class="${reserveList.last} ? 'page-item disabled' : 'page-item'">
                                         <a class="page-link" th:href="${reserveList.last} ? '#' : @{/admin/reserve(page=${reserveList.number} + 1)}">Next</a>

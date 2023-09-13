@@ -67,7 +67,7 @@
                                         <a class="page-link" th:href="@{/admin/car(page=0)}">First</a>
                                     </li>
                                     <li th:class="${carList.first} ? 'page-item disabled' : 'page-item'">
-                                        <a class="page-link" th:href="${carList.first} ? '#' : @{/admin/car(page=${memberList.number} - 1)}">Previous</a>
+                                        <a class="page-link" th:href="${carList.first} ? '#' : @{/admin/member(page=${carList.number} - 1)}">Previous</a>
                                     </li>
                                     <li th:each="page: ${#numbers.sequence(start, end)}" th:class="${page == carList.number + 1} ? 'page-item active' : 'page-item' ">
                                         <a class="page-link" th:href="@{/admin/car(page=${page - 1})}">[[${page}]]</a>
@@ -90,11 +90,11 @@
                         </nav>
                         <nav class="navbar bg-body-tertiary" style="display: flex; justify-content: center;">
                             <div class="container-fluid">
-                                <form action="/admin/notices" id="searchForm" class="d-flex" role="search" style="display: flex; align-items: center;">
+                                <form action="/admin/car" id="searchForm" class="d-flex" role="search" style="display: flex; align-items: center;">
                                     <select name="searchType" class="form-select" aria-label="Default select example" style="height: 30px">
                                         <option value="" th:selected="${searchType} == ''">--</option>
-                                        <option value="nickname" th:selected="${searchType} == 'carname'">차종</option>
-                                        <option value="email" th:selected="${searchType} == 'email'">작성자</option>
+                                        <option value="brand" th:selected="${searchType} == 'brand'">브랜드</option>
+                                        <option value="name" th:selected="${searchType} == 'name'">차종</option>
                                     </select>
                                     <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search" th:value="${keyword}">
                                     <button class="btn btn-outline-success" id="btnSearch" type="submit">Search</button>
