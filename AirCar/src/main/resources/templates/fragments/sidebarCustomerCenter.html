@@ -6,28 +6,28 @@
             <div class="fillter_wrap"><h2>어떤 도움이 필요하세요</h2>
                 <div class="menu_btns row3">
                     <ul class="btns_list">
-                        <li><a>
+                        <li class="reviw_list" data-id="예약·변경"><a>
                             <div class="icon"><img src="../img/ico_cs_main01.png" alt="결제 이미지"></div>
                             <span>예약·변경</span></a></li>
-                        <li><a>
+                        <li class="reviw_list" data-id="운전자"><a>
                             <div class="icon"><img src="../img/ico_cs_main02.png" alt="결제 이미지"></div>
                             <span>운전자</span></a></li>
-                        <li><a>
+                        <li class="reviw_list" data-id="제휴·할인"><a>
                             <div class="icon"><img src="../img/ico_cs_main03.png" alt="결제 이미지"></div>
                             <span>제휴·할인</span></a></li>
-                        <li><a>
+                        <li class="reviw_list" data-id="보험"><a>
                             <div class="icon"><img src="../img/ico_cs_main04.png" alt="결제 이미지"></div>
                             <span>보험</span></a></li>
-                        <li><a>
+                        <li class="reviw_list" data-id="고장·사고"><a>
                             <div class="icon"><img src="../img/ico_cs_main05.png" alt="결제 이미지"></div>
                             <span>고장·사고</span></a></li>
-                        <li><a>
+                        <li class="reviw_list" data-id="장기렌터카"><a>
                             <div class="icon"><img src="../img/ico_cs_main06.png" alt="결제 이미지"></div>
                             <span>장기렌터카</span></a></li>
-                        <li><a>
+                        <li class="reviw_list" data-id="유류비"><a>
                             <div class="icon"><img src="../img/ico_cs_main07.png" alt="결제 이미지"></div>
                             <span>유류비</span></a></li>
-                        <li><a>
+                        <li class="reviw_list" data-id="부가용품"><a>
                             <div class="icon"><img src="../img/ico_cs_main08.png" alt="결제 이미지"></div>
                             <span>부가용품</span></a></li>
                     </ul>
@@ -36,4 +36,19 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            // 첫 번째 리스트 클릭
+            $(".reviw_list").click(function () {
+                // 활성화 클래스 추가
+
+
+                // 이벤트 발생 (notices.html에서 처리)
+                var id = $(this).data("id");
+
+                location.href = "/notices?id="+ id;
+            });
+
+        });
+    </script>
 </th:block>

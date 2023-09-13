@@ -113,11 +113,12 @@ public class GuideController {
 //    }
 
     @GetMapping("/notices")
-    public String notices(Model model,
+    public String notices(Model model,@RequestParam(name = "id",defaultValue = "") String dataId,
                           @RequestParam(defaultValue = "") String keyword,
                           @PageableDefault(size = 10, sort = "bno", direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("noticesList", noticesService.getNoticesTitleList(keyword, pageable));
         model.addAttribute("keyword", keyword);
+        model.addAttribute("dataId", dataId);
         return "/guide/notices";
     }
 

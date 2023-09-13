@@ -7,18 +7,12 @@
 
 <th:block layout:fragment="content">
     <th:block layout:fragment="script">
-        <script th:inline="javascript">
-            $(document).on("click", ".top_cont", function () {
-                $("html, body").animate({scrollTop: 0}, 400);
-            });
-
-
-        </script>
 
 
 
-        <script
-                src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!--<script
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
         <script>
             $(function() {
                 // tab operation
@@ -63,10 +57,27 @@
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
 
     <script>
+
             $(document).ready(function (){
+
+                var dataId = "[[${dataId}]]";
+                console.log("data-id : "+dataId);
+                if(dataId){
+
+                    var $targetList = $(".reviw_list[data-id='" + dataId + "']");
+                    // 해당 리스트를 클릭
+                    /*$targetList.click();*/
+                    show_question(dataId);
+                }
+
+
                 $(".reviw_list").on("click",function() {
                     var id = $(this).data("id");
 
+                    show_question(id);
+                });
+
+                function show_question(id){
                     $.ajax({
                         url : "/getData",
                         method : "GET",
@@ -89,7 +100,7 @@
                             console.error("ERROR : ", error)
                         }
                     })
-                })
+                }
             })
     </script>
 
@@ -201,24 +212,14 @@
                             </th:block>
                         </nav>
 
-                    </div>
-                    <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
-                </div>
-
-                <div class="float_wrap">
-                    <div class="inner">
-                        <div class="chat_cont">
-                            <div class="chat_btn"><a> 상담하기</a></div>
-                            <ul class="chat_list">
-                                <li class="chat"><a>채팅상담</a></li>
-                                <li class="inquiry"><a>1:1문의 작성</a></li>
-                            </ul>
                         </div>
-                        <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                        <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
+                        <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
                     </div>
+
+
                 </div>
             </div>
-        </div>
         <div>
             <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
         </div>
