@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class CarDTO {
-    private long car_num;
+    private long carNum;
 
     private String kind;
     private String color;

@@ -116,7 +116,7 @@ public class GuideController {
     public String notices(Model model,
                           @RequestParam(defaultValue = "") String keyword,
                           @PageableDefault(size = 10, sort = "bno", direction = Sort.Direction.DESC) Pageable pageable) {
-        model.addAttribute("noticesList", noticesService.getNoticesTitleList1(keyword, pageable));
+        model.addAttribute("noticesList", noticesService.getNoticesTitleList(keyword, pageable));
         model.addAttribute("keyword", keyword);
         return "/guide/notices";
     }

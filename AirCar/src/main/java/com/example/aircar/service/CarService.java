@@ -68,7 +68,7 @@ public class CarService {
         if(carList != null && carList.size() > 0) {
             for(int i = 0; i < carList.size(); i++) {
                 CarDTO carDTO = new CarDTO();
-                carDTO.setCar_num(carList.get(i).getCarNum());
+                carDTO.setCarNum(carList.get(i).getCarNum());
                 carDTO.setKind(carList.get(i).getKind());
                 carDTO.setColor(carList.get(i).getColor());
                 carDTO.setBrand(carList.get(i).getBrand());
@@ -162,7 +162,7 @@ public class CarService {
 
     public CarDTO getCarDtoSet(Car car, Files imgFiles){
         CarDTO carDTO = new CarDTO();
-        carDTO.setCar_num(car.getCarNum());
+        carDTO.setCarNum(car.getCarNum());
         carDTO.setKind(car.getKind());
         carDTO.setColor(car.getColor());
         carDTO.setBrand(car.getBrand());

@@ -24,34 +24,10 @@
 
                             <div class="title_wrap"><h2 class="title_30 search_form__row">게시글 수정</h2></div>
 
-                            <form th:object="${carDTO}" th:action="@{/admin/carUpdate}" method="post">
+                            <form action="/admin/carUpdate" method="post" th:object="${carDTO}">
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
                                 <input type="hidden" name="CarNum" th:field="${car.carNum}"/>
-<!--                                <input type="hidden" name="brand" th:field="${car.kind}"/>-->
-<!--                                <input type="hidden" name="name" th:field="${car.color}"/>-->
-<!--                                <input type="hidden" name="startDate" th:field="${car.brand}"/>-->
-<!--                                <input type="hidden" name="endDate" th:field="${car.name}"/>-->
-<!--                                <input type="hidden" name="color" th:field="${car.cost}"/>-->
-<!--                                <input type="hidden" name="fuel" th:field="${car.year}"/>-->
-<!--                                <input type="hidden" name="role" th:field="${car.options}"/>-->
-<!--                                <input type="hidden" name="role" th:field="${car.fuel}"/>-->
-<!--                                <input type="hidden" name="people" th:field="${car.people}"/>-->
-<!--                                <input type="hidden" name="area" th:field="${car.area}"/>-->
-<!--                                <input type="hidden" name="detailarea" th:field="${car.detailarea}"/>-->
-<!--                                <input type="hidden" name="defect" th:field="${car.defect}"/>-->
-<!--                                <input type="hidden" name="content" th:field="${car.content}"/>-->
-<!--                                <input type="hidden" name="regDate" th:field="${car.regDate}"/>-->
-<!--                                <input type="hidden" name="updateDate" th:field="${car.updateDate}"/>-->
-<!--                                <input type="hidden" name="driverAge" th:field="${car.driverAge}"/>-->
-<!--                                <input type="hidden" name="driverCareer" th:field="${car.driverCareer}"/>-->
-<!--                                <input type="hidden" name="carImg" th:field="${car.carImg}"/>-->
-<!--                                <input type="hidden" name="brandImg" th:field="${car.brandImg}"/>-->
-<!--                                <input type="hidden" name="startDate" th:field="${car.startDate}"/>-->
-<!--                                <input type="hidden" name="endDate" th:field="${car.endDate}"/>-->
-<!--                                <input type="hidden" name="reserveStatus" th:field="${car.reserveStatus}"/>-->
-
-
 
 
 
@@ -136,7 +112,7 @@
                                         <button type="submit" class="btn btn-secondary" style="margin-right: 30px; width: 100px">수정</button>
                                         <button type="reset" class="btn btn-light" style="margin-right: 30px; width: 100px">취소</button>
                                         <button type="button" class="btn btn-light" style="width: 100px"
-                                                th:onclick="|location.href='@{/admin/member}'|">목록</button>
+                                                th:onclick="|location.href='@{/admin/car}'|">목록</button>
                                     </div>
                             </form>
                         </div>
