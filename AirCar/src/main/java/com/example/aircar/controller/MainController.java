@@ -52,4 +52,9 @@ public class MainController {
     public String slickPractice(){
         return "index";
     }
+
+    @GetMapping("/bookoverseas")
+    public String bookoverseas(){
+        return "etc/bookoverseas";
+    }
 }
