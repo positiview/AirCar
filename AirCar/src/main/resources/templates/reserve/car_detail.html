@@ -34,7 +34,7 @@
 <!--    <th:block th:each="car : ${carInfo}">-->
     <div class="container"  >
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-        <input type="hidden" name="carNum" th:value="${car.car_num}"/>
+        <input type="hidden" name="carNum" th:value="${car.carNum}"/>
         <input type="hidden" name= "reserveStatus" th:value="${car.reserveStatus}">
         <div class="inner">
             <div class="contents">
@@ -215,7 +215,7 @@
                             </div>
                         </div>
                         <div class="btn_group type01">
-                            <button class="btn type01"   th:onclick="'window.location.href=\'' + @{/reserve_first(carNum=${car.car_num})} + '\''"
+                            <button class="btn type01"   th:onclick="'window.location.href=\'' + @{/reserve_first(carNum=${car.carNum})} + '\''"
                                     style="line-height:11px "><th:block th:text="${car.cost}"></th:block> 원으로 예약하기
                             </button>
                         </div>
