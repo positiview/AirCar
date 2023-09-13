@@ -24,14 +24,9 @@
 
                             <div class="title_wrap"><h2 class="title_30 search_form__row">예약 정보 수정</h2></div>
 
-                            <form action="/admin/carUpdate" method="post" th:object="${reserveDTO}">
+                            <form action="/admin/reserveUpdate" method="post" th:object="${reserveDTO}">
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                                 <input type="hidden" name="CarNum" th:field="${reserve.carName}"/>
-                                <input type="hidden" name="brand" th:field="${reserve.email}"/>
-
-
-
-
 
                                 <div class="board_detail" style="margin-bottom: 50px">
                                     <div class=" mb-3">
@@ -43,24 +38,24 @@
                                     <div class="board_contents mt20"><p>
                                         <div align="" style="">
                                         <div class=" mb-3">
-                                            <span class="input-group-text" >차량명</span>
-                                            <input type="text" name="password" class="form-control" aria-label="category" aria-describedby="basic-addon3"
+                                            <span class="input-group-text" >차종</span>
+                                            <input type="text" name="carName" class="form-control" aria-label="category" aria-describedby="basic-addon3"
                                                    th:field="${reserve.carName}">
                                             <p></div>
                                         <div class=" mb-3">
                                             <span class="input-group-text" >예약자</span>
-                                            <input type="text" name="password" class="form-control" aria-label="category" aria-describedby="basic-addon3"
+                                            <input type="text" name="email" class="form-control" aria-label="category" aria-describedby="basic-addon3"
                                                    th:field="${reserve.email}">
                                             <p></div>
 
                                             <div class=" mb-3">
                                                 <span class="input-group-text" >시작일</span>
-                                                <input type="text" name="password" class="form-control" aria-label="category" aria-describedby="basic-addon3"
+                                                <input type="text" name="startDate" class="form-control" aria-label="category" aria-describedby="basic-addon3"
                                                        th:field="${reserve.startDate}">
                                                 <p></div>
                                             <div class=" mb-3">
                                                 <span class="input-group-text" >반납일</span>
-                                                <input type="text" name="password" class="form-control"  aria-label="category" aria-describedby="basic-addon3"
+                                                <input type="text" name="endDate" class="form-control"  aria-label="category" aria-describedby="basic-addon3"
                                                    th:field="${reserve.endDate}">
                                             <p>&nbsp;</p></div>
                                             <p>&nbsp;</p></div>
