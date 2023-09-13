@@ -63,6 +63,49 @@
         $(document).on("click", ".top_cont", function() {
             $("html, body").animate({ scrollTop: 0 }, 400);  });
         $(document).ready(function () {
+            //---------------사이드바---------------
+            var startDate = "";
+            var endDate = "";
+            var currentDate = new Date();
+            var tomorrowDate = new Date();
+            tomorrowDate.setDate(currentDate.getDate() + 2);
+
+            $('.dateRangePicker').daterangepicker({
+                opens: 'left', // 달력이 왼쪽에서 열리도록 설정
+
+                locale: {
+                    format: 'YYYY-MM-DD' // 날짜 형식 설정
+                },startDate: currentDate,
+                endDate: tomorrowDate
+
+            });
+
+
+            // 날짜 범위가 선택되었을 때 이벤트 처리
+            $('.dateRangePicker').on('apply.daterangepicker', function (ev, picker) {
+                // 선택된 날짜 범위 출력
+
+                console.log('선택된 날짜 범위: ' + picker.startDate.format('YYYY-MM-DD') + ' ~ ' + picker.endDate.format('YYYY-MM-DD'));
+                startDate = picker.startDate.format('YYYY-MM-DD');
+                endDate = picker.endDate.format('YYYY-MM-DD');
+                $('input[name=start]').val(startDate);
+                $('input[name=end]').val(endDate);
+
+            });
+
+            $('.search-car').click(function (e){
+                var startValue = $('input[name=start]').val();
+                var endValue = $('input[name=end]').val();
+
+                if(!startValue || !endValue){
+                    alert("날짜를 선택해주세요.");
+                    e.preventDefault();
+                }
+            });
+            //-------------------사이드바 끝-------------------
+
+
+
 
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
@@ -92,6 +135,7 @@
                         }
                     });
                 }
+
 
                 // ...
             }
