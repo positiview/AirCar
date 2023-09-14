@@ -63,11 +63,8 @@
                 <div class="sub_cont"><p class="title_18">운전자(예약자) 정보를 입력해 주세요</p><span class="title_14">입력한 정보는 안전하게 보호할게요</span>
                     <div class="inner"><p class="title_16 major">기본정보</p>
                         <div class="info_box mb40">
-                            <div class="form_row "><label for="name" class="form_label">이름</label><input id="nickname"
-                                                                                                         type="text"
-                                                                                                         placeholder="이름을 입력해주세요"
-                                                                                                         value=""
-                                                                                                         disabled="">
+                            <div class="form_row "><label for="nickname" class="form_label">이름</label>
+                                <input id="nickname" type="text" th:placeholder="${session.memberInfo.getNickname()}"  th:value="${session.memberInfo.getNickname()}"  disabled="">
                             </div>
                             <div class="form_row "><label for="phone" class="form_label">휴대폰</label><input id="phone"
                                                                                                            type="tel"
