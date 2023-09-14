@@ -2,6 +2,7 @@ package com.example.aircar.controller;
 
 
 
+import com.example.aircar.domain.MemberFormDto;
 import com.example.aircar.domain.MemberSecurityDTO;
 import com.example.aircar.domain.ModifyDTO;
 import com.example.aircar.entity.Member;
@@ -18,11 +19,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.*;
+import javax.validation.Valid;
 
 
 @Controller
@@ -67,20 +70,23 @@ public class MemberController {
         }
     }*/
     @PostMapping("/login")
-    public String login(String id, String pw, Model model){
+    public String login(String id, String pw, Model model,HttpServletRequest request){
 
 
         // 데이터베이스에서 가져온 저장된 해시된 비밀번호
         Member member =  memberService.getUserInfo(id);
         String storedHashedPassword = member.getPassword();
         boolean passwordMatches = passwordEncoder.matches(pw, storedHashedPassword);
-
+        HttpSession session = request.getSession();
         if(passwordMatches){
 
             if(member.getRole().toString().equals("USER")){
-                model.addAttribute("member",member);
-                //return "/main/homepage";
-                return "redirect:/main";
+                /*model.addAttribute("member",member);*/
+                if(session != null){
+                    session.setAttribute("memberInfo", member);
+                }
+
+                return "main/homepage";
             }else {
                 return "redirect:/admin/main";
             }
@@ -89,6 +95,27 @@ public class MemberController {
 
             return "redirect:/login";
         }
+    }
+    @GetMapping("/join")
+    public String memberJoin(Model model){
+        model.addAttribute("memberFormDto", new MemberFormDto());
+        return "/member/memberJoin";
+    }
+    @PostMapping("/join")
+    public String join(@Valid MemberFormDto memberFormDto, BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            return "/member/memberJoin";
+        }
+
+        try{
+            Member member =Member.createMember(memberFormDto, passwordEncoder);
+            memberService.saveMember(member);
+
+        }catch (IllegalStateException e){
+            model.addAttribute("errorMessage", e.getMessage());
+            return "/member/memberJoin";
+        }
+        return "redirect:/login";
     }
     @GetMapping("/login/error")
     public String loginError(Model model){
@@ -102,10 +129,7 @@ public class MemberController {
         return "member/signUpAgreeChk";
     }
 
-    @GetMapping("/singupForm")
-    public String signupForm(){
-        return "member/signupForm";
-    }
+
 
     @GetMapping("/mypage")
     public String mypage(Model model, @ModelAttribute("nickname") String nickname){

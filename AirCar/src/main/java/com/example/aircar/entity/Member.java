@@ -48,13 +48,14 @@ public class Member extends BaseEntity {
 
     public static Member createMember(MemberFormDto memberFormDTO, PasswordEncoder passwordEncoder){
         Member member = new Member();
-        member.setName(memberFormDTO.getName());
         member.setEmail(memberFormDTO.getEmail());
 
 
         String password = passwordEncoder.encode(memberFormDTO.getPassword());
 
         member.setPassword(password);
+        member.setNickname(memberFormDTO.getNickname());
+        member.setPhone(memberFormDTO.getPhone());
         member.setRole(Role.USER);
         member.setSocial(false);  //false 이면 일반회원 true 이면 소셜 회원!
 

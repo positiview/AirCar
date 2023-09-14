@@ -25,7 +25,7 @@ public class MainController {
 
     MemberService memberService;
 
-    @GetMapping("/main")
+    @GetMapping({"/main","/"})
     public String homepage(@AuthenticationPrincipal MemberSecurityDTO mDTO,
                            HttpServletRequest request) {
 
@@ -41,7 +41,6 @@ public class MainController {
         }
 
         log.info("member 정보 : "+ mDTO);
-
 
 
 
