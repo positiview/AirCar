@@ -30,10 +30,10 @@ public class SecurityConfig {
         // 페이지 권한 설정, 로그인 페이지 설정, 로그아웃 메소드 등에 대한 설정을 작성
         http.formLogin()
                 .loginPage("/login")
-                /*.defaultSuccessUrl("/main")*/
-                .successHandler(authenticationFormLoginSuccessHandler())
+//                .defaultSuccessUrl("/main")
                 .usernameParameter("id")
                 .passwordParameter("pw")
+                .successHandler(authenticationFormLoginSuccessHandler())
                 .failureUrl("/login/error")
                 .and()
                 .logout()
@@ -82,7 +82,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationSuccessHandler authenticationFormLoginSuccessHandler() {
-        return new CustomFormLoginSuccessHandler();
+        return new CustomFormLoginSuccessHandler(memberService);
     }
 
     @Bean
