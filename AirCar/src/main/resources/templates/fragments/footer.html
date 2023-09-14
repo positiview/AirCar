@@ -317,9 +317,20 @@
                 });
 
             }
+            var b = $('#chkBtn4');
+            var e = $('input[name=bookedNumber]');
 
+
+            e.on("keyup", function () {
+                if (e.val().length > 0) {
+                    b.removeAttr("disabled");
+                } else {
+                    b.attr("disabled", "disabled");
+                }
+            });
 
             // 수정 레이어----------------------------------
+
 
             var chk_Button1 = $('#chkBtn1');
             var chk_Button2 = $('#chkBtn2');
@@ -330,7 +341,11 @@
             var modify3 = $('#modifier3');
             setupModifyButton(modify1, chk_Button1);
             setupModifyButton(modify2, chk_Button2);
-            setupModifyButton(modify3, chk_Button3)
+            setupModifyButton(modify3, chk_Button3);
+
+
+
+
             function setupModifyButton(modifyElement, chkButton) {
                 modifyElement.on("keyup", function () {
                     if (modifyElement.val().length > 0) {
