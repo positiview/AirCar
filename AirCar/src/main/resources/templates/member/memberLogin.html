@@ -32,14 +32,17 @@
                                 </div>
                                 <ul class="login_link">
                                     <li><a class="joinPopup">회원가입</a></li>
-                                    <li><a>아이디 찾기/비밀번호 재설정</a></li>
+                                    <li><a class="findPopup">아이디 찾기/비밀번호 재설정</a></li>
                                 </ul>
                             </form>
                         </fieldset>
                     </div>
-                    <div class="login_guide"><p class="title_20">여기에 이미지를 삽입해 주세요</p>
-                        <p class="title_14 txt_lightgray">발급된 예약번호로 예약내역을 확인해 보세요</p>
-                        <button type="button" class="btn_confirm">예약확인</button>
+                    <div class="login_guide">
+                        <div class="booked">
+                            <p class="title_20">여기서 바로 예약을 확인 할 수 있어요</p>
+                            <p class="title_14 txt_lightgray">발급된 예약번호로 예약내역을 확인해 보세요</p>
+                            <button type="button" class="btn_confirm bookedPopup">예약확인</button>
+                        </div>
                     </div>
                 </div>
                 <div class="login_easy_wrap"><p class="login_easy_tit">간편 로그인</p>
@@ -61,7 +64,7 @@
                 <input type="hidden" name="retUrl" value="">
                 <input type="hidden" name="verSion" value="2">
             </form>
-            <div class="layerPopup open bg_white" th:style="${'display:none;'}">
+            <div class="layerPopup open bg_white joinLayer" th:style="${'display:none;'}">
                 <div class="layerPopup_wrap" style="width: 400px;">
                     <div class="layerPopup_heading"><h2 class="heading">가입 방법을 선택해 주세요</h2>
                         <button class="btn_close">닫기</button>
@@ -73,6 +76,26 @@
                             <button type="button" class="btn btn_kakao" onclick="location.href='/oauth2/authorization/kakao'">카카오로 시작하기</button>
                             <button type="button" class="btn btn_naver" onclick="location.href='/oauth2/authorization/naver'">네이버로 시작하기</button>
                             <button type="button" class="btn btn_google" onclick="location.href='/oauth2/authorization/google'">구글로 시작하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layerPopup small bookedLayer" th:style="${'display:none;'}">
+                <div class="layerPopup_wrap">
+                    <div class="layerPopup_heading"><h2 class="heading">발급 받은 예약 번호를 입력해 주세요.</h2>
+                        <button class="btn_close">닫기</button>
+                    </div>
+                    <div class="layerPopup_content">
+                        <div class="form_control">
+                            <div class="form_row">
+                                <label for="bookingNum" class="form_label">Reserved Number</label>
+                                <input name="bookedNumber" type="text" maxlength="30">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layerPopup_bottom bottom_gray">
+                        <div class="btn_group">
+                            <button id="chkBtn2" class="btn type01" disabled>예약 번호 확인</button>
                         </div>
                     </div>
                 </div>

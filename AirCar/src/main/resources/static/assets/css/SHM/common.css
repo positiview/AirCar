@@ -8,6 +8,11 @@
   outline: none;
   text-decoration: none;
 }
+.booked{
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9) url(../../../img/booked.png) no-repeat center;
+  padding: 20px;
+}
 html,
 body {
   color: #2e3033;
@@ -1071,7 +1076,7 @@ html.scroll_hidden body {
   background: #dee2e6;
   padding: 52px 0 63px 0;
   color: #50555c;
-  height: 206px; /* 체크*/
+  height: 215px; /* 체크*/
 }
 .pc_wrap .footer_wrap.off {
   display: none;

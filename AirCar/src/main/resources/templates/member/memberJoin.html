@@ -20,12 +20,12 @@
         function updateButtonStatus() {
             var emailValue = $("#email").val();
             var pwValue = $("#pass").val();
-            var pwcheckValue = $("#passwordCheck").val();
+            var pwCheckValue = $("#passwordCheck").val();
             var nicknameValue = $("#number").val();
             var phoneValue = $("#tel").val();
 
             // 모든 필드가 비어있지 않으면 버튼 활성화
-            if (emailValue && pwValue && nicknameValue && phoneValue && pwcheckValue) {
+            if (emailValue && pwValue && nicknameValue && phoneValue && pwCheckValue) {
                 $("#submitButton").prop("disabled", false);
             } else {
                 $("#submitButton").prop("disabled", true);
