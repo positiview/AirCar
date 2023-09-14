@@ -1,22 +1,20 @@
 package com.example.aircar.controller;
 
-import com.example.aircar.domain.CounselingDTO;
-import com.example.aircar.domain.NoticesDTO;
-import com.example.aircar.entity.Counseling;
-import com.example.aircar.entity.Notices;
-import com.example.aircar.repository.CounselingRepository;
-import com.example.aircar.repository.NoticesRepository;
-import com.example.aircar.service.MailService;
+import com.example.aircar.domain.*;
+import com.example.aircar.entity.*;
+import com.example.aircar.repository.*;
+import com.example.aircar.service.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
@@ -27,52 +25,81 @@ public class AdminController {
 
     private final NoticesRepository noticesRepository;
     private final CounselingRepository counselingRepository;
+    private final MemberRepository memberRepository;
     private final MailService mailService;
+    private FilesRepository filesRepository;
+    private final CarRepository carRepository;
+    private final NoticesService noticesService;
+    private final CounselingService counselingService;
+    private final MemberService memberService;
+    private final CarService carService;
+    private final ReserveService reserveService;
+    private final ReserveRepository reserveRepository;
 
 
     @GetMapping("/main")
-    public String main(){
+    public String main() {
+
+
         return "/admin/main";
     }
 
-    @GetMapping("/member")
-    public String member(){
-        return "/admin/member";
-    }
-
-
-
     @GetMapping("/pencil")
-    public String pencil(){
+    public String pencil() {
         return "/admin/pencil";
     }
 
     @GetMapping("/register")
-    public String register(){
+    public String register() {
         return "/admin/register";
     }
 
-    @GetMapping("/reserve")
-    public String reserve(){
-        return "/admin/reserve";
-    }
 
     @GetMapping("/event")
-    public String event(){ return "/admin/event"; }
+    public String event() {
+        return "/admin/event";
+    }
+
+
+//    @GetMapping("/notices")
+//    public String notices(Model model){
+//        List<Notices> noticesList = noticesRepository.findAll();
+//        model.addAttribute("noticesList", noticesList);
+//
+//        return "admin/notices";
+//    }
+
 
     @GetMapping("/notices")
-    public String notices(Model model){
-        List<Notices> noticesList = noticesRepository.findAll();
-        model.addAttribute("noticesList", noticesList);
+    public String notices(Model model,
+                          @RequestParam(defaultValue = "") String searchType,
+                          @RequestParam(defaultValue = "") String keyword,
+                          @PageableDefault(size = 5, sort = "bno",
+                                  direction = Sort.Direction.DESC) Pageable pageable) {
+
+        if (searchType.equals("title")) {
+            model.addAttribute("noticesList",
+                    noticesService.getNoticesTitleList(keyword, pageable));
+        } else if (searchType.equals("content")) {
+            model.addAttribute("noticesList",
+                    noticesService.getNoticesContentList(keyword, pageable));
+        } else {
+            model.addAttribute("noticesList",
+                    noticesService.getNoticesList(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
 
         return "admin/notices";
     }
 
+
     @GetMapping("/noticesRegister")
-    public String noticesRegister(){
+    public String noticesRegister() {
         return "/admin/notices_register";
     }
-
 
 
     @PostMapping("/noticesRegister")
@@ -85,7 +112,6 @@ public class AdminController {
         notices.setRegDate(noticesDto.getReg_time());
 
         noticesRepository.save(notices);
-
 
 
 //        // 첨부파일 저장
@@ -104,7 +130,7 @@ public class AdminController {
     }
 
     @GetMapping("/noticesView")
-    public String noticesView(Long bno, Model model){
+    public String noticesView(Long bno, Model model) {
         Notices notices = noticesRepository.findByBno(bno);
 
         model.addAttribute("notices", notices);
@@ -144,7 +170,7 @@ public class AdminController {
     }
 
     @PostMapping("/noticesDelete")
-    public String delete(NoticesDTO noticesDto) {
+    public String noticesDelete(NoticesDTO noticesDto) {
         // 게시글을 DB에서 삭제(+reply +boardAttach)
         noticesRepository.deleteById(noticesDto.getBno());
 
@@ -152,22 +178,39 @@ public class AdminController {
     }
 
     @GetMapping("/counseling")
-    public String counseling(Model model){
-        List<Counseling> counselingList = counselingRepository.findAll();
-        model.addAttribute("counselingList", counselingList);
+    public String counseling(Model model,
+                             @RequestParam(defaultValue = "") String searchType,
+                             @RequestParam(defaultValue = "") String keyword,
+                             @PageableDefault(size = 5, sort = "bno",
+                                     direction = Sort.Direction.DESC) Pageable pageable) {
+
+        if (searchType.equals("title")) {
+            model.addAttribute("counselingList",
+                    counselingService.getCounselingTitleList(keyword, pageable));
+        } else if (searchType.equals("content")) {
+            model.addAttribute("counselingList",
+                    counselingService.getCounselingTitleList(keyword, pageable));
+        } else {
+            model.addAttribute("counselingList",
+                    counselingService.getCounselingList(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
 
         return "admin/counseling";
     }
 
 
     @GetMapping("/counselingAnswer")
-    public String counselingAnswer(Long bno, Model model){
+    public String counselingAnswer(Long bno, Model model) {
         Counseling counseling = counselingRepository.findByBno(bno);
 
 
         model.addAttribute("counseling", counseling);
 
-        return "/admin/counseling_answer";
+        return "admin/counseling_answer";
     }
 
     @PostMapping("/answer")
@@ -189,11 +232,263 @@ public class AdminController {
 
         mailService.CreateMail(counselingDto);
 
+
         return "redirect:/admin/counselingAnswer?bno=" + counseling.getBno();
+    }
+
+    @GetMapping("/member")
+    public String member(Model model,
+                         @RequestParam(defaultValue = "") String searchType,
+                         @RequestParam(defaultValue = "") String keyword,
+                         @PageableDefault(size = 5, sort = "mno",
+                                 direction = Sort.Direction.DESC) Pageable pageable) {
+
+        if (searchType.equals("nickname")) {
+            model.addAttribute("memberList",
+                    memberService.getnicknameList(keyword, pageable));
+        } else if (searchType.equals("email")) {
+            model.addAttribute("memberList",
+                    memberService.getemailList(keyword, pageable));
+        } else {
+            model.addAttribute("memberList",
+                    memberService.getMemberList(pageable));
+        }
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
+        return "admin/member";
+    }
+
+
+    @GetMapping("/memberView")
+    public String memberView(Long mno, Model model) {
+        Member member = memberRepository.findByMno(mno);
+
+
+        model.addAttribute("member", member);
+
+        return "admin/member_view";
+    }
+
+    @GetMapping("/memberUpdate")
+    public String memberUpdate(Long mno, Model model) {
+        Member member = memberRepository.findByMno(mno);
+
+        model.addAttribute("member", member);
+
+        return "admin/member_update";
+    }
+
+    @PostMapping("/memberUpdate")
+    public String memberUpdate(MemberDTO memberDto) {
+        Member member = new Member();
+        log.info("mno : " + memberDto.getMno());
+        member.setMno(memberDto.getMno());
+        member.setPassword(memberDto.getPassword());
+        member.setName((memberDto.getName()));
+        member.setEmail(memberDto.getEmail());
+        member.setSocial(member.isSocial());
+        member.setNickname(memberDto.getNickname());
+        member.setRole(memberDto.getRole());
+
+
+        memberRepository.save(member);
+
+        return "redirect:/admin/memberView?mno=" + member.getMno();
+    }
+
+    @GetMapping("/memberDelete")
+    public String memberDelete(Long mno) {
+        memberRepository.deleteById(mno);
+
+        return "redirect:/admin/member";
+    }
+
+    @PostMapping("/memberDelete")
+    public String memberDelete(MemberDTO memberDto) {
+        // 게시글을 DB에서 삭제(+reply +boardAttach)
+        memberRepository.deleteById(memberDto.getMno());
+
+        return "redirect:/admin/member";
+    }
+
+    @GetMapping("/upload")
+    public String upload() {
+
+        return "/admin/upload";
+    }
+
+    @ModelAttribute("carDTO")
+    public CarDTO carDTO() {
+        return new CarDTO();
+    }
+
+    @GetMapping("/car")
+    public String car(Model model,
+                      @RequestParam(defaultValue = "") String searchType,
+                      @RequestParam(defaultValue = "") String keyword,
+                      @PageableDefault(size = 5, sort = "carNum",
+                              direction = Sort.Direction.DESC) Pageable pageable) {
+
+        if (searchType.equals("brand")) {
+            model.addAttribute("carList",
+                    carService.getbrandList(keyword, pageable));
+        } else if (searchType.equals("name")) {
+            model.addAttribute("carList",
+                    carService.getnameList(keyword, pageable));
+        } else {
+            model.addAttribute("carList",
+                    carService.getcarList1(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
+        return "admin/car";
+    }
+
+    @GetMapping("/carView")
+    public String carView(Long carNum, Model model) {
+        Car car = carRepository.findByCarNum(carNum);
+
+
+        model.addAttribute("car", car);
+
+        return "admin/car_view";
+    }
+
+    @GetMapping("/carUpdate")
+    public String carUpdate(Long carNum, Model model) {
+        Car car = carRepository.findByCarNum(carNum);
+
+        model.addAttribute("car", car);
+
+        return "admin/car_update";
+    }
+
+    @PostMapping("/carUpdate")
+    public String carUpdate(@ModelAttribute("carDTO") CarDTO carDto) {
+        Car car = new Car();
+
+        car.setCarNum(carDto.getCarNum());
+        car.setKind(carDto.getKind());
+        car.setColor(carDto.getColor());
+        car.setBrand(carDto.getBrand());
+        car.setName(carDto.getName());
+        car.setCost(carDto.getCost());
+        car.setYear(carDto.getYear());
+        car.setOptions(carDto.getOptions());
+        car.setFuel(carDto.getFuel());
+        car.setPeople(carDto.getPeople());
+        car.setArea(carDto.getArea());
+        car.setDetailarea(carDto.getDetailarea());
+        car.setDefect(carDto.getDefect());
+        car.setContent(carDto.getContent());
+        car.setRegDate(carDto.getRegDate());
+        car.setUpdateDate(carDto.getUpdateDate());
+        car.setDriverAge(carDto.getDriverAge());
+        car.setDriverCareer(carDto.getDriverCareer());
+        car.setStartDate(carDto.getStartDate());
+        car.setEndDate(carDto.getEndDate());
+
+        carRepository.save(car);
+
+        return "redirect:/admin/carView?carNum=" + car.getCarNum();
+    }
+
+    @GetMapping("/carDelete")
+    public String carDelete(Long carNum) {
+        carRepository.deleteById(carNum);
+
+        return "redirect:/admin/car";
+    }
+
+    @PostMapping("/carDelete")
+    public String carDelete(CarDTO carDto) {
+        // 게시글을 DB에서 삭제(+reply +boardAttach)
+        carRepository.deleteById(carDto.getCarNum());
+
+        return "redirect:/admin/car";
+    }
+
+    @GetMapping("/reserve")
+    public String reserve(Model model,
+                          @RequestParam(defaultValue = "") String searchType,
+                          @RequestParam(defaultValue = "") String keyword,
+                          @PageableDefault(size = 5, sort = "rno",
+                                  direction = Sort.Direction.DESC) Pageable pageable) {
+
+        if (searchType.equals("title")) {
+            model.addAttribute("reserveList",
+                    reserveService.getnicknameList(keyword, pageable));
+        } else if (searchType.equals("content")) {
+            model.addAttribute("reserveList",
+                    reserveService.getemailList(keyword, pageable));
+        } else {
+            model.addAttribute("reserveList",
+                    reserveService.getreserveList(pageable));
+        }
+
+
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("keyword", keyword);
+
+        return "admin/reserve";
+    }
+
+    @GetMapping("/reserveView")
+    public String reserveView(@RequestParam(name = "rno") String rno, Model model) {
+        UUID reserveId = UUID.fromString(rno);
+        Reserve reserve = reserveRepository.findByRno(reserveId);
+        model.addAttribute("reserve", reserve);
+        return "admin/reserve_view";
+    }
+
+
+    @GetMapping("/reserveUpdate")
+    public String reserveUpdate(@RequestParam(name = "rno") String rno, Model model) {
+        UUID reserveId = UUID.fromString(rno);
+        Reserve reserve = reserveRepository.findByRno(reserveId);
+
+        model.addAttribute("reserve", reserve);
+
+        return "admin/reserve_update";
+    }
+
+    @PostMapping("/reserveUpdate")
+    public String reserveUpdate(ReserveDTO reserveDto) {
+        Reserve reserve = new Reserve();
+
+        reserve.setRno(reserveDto.getRno());
+        reserve.setCarName(reserveDto.getCarName());
+        reserve.setEmail(reserveDto.getEmail());
+        reserve.setStartDate(reserveDto.getStartDate());
+        reserve.setEndDate(reserveDto.getEndDate());
+
+        reserveRepository.save(reserve);
+
+        return "redirect:/admin/reserveView?rno=" + reserve.getRno();
     }
 
 
 
-}
+    @GetMapping("/reserveDelete")
+    public String reserveDelete(UUID rno) {
+        reserveRepository.deleteById(rno);
 
+        return "redirect:/admin/reserve";
+    }
+
+    @PostMapping("/reserveDelete")
+    public String reserveDelete(ReserveDTO reserveDto) {
+        // 게시글을 DB에서 삭제(+reply +boardAttach)
+        reserveRepository.deleteById(reserveDto.getRno());
+
+        return "redirect:/admin/reserve";
+    }
+
+
+}
 

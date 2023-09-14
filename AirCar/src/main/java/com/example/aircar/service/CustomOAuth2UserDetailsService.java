@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -18,10 +17,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Log4j2
@@ -56,13 +52,13 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         } else if (clientName.equals(("kakao"))){
             userinfo = getKaKaoEmail(paramMap);
         }
-        email = userinfo[0];
-        nickname = userinfo[1];
-        log.info("E-mail : " + email);
-        log.info("Nickname : " + nickname);
 
+        List<String> infoList = new ArrayList<>(Arrays.asList(userinfo));
+        infoList.add(clientName);
+        String[] user_info = infoList.toArray(new String[0]);
 
-        return generateDTO(email, clientName, nickname, paramMap);
+        log.info("user infomation : " + user_info);
+        return generateDTO(user_info, paramMap);
     }
 
 
@@ -108,19 +104,24 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
         return userinfo;
     }
 
-    private MemberSecurityDTO generateDTO(String email, String clientName, String nickname, Map<String, Object> paramMap) {
-        Optional<Member> result = memberRepository.findByEmailAndClientName(email,clientName);
-
+    private MemberSecurityDTO generateDTO(String[] userInfo, Map<String, Object> paramMap) {
+        String email = userInfo[0];
+        String nickname = userInfo[1];
+        String client = userInfo[2];
+        Optional<Member> result = memberRepository.findByEmail(email);
+        String phone = "";
         // DB에 해당 이메일의 사용자가 없다면 자동으로 회원 가입 처리
         if (result.isEmpty()) {
             // 회원 추가
             // id = 이메일 주소 / 패스워드는 1111
             Member member = Member.builder()
-                    .name(email)
+                    .name(nickname)
                     .password(passwordEncoder.encode("1111"))
                     .email(email)
                     .social(true)
-                    .clientName(clientName)
+                    .phone(phone)
+                    .client(client)
+                    .contactEmail(email)
                     .nickname(nickname)
                     .role(Role.USER)
                     .build();
@@ -129,7 +130,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             memberRepository.save(member);
 
             MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(email,
-                    "1111", email, true, clientName, nickname,
+                    "1111", email, true, nickname, phone, client,
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
             memberSecurityDTO.setAttr(paramMap);
 
@@ -138,7 +139,7 @@ public class CustomOAuth2UserDetailsService extends DefaultOAuth2UserService {
             Member member = result.get();
             MemberSecurityDTO memberSecurityDTO = new MemberSecurityDTO(
                     member.getName(), member.getPassword(), member.getEmail(),
-                    member.isSocial(), member.getClientName(), member.getNickname(),
+                    member.isSocial(), member.getNickname(), member.getPhone(), member.getClient(),
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_" + member.getRole())));
 
             return memberSecurityDTO;

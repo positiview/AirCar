@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 @ToString
 public class Car extends BaseEntity{
     @Id
-    @Column(name = "carNum")
+    @Column(name = "car_num")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long carNum;
 
@@ -46,6 +47,11 @@ public class Car extends BaseEntity{
 
     @UpdateTimestamp
     private LocalDateTime updateDate;
+
+    private Date startDate;
+    private Date endDate;
+
+    private Long reserveStatus;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private  member_num;

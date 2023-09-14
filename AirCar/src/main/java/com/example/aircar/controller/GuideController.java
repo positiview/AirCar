@@ -1,21 +1,45 @@
 package com.example.aircar.controller;
 
 import com.example.aircar.domain.CounselingDTO;
+import com.example.aircar.domain.NoticesDTO;
 import com.example.aircar.entity.Counseling;
+import com.example.aircar.entity.Notices;
 import com.example.aircar.repository.CounselingRepository;
+import com.example.aircar.repository.NoticesRepository;
+import com.example.aircar.service.NoticesService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class GuideController {
 
     private final CounselingRepository counselingRepository;
+    private final NoticesRepository noticesRepository;
+    private final NoticesService noticesService;
+
+//    @GetMapping("/crm")
+//    public String crmForm(){
+//        return "/guide/crm";
+//    }
 
     @GetMapping("/crm")
-    public String crmForm(){
+    public String crm(Model model,
+                      @RequestParam(defaultValue = "") String keyword,
+                      @PageableDefault(size = 5, sort = "bno", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("noticesList", noticesService.getNoticesTitleList1(keyword, pageable));
+        model.addAttribute("keyword", keyword);
         return "/guide/crm";
     }
 
@@ -78,6 +102,45 @@ public class GuideController {
 
         return "redirect:/reserve";
     }
+
+
+//    @GetMapping("/notices")
+//    public String notices(Model model){
+//        List<Notices> noticesList = noticesRepository.findAll();
+//        model.addAttribute("noticesList", noticesList);
+//
+//        return "/guide/notices";
+//    }
+
+    @GetMapping("/notices")
+    public String notices(Model model,@RequestParam(name = "id",defaultValue = "") String dataId,
+                          @RequestParam(defaultValue = "") String keyword,
+                          @PageableDefault(size = 10, sort = "bno", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("noticesList", noticesService.getNoticesTitleList(keyword, pageable));
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("dataId", dataId);
+        return "/guide/notices";
+    }
+
+
+    @GetMapping("/getData")
+    @ResponseBody
+    public List<Notices> getData(Model model, @RequestParam(defaultValue = "") String keyword, Pageable pageable) {
+        //model.addAttribute("noticesList", noticesService.getNoticesTitleList1(keyword,pageable));
+
+        Page<Notices> noticeList = noticesService.getNoticesTitleList1(keyword,pageable);
+
+        return noticeList.getContent();
+    }
+    @GetMapping("/noticesView")
+    public String noticesView(Long bno, Model model){
+        Notices notices = noticesRepository.findByBno(bno);
+
+        model.addAttribute("notices", notices);
+
+        return "/guide/notices_view";
+    }
+
 
 
 }

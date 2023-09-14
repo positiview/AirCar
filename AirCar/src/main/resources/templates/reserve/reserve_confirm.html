@@ -7,16 +7,16 @@
 <th:block layout:fragment="content">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/reset.css}">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/animate.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap-reset.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap.min.css}">
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap-reset.css}">-->
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/bootstrap.min.css}">-->
     <link rel="stylesheet" th:href="@{/assets/css/HJS/helper.css}">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/style-responsive.css}">
     <link rel="stylesheet" th:href="@{/assets/css/HJS/style.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/common.css}">
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/common.css}">-->
     <link rel="stylesheet" th:href="@{/assets/css/HJS/calendar.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/component.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/main.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/HJS/content.css}">
+<!--    <link rel="stylesheet" th:href="@{/assets/css/HJS/component.css}">-->
+
+
     <link rel="stylesheet" th:href="@{/assets/css/HJS/reserve.css}">
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
@@ -28,6 +28,7 @@
                 <div class="wrap sub_wrap">
 
                     <div class="container">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                         <div class="inner">
                             <div class="contents">
                                 <div class="title_wrap">
@@ -38,12 +39,12 @@
                                     </ul>
                                 </div>
                                 <div class="sub_cont">
-                                    <p class="title_18"> 내 예약 <span class="total">0건</span></p><span
+                                    <p class="title_18"> 내 예약 </p><span
                                         class="title_14">출발일이 가까운 예약부터 볼 수 있어요 </span>
                                 </div>
-                                <div class="sub_cont">
-                                    <div class="car_info_box">
-                                        <div class="no_data">
+                                <div class="sub_cont" style="margin-top: 30px;" th:if="${reserveList == null}">
+                                    <div class="car_info_box" style="padding-top: 30px;padding-bottom: 0px;">
+                                        <div class="no_data"  style="height: 225px;">
                                             <dl>
                                                 <dt><strong>검색 결과가 없어요</strong></dt>
                                                 <dd><a>렌터카 예약하기</a></dd>
@@ -51,7 +52,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <div class="sub_cont" style="margin-top: 30px;" th:unless="${reserveList == null}" th:each="reserve : ${reserveList}">
+                                    <div class="car_info_box" style="padding-top: 30px;padding-bottom: 0px;">
+                                        <div class="no_data"   style="height: 220px;">
+                                            <h3 style="font-size: 16px; text-align: left; ">예약번호 : <th:block th:text="${reserve.rno}"></th:block> </h3>
+
+                                            <img th:src="@{'img_upload/'+${reserve.carImg}}" alt="" style="position: relative;width: 321px;left: 167px;bottom: 15px;">
+                                            <h3 style="position: relative;right: 300px;bottom: 103px;font-size: 29px;" th:text="${reserve.carName}">포르쉐 타이칸</h3>
+                                            <h3 style="position: relative;right: 230px;bottom: 105px;font-size: 17px;left: -222px;color: #80808073;font-weight: 400;"><th:block th:text="${reserve.startDate}"></th:block> ~
+
+                                                <th:block th:text="${reserve.endDate}"></th:block> </h3>
+                                            <h3 style="position: relative;right: 293px;bottom: 99px;font-size: 16px;left: -284px;color: #80808073;font-weight: 400;">부산·전포지점</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="sub_cont">
                                     <p class="title_18">자주 찾는 질문</p>
                                     <div class="sub_tit_box"><span class="title_14">예약과 관련해 자주 찾는 질문을 모아봤어요</span><a
@@ -77,24 +92,13 @@
                             <div class="sidebar">
                                 <div id="sideScroll" class="inner scroll_p">
                                     <div class="fillter_wrap">
-                                        <h2>도움이 필요하세요?</h2>
-                                        <p class="desc">SK렌터카 고객센터는 언제나 열려있어요</p>
-                                        <div class="btn_group"><a class="btn type02">고객센터로 이동</a></div>
+                                        <h2 style="margin: 0px">도움이 필요하세요?</h2>
+                                        <p class="desc">AIRCAR 고객센터는 언제나 열려있어요</p>
+                                        <div class="btn_group"><a class="btn type02" style="line-height: 55px;" href="http://localhost:8085/crm">고객센터로 이동</a></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="float_wrap">
-                                <div class="inner">
-                                    <div class="chat_cont">
-                                        <div class="chat_btn"><a> 상담하기</a></div>
-                                        <ul class="chat_list">
-                                            <li class="chat"><a>채팅상담</a></li>
-                                            <li class="inquiry"><a>1:1문의 작성</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
-                                </div>
-                            </div>
+                            <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
                         </div>
                     </div>
                     <div>

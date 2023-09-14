@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout2}">
+
+
+<!-- header -->
+
+<!-- Page Content Start -->
+<!-- ================== -->
+<th:block layout:fragment="admin_content">
+
+
+    <!-- Page Content Start -->
+    <!-- ================== -->
+
+
+    <div id="root" style="height: 100%">
+        <div class="pc_wrap" style="">
+            <div class="wrap sub_wrap">
+                <div class="container">
+                    <div class="inner">
+                        <div class="contents" style="margin: auto;">
+
+                            <div class="title_wrap"><h2 class="title_30 search_form__row">회원 정보 수정</h2></div>
+
+                            <form action="/admin/memberUpdate" method="post" th:object="${memberDTO}">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                                <input type="hidden" name="bno" th:field="${member.mno}"/>
+
+                                <input type="hidden" name="name" th:field="${member.name}"/>
+                                <input type="hidden" name="social" th:field="${member.social}"/>
+                                <input type="hidden" name="createBy" th:field="${member.createBy}"/>
+                                <input type="hidden" name="modifyBy" th:field="${member.modifyBy}"/>
+                                <input type="hidden" name="role" th:field="${member.role}"/>
+
+
+
+
+                                <div class="board_detail" style="margin-bottom: 50px">
+                                    <div class=" mb-3">
+                                        <span class="input-group-text" id="basic-addon1">닉네임</span>
+                                        <input type="text" name="nickname" class="form-control" placeholder="제목" aria-label="title" aria-describedby="basic-addon1"
+                                               th:field="${member.nickname}">
+                                    </div>
+                                    <div class=" mb-3">
+                                        <span class="input-group-text" >이메일</span>
+                                        <input type="text" name="email" class="form-control" placeholder="카테고리" aria-label="category" aria-describedby="basic-addon3"
+                                               th:field="${member.email}">
+                                    </div>
+                                    <div class="board_contents mt20"><p>
+                                        <div align="" style="">
+
+                                            <div class=" mb-3">
+                                                <span class="input-group-text" >비밀번호</span>
+                                                <input type="text" name="password" class="form-control" placeholder="카테고리" aria-label="category" aria-describedby="basic-addon3"
+                                                       th:field="${member.password}">
+                                                <p>&nbsp;</p></div>
+
+                                            <p>&nbsp;</p></div>
+                                    </div>
+                                    <div class="input-group mb-3 pagination justify-content-center" >
+                                        <button type="submit" class="btn btn-secondary" style="margin-right: 30px; width: 100px">수정</button>
+                                        <button type="reset" class="btn btn-light" style="margin-right: 30px; width: 100px">취소</button>
+                                        <button type="button" class="btn btn-light" style="width: 100px"
+                                                th:onclick="|location.href='@{/admin/member}'|">목록</button>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    <script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+            src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+</body>
+</th:block>
+</html>

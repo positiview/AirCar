@@ -5,13 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Data
 @Getter
 @Setter
 public class CarDTO {
-    private long car_num;
+    private long carNum;
 
     private String kind;
     private String color;
@@ -36,7 +37,9 @@ public class CarDTO {
 //    private String carName;
     private String carImg;
     private String brandImg;
-
+    private Date startDate;
+    private Date endDate;
+    private Long reserveStatus;
 
     //private int
 }

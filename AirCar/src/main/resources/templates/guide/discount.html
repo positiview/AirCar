@@ -4,17 +4,34 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 
+
 <th:block layout:fragment="content">
-    <th:block layout:fragment="content">
-        <th:block layout:fragment="script">
-            <script th:inline="javascript">
-                $(document).on("click", ".top_cont", function() {
-                    $("html, body").animate({ scrollTop: 0 }, 400);  });
+    <th:block layout:fragment="script">
+        <script th:inline="javascript">
+            $(document).on("click", ".top_cont", function() {
+                $("html, body").animate({ scrollTop: 0 }, 400);  });
 
 
-            </script>
-        </th:block>
+        </script>
+    </th:block>
 
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">-->
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">-->
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
 <div id="root" style="height: 100%">
     <div class="pc_wrap" style="">
         <div class="wrap sub_wrap">
@@ -90,7 +107,7 @@
                                 </div>
                                 <ul class="dot_list">
                                     <li>전월실적 30만원 이상 시 혜택 제공</li>
-                                    <li>SK렌터카 현장할인으로 실물카드 지참 필요</li>
+                                    <li>AIRCAR 현장할인으로 실물카드 지참 필요</li>
                                 </ul>
                             </div>
                         </div>
@@ -113,7 +130,7 @@
                             </em>
                                 <li><em class="bold">성수기 및 비수기 시즌에 따라 할인율이 다르게 적용돼요.</em></li>
                                 <li><em class="bold">제휴사 사이트 통해 예약 시, 제휴 할인을 받을 수 있어요.</em></li>
-                                <li>SK렌터카 회원일 경우, 최대 할인율 적용이 가능해요. 제휴 사이트에서 SK렌터카 로그인 후 예약해주세요.</li>
+                                <li>AIRCAR 회원일 경우, 최대 할인율 적용이 가능해요. 제휴 사이트에서 SK렌터카 로그인 후 예약해주세요.</li>
                                 <li>제휴 할인 간 중복할인은 되지 않아요.</li>
                                 <li>쿠폰/상품권은 예약 시 결제 전 단계에서 직접 인증하여 이용할 수 있어요.</li>
                                 <li>대여일시 기준으로 주중은 일~목, 주말은 금~토 및 공휴일이에요.</li>
@@ -123,41 +140,16 @@
                     <div class="sidebar">
                         <div class="inner">
                             <div class="res_form">
-                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
-                                    <button class="inland_btn">내륙 예약하기</button>
-                                </div>
-                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
-                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
-                                    <div class="carousel">
-                                        <ul class="btn_option_wrap small">
-                                            <li class="on"><a>전체</a></li>
-                                            <li class=""><a>전기차</a></li>
-                                            <li class=""><a>수입전기차</a></li>
-                                            <li class=""><a>제주 전기차 차박</a></li>
-                                            <li class=""><a>경형/소형</a></li>
-                                            <li class=""><a>중형/대형</a></li>
-                                            <li class=""><a>SUV</a></li>
-                                            <li class=""><a>승합</a></li>
-                                            <li class=""><a>수입</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn_group">
-                                    <button class="btn type01">차량 조회하고 예약하기</button>
-                                </div>
+
+                                <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
+
+
                             </div>
                         </div>
                     </div>
                     <div class="float_wrap">
                         <div class="inner">
-                            <div class="chat_cont">
-                                <div class="chat_btn"><a> 상담하기</a></div>
-                                <ul class="chat_list">
-                                    <li class="chat"><a>채팅상담</a></li>
-                                    <li class="inquiry"><a>1:1문의 작성</a></li>
-                                </ul>
-                            </div>
-                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
+                            <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
                         </div>
                     </div>
                 </div>

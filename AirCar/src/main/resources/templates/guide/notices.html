@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="content">
+    <th:block layout:fragment="script">
+
+
+
+
+        <!--<script
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <script>
+            $(function() {
+                // tab operation
+                $('.tabmenu').click(function() {
+                    var activeTab = $(this).attr('data-tab');
+                    $('li').css('background-color', 'white');
+                    $(this).css('background-color', 'green');
+                    $.ajax({
+                        type : 'GET',                 //get방식으로 통신
+                        url : activeTab + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+                        dataType : "html",            //html형식으로 값 읽기
+                        error : function() {          //통신 실패시
+                            alert('통신실패!');
+                        },
+                        success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+                            $('#tabcontent').html(data);
+                        }
+                    });
+                });
+                $('#default').click();
+            });
+        </script>
+
+
+
+
+
+    </th:block>
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
+   <!-- <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">-->
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
+    <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/register.css}">
+
+    <script>
+
+            $(document).ready(function (){
+
+                var dataId = "[[${dataId}]]";
+                console.log("data-id : "+dataId);
+                if(dataId){
+
+                    var $targetList = $(".reviw_list[data-id='" + dataId + "']");
+                    // 해당 리스트를 클릭
+                    /*$targetList.click();*/
+                    show_question(dataId);
+                }
+
+
+                $(".reviw_list").on("click",function() {
+                    var id = $(this).data("id");
+
+                    show_question(id);
+                });
+
+                function show_question(id){
+                    $.ajax({
+                        url : "/getData",
+                        method : "GET",
+                        data : {keyword: id},
+                        contentType : "text",
+                        success : function (response) {
+                            console.log("###########################################:" + response);
+                            var appendHtml = "";
+                            $.each(response, function(index, item){
+                                console.log(item);
+                                var str = "<div class=\"branch_wrap\"><a href='noticesView?bno="+item.bno+"'>"+ item.notices_title +"</a></div>";
+                                appendHtml += str;
+                            });
+
+                            console.log(appendHtml);
+                            $(".table-responsive").html(appendHtml);
+                            //$(".table text-center").html(appendHtml);
+                        },
+                        error: function (error) {
+                            console.error("ERROR : ", error)
+                        }
+                    })
+                }
+            })
+    </script>
+
+
+    <body style="overflow: visible;" cz-shortcut-listen="true">
+    <div id="root" style="height: 100%">
+        <div class="pc_wrap" style="">
+            <div class="wrap sub_wrap">
+
+                <div class="container">
+                    <div class="inner">
+                        <div class="contents">
+                            <div class="title_wrap">
+                                <h2 class="title_30 search_form__row">자주 찾는 질문
+                                    <div class="serch_wrap">
+                                        <form action="/notices" id="searchForm" class="d-flex" role="search"
+                                              style="height: 40px">
+                                            <div class="form_row">
+                                                <input class="form-control me-2" type="search" name="keyword"
+                                                       placeholder="Search" aria-label="Search" th:value="${keyword}">
+                                                <button class="btn btn-outline-success" id="btnSearch" type="submit">
+                                                    <span class="blind">Search</span></button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </h2>
+                            </div>
+                            <div class="board_tab">
+                                <ul class="reviw_box">
+                                    <li class="reviw_list" data-id="" active><a><span class="review_txt">전체</span></a></li>
+                                    <li class="reviw_list" data-id="예약·변경"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main01.png"></span><span class="review_txt">예약·변경</span></a>
+                                    </li>
+                                    <li class="reviw_list" data-id="운전자"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main02.png"></span><span
+                                            class="review_txt">운전자</span></a></li>
+                                    <li class="reviw_list"  data-id="제휴·할인"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main03.png"></span><span class="review_txt">제휴·할인</span></a>
+                                    </li>
+                                    <li class="reviw_list" data-id="보험"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main04.png"></span><span
+                                            class="review_txt">보험</span></a></li>
+                                    <li class="reviw_list" data-id="고장·사고"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main05.png"></span><span class="review_txt">고장·사고</span></a>
+                                    </li>
+                                    <li class="reviw_list" data-id="장기렌터카"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main06.png"></span><span class="review_txt">장기렌터카</span></a>
+                                    </li>
+                                    <li class="reviw_list" data-id="유류비"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main07.png"></span><span
+                                            class="review_txt">유류비</span></a></li>
+                                    <li class="reviw_list" data-id="부가용품"><a><span class="img_icon"><img
+                                            src="img/ico_cs_main08.png"></span><span class="review_txt">부가용품</span></a>
+                                    </li>
+                                    <li class="reviw_list"><a><span class="review_txt">기타</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="branch_search"><p class="title_18" style="margin-top: 20px">자주 찾는 질문을 모아봤어요</p>
+                                <div class="table-responsive clear_bt">
+                                    <table class="table text-center">
+                                        <tbody>
+                                        <tr th:each="notices : ${noticesList}">
+
+                                                <div class="branch_wrap"><a th:href="@{noticesView(bno=${notices.bno})}"
+                                                    th:text="${notices.notices_title}"></a>
+                                                </div>
+                                </tr>
+
+                                </tbody>
+                                </table>
+                            </div>
+                            </a></div>
+
+                        <nav aria-label="Page navigation example ">
+                            <th:block th:if="${noticesList.totalElements > 0}">
+                                <ul class="pagination justify-content-center"
+                                    style="display: flex; justify-content: center;"
+                                    th:with="start=${(noticesList.number/noticesList.totalPages)*noticesList.totalPages + 1},
+                    end=${(noticesList.totalPages == 0) ? 1 :
+                    (start + (noticesList.totalPages - 1) < noticesList.totalPages ? start + (noticesList.totalPages - 1) : noticesList.totalPages)}">
+
+                                    <li th:class="${noticesList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/admin/notices(page=0)}">First</a>
+                                    </li>
+                                    <li th:class="${noticesList.first} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link"
+                                           th:href="${noticesList.first} ? '#' : @{/notices(page=${noticesList.number} - 1)}">Previous</a>
+                                    </li>
+                                    <li th:each="page: ${#numbers.sequence(start, end)}"
+                                        th:class="${page == noticesList.number + 1} ? 'page-item active' : 'page-item' ">
+                                        <a class="page-link" th:href="@{/notices(page=${page - 1})}">[[${page}]]</a>
+                                    </li>
+                                    <li th:class="${noticesList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link"
+                                           th:href="${noticesList.last} ? '#' : @{/notices(page=${noticesList.number} + 1)}">Next</a>
+                                    </li>
+                                    <li th:class="${noticesList.last} ? 'page-item disabled' : 'page-item'">
+                                        <a class="page-link" th:href="@{/notices(page=${noticesList.totalPages - 1})}">Last</a>
+                                    </li>
+                                </ul>
+                            </th:block>
+                            <th:block th:unless="${noticesList.totalElements > 0}">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                </ul>
+                            </th:block>
+                        </nav>
+
+                        </div>
+                        <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
+                        <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
+                    </div>
+
+
+                </div>
+            </div>
+        <div>
+            <div style="position: fixed; z-index: 9999; inset: 16px 16px 100px; pointer-events: none;"></div>
+        </div>
+        <div class="footer_wrap">
+        </div>
+    </div>
+    </div>
+    <script src="/skrentalApp/bundle.29105ee17c.js"></script>
+
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    <script id="kakao-sdk" src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <div id="naverIdLogin" style="position: absolute; top: -10000px;"><a id="naverIdLogin_loginButton" href="#"><img
+            src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a></div>
+    </body>
+</th:block>
+</html>

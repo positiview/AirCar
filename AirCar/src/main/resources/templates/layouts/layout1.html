@@ -16,16 +16,26 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/SHM/slick-theme.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/SHM/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/SHM/component.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/SHM/content.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/SHM/main.css}">
 
     <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
     <script th:src="@{/assets/slick/slick.js}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" th:src="@{/assets/js/slick.min.js}"></script>
     <script th:src="@{/js/air-datepicker/dist/js/datepicker.js}"></script>
     <script th:src="@{/js/air-datepicker/dist/js/i18n/datepicker.ko.js}"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <th:block layout:fragment="script"></th:block>
     <th:block layout:fragment="css"></th:block>
 </head>
 <body>
+
     <th:block th:replace="fragments/header::headerFragment"></th:block>
     <th:block layout:fragment="content"> </th:block>
     <th:block th:replace="fragments/footer::footerFragment"></th:block>

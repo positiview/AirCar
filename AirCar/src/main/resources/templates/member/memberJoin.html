@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<script>
+    // 모든 input 요소의 값을 확인하여 버튼 활성화/비활성화
+
+
+    // 페이지가 로드될 때와 input 값이 변경될 때마다 버튼 상태 업데이트
+    $(document).ready(function () {
+        updateButtonStatus();
+
+        // input 값이 변경될 때마다 업데이트
+        $("input").on("keyup", function () {
+            updateButtonStatus();
+        });
+
+        function updateButtonStatus() {
+            var emailValue = $("#email").val();
+            var pwValue = $("#pass").val();
+            var pwCheckValue = $("#passwordCheck").val();
+            var nicknameValue = $("#number").val();
+            var phoneValue = $("#tel").val();
+
+            // 모든 필드가 비어있지 않으면 버튼 활성화
+            if (emailValue && pwValue && nicknameValue && phoneValue && pwCheckValue) {
+                $("#submitButton").prop("disabled", false);
+            } else {
+                $("#submitButton").prop("disabled", true);
+            }
+        }
+
+        var errorMessage = [[${errorMessage}]];
+        if (errorMessage != null) {
+            alert(errorMessage);
+        }
+
+    });
+</script>
+<th:block layout:fragment="content">
+
+    <div class="container">
+        <div class="inner">
+            <form action="/join" method="post" role="form" class="contents" style="margin: auto;" th:object="${memberFormDto}"><h2 class="title_30">회원 가입 정보 입력</h2>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <div class="caution_box mt40">
+                    <div class="detail_info noti_wrap mt0">
+                        <div class="detail_info__tit"><p class="title_14">반드시 모든 정보를 입력해주세요</p></div>
+                    </div>
+                </div>
+                <div class="sub_cont mt12">
+                    <div class="inner">
+                        <div class="license_img"><img src="" alt="회원가입예시"></div>
+                        <div class="info_box">
+                            <div class="form_row "><label for="email" class="form_label">이메일</label><input id="email" th:field="*{email}"
+                                                                                                             type="text"
+                                                                                                             placeholder="이메일">
+                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect Data</p>
+                            </div>
+                            <div class="form_row "><label for="pass" class="form_label">비밀번호</label><input id="pass" th:field="*{password}"
+                                                                                                             type="password"
+                                                                                                             placeholder="비밀번호"
+                                                                                                             value="">
+                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                   class="fieldError">Incorrect Data</p>
+                            </div>
+                            <div class="form_row"><label for="passwordCheck" class="form_label">비밀번호 확인</label><input
+                                    type="password" id="passwordCheck" name="passwordCheck"
+                                    placeholder="비밀번호를 다시 입력해 주세요" value=""></div>
+
+                            <div class="form_row "><label for="number" class="form_label">닉네임</label><input id="number" th:field="*{nickname}"
+                                                                                                             maxlength="12"
+                                                                                                             type="text"
+                                                                                                             placeholder="닉네임"
+                                                                                                             value=""><!--
+                                <div class="ex_box"><p class="txt">구면허증) 서울-01-123456-00 → 서울0112345600</p>
+                                    <p class="txt">신면허증) 11-01-123456-00 → 110112345600</p></div>-->
+                                <p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="fieldError">Incorrect Data</p>
+                            </div>
+                            <div class="form_row "><label for="tel" class="form_label">전화번호</label><input id="tel" th:field="*{phone}"
+                                                                                                            type="text"
+                                                                                                            placeholder="전화번호"
+                                                                                                            value="">
+                                <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="fieldError">Incorrect Data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn_group single01">
+                    <button type="submit" id="submitButton" class="btn type01">회원 가입</button>
+                </div>
+            </form>
+            <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
+        </div>
+    </div>
+
+</th:block>
+
+
+
+</html>

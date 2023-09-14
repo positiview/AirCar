@@ -17,16 +17,16 @@
 
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/reset.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/animate.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">
+
+<!--    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap-reset.css}">-->
+<!--    <link rel="stylesheet" th:href="@{/assets/css/JYJ/bootstrap.min.css}">-->
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/helper.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/style-responsive.css}">
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/style.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/common.css}">
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/calendar.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/component.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/main.css}">
-    <link rel="stylesheet" th:href="@{/assets/css/JYJ/content.css}">
+
     <link rel="stylesheet" th:href="@{/assets/css/JYJ/reserve.css}">
     <link rel="stylesheet" th:href="@{/js/air-datepicker/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/assets/css/register.css}">
@@ -40,44 +40,25 @@
                 <div class="inner">
                     <div class="contents">
                         <div class="title_wrap"><h2 class="title_30">고객센터</h2></div>
-                        <div class="res_tit serch"><p class="title_20">SK렌터카 고객센터입니다<br>무엇을 도와드릴까요?</p>
+                        <div class="res_tit serch"><p class="title_20">AIRCAR 고객센터입니다<br>무엇을 도와드릴까요?</p>
                             <div class="serch_wrap">
-                                <div class="form_row"><input id="serch" name="serch" type="serch" padding="16px"
-                                                             placeholder="궁금한 점을 입력해보세요">
-                                    <button class="btn_serch"><span class="blind">Search</span></button>
-                                </div>
+
                             </div>
                         </div>
-                        <div class="menu_btns">
-                            <ul class="btns_list">
-                                <li><a>
-                                    <div class="icon"><img src="img/ico_cs_main01.png"></div>
-                                    <span>예약·변경</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="img/ico_cs_main02.png"></div>
-                                    <span>운전자</span></a></li>
-                                <li><a href="/discount">
-                                    <div class="icon"><img src="img/ico_cs_main03.png"></div>
-                                    <span>제휴·할인</span></a></li>
-                                <li><a href="/insurance">
-                                    <div class="icon"><img src="img/ico_cs_main04.png"></div>
-                                    <span>보험</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="img/ico_cs_main05.png"></div>
-                                    <span>고장·사고</span></a></li>
-                                <li><a>
-                                    <div class="icon"><img src="img/ico_cs_main06.png"></div>
-                                    <span>장기렌터카</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="question_wrap"><p class="title_18">자주 찾는 질문을 모아봤어요</p><a class="link_btn">더보기</a>
+
+                        <div class="question_wrap"><p class="title_18">자주 찾는 질문을 모아봤어요</p><a href="/notices" class="link_btn">더보기</a>
                             <div class="question_list">
-                                <ul>
-                                    <li><a><p>외국인도 대여가 가능한가요?</p></a></li>
-                                    <li><a><p>대여 자격 조건은 어떻게 되나요?</p></a></li>
-                                    <li><a><p>운전면허 분실 시 차량대여가 불가능한가요?</p></a></li>
-                                    <li><a><p>운전자 추가 등록(제2,3 운전자)은 어떻게 하나요?</p></a></li>
-                                </ul>
+                                <table class="table text-center">
+                                    <tbody>
+                                    <tr th:each="notices : ${noticesList}">
+
+                                        <td>
+                                            <ul><li><a th:href="@{noticesView(bno=${notices.bno})}" th:text="${notices.notices_title}"><p></p></a></li></ul>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="event_wrap"><p class="title_18">풍성한 이벤트도 놓치지 마세요</p><a class="link_btn">더보기</a>
@@ -132,16 +113,16 @@
                         </div>
                         <div class="info_wrap">
                             <div class="title_wrap"><p class="title_18">더 자세한 상담이 필요하신가요?</p>
-                                <button type="button" class="btn consulting">1:1 문의</button>
+                                <button type="button" class="btn consulting" th:onclick="|location.href='@{/counseling}'|">1:1 문의</button>
                             </div>
                             <div class="custom_box">
                                 <ul>
-                                    <li><p>SK렌터카 상담 운영시간</p>
+                                    <li><p>AIRCAR 상담 운영시간</p>
                                         <dl>
                                             <dt>전화</dt>
                                             <dd>
                                                 <ul>
-                                                    <li><strong>1599-9111</strong></li>
+                                                    <li><strong>1234-1191</strong></li>
                                                     <li>평일 09:00 ~ 18:00 (공휴일 휴무)</li>
                                                     <li><strong>사고 및 긴급 출동</strong> : 24시간 가능</li>
                                                 </ul>
@@ -152,12 +133,12 @@
                                             <dd>평일 09:00 ~ 17:30 (공휴일 휴무)</dd>
                                         </dl>
                                     </li>
-                                    <li><p>SK렌터카 다이렉트 상담 운영시간</p>
+                                    <li><p>AIRCAR 다이렉트 상담 운영시간</p>
                                         <dl>
                                             <dt>전화</dt>
                                             <dd>
                                                 <ul>
-                                                    <li><strong>1599-3651</strong></li>
+                                                    <li><strong>1234-3651</strong></li>
                                                     <li>평일 09:00 ~ 18:00 (공휴일 휴무)</li>
                                                 </ul>
                                             </dd>
@@ -169,42 +150,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar">
-                        <div class="inner scroll_p">
-                            <div class="res_form">
-                                <div class="cont"><a class="ico_place" style="cursor: default;">제주지점</a>
-                                    <button class="inland_btn">내륙 예약하기</button>
-                                </div>
-                                <div class="cont"><a class="ico_date">09.22(금) 11:00 ~ 09.24(일) 15:00</a></div>
-                                <div class="cont"><a class="ico_car">모든 차량<i class="ico_reset"></i></a>
-                                    <div class="carousel">
-                                        <ul class="btn_option_wrap small">
-                                            <li class="on"><a>전체</a></li>
-                                            <li class=""><a>전기차</a></li>
-                                            <li class=""><a>수입전기차</a></li>
-                                            <li class=""><a>제주 전기차 차박</a></li>
-                                            <li class=""><a>경형/소형</a></li>
-                                            <li class=""><a>중형/대형</a></li>
-                                            <li class=""><a>SUV</a></li>
-                                            <li class=""><a>승합</a></li>
-                                            <li class=""><a>수입</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn_group">
-                                    <button class="btn type01">차량 조회하고 예약하기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="float_wrap">
-                        <div class="inner">
-                            <div class="chat_cont">
-                                <div class="chat_btn"><a href="/counseling"> 상담하기</a></div>
-                            </div>
-                            <div class="top_cont"><a class="top_btn"><span class="blind">TOP</span></a></div>
-                        </div>
-                    </div>
+                    <th:block th:replace="fragments/sidebarBook::sidebarBook"></th:block>
+                    <th:block th:replace="fragments/floatCounselling::conselling"></th:block>
                 </div>
             </div>
             <div>

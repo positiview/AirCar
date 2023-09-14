@@ -18,17 +18,20 @@ import javax.persistence.*;
 public class Member extends BaseEntity {
 
     @Id
-    @Column(name="member_id")
+    @Column(name="mno")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long mNo;
+    private Long mno;
 
     private String password;
 
     private String name;
 
-
+    @Column(unique = true)
     private String email;
 
+    private String phone;
+    private String client;
+    private String contactEmail;
    /* private String address;
 
     private String license;
@@ -40,19 +43,19 @@ public class Member extends BaseEntity {
 
     private boolean social;
 
-    private String clientName;
 
     private String nickname;
 
     public static Member createMember(MemberFormDto memberFormDTO, PasswordEncoder passwordEncoder){
         Member member = new Member();
-        member.setName(memberFormDTO.getName());
         member.setEmail(memberFormDTO.getEmail());
 
 
         String password = passwordEncoder.encode(memberFormDTO.getPassword());
 
         member.setPassword(password);
+        member.setNickname(memberFormDTO.getNickname());
+        member.setPhone(memberFormDTO.getPhone());
         member.setRole(Role.USER);
         member.setSocial(false);  //false 이면 일반회원 true 이면 소셜 회원!
 

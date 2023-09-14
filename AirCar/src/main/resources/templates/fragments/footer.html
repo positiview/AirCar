@@ -12,12 +12,12 @@
                         <li><a>이메일무단수집거부 </a></li>
                     </ul>
                     <ul class="footer_info">
-                        <li>고객센터 <a href="tel:1599-9111">1599-9111</a></li>
-                        <li><span>SK렌터카(주)</span><span>서울특별시 구로구 서부샛길 822(구로동)</span></li>
-                        <li><span>대표이사 황일문</span><span>사업자번호 113-81-32864</span></li>
-                        <li>통신판매업신고 구로구청 제2006-03389</li>
+                        <li>고객센터 <a href="#">1234-1191</a></li>
+                        <li><span>AIRCAR(주)</span><span>부산 부산진구 중앙대로 708 부산파이낸스센터 4층</span></li>
+                        <li><span>대표이사 최원호</span><span>사업자번호 123-45-67890</span></li>
+                        <li>통신판매업신고 구로구청 제30961-1389</li>
                     </ul>
-                    <p class="copyright">Copyright ⓒ SK렌터카. All Rights Reserved</p></div>
+                    <p class="copyright">Copyright ⓒ AIRCAR. All Rights Reserved</p></div>
             </div>
             <div class="footer_r">
                 <ul class="sns">
@@ -29,14 +29,16 @@
                 </ul>
                 <div class="select_wrap"><select class="family_site">
                     <option value="">FamilySite</option>
-                    <option value="https://company.skcarrental.com">SK렌터카</option>
-                    <option value="https://www.sknetworks.co.kr">SK Networks</option>
-                    <option value="http://www.skcarrentalservice.co.kr">SK렌터카서비스</option>
+                    <option value="#">AIRCAR</option>
+                    <option value="#">AIR Networks</option>
+                    <option value="http://www.skcarrentalservice.co.kr">제휴:SK렌터카서비스</option>
                 </select></div>
                 <ul class="mark">
-                    <li><img src="/pc_assets/img/common/logo_ismsp.png" alt="ISMSP"></li>
+                    <li><img src="img/logo_ismsp.png" alt="ISMSP"></li>
                     <li><span>인증범위 : 차량렌탈 서비스, 스마트링크서비스</span><span>유효기간 : 2022-12-07 ~ 2025-12-06</span></li>
-                    <li><img src="/pc_assets/img/common/logo_ncsi.png" alt="NCSI"></li>
+
+                    <li><img src="/img/logo_ncsi.png" alt="NCSI"></li>
+
                 </ul>
             </div>
         </footer>
@@ -63,6 +65,52 @@
         $(document).on("click", ".top_cont", function() {
             $("html, body").animate({ scrollTop: 0 }, 400);  });
         $(document).ready(function () {
+            //---------------사이드바---------------
+            var startDate = "";
+            var endDate = "";
+            var currentDate = new Date();
+            var tomorrowDate = new Date();
+            tomorrowDate.setDate(currentDate.getDate() + 2);
+
+            $('.dateRangePicker').daterangepicker({
+                opens: 'left', // 달력이 왼쪽에서 열리도록 설정
+
+                locale: {
+                    format: 'YYYY-MM-DD' // 날짜 형식 설정
+                },startDate: currentDate,
+                endDate: tomorrowDate
+
+            });
+
+
+            // 날짜 범위가 선택되었을 때 이벤트 처리
+            $('.dateRangePicker').on('apply.daterangepicker', function (ev, picker) {
+                // 선택된 날짜 범위 출력
+
+                console.log('선택된 날짜 범위: ' + picker.startDate.format('YYYY-MM-DD') + ' ~ ' + picker.endDate.format('YYYY-MM-DD'));
+                startDate = picker.startDate.format('YYYY-MM-DD');
+                endDate = picker.endDate.format('YYYY-MM-DD');
+                $('input[name=start]').val(startDate);
+                $('input[name=end]').val(endDate);
+
+            });
+
+            $('.search-car').click(function (e){
+                var startValue = $('input[name=start]').val();
+                var endValue = $('input[name=end]').val();
+
+                if(!startValue || !endValue){
+                    alert("날짜를 선택해주세요.");
+                    e.preventDefault();
+                }
+            });
+            //-------------------사이드바 끝-------------------
+
+
+
+
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
             datePickerSet($("#datepicker1"), $("#datepicker2"), true);
 
             function datePickerSet(sDate, eDate, flag) {
@@ -73,7 +121,7 @@
                         language: 'ko',
                         autoClose: true,
                         onSelect: function (formattedDate, date, inst) {
-                            var selectedDateText = "시작일 :  " + formattedDate;
+                            var selectedDateText = formattedDate;
                             sDate.val(selectedDateText);
                         }
                     });
@@ -84,11 +132,12 @@
                         language: 'ko',
                         autoClose: true,
                         onSelect: function (formattedDate, date, inst) {
-                            var selectedDateText = "종료일 :  " + formattedDate;
+                            var selectedDateText =  formattedDate;
                             eDate.val(selectedDateText);
                         }
                     });
                 }
+
 
                 // ...
             }
@@ -96,7 +145,7 @@
             function isValidStr(str) {
                 return str === null || str === undefined || str === "";
             }
-
+            //================================================================
             $('.chk').click(function() {
                 var $li = $(this).closest('li'); // 클릭된 라벨의 부모 li 요소 선택
                 $li.toggleClass('on'); // li 요소의 클래스를 토글
@@ -117,6 +166,8 @@
                 $('.chk').closest('li').removeClass('on'); // 모든 라벨의 테두리 색상 초기화
                 $('input[type="checkbox"]').prop('checked', false); // 모든 체크박스 해제
             });
+
+
 
 
             // 모든 클래스가 해제시 전체 클래스 on
@@ -203,83 +254,312 @@
             });
 
             //---------------------------------
-            // 레이어팝업 기능
-            var layerPopup = $('.layerPopup');
-                layerPopup.hide();
+            /* 레이어 모음 */
+            // 헤더 레이어팝업 기능
+            var layerPopup = $('.alertPopup');   // 보여줄 레이어
+            var open_layer = $('.open-layerPopup');  // 팝업 버튼
+            layerPopPop(layerPopup,open_layer);
+            var layerPopup1 = $('.joinLayer');
+            var open_layer1 = $('.joinPopup');
+            layerPopPop(layerPopup1,open_layer1);
+            // 마이페이지 내정보관리 레이어팝업
+            var layerPopup2 = $('.myInfo');
+            var open_layer2 = $('.myInfoPop');
+            layerPopPop(layerPopup2,open_layer2);
+            // 휴대폰 번호 변경
+            var layerPopup3 = $('.phoneLayer');
+            var open_layer3 = $('#modifyPhone');
+            layerPopPop(layerPopup3,open_layer3);
+            // 이메일 변경
+            var layerPopup4 = $('.emailLayer');
+            var open_layer4 = $('#modifyEmail');
+            layerPopPop(layerPopup4,open_layer4);
+            // 닉네임 변경
+            var layerPopup5 = $('.nicknameLayer');
+            var open_layer5 = $('#modifyNickname');
+            layerPopPop(layerPopup5,open_layer5);
+            // 회원 탈퇴
+            var layerPopup6 = $('.deletePopup');
+            var open_layer6 = $('.deleteBtn');
+            layerPopPop(layerPopup6,open_layer6);
+            var layerPopup7 = $('.bookedLayer');
+            var open_layer7 = $('.bookedPopup');
+            layerPopPop(layerPopup7,open_layer7);
+
+            var buttonId = "";
+
+            function getId(a){
+                a.click(function (){
+                    buttonId = a.attr("id");
+                    console.log("버튼의 아이디 : "+buttonId);
+                })
+            }
+            function layerPopPop(layerPopup, open_layer){
 
 
-            $('.open-layerPopup').click(function (){
-                layerPopup.show();
-                $('body').css('overflow', 'hidden');
-            });
+                open_layer.click(function(){
+                    layerPopup.show();
+                    $('body').css('overflow', 'hidden');
+                    buttonId = open_layer.attr("id");
 
-            layerPopup.not('.layerPopup_wrap').click(function (e) {
-                if (!$(e.target).closest('.layerPopup_wrap').length) {
+                    console.log("버튼의 아이디 : "+buttonId);
+                })
+
+                layerPopup.not('.layerPopup_wrap').click(function (e) {
+                    if (!$(e.target).closest('.layerPopup_wrap').length) {
+                        layerPopup.hide();
+                        $('body').css('overflow', 'visible');
+                    }
+                });
+                $('.btn_close').click(function () {
                     layerPopup.hide();
                     $('body').css('overflow', 'visible');
+                });
+
+            }
+            var b = $('#chkBtn4');
+            var e = $('input[name=bookedNumber]');
+
+
+            e.on("keyup", function () {
+                if (e.val().length > 0) {
+                    b.removeAttr("disabled");
+                } else {
+                    b.attr("disabled", "disabled");
                 }
             });
 
+            // 수정 레이어----------------------------------
 
-            // 닫기 버튼 클릭 시 팝업 숨기기
-            $('.btn_close').click(function () {
-                layerPopup.hide();
-                $('body').css('overflow', 'visible');
-            });
+
+            var chk_Button1 = $('#chkBtn1');
+            var chk_Button2 = $('#chkBtn2');
+            var chk_Button3 = $('#chkBtn3');
+
+            var modify1 = $('#modifier1');
+            var modify2 = $('#modifier2');
+            var modify3 = $('#modifier3');
+            setupModifyButton(modify1, chk_Button1);
+            setupModifyButton(modify2, chk_Button2);
+            setupModifyButton(modify3, chk_Button3);
+
+
+
+
+            function setupModifyButton(modifyElement, chkButton) {
+                modifyElement.on("keyup", function () {
+                    if (modifyElement.val().length > 0) {
+                        chkButton.removeAttr("disabled");
+                    } else {
+                        chkButton.attr("disabled", "disabled");
+                    }
+                });
+
+                chkButton.click(function () {
+                    var data = {
+                        access: buttonId,
+                        value: modifyElement.val()
+                    };
+
+                    console.log(data);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/updateMember',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json;',
+                        /*dataType: 'json',*/
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader(header, token);
+                        },
+                        success: function (response) {
+                            if (response === "success") {
+                                alert("정보 업데이트 완료")
+                                location.href = "/myInfo";
+                            } else {
+                                console.error('정보 업데이트 에러 발생');
+                            }
+                        },
+                        error: function () {
+                            console.error('POST 전송 오류 발생');
+                        }
+                    });
+                });
+            }
+
+
             //----------------------------------
-           /* var passwordInput = $('#names');
+            // 닫기 버튼 클릭 시 팝업 숨기기 작성하시오;;
+
+
+
+
+            //----------------------------------
+            var passwordInput = $('#pwInput');
             var chkPW_Button = $('#chkPW');
+            var delete_Button = $('#delete');
             passwordInput.on("keyup", function (){
 
                 if(passwordInput.val().length > 0){
-                    chkPW_Button.removeAttr("disabled");
-                    chkPW_Button.text("입력완료");
-                    chkPW_Button.click(function (){
+                    $('.pwBtn').removeAttr("disabled");
+                    chkPW_Button.text("입력 완료");
+                    delete_Button.text("회원 탈퇴");
 
-                       var chkPW = passwordInput.val();
-
-
-                       $.ajax({
-                           type:'GET',
-                           url:'/member/myinfo',
-                           success: function(response) {
-                               // 성공 시 처리
-                               console.log(response);
-                           },
-                           error: function() {
-                               // 에러 시 처리
-                               console.error('오류 발생');
-                           }
-                       })
-                       /!*$.ajax({
-                           type: 'POST',
-                           url: '/member/passwordCheck',
-                           data: chkPW,
-                           success: function(response) {
-                               // 성공 시 처리
-                               console.log(response);
-                           },
-                           error: function() {
-                               // 에러 시 처리
-                               console.error('오류 발생');
-                           }
-                       })  비밀번호 확인 처리 *!/
-                    });
 
                 }else{
-                    chkPW_Button.attr("disabled","disabled");
-                    chkPW_Button.text("비밀번호를 입력해 주세요");
+                    $('.pwBtn').attr("disabled","disabled").text("비밀번호를 입력해 주세요");
                 }
-            });  비밀번호 확인 레이아웃 처리*/
+            });
 
+            chkPW_Button.click(function (){
+
+                var password = passwordInput.val();
+
+
+                console.log(password);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/passwordCheck',
+                    data: password,
+
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "correct") {
+                            // 비밀번호가 일치하는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치합니다.");
+                            location.href = "/myInfo";
+                        } else {
+                            // 비밀번호가 일치하지 않는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치하지 않습니다.");
+                            passwordInput.focus();
+                            passwordInput.val("");
+
+                        }
+                    },
+                    error: function() {
+                        // 에러 시 처리
+                        console.error('POST 전송 오류 발생');
+                    }
+                })
+            });
+
+            delete_Button.click(function (){
+                var password = passwordInput.val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/deleteMember',
+                    data: password,
+
+                    beforeSend : function(xhr)
+                    {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(response) {
+
+
+                        if (response === "correct") {
+                            // 비밀번호가 일치하는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치합니다.");
+                            location.href = "/main";
+                        } else {
+                            // 비밀번호가 일치하지 않는 경우
+                            $("#pwChkErrMsg").text("비밀번호가 일치하지 않습니다.");
+                            passwordInput.focus();
+                            passwordInput.val("");
+
+                        }
+                    },
+                    error: function() {
+                        // 에러 시 처리
+                        console.error('POST 전송 오류 발생');
+                    }
+                })
+            })
 
 
         });
     </script>
-
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-geocoder.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var liItems = document.querySelectorAll(".insur_tab li");
+            var btnToggleItems = document.querySelectorAll("p.btn");
+
+            // 클릭 이벤트 리스너를 만듭니다.
+            function onClickLi(event) {
+                // 다른 li 요소의 테두리 색을 초기화합니다.
+                for (var j = 0; j < liItems.length; j++) {
+                    liItems[j].classList.remove("active");
+                }
+                for (var j = 0; j < btnToggleItems.length; j++) {
+                    btnToggleItems[j].classList.remove("active");
+                }
+
+                // 현재 클릭한 li 요소에 "active" 클래스를 추가하여 테두리 색을 변경합니다.
+                this.classList.add("active");
+                console.log(this);
+            }
+
+            // 각 li 요소에 클릭 이벤트 리스너를 추가합니다.
+            for (var i = 0; i < liItems.length; i++) {
+                liItems[i].addEventListener("click", onClickLi);
+            }
+            for (var i = 0; i < btnToggleItems.length; i++) {
+                btnToggleItems[i].addEventListener("click", onClickLi);
+            }
+        });
 
 
+    </script>
+
+
+    <script th:inline="javascript">
+        var sessionNickname = /*[[${session.nickname}]]*/ '';
+        document.getElementById("nickname").value = sessionNickname;
+    </script>
+
+    <script th:inline="javascript" >
+        $(document).ready(function() {
+            // 초기 car.cost 값 가져오기
+            var carCost = parseFloat($("#cost").text().replace(/[^0-9]/g, '')); // 숫자만 추출
+
+            // firstI 클릭 이벤트
+            $("#firstI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 0; // 예시: 0으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+
+            // secondI 클릭 이벤트
+            $("#secondI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 50000; // 50000을 더한 값으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+
+            // thirdI 클릭 이벤트
+            $("#thirdI").click(function() {
+                // 새로운 가격 계산
+                var newCost = carCost + 100000; // 100000을 더한 값으로 설정
+
+                // HTML에 표시
+                $("#cost").text(newCost.toLocaleString() + " 원"); // 원단위로 포맷팅하여 표시
+            });
+        });
+    </script>
+
+    <!--결제 api-->
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js" type="text/javascript"></script>
 
 </th:block>
 </html>

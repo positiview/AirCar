@@ -16,9 +16,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class CounselingService {
     private CounselingRepository counselingRepository;
 
+
+
     public Page<Counseling> getCounselingList(Pageable pageable)
     {
         return counselingRepository.findAll(pageable);
+    }
+
+
+    public Page<Counseling> getCounselingTitleList(String keyword, Pageable pageable){
+        return counselingRepository.getByCounseling_titleLike(keyword, pageable);
+    }
+
+    public Page<Counseling> getCounselingContentList(String keyword, Pageable pageable) {
+        return counselingRepository.getByCounseling_contentLike(keyword, pageable);
     }
 
 }

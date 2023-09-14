@@ -1,14 +1,15 @@
 package com.example.aircar.service;
 
+
 import com.example.aircar.domain.MemberSecurityDTO;
 import com.example.aircar.entity.Member;
 import com.example.aircar.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,13 +32,44 @@ public class MemberService  {
     }
 
     private void validateDuplicatedMember(Member member) {
-        Optional<Member> findMember = memberRepository.findByEmailAndClientName(member.getEmail(), member.getClientName());
+        Optional<Member> findMember = memberRepository.findByEmail(member.getEmail());
         // .isPresent() - Optional 객체가 값을 가지고 있다면 true, 없다면 false
         if(findMember.isPresent()){
             throw new IllegalStateException("이미 가입된 회원 입니다.");
         }
     }
 
+    public String getPassword(String email){
+        Member result = memberRepository.findPasswordByEmail(email);
+
+
+
+        return result.getPassword();
+    }
+
+    public Member getUserInfo(String email){
+        Optional<Member> memberInfo  = memberRepository.findByEmail(email);
+
+            if(memberInfo.isEmpty()){
+                return null;
+            }else{
+                return memberInfo.get();
+            }
+    }
+
+    public void deleteUser(String email){
+        memberRepository.deleteByEmail(email);
+    }
+    public void updatePhone(String phone, String email){
+        memberRepository.updatePhone(phone,email);
+    }
+
+    public void updateContactEmail(String contactEmail, String email){
+        memberRepository.updateContactEmail(contactEmail,email);
+    }
+    public void updateNickname(String nickname, String email){
+        memberRepository.updateNickname(nickname,email);
+    }
 
     /*public String getNicknameByEmail(String email){
         Optional<Member> memberItem = memberRepository.findByEmail(email);
@@ -65,4 +97,17 @@ public class MemberService  {
 
         return dto;
     }*/
+
+    public Page<Member> getMemberList(Pageable pageable) {
+        return memberRepository.findAll(pageable);
+    }
+
+
+    public Page<Member> getnicknameList(String keyword, Pageable pageable) {
+        return memberRepository.getBynicknameLike(keyword, pageable);
+    }
+
+    public Page<Member> getemailList(String keyword, Pageable pageable) {
+        return memberRepository.getByemailLike(keyword, pageable);
+    }
 }
